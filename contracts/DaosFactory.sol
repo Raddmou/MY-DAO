@@ -3,7 +3,8 @@ pragma solidity 0.8.13;
 
 import './interfaces/IDaosFactory.sol';
 
-contract DaosFactory is IDaosFactory {
+//is DaosFactory
+contract DaosFactory  {
     
     
 }

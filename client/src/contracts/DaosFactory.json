@@ -1,0 +1,147 @@
+{
+  "contractName": "DaosFactory",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/DaosFactory.sol\":\"DaosFactory\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/DaosFactory.sol\":{\"keccak256\":\"0x82e0030348839f7e543cc67916dc8a653b1489b51320cac3b2f4d3ef4ef45880\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://df24a5fcba6a38f0b7b834311a10f0120472ce1ae121d6a2cdf6762689ceadca\",\"dweb:/ipfs/QmVNbDvzrboRZJnRLUvwVLxq3HnSTTArmQnEtCBSXrxHY1\"]},\"project:/contracts/interfaces/IDaosFactory.sol\":{\"keccak256\":\"0xcd940bf9dbc69b476d3a4900f744ae591ce0f3c8730aa25ff820509a9dfa141e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53e8f7cd06c5d7b549a9f0621629a446962d28df64a3a8aef4d9e83be96a26a1\",\"dweb:/ipfs/QmQQF4BzC83cDiysSdDptqnSUnRPVGu2SXf6FoAW5pt2KS\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212208a52067ab9c456d50fefcd099409ec352c8bbc6fa2a1c0c63aea956a25bd27cd64736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212208a52067ab9c456d50fefcd099409ec352c8bbc6fa2a1c0c63aea956a25bd27cd64736f6c634300080d0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "103:38:0:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "103:38:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8.13;\r\n\r\nimport './interfaces/IDaosFactory.sol';\r\n\r\ncontract DaosFactory  {\r\n    \r\n    \r\n}",
+  "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\DaosFactory.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/DaosFactory.sol",
+    "exportedSymbols": {
+      "DaosFactory": [
+        3
+      ],
+      "IDaosFactory": [
+        113
+      ]
+    },
+    "id": 4,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".13"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:0"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IDaosFactory.sol",
+        "file": "./interfaces/IDaosFactory.sol",
+        "id": 2,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 4,
+        "sourceUnit": 114,
+        "src": "60:39:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "DaosFactory",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 3,
+        "linearizedBaseContracts": [
+          3
+        ],
+        "name": "DaosFactory",
+        "nameLocation": "112:11:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 4,
+        "src": "103:38:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:108:0"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/DaosFactory.sol",
+    "exportedSymbols": {
+      "DaosFactory": [
+        3
+      ],
+      "IDaosFactory": [
+        113
+      ]
+    },
+    "id": 4,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".13"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:0"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IDaosFactory.sol",
+        "file": "./interfaces/IDaosFactory.sol",
+        "id": 2,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 4,
+        "sourceUnit": 114,
+        "src": "60:39:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "DaosFactory",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 3,
+        "linearizedBaseContracts": [
+          3
+        ],
+        "name": "DaosFactory",
+        "nameLocation": "112:11:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 4,
+        "src": "103:38:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:108:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-04-27T05:00:48.411Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
