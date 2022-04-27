@@ -3,23 +3,34 @@ import HeaderComponent from "./HeaderComponent";
 import DaosFactoryContract from "../contracts/DaosFactory.json";
 import getWeb3 from "../getWeb3";
 import Button from 'react-bootstrap/Button';
+import Web3 from "web3";
+
+
+
 
 export const providerContext = createContext({web3: null, accounts: null, contract: null});
 
 const MainComponent = (props) => {
     const [provider, setProvider] = useState();
     const [isOwner, setIsOwner] = useState(null);
+    
 
 	useEffect(async () => {
-		 
+        
 	}, [provider]);
+
+    
+
+    
 
     const handleConnect = async () => {
 
-		console.log("start initialize");
-
 		// Récupérer le provider web3
-		const callWeb3 = await getWeb3();
+		//const callWeb3 = await getWeb3();
+        const callWeb3 = new Web3(window.ethereum);
+        await window.ethereum.enable();
+
+        console.log("ici ");
   
 		// Utiliser web3 pour récupérer les comptes de l’utilisateur (MetaMask dans notre cas) 
 		const callAccounts = await callWeb3.eth.getAccounts();
@@ -34,46 +45,15 @@ const MainComponent = (props) => {
 		  deployedNetwork && deployedNetwork.address,
 		);
 
-		provider = ({web3: callWeb3, accounts: callAccounts, contract: instance});
+		setProvider({web3: callWeb3, accounts: callAccounts, contract: instance});
 	};
 
     // if (!provider)
     //     return null;
 
-    const getHeaderContent = () => {
-        if(!provider || !provider.accounts)
-            return (
-                <div>
-                    <Button onClick={() => handleConnect}>Connect wallet</Button>
-                </div>
-            );
-        else
-        {
-			return (
-				<div>
-					<span >wallet connected</span>
-				</div>
-			);
-        }
-    };
-
     return ( 
-        <div className="header-app">
-            <h1>MY DAO</h1>
-            <div>
-                {getHeaderContent()}
-            </div>
-            <div>
-                <providerContext.Provider value={provider}>
-                    <div >
-                        
-                    </div>
-                    {/* <div >
-                        <HeaderComponent isOwner={isOwner}/>
-                    </div> */}
-                </providerContext.Provider>
-            </div>
-        </div>
+
+        <HeaderComponent />
     );
 }
 

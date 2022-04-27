@@ -3,6 +3,8 @@ import DaosFactoryContract from "./contracts/DaosFactory.json";
 import getWeb3 from "./getWeb3";
 import "./App.css";
 import MainComponent from "./components/MainComponent";
+import { Web3ReactProvider } from '@web3-react/core';
+import Web3 from 'web3';
 
 export const providerContext = createContext({web3: null, accounts: null, contract: null});
 
@@ -25,12 +27,16 @@ const App = () => {
 		}
 	}, []);
 
+  function getLibrary(provider) {
+    return new Web3(provider)
+  }
+
 	const initialize = async () => {
 
 		console.log("start initialize");
 
 		// Récupérer le provider web3
-		const callWeb3 = await getWeb3();
+		//const callWeb3 = await getWeb3();
   
 		// Utiliser web3 pour récupérer les comptes de l’utilisateur (MetaMask dans notre cas) 
 		//const callAccounts = await callWeb3.eth.getAccounts();
@@ -55,9 +61,12 @@ const App = () => {
 	// else {
 		return (
 			<div className="App">
-				<providerContext.Provider value={provider}>
-					<MainComponent />
-				</providerContext.Provider>
+        <Web3ReactProvider getLibrary={getLibrary}>
+          <providerContext.Provider value={provider}>
+            <MainComponent />
+          </providerContext.Provider>
+        </Web3ReactProvider>
+				
 			</div>
 		);
 	// }
