@@ -5,42 +5,65 @@ import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 import './interfaces/IDaosFactory.sol';
+import './Dao.sol';
 
 //is DaosFactory
 contract DaosFactory is Ownable {
   using SafeMath for uint256;
   uint256 private daoId;
 
-  mapping(address => uint256[]) myDaos;
+  //user > daos
+  mapping(address => address[]) membershipDaos;
 
-  deployedDaos[] public daos;
+  deployedDao[] public daos;
 
-  struct deployedDaos {
-    string name;
+  struct deployedDao {
     address owner;
-    address daoAddr;
-    uint256[] modules;
-    uint256 id;
+    address daoAddress;
   }
 
-  event CreateDAO(address user, string name, address daoAddr, uint256[] modules);
+//   event DaoCreated(address user, string name, address daoAddr, uint256[] modules, uint256 id);
+  event DaoCreated(address user, string name, address daoAddress);
 
-  function getMyDaosIds() external view returns (uint256[] memory) {
-    return (myDaos[msg.sender]);
+  function getdeployedDaos() external view returns (deployedDao[] memory) {
+    return daos;
   }
-  function getDaoInfoId(uint256 _id) external view returns (deployedDaos memory) {
-    return (daos[_id]);
+
+   function getDaosAddressByMember(address _addressMember) external view returns (address[] memory) {
+    return (membershipDaos[_addressMember]);
   }
+
+  // function getMyDaosIds() external view returns (uint256[] memory) {
+  //   return (myDaos[msg.sender]);
+  // }
+  // function getDaoInfoId(uint256 _id) external view returns (deployedDaos memory) {
+  //   return (daos[_id]);
+  // }
+  
   // after create the DAO we need to change the owner because now this contract is the owner
-  function createDAO(string calldata _name, uint256[] calldata _modules) public {
-    deployedDaos memory _dao;
-    _dao.name = _name;
+  //, uint256[] calldata _modules
+  function createDAO(string calldata _name, bool byInvitation) public {
+    Dao dao = new Dao(byInvitation);
+    dao.setName(_name);
+    dao.addMember(msg.sender);
+    deployedDao memory _dao;
     _dao.owner = msg.sender;
-    _dao.daoAddr = address(0); //new DAO();
-    _dao.modules = _modules;
-    _dao.id = daoId;
+    _dao.daoAddress = address(dao);
     daos.push(_dao);
-    daoId = daoId.add(1);
-    emit CreateDAO(msg.sender, _name, _dao.daoAddr, _modules);
+    membershipDaos[msg.sender].push(_dao.daoAddress);
+
+    // deployedDaos memory _dao;
+    // _dao.name = _name;
+    // _dao.owner = msg.sender;
+    // //Dao dao = new Dao();
+    // //address contractAddress = new Dao();
+    // _dao.daoAddr =  address(0); //dao.address;
+    // //_dao.modules = _modules;
+    // _dao.id = daoId;
+    // _dao.members.push(msg.sender);
+    // daos.push(_dao);
+    // daoId = daoId.add(1);
+    // // emit DaoCreated(msg.sender, _name, _dao.daoAddr, _modules, _dao.id);
+    emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }
 }
