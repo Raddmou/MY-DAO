@@ -23,6 +23,11 @@ contract Dao is Ownable {
   membershipMode mode;
   //member[] public members;
 
+  event MemberAdded(address newMember);
+  event MemberInvited(address memberInvitor, address memberInvited);
+  event MemberJoined(address memberJoined);
+
+
   struct member {
         memberStatus status;
         //address memberAddress;
@@ -47,10 +52,12 @@ contract Dao is Ownable {
 
     function addMember(address addressMember) public {
         members[addressMember].status = memberStatus.active;
+        emit MemberAdded(addressMember);
     }
 
     function inviteMember(address addressMember) public {
         members[addressMember].status = memberStatus.invited;
+        emit MemberInvited(msg.sender, addressMember);
     }
 
     function isActiveMember(address addressMember) public view returns (bool){
@@ -61,6 +68,7 @@ contract Dao is Ownable {
         require((members[msg.sender].status == memberStatus.invited && mode == membershipMode.invite) || (members[msg.sender].status == memberStatus.notMember && mode == membershipMode.open)
                 , "Impossible to join");
         members[msg.sender].status = memberStatus.active;
+        emit MemberJoined(msg.sender);
     }
   
 
