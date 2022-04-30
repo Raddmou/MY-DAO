@@ -43,8 +43,7 @@ contract DaosFactory is Ownable {
   // after create the DAO we need to change the owner because now this contract is the owner
   //, uint256[] calldata _modules
   function createDAO(string calldata _name, bool _byInvitation) public {
-    Dao dao = new Dao(_byInvitation);
-    dao.setName(_name);
+    Dao dao = new Dao(_name, _byInvitation);
     dao.addMember(msg.sender);
     deployedDao memory _dao;
     _dao.owner = msg.sender;

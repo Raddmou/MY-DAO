@@ -8,12 +8,13 @@ import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 contract Dao is Ownable {
   using SafeMath for uint256;
   
-    constructor (bool byInvitation)
+    constructor (string memory _name, bool byInvitation)
     {
-        if(byInvitation)
-            mode = membershipMode.invite;
-        else
-            mode = membershipMode.open;
+      name = _name;
+      if(byInvitation)
+          mode = membershipMode.invite;
+      else
+          mode = membershipMode.open;
     }
 
   uint256[] public modules;
@@ -46,16 +47,30 @@ contract Dao is Ownable {
         open
     }
 
-    function setName(string calldata _name) public {
+    modifier onlyActiveMembers() {
+        require(members[msg.sender].status == memberStatus.active, "Not authorized");
+        _;
+    }
+
+    modifier onlyNotActiveMembers() {
+        require(members[msg.sender].status != memberStatus.active, "Not authorized");
+        _;
+    }
+
+    function setMode(membershipMode _mode) public onlyOwner() {
+       mode = _mode;
+    }
+
+    function setName(string calldata _name) public onlyOwner() {
        name = _name;
     }
 
-    function addMember(address addressMember) public {
+    function addMember(address addressMember) public onlyActiveMembers() {
         members[addressMember].status = memberStatus.active;
         emit MemberAdded(addressMember);
     }
 
-    function inviteMember(address addressMember) public {
+    function inviteMember(address addressMember) public onlyActiveMembers() {
         members[addressMember].status = memberStatus.invited;
         emit MemberInvited(msg.sender, addressMember);
     }
@@ -64,7 +79,7 @@ contract Dao is Ownable {
         return members[addressMember].status == memberStatus.active;
     }
 
-    function join() public {
+    function join() public onlyNotActiveMembers() {
         require((members[msg.sender].status == memberStatus.invited && mode == membershipMode.invite) || (members[msg.sender].status == memberStatus.notMember && mode == membershipMode.open)
                 , "Impossible to join");
         members[msg.sender].status = memberStatus.active;
