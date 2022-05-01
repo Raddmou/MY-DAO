@@ -13,7 +13,7 @@ contract DaosFactory is Ownable {
   uint256 private daoId;
 
   //user > daos
-  mapping(address => address[]) membershipDaos;
+  mapping(address => address[]) public membershipDaos;
 
   deployedDao[] public daos;
 
@@ -44,12 +44,13 @@ contract DaosFactory is Ownable {
   //, uint256[] calldata _modules
   function createDAO(string calldata _name, bool _byInvitation) public {
     Dao dao = new Dao(_name, _byInvitation);
+    dao.authorizeContract(address(this));
     dao.addMember(msg.sender);
     deployedDao memory _dao;
     _dao.owner = msg.sender;
     _dao.daoAddress = address(dao);
     daos.push(_dao);
-    membershipDaos[msg.sender].push(_dao.daoAddress);
+    membershipDaos[msg.sender].push(_dao.daoAddress);  
     dao.transferOwnership(msg.sender);
     // deployedDaos memory _dao;
     // _dao.name = _name;

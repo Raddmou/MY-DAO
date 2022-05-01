@@ -1,5 +1,5 @@
 import { citizensAPI } from '../../api';
-import { contractProvider } from '../../api/ContractProvider';
+import { contractFactoryProvider } from '../../api/ContractProvider';
 import { 
     FETCH_CITIZENS_SUCCESS, 
     FETCH_CITIZENS_PENDING, 
@@ -78,7 +78,7 @@ export const setCitizensCount = (citizensCount: number): ActionTypes => ({
 
 export const getContract = () => async (dispatch: any) => {
     try {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         dispatch(setContract(contract));
     } catch ({ message }) {
         console.error(message);

@@ -12,26 +12,32 @@ contract Dao is Ownable {
     {
       name = _name;
       if(byInvitation)
-          mode = membershipMode.invite;
+          membershipModeMode = membershipModeEnum.invite;
       else
-          mode = membershipMode.open;
+          membershipModeMode = membershipModeEnum.open;
     }
 
   uint256[] public modules;
   string public name;
   uint256 public id;
   mapping(address => member) public members;
-  membershipMode mode;
+  membershipModeEnum public membershipModeMode;
+  visibilityEnum public visibility;
+  mapping(address => bool) private authorizedContracts;
   //member[] public members;
 
   event MemberAdded(address newMember);
   event MemberInvited(address memberInvitor, address memberInvited);
   event MemberJoined(address memberJoined);
 
-
   struct member {
         memberStatus status;
         //address memberAddress;
+    }
+
+  enum visibilityEnum {
+        privateDao,
+        publicDao
     }
 
   enum memberStatus {
@@ -41,14 +47,14 @@ contract Dao is Ownable {
         active
     }
 
-    enum membershipMode {
+    enum membershipModeEnum {
         invite,
         request,
         open
     }
 
-    modifier onlyActiveMembers() {
-        require(members[msg.sender].status == memberStatus.active, "Not authorized");
+    modifier onlyActiveMembersOrAuthorizeContracts() {
+        require(members[msg.sender].status == memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
         _;
     }
 
@@ -57,20 +63,30 @@ contract Dao is Ownable {
         _;
     }
 
-    function setMode(membershipMode _mode) public onlyOwner() {
-       mode = _mode;
+    modifier onlyAuthorizeContracts() {
+        require(authorizedContracts[msg.sender] == true, "Not authorized");
+        _;
+    }
+
+    modifier onlyAuthorizeContractsOrOwner() {
+        require(((authorizedContracts[msg.sender] == true) || msg.sender == owner()), "Not authorized");
+        _;
+    }
+
+    function setMode(membershipModeEnum _mode) public onlyOwner() {
+       membershipModeMode = _mode;
     }
 
     function setName(string calldata _name) public onlyOwner() {
        name = _name;
     }
 
-    function addMember(address addressMember) public onlyActiveMembers() {
+    function addMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
         members[addressMember].status = memberStatus.active;
         emit MemberAdded(addressMember);
     }
 
-    function inviteMember(address addressMember) public onlyActiveMembers() {
+    function inviteMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
         members[addressMember].status = memberStatus.invited;
         emit MemberInvited(msg.sender, addressMember);
     }
@@ -80,10 +96,19 @@ contract Dao is Ownable {
     }
 
     function join() public onlyNotActiveMembers() {
-        require((members[msg.sender].status == memberStatus.invited && mode == membershipMode.invite) || (members[msg.sender].status == memberStatus.notMember && mode == membershipMode.open)
+        require((members[msg.sender].status == memberStatus.invited && membershipModeMode == membershipModeEnum.invite)
+         || (members[msg.sender].status == memberStatus.notMember && membershipModeMode == membershipModeEnum.open)
                 , "Impossible to join");
         members[msg.sender].status = memberStatus.active;
         emit MemberJoined(msg.sender);
+    }
+
+    function authorizeContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
+        authorizedContracts[_contractAddress] = true;
+    }
+
+    function denyContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
+        authorizedContracts[_contractAddress] = false;
     }
   
 

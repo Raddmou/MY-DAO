@@ -12,7 +12,7 @@ import AddCitizen from './pages/AddCitizen/Component';
 import Header from "./components/Header/Component";
 import { useAppDispatch } from './hooks';
 import { setAccount, getCitizensCount, getDaoByMember } from './redux/reducers/actions';
-import { contractProvider } from './api/ContractProvider';
+import { contractFactoryProvider } from './api/ContractProvider';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();

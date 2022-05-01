@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
+import { Checkbox, Switch } from "@mui/material";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 import { validationSchema } from './validation';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -38,7 +40,8 @@ const AddCitizen: React.FC = () => {
             //age: '',
             //city: '',
             name: '',
-            //note: '',
+            visibility: false,
+            note: '',
         },
         validationSchema,
         onSubmit: handleSubmit,
@@ -75,6 +78,25 @@ const AddCitizen: React.FC = () => {
                         helperText={touched.name && errors.name}
                     />
                 </div>
+                <div className="textInput">
+                    <FormControlLabel
+                    control={
+                        <Switch  
+                        size="small"
+                        fullWidth
+                        id="visibility"
+                        name="visibility"
+                        label="Private"
+                        value={formik.values.visibility}
+                        onChange={formik.handleChange}
+                        error={touched.visibility && Boolean(errors.visibility)}
+                        helperText={touched.visibility && errors.visibility}
+                    />
+                            }
+                    label="Private"
+                    />
+                    
+                </div>
                 {/* <div className="textInput">
                     <TextField
                         size="small"
@@ -102,19 +124,19 @@ const AddCitizen: React.FC = () => {
                         helperText={touched.city && errors.city}
                     />
                 </div> */}
-                {/* <div className="textInput">
+                <div className="textInput">
                     <TextField
                         size="small"
                         fullWidth
                         id="note"
                         name="note"
-                        label="Note"
+                        label="Description"
                         value={formik.values.note}
                         onChange={formik.handleChange}
                         error={touched.note && Boolean(errors.note)}
                         helperText={touched.note && errors.note}
                     />
-                </div> */}
+                </div>
                 <Button color="primary" variant="contained" fullWidth type="submit">
                     Submit
                 </Button>

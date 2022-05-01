@@ -7,7 +7,7 @@ import { Citizen, Dao } from '../types';
 import daoFactoryContract from "../contracts/DaosFactory.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
-import { contractProvider } from './ContractProvider';
+import { contractFactoryProvider, contractDaoProvider } from './ContractProvider';
 //import { contractProvider } from './ContractProvider';
 
 const NOT_FOUND = 'City not found';
@@ -23,7 +23,7 @@ const web3 = new Web3(provider);
 export const citizensAPI = {
     
     getCitizensCount: async (): Promise<number> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         const events =  await contract.getPastEvents('Citizen', {
             fromBlock: 0,
             toBlock: 'latest'
@@ -33,7 +33,7 @@ export const citizensAPI = {
     },
 
     getDaoCount: async (): Promise<number> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         const events =  await contract.getPastEvents('DaoCreated', {
             fromBlock: 0,
             toBlock: 'latest'
@@ -43,29 +43,35 @@ export const citizensAPI = {
     },
 
     getDaoCountByUser: async (): Promise<number> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         const allDaos = await contract.methods.getdeployedDaos().call();
         const count = allDaos.filter(c => c.members.some(e => e.status != "notMember" && e.memberAddress == (window as any).ethereum.selectedAddress)).length;
         return count;
     },
 
     fetchDaosByUser: async (page: number, limit: number, count: number): Promise<Citizen[]> => {
-        const contract = await contractProvider.getContract();
-        const citizenIds = getCitizensIdsToSearch(page, limit, count);
+        const contract = await contractDaoProvider.getContract();
+        // const citizenIds = getCitizensIdsToSearch(page, limit, count);
         
         const allDaos = await contract.methods.getdeployedDaos().call();
-        //const myDaos[];
-        const daos = allDaos.filter(c => c.members.some(e => e.status != "notMember" && e.memberAddress == (window as any).ethereum.selectedAddress));
-                            // .map((data) => {
-                                
-                            // });
-        
 
-        return daos;
+        //const allDaos = await contract.methods.membershipDaos().call();
+
+
+        const transactionsData =  allDaos.filter(c => c.members[(window as any).ethereum.selectedAddress].status != 0)
+                                    .map(async (deployedDao) => {
+                                        const daoAddress = deployedDao.returnValues.daoAddress;
+                                        const name = await provider.contract.methods.name.call();
+                                        const visibility = await provider.contract.methods.visibility.call();
+                                        const membershipModeMode = await provider.contract.methods.membershipModeMode.call();
+                                        return { daoAddress, name, visibility, membershipModeMode };
+                                    });
+
+        return await Promise.all(transactionsData);
     },
 
     fetchCitizens: async (page: number, limit: number, count: number): Promise<Citizen[]> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         const citizenIds = getCitizensIdsToSearch(page, limit, count);
         
         const events =  await contract.getPastEvents('Citizen', {
@@ -76,7 +82,7 @@ export const citizensAPI = {
 
         const transactionsData = events.map(async ({ transactionHash, returnValues: { id, age, name } }) => {
             try {
-                const contract = await contractProvider.getContract();
+                const contract = await contractFactoryProvider.getContract();
                 const { input }  = await web3.eth.getTransaction(transactionHash);
                 const parametersTypes = [
                     { type: 'uint256', name: 'age' },
@@ -100,12 +106,12 @@ export const citizensAPI = {
     },
 
     fetchNote: async (id: string): Promise<string> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         return await contract.methods.getNoteByCitizenId(id).call();
     },
 
     addNewCitizen: async (citizen: any): Promise<Citizen> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         const { age, name, city, note } = citizen;
         const { events } =  await contract.methods
             .addCitizen(age, city, name, note)
@@ -118,10 +124,10 @@ export const citizensAPI = {
     },
 
     addNewDao: async (dao: any): Promise<Dao> => {
-        const contract = await contractProvider.getContract();
+        const contract = await contractFactoryProvider.getContract();
         const { name } = dao;
         const { events } =  await contract.methods
-            .createDAO(name)
+            .createDAO(name, false)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });
