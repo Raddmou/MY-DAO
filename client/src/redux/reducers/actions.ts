@@ -170,7 +170,7 @@ export const getDaoByMember = (page: number, limit: number) => async (dispatch: 
 
         const count = await citizensAPI.getDaoCountByUser();
         const daos = await citizensAPI.fetchDaosByUser(page, limit, count);
-        console.log("retour getDaosByMember " + daos[0].isMember);
+        //console.log("retour getDaosByMember " + daos[0].isMember);
         dispatch(setDaosByUser(daos));
     } catch (error) {
         console.error(error);

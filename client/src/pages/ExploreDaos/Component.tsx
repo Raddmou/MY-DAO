@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Alert from '@mui/material/Alert';
 
-import { getCitizens, clearCitizenNote, getDaoByMember, clearDaoNote } from '../../redux/reducers/actions';
+import { getCitizens, clearCitizenNote, getPublicDaos, clearDaoNote } from '../../redux/reducers/actions';
 import CitizensList from '../../components/CitizensList/Component';
 import Pagination from '../../components/Pagination/Component';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -32,7 +32,7 @@ const ExploreDaos: React.FC = () => {
 
         const page = searchParams.get('page') || DEFAULT_PAGE;
         // dispatch(getCitizens(Number(page) , PAGE_LIMIT));
-        dispatch(getDaoByMember(Number(page) , PAGE_LIMIT));
+        dispatch(getPublicDaos(Number(page) , PAGE_LIMIT));
     }, [searchParams, account])
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number): void => {

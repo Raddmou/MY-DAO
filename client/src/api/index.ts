@@ -53,7 +53,7 @@ export const citizensAPI = {
                                         const address = deployedAddress.daoAddress;
                                         const contractDao = await contractDaoProvider.getContract(address.daoAddress);
                                         const member = await contractDao.methods.members((window as any).ethereum.selectedAddress).call();
-                                        const isMember = member.status != 0;
+                                        const isMember = member != 0;
                                         return { address, isMember };
                                     });
         console.log("transactionsData " + transactionsData);
@@ -69,7 +69,7 @@ export const citizensAPI = {
                                         const address = deployedAddress.daoAddress;
                                         const contractDao = await contractDaoProvider.getContract(address.daoAddress);
                                         const member = await contractDao.methods.members((window as any).ethereum.selectedAddress).call();
-                                        const isMember = member.status != 0;
+                                        const isMember = member != 0;
                                         return { address, isMember };
                                     });
         return transactionsData.length;
@@ -98,7 +98,7 @@ export const citizensAPI = {
                                         const address = deployedAddress.daoAddress;
                                         const contractDao = await contractDaoProvider.getContract(address);
                                         const member = await contractDao.methods.members((window as any).ethereum.selectedAddress).call();
-                                        const isMember = member.status != 0;
+                                        const isMember = member != 0;
                                         const name = await contractDao.methods.getName().call();
                                         const visibility = await contractDao.methods.getVisibility().call();
                                         const description = await contractDao.methods.getDescription().call();
@@ -106,8 +106,8 @@ export const citizensAPI = {
                                         
                                         const tt = await contractDao.methods.name.call();
                                         console.log("ismember " + isMember);
-                                        console.log("address " + address);
-                                        console.log("visibility " + visibility);
+                                        console.log("member " + member);
+                                        console.log("member.status " + member.status);
                                         console.log("name " + name);
                                         console.log("description " + description);
                                         const id = address.toString();
@@ -135,7 +135,7 @@ export const citizensAPI = {
                                         const address = deployedAddress.daoAddress;
                                         const contractDao = await contractDaoProvider.getContract(address);
                                         const member = await contractDao.methods.members((window as any).ethereum.selectedAddress).call();
-                                        const isMember = member.status != 0;
+                                        const isMember = member != 0;
                                         const name = await contractDao.methods.getName().call();
                                         const visibility = await contractDao.methods.getVisibility().call();
                                         const description = await contractDao.methods.getDescription().call();
