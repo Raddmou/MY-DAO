@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import citizens from "./citizens";
+import daos from "./daos";
 import application from "./application";
 
-export default combineReducers({ citizens, application });
+export default combineReducers({ daos, application });

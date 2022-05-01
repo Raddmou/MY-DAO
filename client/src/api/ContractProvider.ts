@@ -45,7 +45,6 @@ export const contractDaoProvider = {
 
         const web3 = new Web3(provider);
         const networkId = await web3.eth.net.getId();
-        //const deployedNetwork = daoContract.networks[networkId];
         const contract = new web3.eth.Contract(daoContract.abi as any, address);
 
         return contract;

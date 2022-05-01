@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 
-import { getCitizens, setAccount, getCitizensCount, getContract, setContract, getDaoByMember } from '../../redux/reducers/actions';
+import { setAccount, getContract, setContract, getDaoByMember } from '../../redux/reducers/actions';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { DEFAULT_PAGE, PAGE_LIMIT } from "./constants";
 
@@ -33,13 +33,9 @@ const Header: React.FC = () => {
             method: 'eth_chainId'
         });
         const page = searchParams.get('page') || DEFAULT_PAGE;
-
-        //const contract = await getContract();
     
         dispatch(setAccount(currentAccount));
         dispatch(setAccount(chainId));
-        //dispatch(getContract());
-        // dispatch(getCitizens(Number(page), PAGE_LIMIT));
         dispatch(getDaoByMember(Number(page), PAGE_LIMIT));
     };
 
@@ -69,7 +65,7 @@ const Header: React.FC = () => {
                                 account && (
                                     <MenuItem
                                         component={Link}
-                                        to="/add-new-citizen"
+                                        to="/add-new-dao"
                                     >
                                         <Typography textAlign="center">Create DAO</Typography>
                                     </MenuItem>

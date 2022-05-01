@@ -1,30 +1,30 @@
 import { 
-    FETCH_CITIZENS_SUCCESS, 
+    // FETCH_CITIZENS_SUCCESS, 
     FETCH_DAOS_SUCCESS, 
     FETCH_PUBLIC_DAOS_SUCCESS,
-    FETCH_CITIZENS_PENDING, 
-    FETCH_CITIZENS_ERROR, 
+    // FETCH_CITIZENS_PENDING, 
+    // FETCH_CITIZENS_ERROR, 
     FETCH_NOTE_SUCCESS,
     FETCH_DESCRIPTION_SUCCESS,
-    CLEAR_CITIZEN_NOTE,
+    // CLEAR_CITIZEN_NOTE,
     CLEAR_DAO_NOTE,
-    ADD_NEW_CITIZEN,
+    // ADD_NEW_CITIZEN,
     ADD_NEW_DAO,
     FETCH_ACCOUNT,
-    FETCH_CITIZENS_COUNT,
+    // FETCH_CITIZENS_COUNT,
     FETCH_CHAIN_ID,
     FETCH_CONTRACT,
     FETCH_DAOS_COUNT,
     FETCH_DAOS_ERROR,
     FETCH_DAOS_PENDING
 } from './actionTypes';
-import { Citizen, Dao } from '../../types'
+import { Dao } from '../../types'
 import { Contract } from 'web3-eth-contract';
 
-interface ISetCitizensAction {
-    type: typeof FETCH_CITIZENS_SUCCESS,
-    citizens: Citizen[]
-};
+// interface ISetCitizensAction {
+//     type: typeof FETCH_CITIZENS_SUCCESS,
+//     citizens: Citizen[]
+// };
 
 interface ISetDaosAction {
     type: typeof FETCH_DAOS_SUCCESS,
@@ -36,25 +36,30 @@ interface ISetPublicDaosAction {
     daos: Dao[]
 };
 
-interface ISetPendingAction {
-    type: typeof FETCH_CITIZENS_PENDING,
-};
+// interface ISetPendingAction {
+//     type: typeof FETCH_CITIZENS_PENDING,
+// };
 
 interface ISetDaosPendingAction {
     type: typeof FETCH_DAOS_PENDING,
 };
 
-interface ISetErrorAction {
-    type: typeof FETCH_CITIZENS_ERROR,
-};
+// interface ISetErrorAction {
+//     type: typeof FETCH_CITIZENS_ERROR,
+// };
 
 interface ISetDaosErrorAction {
     type: typeof FETCH_DAOS_ERROR,
 };
 
-interface ISetCitizenNoteAction {
+// interface ISetCitizenNoteAction {
+//     type: typeof FETCH_NOTE_SUCCESS,
+//     citizenNote: string
+// };
+
+interface ISetDaoNoteAction {
     type: typeof FETCH_NOTE_SUCCESS,
-    citizenNote: string
+    daoNote: string
 };
 
 interface ISetDaoDescriptionAction {
@@ -62,19 +67,19 @@ interface ISetDaoDescriptionAction {
     daoDescription: string
 };
 
-interface IClearCitizenNoteAction {
-    type: typeof CLEAR_CITIZEN_NOTE
-};
+// interface IClearCitizenNoteAction {
+//     type: typeof CLEAR_CITIZEN_NOTE
+// };
 
 interface IClearDaoNoteAction {
     type: typeof CLEAR_DAO_NOTE
 };
 
 
-interface IAddNewCitizenAction {
-    type: typeof ADD_NEW_CITIZEN,
-    citizen: Citizen
-};
+// interface IAddNewCitizenAction {
+//     type: typeof ADD_NEW_CITIZEN,
+//     citizen: Citizen
+// };
 
 interface IAddNewDaoAction {
     type: typeof ADD_NEW_DAO,
@@ -96,10 +101,10 @@ interface ISetContractAction {
     contract: Contract
 };
 
-interface ISetCitizensCountAction {
-    type: typeof FETCH_CITIZENS_COUNT,
-    citizensCount: number
-};
+// interface ISetCitizensCountAction {
+//     type: typeof FETCH_CITIZENS_COUNT,
+//     citizensCount: number
+// };
 
 interface ISetDaosCountAction {
     type: typeof FETCH_DAOS_COUNT,
@@ -107,14 +112,7 @@ interface ISetDaosCountAction {
 };
 
 export type ActionTypes = 
-    ISetCitizensAction | 
-    ISetPendingAction | 
-    ISetErrorAction | 
-    ISetCitizenNoteAction | 
-    IClearCitizenNoteAction |
-    IAddNewCitizenAction |
     ISetAccountAction |
-    ISetCitizensCountAction |
     ISetDaosCountAction |
     ISetChainIdAction |
     ISetContractAction |
@@ -125,15 +123,8 @@ export type ActionTypes =
     ISetDaosAction |
     ISetDaoDescriptionAction |
     IClearDaoNoteAction |
-    ISetPublicDaosAction;
-
-// export type CitizensState = {
-//     citizens: Citizen[],
-//     pending: boolean,
-//     error: boolean,
-//     citizenNote: string,
-//     citizensCount: number,
-// };
+    ISetPublicDaosAction |
+    ISetDaoNoteAction;
 
 export type DaosState = {
     daos: Dao[],

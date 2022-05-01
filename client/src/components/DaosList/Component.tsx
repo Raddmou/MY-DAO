@@ -6,13 +6,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-import CitizenCard from '../CitizenCard/Component';
+import DaoCard from '../DaoCard/Component';
 import { useAppSelector } from '../../hooks';
-import { Citizen, Dao } from '../../types'
+import { Dao } from '../../types'
 import './Component.scss'
 
-const CitizensList: React.FC = () => {
-    const { daos, pending, error } = useAppSelector((state: any) => state.citizens);
+const DaosList: React.FC = () => {
+    const { daos, pending, error } = useAppSelector((state: any) => state.daos);
 
     if (pending) return (
         <div className='listContainer'>
@@ -29,7 +29,7 @@ const CitizensList: React.FC = () => {
             <List>
                 {
                     daos.map((dao: Dao) => (
-                        <CitizenCard key={dao.id} dao={dao} />
+                        <DaoCard key={dao.id} dao={dao} />
                     ))
                 }
             </List>
@@ -37,4 +37,4 @@ const CitizensList: React.FC = () => {
     )
 };
 
-export default CitizensList;
+export default DaosList;

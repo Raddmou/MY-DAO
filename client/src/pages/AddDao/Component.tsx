@@ -10,7 +10,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 import { validationSchema } from './validation';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { addNewCitizen, addNewDao } from '../../redux/reducers/actions';
+import { addNewDao } from '../../redux/reducers/actions';
 import { AddDaoFormValues } from '../../types';
 import './Component.scss'
 
@@ -18,15 +18,6 @@ const AddDao: React.FC = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const { account } = useAppSelector((state: any) => state.application);
     const dispatch = useAppDispatch();
-
-    // const handleSubmit = (formValues: AddCitizenFormValues, { resetForm }: any): void => {
-    //     dispatch(
-    //         addNewCitizen(formValues)
-    //     );
-    //     setIsFormSubmitted(true);
-    //     resetForm();
-    // };
-
     const handleSubmit = (formValues: AddDaoFormValues, { resetForm }: any): void => {
         dispatch(
             addNewDao(formValues)
@@ -42,6 +33,7 @@ const AddDao: React.FC = () => {
             name: '',
             visibility: false,
             description: '',
+            note: '',
         },
         validationSchema,
         onSubmit: handleSubmit,
@@ -127,6 +119,19 @@ const AddDao: React.FC = () => {
                         id="description"
                         name="description"
                         label="Description"
+                        value={formik.values.description}
+                        onChange={formik.handleChange}
+                        error={touched.description && Boolean(errors.description)}
+                        helperText={touched.description && errors.description}
+                    />
+                </div>
+                <div className="textInput">
+                    <TextField
+                        size="small"
+                        fullWidth
+                        id="note"
+                        name="note"
+                        label="Note"
                         value={formik.values.note}
                         onChange={formik.handleChange}
                         error={touched.note && Boolean(errors.note)}

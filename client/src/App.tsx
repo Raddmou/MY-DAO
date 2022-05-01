@@ -8,11 +8,11 @@ import {
 import Container from "@mui/material/Container";
 
 import Home from './pages/Home/Component';
-import AddDao from './pages/AddCitizen/Component';
+import AddDao from './pages/AddDao/Component';
 import ExploreDao from './pages/ExploreDaos/Component';
 import Header from "./components/Header/Component";
 import { useAppDispatch } from './hooks';
-import { setAccount, getCitizensCount, getDaoByMember, getDaosCountByMember } from './redux/reducers/actions';
+import { setAccount, getDaoByMember, getDaosCountByMember } from './redux/reducers/actions';
 import { contractFactoryProvider } from './api/ContractProvider';
 
 const App: React.FC = () => {
@@ -38,7 +38,7 @@ const App: React.FC = () => {
             <main className="main">
                 <Routes>
                     <Route path="/" element={ <Home /> } />
-                    <Route path="add-new-citizen" element={<AddDao />} />
+                    <Route path="add-new-dao" element={<AddDao />} />
                     <Route path="explore-daos" element={<ExploreDao />} />
                 </Routes>
             </main>

@@ -1,31 +1,23 @@
-import { citizensAPI } from '../../api';
+import { daosAPI } from '../../api';
 import { contractFactoryProvider } from '../../api/ContractProvider';
 import { 
-    FETCH_CITIZENS_SUCCESS, 
-    FETCH_CITIZENS_PENDING, 
-    FETCH_CITIZENS_ERROR, 
+    FETCH_DAOS_PENDING,
+    FETCH_PUBLIC_DAOS_SUCCESS,
+    FETCH_DAOS_ERROR,
     FETCH_NOTE_SUCCESS,
     FETCH_DESCRIPTION_SUCCESS,
-    CLEAR_CITIZEN_NOTE,
     CLEAR_DAO_NOTE,
-    ADD_NEW_CITIZEN,
     ADD_NEW_DAO,
     FETCH_ACCOUNT,
-    FETCH_CITIZENS_COUNT,
     FETCH_DAOS_COUNT,
     FETCH_CHAIN_ID,
     FETCH_CONTRACT,
     FETCH_DAOS_SUCCESS
 } from './actionTypes';
-import { Citizen, AddCitizenFormValues, Dao, AddDaoFormValues } from '../../types';
+ import { Dao, AddDaoFormValues } from '../../types';
 import { ActionTypes } from './types'
 import { Contract } from 'web3-eth-contract';
 import { Address } from 'cluster';
-
-export const setCitizens = (citizens: Citizen[]): ActionTypes => ({
-    type: FETCH_CITIZENS_SUCCESS,
-    citizens
-});
 
 export const setDaosByUser = (daos: Dao[]): ActionTypes => ({
     type: FETCH_DAOS_SUCCESS,
@@ -38,19 +30,14 @@ export const setPublicDaos = (daos: Dao[]): ActionTypes => ({
 });
 
 export const setPending = (): ActionTypes => ({
-    type: FETCH_CITIZENS_PENDING,
+    type: FETCH_DAOS_PENDING,
 });
 
 export const setError = (): ActionTypes => ({
-    type: FETCH_CITIZENS_ERROR,
+    type: FETCH_DAOS_ERROR,
 });
 
-export const setCitizenNote = (citizenNote: string): ActionTypes => ({
-    type: FETCH_NOTE_SUCCESS,
-    citizenNote
-});
-
-export const setDaoNote = (daoNote: string): ActionTypes => ({
+export const setDaoNote = (daoNote: Dao): ActionTypes => ({
     type: FETCH_NOTE_SUCCESS,
     daoNote
 });
@@ -60,18 +47,9 @@ export const setDaoDescription = (daoDescription: string): ActionTypes => ({
     daoDescription
 });
 
-export const clearCitizenNote = (): ActionTypes => ({
-    type: CLEAR_CITIZEN_NOTE
-});
-
 export const clearDaoNote = (): ActionTypes => ({
     type: CLEAR_DAO_NOTE
 });
-
-export const addNewCitizenAction = (citizen: Citizen): ActionTypes => ({
-    type: ADD_NEW_CITIZEN,
-    citizen
-})
 
 export const addNewDaoAction = (dao: Dao): ActionTypes => ({
     type: ADD_NEW_DAO,
@@ -93,11 +71,6 @@ export const setContract = (contract: Contract): ActionTypes => ({
     contract
 });
 
-export const setCitizensCount = (citizensCount: number): ActionTypes => ({
-    type: FETCH_CITIZENS_COUNT,
-    citizensCount
-});
-
 export const setDaosCountByMember = (daosCount: number): ActionTypes => ({
     type: FETCH_DAOS_COUNT,
     daosCount
@@ -112,18 +85,9 @@ export const getContract = () => async (dispatch: any) => {
     }
 }
 
-export const getCitizensCount = () => async (dispatch: any) => {
-    try {
-        const count = await citizensAPI.getCitizensCount();
-        dispatch(setCitizensCount(count));
-    } catch ({ message }) {
-        console.error(message);
-    }
-}
-
 export const getDaosCountByMember = () => async (dispatch: any) => {
     try {
-        const count = await citizensAPI.getDaoCountByUser();  
+        const count = await daosAPI.getDaoCountByUser();  
         console.log("daosCount " + count);      
         dispatch(setDaosCountByMember(count));
     } catch (error) {
@@ -132,35 +96,12 @@ export const getDaosCountByMember = () => async (dispatch: any) => {
     }
 };
 
-export const addNewCitizen = (formValues: AddCitizenFormValues) => async (dispatch: any) => {
-    try {
-        const citizen = await citizensAPI.addNewCitizen(formValues);
-        dispatch(addNewCitizenAction(citizen));
-    } catch ({ message }) {
-        console.error(message);
-    }
-};
-
 export const addNewDao = (formValues: AddDaoFormValues) => async (dispatch: any) => {
     try {
-        const dao = await citizensAPI.addNewDao(formValues);
+        const dao = await daosAPI.addNewDao(formValues);
         dispatch(addNewDaoAction(dao));
     } catch ({ message }) {
         console.error(message);
-    }
-};
-
-export const getCitizens = (page: number, limit: number) => async (dispatch: any) => {
-    try {
-        dispatch(setPending());
-
-        const count = await citizensAPI.getCitizensCount();
-        const citizens = await citizensAPI.fetchCitizens(page, limit, count);
-        
-        dispatch(setCitizens(citizens));
-    } catch (error) {
-        console.error(error);
-        dispatch(setError());
     }
 };
 
@@ -168,8 +109,8 @@ export const getDaoByMember = (page: number, limit: number) => async (dispatch: 
     try {
         dispatch(setPending());
 
-        const count = await citizensAPI.getDaoCountByUser();
-        const daos = await citizensAPI.fetchDaosByUser(page, limit, count);
+        const count = await daosAPI.getDaoCountByUser();
+        const daos = await daosAPI.fetchDaosByUser(page, limit, count);
         //console.log("retour getDaosByMember " + daos[0].isMember);
         dispatch(setDaosByUser(daos));
     } catch (error) {
@@ -182,8 +123,8 @@ export const getPublicDaos = (page: number, limit: number) => async (dispatch: a
     try {
         dispatch(setPending());
 
-        const count = await citizensAPI.getPublicDaoCount();
-        const daos = await citizensAPI.fetchPublicDaos(page, limit, count);
+        const count = await daosAPI.getPublicDaoCount();
+        const daos = await daosAPI.fetchPublicDaos(page, limit, count);
         dispatch(setDaosByUser(daos));
     } catch (error) {
         console.error(error);
@@ -200,20 +141,10 @@ export const getPublicDaos = (page: number, limit: number) => async (dispatch: a
 //     }
 // };
 
-export const getCitizenNote = (id: string) => async (dispatch: any) => {
-    try {
-        const citizenNote = await citizensAPI.fetchNote(id);
-        dispatch(setCitizenNote(citizenNote));
-    } catch (error) {
-        console.error(error);
-    }
-};
-
 export const getDaoNote = (address: Address) => async (dispatch: any) => {
     try {
-        const daoDescription = await citizensAPI.fetchDescription(address);
-        console.log("description ici " + daoDescription);
-        dispatch(setDaoNote(daoDescription));
+        const dao = await daosAPI.fetchDao(address);
+        dispatch(setDaoNote(dao));
     } catch (error) {
         console.error(error);
     }
@@ -221,7 +152,7 @@ export const getDaoNote = (address: Address) => async (dispatch: any) => {
 
 export const getDaoDescription = (address: Address) => async (dispatch: any) => {
     try {
-        const daoDescription = await citizensAPI.fetchDescription(address);
+        const daoDescription = await daosAPI.fetchDescription(address);
         console.log("description ici " + daoDescription);
         dispatch(setDaoDescription(daoDescription));
     } catch (error) {

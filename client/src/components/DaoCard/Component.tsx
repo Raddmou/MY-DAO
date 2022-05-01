@@ -5,21 +5,21 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
-import { getDaoDescription } from '../../redux/reducers/actions';
+import { getDaoNote } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
-import { Citizen, Dao } from '../../types';
+import { Dao } from '../../types';
 
 type DaoCardProps = {
     // citizen: Citizen
     dao: Dao
 };
 
-const CitizenCard = ({ dao }: DaoCardProps) => {
+const DaoCard = ({ dao }: DaoCardProps) => {
     const { address, name, description } = dao;
     const dispatch = useAppDispatch();
-
+    
     const handleClick = () => {
-        dispatch(getDaoDescription(address));
+        dispatch(getDaoNote(address));
     }
 
     return (
@@ -34,9 +34,8 @@ const CitizenCard = ({ dao }: DaoCardProps) => {
                 </Avatar>
             </ListItemAvatar>
             <ListItemText primary={name} secondary={description} /> 
-            {/* secondary={`${city}, ${age} years old`} */}
         </ListItem>
     )
 };
 
-export default CitizenCard;
+export default DaoCard;
