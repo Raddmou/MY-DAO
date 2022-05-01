@@ -7,20 +7,21 @@ import {
   FETCH_DAOS_ERROR, 
   FETCH_NOTE_SUCCESS,
   CLEAR_CITIZEN_NOTE,
+  CLEAR_DAO_NOTE,
   ADD_NEW_CITIZEN,
   ADD_NEW_DAO,
   FETCH_CITIZENS_COUNT,
   FETCH_DAOS_COUNT
 } from './actionTypes';
-import { ActionTypes, CitizensState, DaosState } from './types'
+import { ActionTypes, DaosState } from './types'
 
-const initialState: CitizensState = {
-    citizens: [],
-    pending: false,
-    error: false,
-    citizenNote: '',
-    citizensCount: 0
-};
+// const initialState: CitizensState = {
+//     citizens: [],
+//     pending: false,
+//     error: false,
+//     citizenNote: '',
+//     citizensCount: 0
+// };
 
 const initialDaoState: DaosState = {
   daos: [],
@@ -68,11 +69,11 @@ export default function(state = initialDaoState, action: ActionTypes): DaosState
     //   };
     // }
     case ADD_NEW_DAO: {
-      const { id, name } = action.dao;
+      const { id, name, visibility, description, address } = action.dao;
       return {
         ...state,
         daos: [
-          { id, name },
+          { id, name, visibility, description, address },
           ...state.daos, 
         ],
         daosCount: state.daosCount + 1

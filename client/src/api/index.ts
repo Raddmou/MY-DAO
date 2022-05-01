@@ -8,6 +8,7 @@ import daoFactoryContract from "../contracts/DaosFactory.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
 import { contractFactoryProvider, contractDaoProvider } from './ContractProvider';
+import { Address } from 'cluster';
 //import { contractProvider } from './ContractProvider';
 
 const NOT_FOUND = 'City not found';
@@ -45,29 +46,69 @@ export const citizensAPI = {
     getDaoCountByUser: async (): Promise<number> => {
         const contract = await contractFactoryProvider.getContract();
         const allDaos = await contract.methods.getdeployedDaos().call();
-        const count = allDaos.filter(c => c.members.some(e => e.status != "notMember" && e.memberAddress == (window as any).ethereum.selectedAddress)).length;
-        return count;
+        
+        //const count = allDaos.filter(c => c.members[(window as any).ethereum.selectedAddress].status != 0).length;
+        const transactionsData =  allDaos
+                                    .map(async (deployedAddress) => {
+                                        const address = deployedAddress.daoAddress;
+                                        const contractDao = await contractDaoProvider.getContract(address.daoAddress);
+                                        const member = await contractDao.methods.members((window as any).ethereum.selectedAddress).call();
+                                        const isMember = member.status != 0;
+                                        return { address, isMember };
+                                    });
+        console.log("transactionsData " + transactionsData);
+        return transactionsData.filter(a => a.isMember).length;
     },
 
-    fetchDaosByUser: async (page: number, limit: number, count: number): Promise<Citizen[]> => {
-        const contract = await contractDaoProvider.getContract();
+    fetchDaosByUser: async (page: number, limit: number, count: number): Promise<Dao[]> => {
+        const contractFactory = await contractFactoryProvider.getContract();
         // const citizenIds = getCitizensIdsToSearch(page, limit, count);
         
-        const allDaos = await contract.methods.getdeployedDaos().call();
+        const allDaos = await contractFactory.methods.getdeployedDaos().call();
 
         //const allDaos = await contract.methods.membershipDaos().call();
 
+        console.log("alldaos " + allDaos);
 
-        const transactionsData =  allDaos.filter(c => c.members[(window as any).ethereum.selectedAddress].status != 0)
-                                    .map(async (deployedDao) => {
-                                        const daoAddress = deployedDao.returnValues.daoAddress;
-                                        const name = await provider.contract.methods.name.call();
-                                        const visibility = await provider.contract.methods.visibility.call();
-                                        const membershipModeMode = await provider.contract.methods.membershipModeMode.call();
-                                        return { daoAddress, name, visibility, membershipModeMode };
+        // const transactionsData =  allDaos.filter(c => c.members[(window as any).ethereum.selectedAddress].status != 0)
+        //                             .map(async (deployedDao) => {
+        //                                 const daoAddress = deployedDao.returnValues.daoAddress;
+        //                                 const name = await provider.contract.methods.name.call();
+        //                                 const visibility = await provider.contract.methods.visibility.call();
+        //                                 const membershipModeMode = await provider.contract.methods.membershipModeMode.call();
+        //                                 return { daoAddress, name, visibility, membershipModeMode };
+        //                             });
+        const transactionsData =  allDaos
+                                    .map(async (deployedAddress) => {
+                                        const address = deployedAddress.daoAddress;
+                                        const contractDao = await contractDaoProvider.getContract(address);
+                                        const member = await contractDao.methods.members((window as any).ethereum.selectedAddress).call();
+                                        const isMember = member.status != 0;
+                                        const name = await contractDao.methods.getName().call();
+                                        const visibility = await contractDao.methods.getVisibility().call();
+                                        const description = await contractDao.methods.getDescription().call();
+                                        //const membershipModeMode = await contractDao.methods.getMemberShipMode().call();
+                                        
+                                        const tt = await contractDao.methods.name.call();
+                                        console.log("ismember " + isMember);
+                                        console.log("address " + address);
+                                        console.log("visibility " + visibility);
+                                        console.log("name " + name);
+                                        console.log("description " + description);
+                                        const id = address.toString();
+                                        return { id, address, isMember, name, visibility, description };
+                                        // console.log("deployedDao.daoAddress " + deployedDao.daoAddress);
+                                        // const contractDao = await contractDaoProvider.getContract(deployedDao.daoAddress);
+                                        // console.log("contractDao " + contractDao.methods);
+                                        // const name = await contractDao.methods.name.call();
+                                        
                                     });
+                                    // .filter(a => a.isMember == true);
 
-        return await Promise.all(transactionsData);
+        console.log("transactionsData " + transactionsData[0]);
+
+        return (await Promise.all(transactionsData)).filter(a => a.isMember == true);
+
     },
 
     fetchCitizens: async (page: number, limit: number, count: number): Promise<Citizen[]> => {
@@ -110,6 +151,11 @@ export const citizensAPI = {
         return await contract.methods.getNoteByCitizenId(id).call();
     },
 
+    fetchDescription: async (address: Address): Promise<string> => {
+        const contract = await contractDaoProvider.getContract(address);
+        return await contract.methods.getDescription().call();
+    },
+
     addNewCitizen: async (citizen: any): Promise<Citizen> => {
         const contract = await contractFactoryProvider.getContract();
         const { age, name, city, note } = citizen;
@@ -125,14 +171,15 @@ export const citizensAPI = {
 
     addNewDao: async (dao: any): Promise<Dao> => {
         const contract = await contractFactoryProvider.getContract();
-        const { name } = dao;
+        const { name, visibility, description, iqpriv } = dao;
         const { events } =  await contract.methods
-            .createDAO(name, false)
+            .createDAO(name, false, description, visibility)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });
-        const id = events?.DaoCreated?.returnValues?.id || uuidv4();
+        const address = events?.DaoCreated?.returnValues?.daoAddress;
+        const id = address.toString();
 
-        return { id, name };
+        return { id, name, visibility, description, address };
     }
 };

@@ -59,6 +59,16 @@ const Header: React.FC = () => {
                                 account && (
                                     <MenuItem
                                         component={Link}
+                                        to="/explore-daos"
+                                    >
+                                        <Typography textAlign="center">Explore DAOs</Typography>
+                                    </MenuItem>
+                                )
+                            }
+                            {
+                                account && (
+                                    <MenuItem
+                                        component={Link}
                                         to="/add-new-citizen"
                                     >
                                         <Typography textAlign="center">Create DAO</Typography>

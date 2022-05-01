@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Alert from '@mui/material/Alert';
 
-import { getCitizens, clearCitizenNote, getDaoByMember } from '../../redux/reducers/actions';
+import { getCitizens, clearCitizenNote, getDaoByMember, clearDaoNote } from '../../redux/reducers/actions';
 import CitizensList from '../../components/CitizensList/Component';
 import Pagination from '../../components/Pagination/Component';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -18,11 +18,13 @@ import './Component.scss';
 
 const Home: React.FC = () => {
     const [ searchParams, setSearchParams ] = useSearchParams({});
-    const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
+    //const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
+    const { daosCount, daoNote, account } = useAppSelector(homeSelector);
     const dispatch = useAppDispatch();
 
     const handleNoteClose = (): void => {
-        dispatch(clearCitizenNote());
+        // dispatch(clearCitizenNote());
+        dispatch(clearDaoNote());
     };
 
     useEffect((): void => {
@@ -48,10 +50,10 @@ const Home: React.FC = () => {
     return (
         <div className='homeContainer'>
             {
-                citizenNote && (
-                    <Dialog onClose={handleNoteClose} open={Boolean(citizenNote)}>
-                        <DialogTitle>View citizen's note</DialogTitle>
-                        <DialogContent>{citizenNote }</DialogContent>
+                daoNote && (
+                    <Dialog onClose={handleNoteClose} open={Boolean(daoNote)}>
+                        <DialogTitle>View dao's note</DialogTitle>
+                        <DialogContent>{daoNote }</DialogContent>
                         <DialogActions>
                             <Button onClick={handleNoteClose}>Close</Button>
                         </DialogActions>
@@ -62,7 +64,7 @@ const Home: React.FC = () => {
             
             <Pagination
                 limit={PAGE_LIMIT}
-                total={citizensCount}
+                total={daosCount}
                 handleChange={handleChange}
             />
         </div>

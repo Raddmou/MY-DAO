@@ -5,7 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
-import { getCitizenNote } from '../../redux/reducers/actions';
+import { getDaoDescription } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
 import { Citizen, Dao } from '../../types';
 
@@ -15,11 +15,11 @@ type DaoCardProps = {
 };
 
 const CitizenCard = ({ dao }: DaoCardProps) => {
-    const { id, name } = dao;
+    const { address, name, description } = dao;
     const dispatch = useAppDispatch();
 
     const handleClick = () => {
-        //dispatch(getCitizenNote(id));
+        dispatch(getDaoDescription(address));
     }
 
     return (
@@ -30,9 +30,10 @@ const CitizenCard = ({ dao }: DaoCardProps) => {
                     alt={name} 
                 >
                     {name.charAt(0).toUpperCase()}
+                    {/* {name} */}
                 </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={name}  /> 
+            <ListItemText primary={name} secondary={description} /> 
             {/* secondary={`${city}, ${age} years old`} */}
         </ListItem>
     )

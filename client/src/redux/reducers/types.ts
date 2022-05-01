@@ -4,7 +4,9 @@ import {
     FETCH_CITIZENS_PENDING, 
     FETCH_CITIZENS_ERROR, 
     FETCH_NOTE_SUCCESS,
+    FETCH_DESCRIPTION_SUCCESS,
     CLEAR_CITIZEN_NOTE,
+    CLEAR_DAO_NOTE,
     ADD_NEW_CITIZEN,
     ADD_NEW_DAO,
     FETCH_ACCOUNT,
@@ -49,9 +51,19 @@ interface ISetCitizenNoteAction {
     citizenNote: string
 };
 
+interface ISetDaoDescriptionAction {
+    type: typeof FETCH_DESCRIPTION_SUCCESS,
+    daoDescription: string
+};
+
 interface IClearCitizenNoteAction {
     type: typeof CLEAR_CITIZEN_NOTE
 };
+
+interface IClearDaoNoteAction {
+    type: typeof CLEAR_DAO_NOTE
+};
+
 
 interface IAddNewCitizenAction {
     type: typeof ADD_NEW_CITIZEN,
@@ -104,15 +116,17 @@ export type ActionTypes =
     ISetDaosAction |
     ISetDaosErrorAction |
     ISetDaosPendingAction |
-    ISetDaosAction;
+    ISetDaosAction |
+    ISetDaoDescriptionAction |
+    IClearDaoNoteAction;
 
-export type CitizensState = {
-    citizens: Citizen[],
-    pending: boolean,
-    error: boolean,
-    citizenNote: string,
-    citizensCount: number,
-};
+// export type CitizensState = {
+//     citizens: Citizen[],
+//     pending: boolean,
+//     error: boolean,
+//     citizenNote: string,
+//     citizensCount: number,
+// };
 
 export type DaosState = {
     daos: Dao[],

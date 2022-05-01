@@ -1,3 +1,5 @@
+import { Address } from "cluster";
+
 export type Citizen = { 
     id: string, 
     age: string, 
@@ -6,18 +8,16 @@ export type Citizen = {
 };
 
 export type Dao = { 
-    id: string, 
+    address: Address, 
     name: string, 
+    id: string,
+    visibility: boolean,
+    description: string
     //modules: [] 
 };
 
-export type AddCitizenFormValues = {
-    age: string,
-    city: string,
-    name: string,
-    note: string,
-}
-
 export type AddDaoFormValues = {
-    name: string
+    name: string,
+    visibility: boolean,
+    description: string
 }

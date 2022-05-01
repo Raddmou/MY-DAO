@@ -8,17 +8,23 @@ import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 contract Dao is Ownable {
   using SafeMath for uint256;
   
-    constructor (string memory _name, bool byInvitation)
+    constructor (string memory _name, bool byInvitation, string memory _description, bool isPrivate)
     {
       name = _name;
+      description = _description;
       if(byInvitation)
           membershipModeMode = membershipModeEnum.invite;
       else
           membershipModeMode = membershipModeEnum.open;
+      if(isPrivate)
+          visibility = visibilityEnum.privateDao;
+      else
+          visibility = visibilityEnum.publicDao;
     }
 
   uint256[] public modules;
   string public name;
+  string public description;
   uint256 public id;
   mapping(address => member) public members;
   membershipModeEnum public membershipModeMode;
@@ -77,8 +83,28 @@ contract Dao is Ownable {
        membershipModeMode = _mode;
     }
 
-    function setName(string calldata _name) public onlyOwner() {
+    function getMemberShipMode() public view returns(membershipModeEnum) {
+       return membershipModeMode;
+    }
+
+    function setName(string memory _name) public onlyOwner() {
        name = _name;
+    }
+
+    function getName() public view returns(string memory) {
+       return name;
+    }
+
+    function setDescription(string memory _description) public onlyOwner() {
+       description = _description;
+    }
+
+    function getDescription() public view returns(string memory) {
+       return description;
+    }
+
+    function getVisibility() public view returns(visibilityEnum) {
+       return visibility;
     }
 
     function addMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {

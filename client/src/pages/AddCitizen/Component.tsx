@@ -11,10 +11,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { validationSchema } from './validation';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addNewCitizen, addNewDao } from '../../redux/reducers/actions';
-import { AddCitizenFormValues, AddDaoFormValues } from '../../types';
+import { AddDaoFormValues } from '../../types';
 import './Component.scss'
 
-const AddCitizen: React.FC = () => {
+const AddDao: React.FC = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const { account } = useAppSelector((state: any) => state.application);
     const dispatch = useAppDispatch();
@@ -35,13 +35,13 @@ const AddCitizen: React.FC = () => {
         resetForm();
     };
 
-    const formik: FormikProps<AddCitizenFormValues> = useFormik({
+    const formik: FormikProps<AddDaoFormValues> = useFormik({
         initialValues: {
             //age: '',
             //city: '',
             name: '',
             visibility: false,
-            note: '',
+            description: '',
         },
         validationSchema,
         onSubmit: handleSubmit,
@@ -83,14 +83,10 @@ const AddCitizen: React.FC = () => {
                     control={
                         <Switch  
                         size="small"
-                        fullWidth
                         id="visibility"
                         name="visibility"
-                        label="Private"
                         value={formik.values.visibility}
                         onChange={formik.handleChange}
-                        error={touched.visibility && Boolean(errors.visibility)}
-                        helperText={touched.visibility && errors.visibility}
                     />
                             }
                     label="Private"
@@ -128,8 +124,8 @@ const AddCitizen: React.FC = () => {
                     <TextField
                         size="small"
                         fullWidth
-                        id="note"
-                        name="note"
+                        id="description"
+                        name="description"
                         label="Description"
                         value={formik.values.note}
                         onChange={formik.handleChange}
@@ -145,4 +141,4 @@ const AddCitizen: React.FC = () => {
     );
 };
 
-export default AddCitizen;
+export default AddDao;

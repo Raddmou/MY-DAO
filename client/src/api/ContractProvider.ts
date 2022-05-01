@@ -1,6 +1,6 @@
 import Web3 from 'web3';
 import daoFactoryContract from "../contracts/DaosFactory.json";
-import daoContract from "../contracts/DaosFactory.json";
+import daoContract from "../contracts/Dao.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
 
@@ -38,15 +38,15 @@ export const contractFactoryProvider = {
 }
 
 export const contractDaoProvider = {
-    getContract: async (): Promise<Contract> => {
+    getContract: async (address): Promise<Contract> => {
         const provider = 
         (window as any).ethereum || 
         (window as any).web3?.currentProvider;
 
         const web3 = new Web3(provider);
         const networkId = await web3.eth.net.getId();
-        const deployedNetwork = daoContract.networks[networkId];
-        const contract = new web3.eth.Contract(daoContract.abi as any, deployedNetwork.address);
+        //const deployedNetwork = daoContract.networks[networkId];
+        const contract = new web3.eth.Contract(daoContract.abi as any, address);
 
         return contract;
     },    
