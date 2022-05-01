@@ -53,7 +53,7 @@ const Header: React.FC = () => {
                                 component={Link}
                                 to="/"
                             >
-                                <Typography textAlign="center">Home</Typography>
+                                <Typography textAlign="center">My DAOs</Typography>
                             </MenuItem>
                             {
                                 account && (

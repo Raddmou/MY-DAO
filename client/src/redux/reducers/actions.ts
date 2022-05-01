@@ -32,6 +32,11 @@ export const setDaosByUser = (daos: Dao[]): ActionTypes => ({
     daos
 });
 
+export const setPublicDaos = (daos: Dao[]): ActionTypes => ({
+    type: FETCH_PUBLIC_DAOS_SUCCESS,
+    daos
+});
+
 export const setPending = (): ActionTypes => ({
     type: FETCH_CITIZENS_PENDING,
 });
@@ -166,6 +171,19 @@ export const getDaoByMember = (page: number, limit: number) => async (dispatch: 
         const count = await citizensAPI.getDaoCountByUser();
         const daos = await citizensAPI.fetchDaosByUser(page, limit, count);
         console.log("retour getDaosByMember " + daos[0].isMember);
+        dispatch(setDaosByUser(daos));
+    } catch (error) {
+        console.error(error);
+        dispatch(setError());
+    }
+};
+
+export const getPublicDaos = (page: number, limit: number) => async (dispatch: any) => {
+    try {
+        dispatch(setPending());
+
+        const count = await citizensAPI.getPublicDaoCount();
+        const daos = await citizensAPI.fetchPublicDaos(page, limit, count);
         dispatch(setDaosByUser(daos));
     } catch (error) {
         console.error(error);

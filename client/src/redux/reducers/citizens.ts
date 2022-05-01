@@ -1,6 +1,7 @@
 import { 
   FETCH_CITIZENS_SUCCESS, 
   FETCH_DAOS_SUCCESS, 
+  FETCH_PUBLIC_DAOS_SUCCESS,
   FETCH_CITIZENS_PENDING, 
   FETCH_DAOS_PENDING, 
   FETCH_CITIZENS_ERROR, 
@@ -36,6 +37,15 @@ export default function(state = initialDaoState, action: ActionTypes): DaosState
     case FETCH_DAOS_SUCCESS: {
       const daos = action.daos.sort((a: any, b: any) => b.id - a.id);
 
+      return {
+        ...state,
+        daos,
+        pending: false,
+        error: false,
+      };
+    }
+    case FETCH_PUBLIC_DAOS_SUCCESS: {
+      const daos = action.daos.sort((a: any, b: any) => b.id - a.id);
       return {
         ...state,
         daos,

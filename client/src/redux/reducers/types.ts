@@ -1,6 +1,7 @@
 import { 
     FETCH_CITIZENS_SUCCESS, 
     FETCH_DAOS_SUCCESS, 
+    FETCH_PUBLIC_DAOS_SUCCESS,
     FETCH_CITIZENS_PENDING, 
     FETCH_CITIZENS_ERROR, 
     FETCH_NOTE_SUCCESS,
@@ -27,6 +28,11 @@ interface ISetCitizensAction {
 
 interface ISetDaosAction {
     type: typeof FETCH_DAOS_SUCCESS,
+    daos: Dao[]
+};
+
+interface ISetPublicDaosAction {
+    type: typeof FETCH_PUBLIC_DAOS_SUCCESS,
     daos: Dao[]
 };
 
@@ -118,7 +124,8 @@ export type ActionTypes =
     ISetDaosPendingAction |
     ISetDaosAction |
     ISetDaoDescriptionAction |
-    IClearDaoNoteAction;
+    IClearDaoNoteAction |
+    ISetPublicDaosAction;
 
 // export type CitizensState = {
 //     citizens: Citizen[],
