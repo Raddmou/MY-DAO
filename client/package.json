@@ -1,4 +1,5 @@
 {
+  "homepage": "https://raddmou.github.io/MY-DAO/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -58,7 +59,9 @@
     "build": "webpack --config webpack.config.js --env env=production",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

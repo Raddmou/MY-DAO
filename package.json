@@ -4,6 +4,7 @@
     "@openzeppelin/test-helpers": "^0.5.15",
     "@truffle/hdwallet-provider": "^2.0.7",
     "dotenv": "^16.0.0",
+    "gh-pages": "^3.2.3",
     "path": "^0.12.7"
   }
 }
