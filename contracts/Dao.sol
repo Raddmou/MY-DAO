@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.13;
+pragma solidity ^0.8.9;
 
 import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
@@ -7,8 +7,18 @@ import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 //is DaosFactory
 contract Dao is Ownable {
   using SafeMath for uint256;
-  
-    constructor (string memory _name, bool byInvitation, string memory _description, bool isPrivate)
+
+  uint256[] public modules;
+  string public name;
+  string public description;
+  uint256 public id;
+  mapping(address => member) public members;
+  membershipModeEnum public membershipModeMode;
+  visibilityEnum public visibility;
+  mapping(address => bool) private authorizedContracts;
+  //member[] public members;
+
+  constructor (string memory _name, bool byInvitation, string memory _description, bool isPrivate)
     {
       name = _name;
       description = _description;
@@ -21,16 +31,6 @@ contract Dao is Ownable {
       else
           visibility = visibilityEnum.publicDao;
     }
-
-  uint256[] public modules;
-  string public name;
-  string public description;
-  uint256 public id;
-  mapping(address => member) public members;
-  membershipModeEnum public membershipModeMode;
-  visibilityEnum public visibility;
-  mapping(address => bool) private authorizedContracts;
-  //member[] public members;
 
   event MemberAdded(address newMember);
   event MemberInvited(address memberInvitor, address memberInvited);
@@ -136,20 +136,4 @@ contract Dao is Ownable {
     function denyContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
         authorizedContracts[_contractAddress] = false;
     }
-  
-
-    // function addMember(address addressMember) public {
-    //     member memory _member;
-    //     _member.status = memberStatus.member;
-    //     _member.memberAddress = addressMember;
-    //    members.push(_member);
-    // }
-
-    // function inviteMember(address addressMember) public {
-    //     member memory _member;
-    //     _member.status = memberStatus.invited;
-    //     _member.memberAddress = addressMember;
-    //    members.push(_member);
-    // }
-  
 }

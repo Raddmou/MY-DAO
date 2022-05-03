@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.13;
+pragma solidity ^0.8.9;
 
 import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
@@ -22,7 +22,6 @@ contract DaosFactory is Ownable {
     address daoAddress;
   }
 
-//   event DaoCreated(address user, string name, address daoAddr, uint256[] modules, uint256 id);
   event DaoCreated(address user, string name, address daoAddress);
 
   function getdeployedDaos() external view returns (deployedDao[] memory) {
@@ -33,15 +32,6 @@ contract DaosFactory is Ownable {
     return (membershipDaos[_addressMember]);
   }
 
-  // function getMyDaosIds() external view returns (uint256[] memory) {
-  //   return (myDaos[msg.sender]);
-  // }
-  // function getDaoInfoId(uint256 _id) external view returns (deployedDaos memory) {
-  //   return (daos[_id]);
-  // }
-  
-  // after create the DAO we need to change the owner because now this contract is the owner
-  //, uint256[] calldata _modules
   function createDAO(string calldata _name, bool _byInvitation, string calldata _description, bool isPrivate) public {
     Dao dao = new Dao(_name, _byInvitation, _description, isPrivate);
     dao.authorizeContract(address(this));
@@ -52,18 +42,6 @@ contract DaosFactory is Ownable {
     daos.push(_dao);
     membershipDaos[msg.sender].push(_dao.daoAddress);  
     dao.transferOwnership(msg.sender);
-    // deployedDaos memory _dao;
-    // _dao.name = _name;
-    // _dao.owner = msg.sender;
-    // //Dao dao = new Dao();
-    // //address contractAddress = new Dao();
-    // _dao.daoAddr =  address(0); //dao.address;
-    // //_dao.modules = _modules;
-    // _dao.id = daoId;
-    // _dao.members.push(msg.sender);
-    // daos.push(_dao);
-    // daoId = daoId.add(1);
-    // // emit DaoCreated(msg.sender, _name, _dao.daoAddr, _modules, _dao.id);
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }
 }
