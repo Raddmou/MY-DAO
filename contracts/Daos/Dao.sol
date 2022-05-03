@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "../../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "../../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 //is DaosFactory
 contract Dao is Ownable {
