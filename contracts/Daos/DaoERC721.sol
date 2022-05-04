@@ -22,12 +22,20 @@ contract DaoERC721 {
 
   modifier onlyOwners() {
     bool success = false;
-    for (uint256 i = 0; i < owners.length; i++) {
+    for (uint256 i = 0; i < owners.length; ++i) {
       if(msg.sender == owners[i])
         success = true;
     }
     require(success, "Failed u are not the owner");
     _;
+  }
+  function autantifyUser(address _user) public view returns(bool) {
+    uint256 balance;
+    for (uint256 i = 0; i < collectionApproved.length; ++i) {
+      balance = IERC721(collectionApproved[i]).balanceOf(_user);
+    }
+    require(balance > 0, "User denied");
+    return true;
   }
 
   function addApprovedCollection(address _newCollection) external onlyOwners() {
