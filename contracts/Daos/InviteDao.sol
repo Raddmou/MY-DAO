@@ -4,11 +4,12 @@ pragma solidity ^0.8.9;
 // invite DAO simple methods with mapping for identifier
 
 contract InviteDao {
-  address[] public owners;
+  // address[] public owners;
   bool public visibility;
   bool public firedOption;
   uint256 id = 0;
 
+  mapping(address => bool) owners;
   mapping(uint256 => address) addrById;
   mapping(address => member) users;
 
@@ -35,8 +36,8 @@ contract InviteDao {
     member memory _user;
     visibility = _visibility;
     firedOption = _firedOption;
-    owners.push(msg.sender);
-    owners.push(_owner);
+    owners[msg.sender] = true;
+    owners[_owner] = true;
     _user.user = _owner;
     _user.joinTime = block.timestamp;
     _user.status = memberStatus.active;
@@ -44,17 +45,15 @@ contract InviteDao {
   }
 
   modifier onlyOwners() {
-    bool success = false;
-    for (uint256 i = 0; i < owners.length; i++) {
-      if(msg.sender == owners[i])
-        success = true;
-    }
-    require(success, "Failed u are not the owner");
+    require(owners[msg.sender] == true, "Failed u are not the owner");
     _;
   }
   //set functions
   function setVisibility(bool _newVisibility) external onlyOwners() {
     visibility = _newVisibility;
+  }
+  function getUserInfo(uint256 _id) external view returns (member memory _member){
+    return (users[addrById[_id]]);
   }
 
   function joinDao() public {
@@ -73,7 +72,7 @@ contract InviteDao {
     user.id = id;
     user.user = msg.sender;
     user.status = memberStatus.asking;
-    id++;
+    ++id;
     emit MemberAsked(msg.sender);
   }
   function validAsk(address _user) external onlyOwners() {
