@@ -11,6 +11,11 @@ import Alert from '@mui/material/Alert';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Checkbox, Switch } from "@mui/material";
 
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 import { getPublicDaos, clearDaoNote } from '../../redux/reducers/actions';
 import DaosList from '../../components/DaosList/Component';
 import Pagination from '../../components/Pagination/Component';
@@ -84,8 +89,22 @@ const ExploreDaos: React.FC = () => {
                                             />
                                             }
                                             label="Private"
-                                    />
-                                    
+                                    />                                  
+                                </div>
+                                <div>
+                                    <FormControl>
+                                        <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
+                                        <RadioGroup
+                                            row
+                                            aria-labelledby="demo-row-radio-buttons-group-label"
+                                            name="row-radio-buttons-group"
+                                            value={daoNote.membershipMode}
+                                        >
+                                            <FormControlLabel value="0" control={<Radio />} label="Open" disabled/>
+                                            <FormControlLabel value="1" control={<Radio />} label="Invitation" disabled/>
+                                            <FormControlLabel value="2" control={<Radio />} label="Request" disabled/>
+                                        </RadioGroup>
+                                    </FormControl>
                                 </div>
                                 <div className="textInput">
                                     <TextField

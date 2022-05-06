@@ -5,13 +5,16 @@ export type Dao = {
     name: string, 
     id: string,
     visibility: boolean,
-    description: string
+    membershipMode: string,
+    description: string,
+    member: number
     //modules: [] 
 };
 
 export type AddDaoFormValues = {
     name: string,
     visibility: boolean,
+    membershipMode: string,
     description: string,
     note: string
 }

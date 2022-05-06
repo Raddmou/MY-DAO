@@ -17,21 +17,20 @@ export const contractFactoryProvider = {
         const [ chainId ] = await provider.request({
             method: 'eth_chainId'
         });
-        const [ networkId ] = await provider.request({
-            method: 'net_version'
-        });
-        const networkId2 = await web3.eth.net.getId();
+        // const [ networkId ] = await provider.request({
+        //     method: 'net_version'
+        // });
+        const networkId = await web3.eth.net.getId();
 
         console.log("chainId " + chainId);
         console.log("networkId " + networkId);
-        console.log("networkId2 " + networkId2);
+        //console.log("networkId2 " + networkId2);
         
 
-        const deployedNetwork = daoFactoryContract.networks[networkId2];
+        const deployedNetwork = daoFactoryContract.networks[networkId];
         const contract = new web3.eth.Contract(daoFactoryContract.abi as any, deployedNetwork.address);
 
         console.log("deployedNetwork " + deployedNetwork.address);
-        console.log("contract " + contract);
 
         return contract;
     },    

@@ -57,7 +57,6 @@ export const daosAPI = {
                                         const isMember = member != 0;
                                         return { address, isMember };
                                     });
-        console.log("transactionsData " + transactionsData);
         return transactionsData.filter(a => a.isMember).length;
     },
 
@@ -84,8 +83,6 @@ export const daosAPI = {
 
         //const allDaos = await contract.methods.membershipDaos().call();
 
-        console.log("alldaos " + allDaos);
-
         // const transactionsData =  allDaos.filter(c => c.members[(window as any).ethereum.selectedAddress].status != 0)
         //                             .map(async (deployedDao) => {
         //                                 const daoAddress = deployedDao.returnValues.daoAddress;
@@ -103,7 +100,7 @@ export const daosAPI = {
                                         const name = await contractDao.methods.getName().call();
                                         const visibility = await contractDao.methods.getVisibility().call();
                                         const description = await contractDao.methods.getDescription().call();
-                                        //const membershipModeMode = await contractDao.methods.getMemberShipMode().call();
+                                        const membershipMode = await contractDao.methods.getMemberShipMode().call();
                                         
                                         const tt = await contractDao.methods.name.call();
                                         console.log("ismember " + isMember);
@@ -112,7 +109,7 @@ export const daosAPI = {
                                         console.log("name " + name);
                                         console.log("description " + description);
                                         const id = address.toString();
-                                        return { id, address, isMember, name, visibility, description };
+                                        return { id, address, isMember, name, visibility, membershipMode, description, member };
                                         // console.log("deployedDao.daoAddress " + deployedDao.daoAddress);
                                         // const contractDao = await contractDaoProvider.getContract(deployedDao.daoAddress);
                                         // console.log("contractDao " + contractDao.methods);
@@ -120,8 +117,6 @@ export const daosAPI = {
                                         
                                     });
                                     // .filter(a => a.isMember == true);
-
-        console.log("transactionsData " + transactionsData[0]);
 
         return (await Promise.all(transactionsData)).filter(a => a.isMember == true);
 
@@ -140,8 +135,9 @@ export const daosAPI = {
                                         const name = await contractDao.methods.getName().call();
                                         const visibility = await contractDao.methods.getVisibility().call();
                                         const description = await contractDao.methods.getDescription().call();
+                                        const membershipMode = await contractDao.methods.getMemberShipMode().call();
                                         const id = address.toString();
-                                        return { id, address, isMember, name, visibility, description };
+                                        return { id, address, isMember, name, visibility, membershipMode, description, member };
                                     });
                                     // .filter(a => a.isMember == true);
 
@@ -159,8 +155,9 @@ export const daosAPI = {
         const name = await contractDao.methods.getName().call();
         const visibility = await contractDao.methods.getVisibility().call();
         const description = await contractDao.methods.getDescription().call();
+        const membershipMode = await contractDao.methods.getMemberShipMode().call();
         const id = address.toString();
-        return { id, address, name, visibility, description };
+        return { id, address, name, visibility, membershipMode, description, member };
 
         //return (await Promise.all(transactionsData));
 
@@ -226,15 +223,15 @@ export const daosAPI = {
 
     addNewDao: async (dao: any): Promise<Dao> => {
         const contract = await contractFactoryProvider.getContract();
-        const { name, visibility, description, iqpriv } = dao;
+        const { name, visibility, description, membershipMode } = dao;
         const { events } =  await contract.methods
-            .createDAO(name, false, description, visibility)
+            .createDAO(name, false, description, visibility, membershipMode)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });
         const address = events?.DaoCreated?.returnValues?.daoAddress;
         const id = address.toString();
 
-        return { id, name, visibility, description, address };
+        return { id, name, visibility, membershipMode, description, address };
     }
 };

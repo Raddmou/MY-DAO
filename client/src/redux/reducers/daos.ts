@@ -66,11 +66,11 @@ export default function(state = initialDaoState, action: ActionTypes): DaosState
       };
     }
     case ADD_NEW_DAO: {
-      const { id, name, visibility, description, address } = action.dao;
+      const { id, name, visibility, membershipMode, description, address } = action.dao;
       return {
         ...state,
         daos: [
-          { id, name, visibility, description, address },
+          { id, name, visibility, membershipMode, description, address },
           ...state.daos, 
         ],
         daosCount: state.daosCount + 1

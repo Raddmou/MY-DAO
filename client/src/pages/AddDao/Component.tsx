@@ -8,6 +8,11 @@ import Typography from '@mui/material/Typography';
 import { Checkbox, Switch } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 import { validationSchema } from './validation';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addNewDao } from '../../redux/reducers/actions';
@@ -31,7 +36,8 @@ const AddDao: React.FC = () => {
             //age: '',
             //city: '',
             name: '',
-            visibility: false,
+            visibility: true,
+            //membershipMode: '0',
             description: '',
             note: '',
         },
@@ -81,9 +87,25 @@ const AddDao: React.FC = () => {
                         onChange={formik.handleChange}
                     />
                             }
-                    label="Private"
+                    label="Public"
                     />
                     
+                </div>
+                <div>
+                <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
+                    <RadioGroup
+                        row
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                        value={formik.values.membershipMode}
+                        onChange={formik.handleChange}
+                    >
+                        <FormControlLabel value="Open" control={<Radio />} label="Open" />
+                        <FormControlLabel value="Invitation" control={<Radio />} label="Invitation" />
+                        <FormControlLabel value="Request" control={<Radio />} label="Request" disabled/>
+                    </RadioGroup>
+                </FormControl>
                 </div>
                 {/* <div className="textInput">
                     <TextField
@@ -132,6 +154,8 @@ const AddDao: React.FC = () => {
                         id="note"
                         name="note"
                         label="Note"
+                        multiline
+                        rows={4}
                         value={formik.values.note}
                         onChange={formik.handleChange}
                         error={touched.note && Boolean(errors.note)}
