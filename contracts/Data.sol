@@ -6,6 +6,10 @@ library Data {
     memberStatus status;
     //address memberAddress;
   }
+  struct daoData {
+    string daoType;
+    visibilityEnum visibility;
+  }
 
   enum visibilityEnum {
     privateDao,

@@ -3,6 +3,7 @@ pragma solidity ^0.8.9;
 
 import "../../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "../Data.sol";
 
 //is DaosFactory
 contract Dao is Ownable {
@@ -12,9 +13,10 @@ contract Dao is Ownable {
   string public name;
   string public description;
   uint256 public id;
-  mapping(address => member) public members;
-  membershipModeEnum public membershipModeMode;
-  visibilityEnum public visibility;
+  mapping(uint256 => address) addrById;
+  mapping(address => Data.member) public members;
+  Data.membershipModeEnum public membershipModeMode;
+  Data.visibilityEnum public visibility;
   mapping(address => bool) private authorizedContracts;
   //member[] public members;
 
@@ -23,49 +25,49 @@ contract Dao is Ownable {
       name = _name;
       description = _description;
       if(byInvitation)
-          membershipModeMode = membershipModeEnum.invite;
+          membershipModeMode = Data.membershipModeEnum.invite;
       else
-          membershipModeMode = membershipModeEnum.open;
+          membershipModeMode = Data.membershipModeEnum.open;
       if(isPrivate)
-          visibility = visibilityEnum.privateDao;
+          visibility = Data.visibilityEnum.privateDao;
       else
-          visibility = visibilityEnum.publicDao;
+          visibility = Data.visibilityEnum.publicDao;
     }
 
   event MemberAdded(address newMember);
   event MemberInvited(address memberInvitor, address memberInvited);
   event MemberJoined(address memberJoined);
 
-  struct member {
-        memberStatus status;
-        //address memberAddress;
-    }
+//   struct member {
+//         memberStatus status;
+//         //address memberAddress;
+//     }
 
-  enum visibilityEnum {
-        privateDao,
-        publicDao
-    }
+//   enum visibilityEnum {
+//         privateDao,
+//         publicDao
+//     }
 
-  enum memberStatus {
-        notMember,
-        invited,
-        asking,
-        active
-    }
+//   enum memberStatus {
+//         notMember,
+//         invited,
+//         asking,
+//         active
+//     }
 
-    enum membershipModeEnum {
-        invite,
-        request,
-        open
-    }
+    // enum membershipModeEnum {
+    //     invite,
+    //     request,
+    //     open
+    // }
 
     modifier onlyActiveMembersOrAuthorizeContracts() {
-        require(members[msg.sender].status == memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
+        require(members[msg.sender].status == Data.memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
         _;
     }
 
     modifier onlyNotActiveMembers() {
-        require(members[msg.sender].status != memberStatus.active, "Not authorized");
+        require(members[msg.sender].status != Data.memberStatus.active, "Not authorized");
         _;
     }
 
@@ -79,11 +81,11 @@ contract Dao is Ownable {
         _;
     }
 
-    function setMode(membershipModeEnum _mode) public onlyOwner() {
+    function setMode(Data.membershipModeEnum _mode) public onlyOwner() {
        membershipModeMode = _mode;
     }
 
-    function getMemberShipMode() public view returns(membershipModeEnum) {
+    function getMemberShipMode() public view returns(Data.membershipModeEnum) {
        return membershipModeMode;
     }
 
@@ -103,29 +105,36 @@ contract Dao is Ownable {
        return description;
     }
 
-    function getVisibility() public view returns(visibilityEnum) {
+    function getVisibility() public view returns(Data.visibilityEnum) {
        return visibility;
+    }
+    function getMemberInfo(address _member) external view returns(Data.member memory) {
+        return(members[_member]);
+    }
+    function getInfoDao() external view returns(Data.daoData memory info) {
+        info.daoType = "DAO, Invite or Request";
+        info.visibility = visibility;
     }
 
     function addMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
-        members[addressMember].status = memberStatus.active;
+        members[addressMember].status = Data.memberStatus.active;
         emit MemberAdded(addressMember);
     }
 
     function inviteMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
-        members[addressMember].status = memberStatus.invited;
+        members[addressMember].status = Data.memberStatus.invited;
         emit MemberInvited(msg.sender, addressMember);
     }
 
     function isActiveMember(address addressMember) public view returns (bool){
-        return members[addressMember].status == memberStatus.active;
+        return members[addressMember].status == Data.memberStatus.active;
     }
 
     function join() public onlyNotActiveMembers() {
-        require((members[msg.sender].status == memberStatus.invited && membershipModeMode == membershipModeEnum.invite)
-         || (members[msg.sender].status == memberStatus.notMember && membershipModeMode == membershipModeEnum.open)
+        require((members[msg.sender].status == Data.memberStatus.invited && membershipModeMode == Data.membershipModeEnum.invite)
+         || (members[msg.sender].status == Data.memberStatus.notMember && membershipModeMode == Data.membershipModeEnum.open)
                 , "Impossible to join");
-        members[msg.sender].status = memberStatus.active;
+        members[msg.sender].status = Data.memberStatus.active;
         emit MemberJoined(msg.sender);
     }
 
