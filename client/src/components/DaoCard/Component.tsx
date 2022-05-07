@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import Person from '@mui/icons-material/Person';
 import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Box from '@mui/material/Box';
 
 import { getDaoNote, joinDao } from '../../redux/reducers/actions';
@@ -59,9 +60,17 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                 </Tooltip>
 
                 {
-                    membershipMode == "2" && member == 0 && (
+                    membershipMode == "0" && member == 0 && (
                         <Tooltip title="Join Dao">
                             <GroupAddIcon fontSize="large" color="primary"
+                            onClick={handleClickJoinDao}/>
+                        </Tooltip>
+                    )
+                }
+                {
+                    membershipMode == "2" && member == 0 && (
+                        <Tooltip title="Not member">
+                            <PersonOutlineIcon fontSize="large" color="primary"
                             onClick={handleClickJoinDao}/>
                         </Tooltip>
                     )

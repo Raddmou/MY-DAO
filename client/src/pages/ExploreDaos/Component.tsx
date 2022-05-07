@@ -39,35 +39,43 @@ import { inviteToDao } from '../../redux/reducers/actions';
 import { validationSchema } from './validation';
 
 const ExploreDaos: React.FC = () => {
+    const [addressToInvite, setAddressToInvite] = useState("");
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [ searchParams, setSearchParams ] = useSearchParams({});
     //const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
     const { daosCount, daoNote, account } = useAppSelector(exploreDaoSelector);
     const dispatch = useAppDispatch();
     const booleanVal = true;
-    const handleSubmit = (formValues: InviteDaoFormValues, { resetForm }: any): void => {
-        dispatch(
-            inviteToDao(formValues.address)
-        );
-        setIsFormSubmitted(true);
-        resetForm();
-    };
+    // const handleSubmit = (formValues: InviteDaoFormValues, { resetForm }: any): void => {
+    //     console.log("Formik handleSubmit");
+    //     dispatch(
+    //         inviteToDao(formValues.address)
+    //     );
+    //     setIsFormSubmitted(true);
+    //     resetForm();
+    // };
 
-    const formik: FormikProps<InviteDaoFormValues> = useFormik({
-        initialValues: {
-            // address: '',
-        },
-        validationSchema,
-        onSubmit: handleSubmit,
-    });    
-    const { errors, touched } = formik;
+    // const formik: FormikProps<InviteDaoFormValues> = useFormik({
+    //     initialValues: {
+    //         // address: '',
+    //     },
+    //     validationSchema,
+    //     onSubmit: handleSubmit,
+    // });    
+    // const { errors, touched } = formik;
 
     const handleNoteClose = (): void => {
 
         console.log(" handleNoteClose ");
         // dispatch(clearCitizenNote());
+        setAddressToInvite("");
         dispatch(clearDaoNote());
         dispatch(clearAddressInvitedMember());
+    };
+
+    const HandleInviteMember = () => {
+        console.log(" HandleInviteMember " + addressToInvite)
+        dispatch(inviteToDao(daoNote.address, addressToInvite));
     };
 
     useEffect((): void => {
@@ -104,7 +112,7 @@ const ExploreDaos: React.FC = () => {
                     <Dialog onClose={handleNoteClose} open={Boolean(daoNote)} maxWidth="md" fullWidth>
                         <DialogTitle>My DAO</DialogTitle>
                         <DialogContent>
-                            <form className='formContainer' onSubmit={formik.handleSubmit}>
+                            {/* <form className='formContainer' onSubmit={formik.handleSubmit}> */}
                                 <div>
                                     <div className="textInput">
                                         <TextField
@@ -173,35 +181,38 @@ const ExploreDaos: React.FC = () => {
                                     } 
                                     <div className="textInput">
 
-                                    <ListItem button divider>
-                                        <TextField
-                                            size="small"
-                                            fullWidth
-                                            id="name"
-                                            name="name"
-                                            label="Guest address"
-                                            value={formik.values.address}
-                                            onChange={formik.handleChange}
-                                            error={touched.address && Boolean(errors.address)}
-                                            helperText={touched.address && errors.address}
-                                        />
-                                        {/* <IconButton>
-                                            <Avatar 
-                                            sx={{ bgcolor: blue[500] }}
-                                            alt="Invite" 
+                                    { daoNote.member == 3 && daoNote.membershipMode == 0 && (
+                                        <ListItem button divider>
+                                            <TextField
+                                                size="small"
+                                                fullWidth
+                                                id="name"
+                                                name="name"
+                                                label="Guest address"
+                                                //value={formik.values.address}
+                                                value={addressToInvite}
+                                                onChange={(e) => setAddressToInvite(e.target.value)}
+                                                //onChange={formik.handleChange}
+                                                // error={touched.address && Boolean(errors.address)}
+                                                // helperText={touched.address && errors.address}
                                             />
-                                        </IconButton> */}
-                                        {/* <GroupAddIcon fontSize="large" color="primary"
-                                        type="submit"/> */}
-                                        <Button color="primary" variant="contained" fullWidth type="submit">
-                                            Add
-                                            </Button>   
-                                    </ListItem>
-    
+                                            {/* <IconButton>
+                                                <Avatar 
+                                                sx={{ bgcolor: blue[500] }}
+                                                alt="Invite" 
+                                                />
+                                            </IconButton> */}
+                                            {/* <GroupAddIcon fontSize="large" color="primary"
+                                            type="submit"/> */}
+                                            <Button color="primary" variant="contained" fullWidth onClick={HandleInviteMember}>
+                                                Add
+                                                </Button>   
+                                        </ListItem>
+                                    )}
                                         
                                     </div>   
                                 </div>  
-                            </form>  
+                            {/* </form>   */}
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleNoteClose}>Close</Button>
