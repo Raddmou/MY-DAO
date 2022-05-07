@@ -7,6 +7,7 @@ import {
     FETCH_NOTE_SUCCESS,
     FETCH_DESCRIPTION_SUCCESS,
     CLEAR_DAO_NOTE,
+    CLEAR_ADDRESS_INVITED_MEMBER,
     ADD_NEW_DAO,
     FETCH_ACCOUNT,
     FETCH_DAOS_COUNT,
@@ -49,6 +50,10 @@ export const setDaoDescription = (daoDescription: string): ActionTypes => ({
 
 export const clearDaoNote = (): ActionTypes => ({
     type: CLEAR_DAO_NOTE
+});
+
+export const clearAddressInvitedMember = (): ActionTypes => ({
+    type: CLEAR_ADDRESS_INVITED_MEMBER
 });
 
 export const addNewDaoAction = (dao: Dao): ActionTypes => ({
@@ -171,6 +176,7 @@ export const joinDao = (address: Address) => async (dispatch: any) => {
 
 export const inviteToDao = (address: Address, addressToInvite: Address) => async (dispatch: any) => {
     try {
+        console.log("inviteToDao " + addressToInvite);
         const success = await daosAPI.inviteToDao(address, addressToInvite);
         if(success)
             await getDaoNote(address);

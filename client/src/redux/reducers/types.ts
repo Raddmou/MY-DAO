@@ -8,6 +8,7 @@ import {
     FETCH_DESCRIPTION_SUCCESS,
     // CLEAR_CITIZEN_NOTE,
     CLEAR_DAO_NOTE,
+    CLEAR_ADDRESS_INVITED_MEMBER,
     // ADD_NEW_CITIZEN,
     ADD_NEW_DAO,
     FETCH_ACCOUNT,
@@ -75,6 +76,10 @@ interface IClearDaoNoteAction {
     type: typeof CLEAR_DAO_NOTE
 };
 
+interface IClearAddressInvitedMemberAction {
+    type: typeof CLEAR_ADDRESS_INVITED_MEMBER
+};
+
 
 // interface IAddNewCitizenAction {
 //     type: typeof ADD_NEW_CITIZEN,
@@ -124,13 +129,15 @@ export type ActionTypes =
     ISetDaoDescriptionAction |
     IClearDaoNoteAction |
     ISetPublicDaosAction |
-    ISetDaoNoteAction;
+    ISetDaoNoteAction |
+    IClearAddressInvitedMemberAction;
 
 export type DaosState = {
     daos: Dao[],
     pending: boolean,
     error: boolean,
     daoNote: string,
+    addressMemberToInvite: string,
     daosCount: number,
 };
 

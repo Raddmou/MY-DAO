@@ -5,6 +5,7 @@ import {
   FETCH_DAOS_ERROR, 
   FETCH_NOTE_SUCCESS,
   CLEAR_DAO_NOTE,
+  CLEAR_ADDRESS_INVITED_MEMBER,
   ADD_NEW_DAO,
   FETCH_DAOS_COUNT
 } from './actionTypes';
@@ -63,6 +64,12 @@ export default function(state = initialDaoState, action: ActionTypes): DaosState
       return {
         ...state,
         daoNote: ''
+      };
+    }
+    case CLEAR_ADDRESS_INVITED_MEMBER: {
+      return {
+        ...state,
+        addressMemberToInvite: ''
       };
     }
     case ADD_NEW_DAO: {

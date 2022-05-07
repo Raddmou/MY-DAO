@@ -26,7 +26,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
-import { getPublicDaos, clearDaoNote } from '../../redux/reducers/actions';
+import { getPublicDaos, clearDaoNote, clearAddressInvitedMember } from '../../redux/reducers/actions';
 import DaosList from '../../components/DaosList/Component';
 import Pagination from '../../components/Pagination/Component';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -55,7 +55,7 @@ const ExploreDaos: React.FC = () => {
 
     const formik: FormikProps<InviteDaoFormValues> = useFormik({
         initialValues: {
-            address: '',
+            // address: '',
         },
         validationSchema,
         onSubmit: handleSubmit,
@@ -63,8 +63,11 @@ const ExploreDaos: React.FC = () => {
     const { errors, touched } = formik;
 
     const handleNoteClose = (): void => {
+
+        console.log(" handleNoteClose ");
         // dispatch(clearCitizenNote());
         dispatch(clearDaoNote());
+        dispatch(clearAddressInvitedMember());
     };
 
     useEffect((): void => {
@@ -74,9 +77,12 @@ const ExploreDaos: React.FC = () => {
         // dispatch(getCitizens(Number(page) , PAGE_LIMIT));
         dispatch(getPublicDaos(Number(page) , PAGE_LIMIT));
 
+        console.log(" use effect ");
+
     }, [searchParams, account])
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number): void => {
+        console.log(" handleChange ");
         setSearchParams({ page: String(page)});
     };
 
@@ -91,106 +97,111 @@ const ExploreDaos: React.FC = () => {
     return (
         
         <div className='homeContainer'>
-            <form className='formContainer' onSubmit={formik.handleSubmit}>
+            
             {console.log(" daoNote.members " + daoNote.members)}
             {
                  daoNote && (
                     <Dialog onClose={handleNoteClose} open={Boolean(daoNote)} maxWidth="md" fullWidth>
                         <DialogTitle>My DAO</DialogTitle>
                         <DialogContent>
-                            <div>
-                                <div className="textInput">
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        id="name"
-                                        name="name"
-                                        label="Name"
-                                        disabled
-                                        value={daoNote.name}
-                                    />
-                                </div>
-                                <div className="textInput">
-                                    <FormControlLabel
-                                        control={
-                                            <Switch  
-                                                size="small"
-                                                id="visibility"
-                                                name="visibility"
-                                                disabled
-                                                value={daoNote.visibility}
-                                            />
-                                            }
-                                            label="Private"
-                                    />                                  
-                                </div>
+                            <form className='formContainer' onSubmit={formik.handleSubmit}>
                                 <div>
-                                    <FormControl>
-                                        <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
-                                        <RadioGroup
-                                            row
-                                            aria-labelledby="demo-row-radio-buttons-group-label"
-                                            name="row-radio-buttons-group"
-                                            value={daoNote.membershipMode}
-                                        >
-                                            <FormControlLabel value="0" control={<Radio />} label="Open" disabled/>
-                                            <FormControlLabel value="1" control={<Radio />} label="Invitation" disabled/>
-                                            <FormControlLabel value="2" control={<Radio />} label="Request" disabled/>
-                                        </RadioGroup>
-                                    </FormControl>
-                                </div>
-                                <div className="textInput">
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        id="description"
-                                        name="description"
-                                        label="Description"
-                                        disabled
-                                        value={daoNote.description}
-                                    />
-                                </div>  
-                                { daoNote.members && (
-                                    <div className='listContainer'>
-                                        
-                                            <Typography variant="h5" component="div">Members</Typography>
-                                            <List>
-                                                {
-                                                        daoNote.members.map((member: Member) => (
-                                                            <MemberCard key={member.id} member={member} />
-                                                        ))                                                   
-                                                }
-                                            </List> 
-                                    </div> 
-                                    )
-                                } 
-                                <div className="textInput">
-
-                                <ListItem button divider>
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        id="name"
-                                        name="name"
-                                        label="Guest address"
-                                        value={formik.values.address}
-                                        onChange={formik.handleChange}
-                                        error={touched.address && Boolean(errors.address)}
-                                        helperText={touched.address && errors.address}
-                                    />
-                                    {/* <IconButton>
-                                        <Avatar 
-                                        sx={{ bgcolor: blue[500] }}
-                                        alt="Invite" 
+                                    <div className="textInput">
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            id="name"
+                                            name="name"
+                                            label="Name"
+                                            disabled
+                                            value={daoNote.name}
                                         />
-                                    </IconButton> */}
-                                    <GroupAddIcon fontSize="large" color="primary"
-                                       type="submit"/>
-                                </ListItem>
-  
-                                    
-                                </div>   
-                            </div>    
+                                    </div>
+                                    <div className="textInput">
+                                        <FormControlLabel
+                                            control={
+                                                <Switch  
+                                                    size="small"
+                                                    id="visibility"
+                                                    name="visibility"
+                                                    disabled
+                                                    value={daoNote.visibility}
+                                                />
+                                                }
+                                                label="Private"
+                                        />                                  
+                                    </div>
+                                    <div>
+                                        <FormControl>
+                                            <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
+                                            <RadioGroup
+                                                row
+                                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                                name="row-radio-buttons-group"
+                                                value={daoNote.membershipMode}
+                                            >
+                                                <FormControlLabel value="0" control={<Radio />} label="Open" disabled/>
+                                                <FormControlLabel value="1" control={<Radio />} label="Invitation" disabled/>
+                                                <FormControlLabel value="2" control={<Radio />} label="Request" disabled/>
+                                            </RadioGroup>
+                                        </FormControl>
+                                    </div>
+                                    <div className="textInput">
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            id="description"
+                                            name="description"
+                                            label="Description"
+                                            disabled
+                                            value={daoNote.description}
+                                        />
+                                    </div>  
+                                    { daoNote.members && (
+                                        <div className='listContainer'>
+                                            
+                                                <Typography variant="h5" component="div">Members</Typography>
+                                                <List>
+                                                    {
+                                                            daoNote.members.map((member: Member) => (
+                                                                <MemberCard key={member.id} member={member} />
+                                                            ))                                                   
+                                                    }
+                                                </List> 
+                                        </div> 
+                                        )
+                                    } 
+                                    <div className="textInput">
+
+                                    <ListItem button divider>
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            id="name"
+                                            name="name"
+                                            label="Guest address"
+                                            value={formik.values.address}
+                                            onChange={formik.handleChange}
+                                            error={touched.address && Boolean(errors.address)}
+                                            helperText={touched.address && errors.address}
+                                        />
+                                        {/* <IconButton>
+                                            <Avatar 
+                                            sx={{ bgcolor: blue[500] }}
+                                            alt="Invite" 
+                                            />
+                                        </IconButton> */}
+                                        {/* <GroupAddIcon fontSize="large" color="primary"
+                                        type="submit"/> */}
+                                        <Button color="primary" variant="contained" fullWidth type="submit">
+                                            Add
+                                            </Button>   
+                                    </ListItem>
+    
+                                        
+                                    </div>   
+                                </div>  
+                            </form>  
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleNoteClose}>Close</Button>
@@ -205,7 +216,7 @@ const ExploreDaos: React.FC = () => {
                 total={daosCount}
                 handleChange={handleChange}
             />
-            </form>
+            
         </div>
     )
 };
