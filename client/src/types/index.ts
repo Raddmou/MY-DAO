@@ -7,8 +7,15 @@ export type Dao = {
     visibility: boolean,
     membershipMode: string,
     description: string,
-    member: number
+    member: number,
+    Members: []
     //modules: [] 
+};
+
+export type Member = { 
+    address: Address, 
+    id: number,
+    status: number
 };
 
 export type AddDaoFormValues = {
@@ -17,4 +24,8 @@ export type AddDaoFormValues = {
     membershipMode: string,
     description: string,
     note: string
+};
+
+export type InviteDaoFormValues = {
+    address: string
 }

@@ -27,6 +27,10 @@ const App: React.FC = () => {
 
     dispatch(getDaosCountByMember());
     dispatch(setAccount(selectedAddress));
+
+    (window as any).ethereum?.on('accountsChanged', async () => {
+			dispatch(setAccount((window as any).ethereum?.selectedAddress));
+		});	
     //dispatch(contractProvider.getContract());
   }, []);
 

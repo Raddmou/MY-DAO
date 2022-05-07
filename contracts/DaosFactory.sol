@@ -5,7 +5,7 @@ import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 import './interfaces/IDaosFactory.sol';
-import './Dao.sol';
+import './Daos/Dao.sol';
 
 //is DaosFactory
 contract DaosFactory is Ownable {

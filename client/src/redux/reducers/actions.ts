@@ -105,6 +105,15 @@ export const addNewDao = (formValues: AddDaoFormValues) => async (dispatch: any)
     }
 };
 
+// export const inviteToDao = (formValues: InviteDaoFormValues) => async (dispatch: any) => {
+//     try {
+//         const dao = await daosAPI.addNewDao(formValues);
+//         dispatch(addNewDaoAction(dao));
+//     } catch ({ message }) {
+//         console.error(message);
+//     }
+// };
+
 export const getDaoByMember = (page: number, limit: number) => async (dispatch: any) => {
     try {
         dispatch(setPending());
@@ -145,6 +154,26 @@ export const getDaoNote = (address: Address) => async (dispatch: any) => {
     try {
         const dao = await daosAPI.fetchDao(address);
         dispatch(setDaoNote(dao));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const joinDao = (address: Address) => async (dispatch: any) => {
+    try {
+        const success = await daosAPI.joinDao(address);
+        if(success)
+            await getDaoNote(address);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const inviteToDao = (address: Address, addressToInvite: Address) => async (dispatch: any) => {
+    try {
+        const success = await daosAPI.inviteToDao(address, addressToInvite);
+        if(success)
+            await getDaoNote(address);
     } catch (error) {
         console.error(error);
     }

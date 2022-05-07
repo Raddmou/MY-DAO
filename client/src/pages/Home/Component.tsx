@@ -110,7 +110,7 @@ const Home: React.FC = () => {
                                         disabled
                                         value={daoNote.description}
                                     />
-                                </div>    
+                                </div> 
                             </div>    
                         </DialogContent>
                         <DialogActions>

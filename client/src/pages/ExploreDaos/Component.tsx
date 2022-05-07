@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
@@ -10,11 +10,21 @@ import DialogActions from '@mui/material/DialogActions';
 import Alert from '@mui/material/Alert';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Checkbox, Switch } from "@mui/material";
+import MemberCard from '../../components/MemberCard/Component';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
+import { deepOrange, blue } from '@mui/material/colors';
+import Box from '@mui/material/Box';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 import { getPublicDaos, clearDaoNote } from '../../redux/reducers/actions';
 import DaosList from '../../components/DaosList/Component';
@@ -23,13 +33,34 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { exploreDaoSelector } from './selector';
 import { DEFAULT_PAGE, PAGE_LIMIT } from './constants';
 import './Component.scss';
+import { Member, InviteDaoFormValues } from '../../types';
+import { useFormik, FormikProps } from 'formik';
+import { inviteToDao } from '../../redux/reducers/actions';
+import { validationSchema } from './validation';
 
 const ExploreDaos: React.FC = () => {
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [ searchParams, setSearchParams ] = useSearchParams({});
     //const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
     const { daosCount, daoNote, account } = useAppSelector(exploreDaoSelector);
     const dispatch = useAppDispatch();
     const booleanVal = true;
+    const handleSubmit = (formValues: InviteDaoFormValues, { resetForm }: any): void => {
+        dispatch(
+            inviteToDao(formValues.address)
+        );
+        setIsFormSubmitted(true);
+        resetForm();
+    };
+
+    const formik: FormikProps<InviteDaoFormValues> = useFormik({
+        initialValues: {
+            address: '',
+        },
+        validationSchema,
+        onSubmit: handleSubmit,
+    });    
+    const { errors, touched } = formik;
 
     const handleNoteClose = (): void => {
         // dispatch(clearCitizenNote());
@@ -58,11 +89,13 @@ const ExploreDaos: React.FC = () => {
     );
 
     return (
+        
         <div className='homeContainer'>
-            {console.log("DaoCard " + daoNote)}
+            <form className='formContainer' onSubmit={formik.handleSubmit}>
+            {console.log(" daoNote.members " + daoNote.members)}
             {
                  daoNote && (
-                    <Dialog onClose={handleNoteClose} open={Boolean(daoNote)} maxWidth fullWidth>
+                    <Dialog onClose={handleNoteClose} open={Boolean(daoNote)} maxWidth="md" fullWidth>
                         <DialogTitle>My DAO</DialogTitle>
                         <DialogContent>
                             <div>
@@ -116,7 +149,47 @@ const ExploreDaos: React.FC = () => {
                                         disabled
                                         value={daoNote.description}
                                     />
-                                </div>    
+                                </div>  
+                                { daoNote.members && (
+                                    <div className='listContainer'>
+                                        
+                                            <Typography variant="h5" component="div">Members</Typography>
+                                            <List>
+                                                {
+                                                        daoNote.members.map((member: Member) => (
+                                                            <MemberCard key={member.id} member={member} />
+                                                        ))                                                   
+                                                }
+                                            </List> 
+                                    </div> 
+                                    )
+                                } 
+                                <div className="textInput">
+
+                                <ListItem button divider>
+                                    <TextField
+                                        size="small"
+                                        fullWidth
+                                        id="name"
+                                        name="name"
+                                        label="Guest address"
+                                        value={formik.values.address}
+                                        onChange={formik.handleChange}
+                                        error={touched.address && Boolean(errors.address)}
+                                        helperText={touched.address && errors.address}
+                                    />
+                                    {/* <IconButton>
+                                        <Avatar 
+                                        sx={{ bgcolor: blue[500] }}
+                                        alt="Invite" 
+                                        />
+                                    </IconButton> */}
+                                    <GroupAddIcon fontSize="large" color="primary"
+                                       type="submit"/>
+                                </ListItem>
+  
+                                    
+                                </div>   
                             </div>    
                         </DialogContent>
                         <DialogActions>
@@ -132,6 +205,7 @@ const ExploreDaos: React.FC = () => {
                 total={daosCount}
                 handleChange={handleChange}
             />
+            </form>
         </div>
     )
 };

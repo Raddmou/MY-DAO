@@ -12,8 +12,8 @@ contract Dao is Ownable {
   uint256[] public modules;
   string public name;
   string public description;
-  uint256 public id;
-  mapping(uint256 => address) addrById;
+  uint256 public membersCount;
+  mapping(uint256 => address) public memberAddresses;
   mapping(address => Data.member) public members;
   Data.membershipModeEnum public membershipModeMode;
   Data.visibilityEnum public visibility;
@@ -118,11 +118,15 @@ contract Dao is Ownable {
 
     function addMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
         members[addressMember].status = Data.memberStatus.active;
+        memberAddresses[membersCount] = addressMember;
+        ++membersCount;
         emit MemberAdded(addressMember);
     }
 
     function inviteMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
         members[addressMember].status = Data.memberStatus.invited;
+        memberAddresses[membersCount] = addressMember;
+        ++membersCount;
         emit MemberInvited(msg.sender, addressMember);
     }
 

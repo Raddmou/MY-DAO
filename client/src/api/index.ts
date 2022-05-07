@@ -136,6 +136,17 @@ export const daosAPI = {
                                         const visibility = await contractDao.methods.getVisibility().call();
                                         const description = await contractDao.methods.getDescription().call();
                                         const membershipMode = await contractDao.methods.getMemberShipMode().call();
+                                        // const membersCount = await contractDao.methods.membersCount().call();
+                                        // console.log("membersCount " + membersCount);
+                                        // var members = [];
+                                        // for (var i = 0; i < membersCount; i++) {
+                                        //     const memberAddress = await contractDao.methods.memberAddresses(i).call();
+                                        //     console.log("memberAddress " + memberAddress);
+                                        //     const memberInfo = await contractDao.methods.getMemberInfo(memberAddress).call();
+                                        //     var myMember = {status: memberInfo, address: memberAddress}
+                                        //     members.push(myMember);
+                                        // } 
+                                        
                                         const id = address.toString();
                                         return { id, address, isMember, name, visibility, membershipMode, description, member };
                                     });
@@ -156,8 +167,17 @@ export const daosAPI = {
         const visibility = await contractDao.methods.getVisibility().call();
         const description = await contractDao.methods.getDescription().call();
         const membershipMode = await contractDao.methods.getMemberShipMode().call();
+        const membersCount = await contractDao.methods.membersCount().call();
+        var members = [];
+        for (var i = 0; i < membersCount; i++) {
+            const memberAddress = await contractDao.methods.memberAddresses(i).call();
+            console.log("memberAddress " + memberAddress);
+            const memberInfo = await contractDao.methods.getMemberInfo(memberAddress).call();
+            var myMember = {status: memberInfo, address: memberAddress, id: i}
+            members.push(myMember);
+        } 
         const id = address.toString();
-        return { id, address, name, visibility, membershipMode, description, member };
+        return { id, address, name, visibility, membershipMode, description, member, members };
 
         //return (await Promise.all(transactionsData));
 
@@ -225,7 +245,8 @@ export const daosAPI = {
         const contract = await contractFactoryProvider.getContract();
         const { name, visibility, description, membershipMode } = dao;
         const { events } =  await contract.methods
-            .createDAO(name, false, description, visibility, membershipMode)
+            // .createDAO(name, false, description, visibility, membershipMode)
+            .createDAO(name, false, description, visibility)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });
@@ -233,5 +254,48 @@ export const daosAPI = {
         const id = address.toString();
 
         return { id, name, visibility, membershipMode, description, address };
+    },
+
+    joinDao: async (address: Address): Promise<boolean> => {
+        const contractDao = await contractDaoProvider.getContract(address);
+
+        await contractDao.methods.join().send({ 
+            from: (window as any).ethereum.selectedAddress })
+			.on("receipt",function(receipt){
+				console.log(receipt);  
+                return true;
+			})
+			.on("error",function(error, receipt){
+				console.log(error);
+				console.log(receipt);
+                return false;
+			});		
+
+        // const success =  await contractDao.methods
+        //     .join()
+        //     .send({ 
+        //         from: (window as any).ethereum.selectedAddress 
+        //     });
+        // console.log("success " + success.returnValues);
+        return true;
+        
+    },
+
+    inviteToDao: async (address: Address, addressToInvite: Address): Promise<boolean> => {
+        const contractDao = await contractDaoProvider.getContract(address);
+
+        await contractDao.methods.inviteMember(addressToInvite).send({ 
+            from: (window as any).ethereum.selectedAddress })
+			.on("receipt",function(receipt){
+				console.log(receipt);  
+                return true;
+			})
+			.on("error",function(error, receipt){
+				console.log(error);
+				console.log(receipt);
+                return false;
+			});		
+        return true;
+        
     }
 };
