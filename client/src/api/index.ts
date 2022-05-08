@@ -244,9 +244,10 @@ export const daosAPI = {
     addNewDao: async (dao: any): Promise<Dao> => {
         const contract = await contractFactoryProvider.getContract();
         const { name, visibility, description, membershipMode } = dao;
+        const byInvitation = membershipMode == 0;
         const { events } =  await contract.methods
-            // .createDAO(name, false, description, visibility, membershipMode)
-            .createDAO(name, false, description, visibility)
+            .createDAO(name, byInvitation, description, visibility)
+            //.createDAO(name, false, description, visibility)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });

@@ -10,7 +10,16 @@ import DialogActions from '@mui/material/DialogActions';
 import Alert from '@mui/material/Alert';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Checkbox, Switch } from "@mui/material";
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import MemberCard from '../../components/MemberCard/Component';
 
+import { Member, InviteDaoFormValues } from '../../types';
 import { getDaoByMember, clearDaoNote } from '../../redux/reducers/actions';
 import DaosList from '../../components/DaosList/Component';
 import Pagination from '../../components/Pagination/Component';
@@ -55,10 +64,16 @@ const Home: React.FC = () => {
             {console.log("DaoCard " + daoNote)}
             {
                  daoNote && (
-                    <Dialog onClose={handleNoteClose} open={Boolean(daoNote)} maxWidth fullWidth>
+                    <Dialog onClose={handleNoteClose} open={Boolean(daoNote)}  maxWidth="md" fullWidth>
                         <DialogTitle>My DAO</DialogTitle>
                         <DialogContent>
-                            <div>
+                        <Box
+                                sx={{
+                                    '& > :not(style)': {
+                                    m: 2,
+                                    },
+                                }}
+                                >
                                 <div className="textInput">
                                     <TextField
                                         size="small"
@@ -91,12 +106,12 @@ const Home: React.FC = () => {
                                         <RadioGroup
                                             row
                                             aria-labelledby="demo-row-radio-buttons-group-label"
-                                            name="row-radio-buttons-group"
+                                            name="membershipMode"
                                             value={daoNote.membershipMode}
                                         >
-                                            <FormControlLabel value="0" control={<Radio />} label="Open" disabled/>
-                                            <FormControlLabel value="1" control={<Radio />} label="Invitation" disabled/>
-                                            <FormControlLabel value="2" control={<Radio />} label="Request" disabled/>
+                                            <FormControlLabel value="0" control={<Radio />} label="Invitation" disabled/>                                                         
+                                            <FormControlLabel value="2" control={<Radio />} label="Open" disabled/>  
+                                            <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
                                         </RadioGroup>
                                     </FormControl>
                                 </div>
@@ -110,8 +125,35 @@ const Home: React.FC = () => {
                                         disabled
                                         value={daoNote.description}
                                     />
-                                </div> 
-                            </div>    
+                                </div>
+                                <div className="textInput">
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            multiline
+                                            rows={4}
+                                            id="note"
+                                            name="note"
+                                            label="Note"
+                                            disabled
+                                            value={daoNote.description}
+                                        />
+                                </div>   
+                                { daoNote.members && (
+                                        <div className='listContainer'>
+                                            
+                                                <Typography variant="h5" component="div">Members</Typography>
+                                                <List>
+                                                    {
+                                                            daoNote.members.map((member: Member) => (
+                                                                <MemberCard key={member.id} member={member} />
+                                                            ))                                                   
+                                                    }
+                                                </List> 
+                                        </div> 
+                                        )
+                                } 
+                            </Box>   
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleNoteClose}>Close</Button>

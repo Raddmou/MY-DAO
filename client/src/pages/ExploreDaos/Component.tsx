@@ -157,9 +157,9 @@ const ExploreDaos: React.FC = () => {
                                                 name="membershipMode"
                                                 value={daoNote.membershipMode}
                                             >
-                                                <FormControlLabel value="0" control={<Radio />} label="Invitation" disabled/>                              
-                                                <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
+                                                <FormControlLabel value="0" control={<Radio />} label="Invitation" disabled/>                                                         
                                                 <FormControlLabel value="2" control={<Radio />} label="Open" disabled/>  
+                                                <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
                                             </RadioGroup>
                                         </FormControl>
                                     </div>

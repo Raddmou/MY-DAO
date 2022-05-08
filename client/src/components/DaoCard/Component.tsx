@@ -9,13 +9,14 @@ import Person from '@mui/icons-material/Person';
 import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Box from '@mui/material/Box';
+import { deepOrange, yellow } from '@mui/material/colors';
 
 import { getDaoNote, joinDao } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
 import { Dao } from '../../types';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import { deepOrange, blue } from '@mui/material/colors';
+// import { deepOrange, blue } from '@mui/material/colors';
 
 type DaoCardProps = {
     dao: Dao
@@ -90,13 +91,13 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                 {
                     member == 1 && (
                         <Tooltip title="Pending invitation">
-                            <IconButton>
+                            {/* <IconButton> */}
                                 {/* <Avatar
                                 sx={{ bgcolor: deepOrange[500] }}
                                 alt="Accept invitation"
                             ></Avatar> */}
-                            <Person fontSize="large" color="deepOrange"/>
-                            </IconButton>
+                            <Person fontSize="large" sx={{ color: deepOrange[500] }}/>
+                            {/* </IconButton> */}
                         </Tooltip> 
                     )
                 }

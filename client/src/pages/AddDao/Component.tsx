@@ -179,9 +179,9 @@ const AddDao: React.FC = () => {
                             value={formik.values.membershipMode}
                             onChange={formik.handleChange}
                         >
-                            <FormControlLabel value="0" control={<Radio />} label="Invitation" />
-                            <FormControlLabel value="1" control={<Radio />} label="Request" />
-                            <FormControlLabel value="2" control={<Radio />} label="Open" disabled/> 
+                            <FormControlLabel value="0" control={<Radio />} label="Invitation" />                          
+                            <FormControlLabel value="2" control={<Radio />} label="Open" /> 
+                            <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
                         </RadioGroup>
                     </FormControl>
                     </div>
