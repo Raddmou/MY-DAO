@@ -37,8 +37,10 @@ import { Member, InviteDaoFormValues } from '../../types';
 import { useFormik, FormikProps } from 'formik';
 import { inviteToDao } from '../../redux/reducers/actions';
 import { validationSchema } from './validation';
+import { number } from 'yup';
 
 const ExploreDaos: React.FC = () => {
+    const [refresh, setRefresh] = useState(0);
     const [addressToInvite, setAddressToInvite] = useState("");
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [ searchParams, setSearchParams ] = useSearchParams({});
@@ -74,8 +76,12 @@ const ExploreDaos: React.FC = () => {
     };
 
     const HandleInviteMember = () => {
+        // setRefresh(false);
         console.log(" HandleInviteMember " + addressToInvite)
         dispatch(inviteToDao(daoNote.address, addressToInvite));
+        setAddressToInvite("");
+        setRefresh(refresh + 1);
+        console.log("success INVITE MEMBER");
     };
 
     useEffect((): void => {
@@ -87,7 +93,7 @@ const ExploreDaos: React.FC = () => {
 
         console.log(" use effect ");
 
-    }, [searchParams, account])
+    }, [searchParams, account, refresh])
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number): void => {
         console.log(" handleChange ");

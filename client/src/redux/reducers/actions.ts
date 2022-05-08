@@ -125,8 +125,11 @@ export const getDaoByMember = (page: number, limit: number) => async (dispatch: 
 
         const count = await daosAPI.getDaoCountByUser();
         const daos = await daosAPI.fetchDaosByUser(page, limit, count);
+        // const dao = await daosAPI.fetchDao(daos[0].address);
+        // console.log("BBB", dao);
         //console.log("retour getDaosByMember " + daos[0].isMember);
         dispatch(setDaosByUser(daos));
+        // console.log("AAA", daos);
     } catch (error) {
         console.error(error);
         dispatch(setError());

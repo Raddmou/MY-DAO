@@ -1,18 +1,16 @@
 {
   "contractName": "Data",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0xbf4f86712740e1f2fc643e8c10576f0219ae6ec27487936e48eb708576f63b77\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://479f8f2014760add41cc8d1e05685bc34dbac42c8822f26d976926df5fbaf5a9\",\"dweb:/ipfs/QmXCdka96M348rfT82pRjSgRKKRSVQt3vUfNxjq4dxXcQc\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220d7063bc0298245afa3ca1932e65bff12014c113d25b65a4698f81d4e5472115e64736f6c63430008090033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220d7063bc0298245afa3ca1932e65bff12014c113d25b65a4698f81d4e5472115e64736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0x729eb248cbbf7c9449ad99000a3b65f1c2762fd326c6485235b4f59146395c7a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2ba14d36dc65aabcf0d2a8b9d36357ef9d5227405be091600c0c3b802aa174db\",\"dweb:/ipfs/QmNiat5FS1uiriFUBxmAuTnf8LzvUK82jyAmDA1FGS6w74\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e414033a1b903deade3a721313cd3484fde9df3e9a71ca659aa00920cea3191264736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e414033a1b903deade3a721313cd3484fde9df3e9a71ca659aa00920cea3191264736f6c63430008090033",
   "immutableReferences": {},
-  "generatedSources": [],
-  "deployedGeneratedSources": [],
-  "sourceMap": "60:397:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "60:397:7:-:0;;;;;;;;",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nlibrary Data {\r\n  struct member {\r\n    memberStatus status;\r\n    //address memberAddress;\r\n  }\r\n  struct daoData {\r\n    string daoType;\r\n    visibilityEnum visibility;\r\n  }\r\n\r\n  enum visibilityEnum {\r\n    privateDao,\r\n    publicDao\r\n  }\r\n\r\n  enum memberStatus {\r\n    notMember,\r\n    invited,\r\n    asking,\r\n    active\r\n  }\r\n\r\n  enum membershipModeEnum {\r\n    invite,\r\n    request,\r\n    open\r\n  }\r\n}",
-  "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Data.sol",
+  "sourceMap": "57:370:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "57:370:7:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\nlibrary Data {\n  struct member {\n    memberStatus status;\n    //address memberAddress;\n  }\n  struct daoData {\n    string daoType;\n    visibilityEnum visibility;\n  }\n\n  enum visibilityEnum {\n    privateDao,\n    publicDao\n  }\n\n  enum memberStatus {\n    notMember,\n    invited,\n    asking,\n    active\n  }\n\n  enum membershipModeEnum {\n    invite,\n    request,\n    open\n  }\n}",
+  "sourcePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
   "ast": {
-    "absolutePath": "project:/contracts/Data.sol",
+    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
         1361
@@ -31,7 +29,7 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:7"
+        "src": "32:23:7"
       },
       {
         "abstract": false,
@@ -45,7 +43,7 @@
           1361
         ],
         "name": "Data",
-        "nameLocation": "68:4:7",
+        "nameLocation": "65:4:7",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -57,10 +55,10 @@
                 "id": 1341,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "112:6:7",
+                "nameLocation": "107:6:7",
                 "nodeType": "VariableDeclaration",
                 "scope": 1342,
-                "src": "99:19:7",
+                "src": "94:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -75,10 +73,10 @@
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 1356,
-                    "src": "99:12:7"
+                    "src": "94:12:7"
                   },
                   "referencedDeclaration": 1356,
-                  "src": "99:12:7",
+                  "src": "94:12:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_enum$_memberStatus_$1356",
                     "typeString": "enum Data.memberStatus"
@@ -88,10 +86,10 @@
               }
             ],
             "name": "member",
-            "nameLocation": "85:6:7",
+            "nameLocation": "81:6:7",
             "nodeType": "StructDefinition",
             "scope": 1361,
-            "src": "78:76:7",
+            "src": "74:73:7",
             "visibility": "public"
           },
           {
@@ -103,10 +101,10 @@
                 "id": 1344,
                 "mutability": "mutable",
                 "name": "daoType",
-                "nameLocation": "187:7:7",
+                "nameLocation": "178:7:7",
                 "nodeType": "VariableDeclaration",
                 "scope": 1348,
-                "src": "180:14:7",
+                "src": "171:14:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -117,7 +115,7 @@
                   "id": 1343,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "180:6:7",
+                  "src": "171:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -130,10 +128,10 @@
                 "id": 1347,
                 "mutability": "mutable",
                 "name": "visibility",
-                "nameLocation": "216:10:7",
+                "nameLocation": "206:10:7",
                 "nodeType": "VariableDeclaration",
                 "scope": 1348,
-                "src": "201:25:7",
+                "src": "191:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -148,10 +146,10 @@
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 1351,
-                    "src": "201:14:7"
+                    "src": "191:14:7"
                   },
                   "referencedDeclaration": 1351,
-                  "src": "201:14:7",
+                  "src": "191:14:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_enum$_visibilityEnum_$1351",
                     "typeString": "enum Data.visibilityEnum"
@@ -161,10 +159,10 @@
               }
             ],
             "name": "daoData",
-            "nameLocation": "165:7:7",
+            "nameLocation": "157:7:7",
             "nodeType": "StructDefinition",
             "scope": 1361,
-            "src": "158:74:7",
+            "src": "150:71:7",
             "visibility": "public"
           },
           {
@@ -174,22 +172,22 @@
               {
                 "id": 1349,
                 "name": "privateDao",
-                "nameLocation": "265:10:7",
+                "nameLocation": "251:10:7",
                 "nodeType": "EnumValue",
-                "src": "265:10:7"
+                "src": "251:10:7"
               },
               {
                 "id": 1350,
                 "name": "publicDao",
-                "nameLocation": "282:9:7",
+                "nameLocation": "267:9:7",
                 "nodeType": "EnumValue",
-                "src": "282:9:7"
+                "src": "267:9:7"
               }
             ],
             "name": "visibilityEnum",
-            "nameLocation": "243:14:7",
+            "nameLocation": "230:14:7",
             "nodeType": "EnumDefinition",
-            "src": "238:58:7"
+            "src": "225:55:7"
           },
           {
             "canonicalName": "Data.memberStatus",
@@ -198,36 +196,36 @@
               {
                 "id": 1352,
                 "name": "notMember",
-                "nameLocation": "327:9:7",
+                "nameLocation": "308:9:7",
                 "nodeType": "EnumValue",
-                "src": "327:9:7"
+                "src": "308:9:7"
               },
               {
                 "id": 1353,
                 "name": "invited",
-                "nameLocation": "343:7:7",
+                "nameLocation": "323:7:7",
                 "nodeType": "EnumValue",
-                "src": "343:7:7"
+                "src": "323:7:7"
               },
               {
                 "id": 1354,
                 "name": "asking",
-                "nameLocation": "357:6:7",
+                "nameLocation": "336:6:7",
                 "nodeType": "EnumValue",
-                "src": "357:6:7"
+                "src": "336:6:7"
               },
               {
                 "id": 1355,
                 "name": "active",
-                "nameLocation": "370:6:7",
+                "nameLocation": "348:6:7",
                 "nodeType": "EnumValue",
-                "src": "370:6:7"
+                "src": "348:6:7"
               }
             ],
             "name": "memberStatus",
-            "nameLocation": "307:12:7",
+            "nameLocation": "289:12:7",
             "nodeType": "EnumDefinition",
-            "src": "302:79:7"
+            "src": "284:74:7"
           },
           {
             "canonicalName": "Data.membershipModeEnum",
@@ -236,40 +234,40 @@
               {
                 "id": 1357,
                 "name": "invite",
-                "nameLocation": "418:6:7",
+                "nameLocation": "392:6:7",
                 "nodeType": "EnumValue",
-                "src": "418:6:7"
+                "src": "392:6:7"
               },
               {
                 "id": 1358,
                 "name": "request",
-                "nameLocation": "431:7:7",
+                "nameLocation": "404:7:7",
                 "nodeType": "EnumValue",
-                "src": "431:7:7"
+                "src": "404:7:7"
               },
               {
                 "id": 1359,
                 "name": "open",
-                "nameLocation": "445:4:7",
+                "nameLocation": "417:4:7",
                 "nodeType": "EnumValue",
-                "src": "445:4:7"
+                "src": "417:4:7"
               }
             ],
             "name": "membershipModeEnum",
-            "nameLocation": "392:18:7",
+            "nameLocation": "367:18:7",
             "nodeType": "EnumDefinition",
-            "src": "387:67:7"
+            "src": "362:63:7"
           }
         ],
         "scope": 1362,
-        "src": "60:397:7",
+        "src": "57:370:7",
         "usedErrors": []
       }
     ],
-    "src": "33:424:7"
+    "src": "32:395:7"
   },
   "legacyAST": {
-    "absolutePath": "project:/contracts/Data.sol",
+    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
         1361
@@ -288,7 +286,7 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:7"
+        "src": "32:23:7"
       },
       {
         "abstract": false,
@@ -302,7 +300,7 @@
           1361
         ],
         "name": "Data",
-        "nameLocation": "68:4:7",
+        "nameLocation": "65:4:7",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -314,10 +312,10 @@
                 "id": 1341,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "112:6:7",
+                "nameLocation": "107:6:7",
                 "nodeType": "VariableDeclaration",
                 "scope": 1342,
-                "src": "99:19:7",
+                "src": "94:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -332,10 +330,10 @@
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 1356,
-                    "src": "99:12:7"
+                    "src": "94:12:7"
                   },
                   "referencedDeclaration": 1356,
-                  "src": "99:12:7",
+                  "src": "94:12:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_enum$_memberStatus_$1356",
                     "typeString": "enum Data.memberStatus"
@@ -345,10 +343,10 @@
               }
             ],
             "name": "member",
-            "nameLocation": "85:6:7",
+            "nameLocation": "81:6:7",
             "nodeType": "StructDefinition",
             "scope": 1361,
-            "src": "78:76:7",
+            "src": "74:73:7",
             "visibility": "public"
           },
           {
@@ -360,10 +358,10 @@
                 "id": 1344,
                 "mutability": "mutable",
                 "name": "daoType",
-                "nameLocation": "187:7:7",
+                "nameLocation": "178:7:7",
                 "nodeType": "VariableDeclaration",
                 "scope": 1348,
-                "src": "180:14:7",
+                "src": "171:14:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -374,7 +372,7 @@
                   "id": 1343,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "180:6:7",
+                  "src": "171:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -387,10 +385,10 @@
                 "id": 1347,
                 "mutability": "mutable",
                 "name": "visibility",
-                "nameLocation": "216:10:7",
+                "nameLocation": "206:10:7",
                 "nodeType": "VariableDeclaration",
                 "scope": 1348,
-                "src": "201:25:7",
+                "src": "191:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -405,10 +403,10 @@
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 1351,
-                    "src": "201:14:7"
+                    "src": "191:14:7"
                   },
                   "referencedDeclaration": 1351,
-                  "src": "201:14:7",
+                  "src": "191:14:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_enum$_visibilityEnum_$1351",
                     "typeString": "enum Data.visibilityEnum"
@@ -418,10 +416,10 @@
               }
             ],
             "name": "daoData",
-            "nameLocation": "165:7:7",
+            "nameLocation": "157:7:7",
             "nodeType": "StructDefinition",
             "scope": 1361,
-            "src": "158:74:7",
+            "src": "150:71:7",
             "visibility": "public"
           },
           {
@@ -431,22 +429,22 @@
               {
                 "id": 1349,
                 "name": "privateDao",
-                "nameLocation": "265:10:7",
+                "nameLocation": "251:10:7",
                 "nodeType": "EnumValue",
-                "src": "265:10:7"
+                "src": "251:10:7"
               },
               {
                 "id": 1350,
                 "name": "publicDao",
-                "nameLocation": "282:9:7",
+                "nameLocation": "267:9:7",
                 "nodeType": "EnumValue",
-                "src": "282:9:7"
+                "src": "267:9:7"
               }
             ],
             "name": "visibilityEnum",
-            "nameLocation": "243:14:7",
+            "nameLocation": "230:14:7",
             "nodeType": "EnumDefinition",
-            "src": "238:58:7"
+            "src": "225:55:7"
           },
           {
             "canonicalName": "Data.memberStatus",
@@ -455,36 +453,36 @@
               {
                 "id": 1352,
                 "name": "notMember",
-                "nameLocation": "327:9:7",
+                "nameLocation": "308:9:7",
                 "nodeType": "EnumValue",
-                "src": "327:9:7"
+                "src": "308:9:7"
               },
               {
                 "id": 1353,
                 "name": "invited",
-                "nameLocation": "343:7:7",
+                "nameLocation": "323:7:7",
                 "nodeType": "EnumValue",
-                "src": "343:7:7"
+                "src": "323:7:7"
               },
               {
                 "id": 1354,
                 "name": "asking",
-                "nameLocation": "357:6:7",
+                "nameLocation": "336:6:7",
                 "nodeType": "EnumValue",
-                "src": "357:6:7"
+                "src": "336:6:7"
               },
               {
                 "id": 1355,
                 "name": "active",
-                "nameLocation": "370:6:7",
+                "nameLocation": "348:6:7",
                 "nodeType": "EnumValue",
-                "src": "370:6:7"
+                "src": "348:6:7"
               }
             ],
             "name": "memberStatus",
-            "nameLocation": "307:12:7",
+            "nameLocation": "289:12:7",
             "nodeType": "EnumDefinition",
-            "src": "302:79:7"
+            "src": "284:74:7"
           },
           {
             "canonicalName": "Data.membershipModeEnum",
@@ -493,45 +491,45 @@
               {
                 "id": 1357,
                 "name": "invite",
-                "nameLocation": "418:6:7",
+                "nameLocation": "392:6:7",
                 "nodeType": "EnumValue",
-                "src": "418:6:7"
+                "src": "392:6:7"
               },
               {
                 "id": 1358,
                 "name": "request",
-                "nameLocation": "431:7:7",
+                "nameLocation": "404:7:7",
                 "nodeType": "EnumValue",
-                "src": "431:7:7"
+                "src": "404:7:7"
               },
               {
                 "id": 1359,
                 "name": "open",
-                "nameLocation": "445:4:7",
+                "nameLocation": "417:4:7",
                 "nodeType": "EnumValue",
-                "src": "445:4:7"
+                "src": "417:4:7"
               }
             ],
             "name": "membershipModeEnum",
-            "nameLocation": "392:18:7",
+            "nameLocation": "367:18:7",
             "nodeType": "EnumDefinition",
-            "src": "387:67:7"
+            "src": "362:63:7"
           }
         ],
         "scope": 1362,
-        "src": "60:397:7",
+        "src": "57:370:7",
         "usedErrors": []
       }
     ],
-    "src": "33:424:7"
+    "src": "32:395:7"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-06T18:48:26.948Z",
+  "schemaVersion": "3.2.0",
+  "updatedAt": "2022-05-07T20:28:25.349Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
