@@ -82,7 +82,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     membershipMode == "0" && member == 0 && (
                         <Tooltip title="Not member">
                             <PersonOutlineIcon fontSize="large" color="primary"
-                            onClick={handleClickJoinDao}/>
+                            />
                         </Tooltip>
                     )
                 }
