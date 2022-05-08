@@ -178,8 +178,12 @@ export const inviteToDao = (address: Address, addressToInvite: Address) => async
     try {
         console.log("inviteToDao " + addressToInvite);
         const success = await daosAPI.inviteToDao(address, addressToInvite);
+        console.log("inviteToDao success" + success);
         if(success)
-            await getDaoNote(address);
+        {         
+            await getDaoByMember(0, 10);
+        }
+            
     } catch (error) {
         console.error(error);
     }
