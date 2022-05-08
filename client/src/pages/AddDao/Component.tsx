@@ -7,6 +7,8 @@ import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
 import { Checkbox, Switch } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -18,6 +20,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addNewDao } from '../../redux/reducers/actions';
 import { AddDaoFormValues } from '../../types';
 import './Component.scss'
+import Box from '@mui/material/Box';
 
 const AddDao: React.FC = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -30,6 +33,48 @@ const AddDao: React.FC = () => {
         setIsFormSubmitted(true);
         resetForm();
     };
+
+    const AntSwitch = styled(Switch)(({ theme }) => ({
+        width: 28,
+        height: 16,
+        padding: 0,
+        display: 'flex',
+        '&:active': {
+          '& .MuiSwitch-thumb': {
+            width: 15,
+          },
+          '& .MuiSwitch-switchBase.Mui-checked': {
+            transform: 'translateX(9px)',
+          },
+        },
+        '& .MuiSwitch-switchBase': {
+          padding: 2,
+          '&.Mui-checked': {
+            transform: 'translateX(12px)',
+            color: '#fff',
+            '& + .MuiSwitch-track': {
+              opacity: 1,
+              backgroundColor: theme.palette.mode === 'dark' ? '#177ddc' : '#1890ff',
+            },
+          },
+        },
+        '& .MuiSwitch-thumb': {
+          boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
+          width: 12,
+          height: 12,
+          borderRadius: 6,
+          transition: theme.transitions.create(['width'], {
+            duration: 200,
+          }),
+        },
+        '& .MuiSwitch-track': {
+          borderRadius: 16 / 2,
+          opacity: 1,
+          backgroundColor:
+            theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
+          boxSizing: 'border-box',
+        },
+      }));
 
     const formik: FormikProps<AddDaoFormValues> = useFormik({
         initialValues: {
@@ -63,108 +108,142 @@ const AddDao: React.FC = () => {
                 )
             }
             <form className='formContainer' onSubmit={formik.handleSubmit}>
-                <div className="textInput">
-                    <TextField
-                        size="small"
-                        fullWidth
-                        id="name"
-                        name="name"
-                        label="Name"
-                        value={formik.values.name}
-                        onChange={formik.handleChange}
-                        error={touched.name && Boolean(errors.name)}
-                        helperText={touched.name && errors.name}
-                    />
-                </div>
-                <div className="textInput">
-                    <FormControlLabel
-                    control={
-                        <Switch  
-                        size="small"
-                        id="visibility"
-                        name="visibility"
-                        value={formik.values.visibility}
-                        onChange={formik.handleChange}
-                    />
-                            }
-                    label="Public"
-                    />
-                    
-                </div>
-                <div>
-                <FormControl>
-                    <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                        value={formik.values.membershipMode}
-                        onChange={formik.handleChange}
-                    >
-                        <FormControlLabel value="Open" control={<Radio />} label="Open" />
-                        <FormControlLabel value="Invitation" control={<Radio />} label="Invitation" />
-                        <FormControlLabel value="Request" control={<Radio />} label="Request" disabled/>
-                    </RadioGroup>
-                </FormControl>
-                </div>
-                {/* <div className="textInput">
-                    <TextField
-                        size="small"
-                        fullWidth
-                        id="age"
-                        name="age"
-                        label="Age"
-                        type="number"
-                        value={formik.values.age}
-                        onChange={formik.handleChange}
-                        error={touched.age && Boolean(errors.age)}
-                        helperText={touched.age && errors.age}
-                    />
-                </div> */}
-                {/* <div className="textInput">
-                    <TextField
-                        size="small"
-                        fullWidth
-                        id="city"
-                        name="city"
-                        label="City"
-                        value={formik.values.city}
-                        onChange={formik.handleChange}
-                        error={touched.city && Boolean(errors.city)}
-                        helperText={touched.city && errors.city}
-                    />
-                </div> */}
-                <div className="textInput">
-                    <TextField
-                        size="small"
-                        fullWidth
-                        id="description"
-                        name="description"
-                        label="Description"
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
-                        error={touched.description && Boolean(errors.description)}
-                        helperText={touched.description && errors.description}
-                    />
-                </div>
-                <div className="textInput">
-                    <TextField
-                        size="small"
-                        fullWidth
-                        id="note"
-                        name="note"
-                        label="Note"
-                        multiline
-                        rows={4}
-                        value={formik.values.note}
-                        onChange={formik.handleChange}
-                        error={touched.note && Boolean(errors.note)}
-                        helperText={touched.note && errors.note}
-                    />
-                </div>
-                <Button color="primary" variant="contained" fullWidth type="submit">
-                    Submit
-                </Button>
+            <Box
+                sx={{
+                    '& > :not(style)': {
+                    m: 2,
+                    },
+                }}
+                >
+                    <div className="textInput">
+                        <TextField
+                            size="small"
+                            fullWidth
+                            id="name"
+                            name="name"
+                            label="Name"
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            error={touched.name && Boolean(errors.name)}
+                            helperText={touched.name && errors.name}
+                        />
+                    </div>
+                    <div className="textInput">
+                        <FormControl>
+                            <FormLabel id="demo-row-radio-buttons-group-label">Visibility</FormLabel>
+                                <FormControlLabel
+                                    control={
+                                        <Switch  
+                                            size="small"
+                                            id="visibility"
+                                            name="visibility"
+                                            value={formik.values.visibility}
+                                            onChange={formik.handleChange}
+                                        />
+                                        }
+                                        label="Private"
+                                />     
+                        </FormControl>
+                            {/* <FormControlLabel
+                        control={
+                            <Switch  
+                            size="small"
+                            id="visibility"
+                            name="visibility"
+                            value={formik.values.visibility}
+                            onChange={formik.handleChange}
+                        />
+                                }
+                        label="Public"
+                        /> */}
+                        
+                    </div>
+                    {/* <div>
+                    <Stack direction="row" spacing={1} alignItems="center">
+                        <Typography>Private</Typography>
+                        <AntSwitch inputProps={{ 'aria-label': 'ant design' }} 
+                            id="visibility"
+                            name="visibility"
+                            value={formik.values.visibility}
+                            onChange={formik.handleChange}/>
+                        <Typography>Public</Typography>
+                    </Stack>
+                    </div>*/}
+                    <div> 
+                    <FormControl>
+                        <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="membershipMode"
+                            value={formik.values.membershipMode}
+                            onChange={formik.handleChange}
+                        >
+                            <FormControlLabel value="0" control={<Radio />} label="Invitation" />
+                            <FormControlLabel value="1" control={<Radio />} label="Request" />
+                            <FormControlLabel value="2" control={<Radio />} label="Open" disabled/> 
+                        </RadioGroup>
+                    </FormControl>
+                    </div>
+                    {/* <div className="textInput">
+                        <TextField
+                            size="small"
+                            fullWidth
+                            id="age"
+                            name="age"
+                            label="Age"
+                            type="number"
+                            value={formik.values.age}
+                            onChange={formik.handleChange}
+                            error={touched.age && Boolean(errors.age)}
+                            helperText={touched.age && errors.age}
+                        />
+                    </div> */}
+                    {/* <div className="textInput">
+                        <TextField
+                            size="small"
+                            fullWidth
+                            id="city"
+                            name="city"
+                            label="City"
+                            value={formik.values.city}
+                            onChange={formik.handleChange}
+                            error={touched.city && Boolean(errors.city)}
+                            helperText={touched.city && errors.city}
+                        />
+                    </div> */}
+                    <div className="textInput">
+                        <TextField
+                            size="small"
+                            fullWidth
+                            id="description"
+                            name="description"
+                            label="Description"
+                            value={formik.values.description}
+                            onChange={formik.handleChange}
+                            error={touched.description && Boolean(errors.description)}
+                            helperText={touched.description && errors.description}
+                        />
+                    </div>
+                    <div className="textInput">
+                        <TextField
+                            size="small"
+                            fullWidth
+                            id="note"
+                            name="note"
+                            label="Note"
+                            multiline
+                            rows={4}
+                            value={formik.values.note}
+                            onChange={formik.handleChange}
+                            error={touched.note && Boolean(errors.note)}
+                            helperText={touched.note && errors.note}
+                        />
+                    </div>
+                    <Button color="primary" variant="contained" fullWidth type="submit">
+                        Submit
+                    </Button>
+                </Box>
             </form>
         </div>
     );

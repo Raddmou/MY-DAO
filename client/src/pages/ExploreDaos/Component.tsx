@@ -113,7 +113,13 @@ const ExploreDaos: React.FC = () => {
                         <DialogTitle>My DAO</DialogTitle>
                         <DialogContent>
                             {/* <form className='formContainer' onSubmit={formik.handleSubmit}> */}
-                                <div>
+                            <Box
+                                sx={{
+                                    '& > :not(style)': {
+                                    m: 2,
+                                    },
+                                }}
+                                >
                                     <div className="textInput">
                                         <TextField
                                             size="small"
@@ -126,18 +132,21 @@ const ExploreDaos: React.FC = () => {
                                         />
                                     </div>
                                     <div className="textInput">
-                                        <FormControlLabel
-                                            control={
-                                                <Switch  
-                                                    size="small"
-                                                    id="visibility"
-                                                    name="visibility"
-                                                    disabled
-                                                    value={daoNote.visibility}
-                                                />
-                                                }
-                                                label="Private"
-                                        />                                  
+                                        <FormControl>
+                                        <FormLabel id="demo-row-radio-buttons-group-label">Visibility</FormLabel>
+                                            <FormControlLabel
+                                                control={
+                                                    <Switch  
+                                                        size="small"
+                                                        id="visibility"
+                                                        name="visibility"
+                                                        disabled
+                                                        value={daoNote.visibility}
+                                                    />
+                                                    }
+                                                    label="Private"
+                                            />     
+                                        </FormControl>
                                     </div>
                                     <div>
                                         <FormControl>
@@ -145,12 +154,12 @@ const ExploreDaos: React.FC = () => {
                                             <RadioGroup
                                                 row
                                                 aria-labelledby="demo-row-radio-buttons-group-label"
-                                                name="row-radio-buttons-group"
+                                                name="membershipMode"
                                                 value={daoNote.membershipMode}
                                             >
-                                                <FormControlLabel value="0" control={<Radio />} label="Open" disabled/>
-                                                <FormControlLabel value="1" control={<Radio />} label="Invitation" disabled/>
-                                                <FormControlLabel value="2" control={<Radio />} label="Request" disabled/>
+                                                <FormControlLabel value="0" control={<Radio />} label="Invitation" disabled/>                              
+                                                <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
+                                                <FormControlLabel value="2" control={<Radio />} label="Open" disabled/>  
                                             </RadioGroup>
                                         </FormControl>
                                     </div>
@@ -161,6 +170,19 @@ const ExploreDaos: React.FC = () => {
                                             id="description"
                                             name="description"
                                             label="Description"
+                                            disabled
+                                            value={daoNote.description}
+                                        />
+                                    </div>  
+                                    <div className="textInput">
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            multiline
+                                            rows={4}
+                                            id="note"
+                                            name="note"
+                                            label="Note"
                                             disabled
                                             value={daoNote.description}
                                         />
@@ -211,7 +233,7 @@ const ExploreDaos: React.FC = () => {
                                     )}
                                         
                                     </div>   
-                                </div>  
+                                </Box>  
                             {/* </form>   */}
                         </DialogContent>
                         <DialogActions>
