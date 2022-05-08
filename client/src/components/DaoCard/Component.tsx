@@ -61,7 +61,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                 </Tooltip>
 
                 {
-                    membershipMode == "0" && member == 0 && (
+                    membershipMode == "2" && member == 0 && (
                         <Tooltip title="Join Dao">
                             <GroupAddIcon fontSize="large" color="primary"
                             onClick={handleClickJoinDao}/>
@@ -69,7 +69,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    membershipMode == "2" && member == 0 && (
+                    membershipMode == "0" && member == 0 && (
                         <Tooltip title="Not member">
                             <PersonOutlineIcon fontSize="large" color="primary"
                             onClick={handleClickJoinDao}/>
