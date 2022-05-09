@@ -185,10 +185,10 @@ const ExploreDaos: React.FC = () => {
                                             size="small"
                                             fullWidth
                                             multiline
-                                            rows={4}
+                                            rows={6}
                                             id="note"
                                             name="note"
-                                            label="Note"
+                                            label="Rules"
                                             disabled
                                             value={daoNote.description}
                                         />
@@ -200,7 +200,7 @@ const ExploreDaos: React.FC = () => {
                                                 <List>
                                                     {
                                                             daoNote.members.map((member: Member) => (
-                                                                <MemberCard key={member.id} member={member} />
+                                                                <MemberCard key={member.id} member={member} isMember={daoNote.member} daoAddress={daoNote.address}/>
                                                             ))                                                   
                                                     }
                                                 </List> 
@@ -233,7 +233,7 @@ const ExploreDaos: React.FC = () => {
                                             {/* <GroupAddIcon fontSize="large" color="primary"
                                             type="submit"/> */}
                                             <Button color="primary" variant="contained" fullWidth onClick={HandleInviteMember}>
-                                                Add
+                                                Invite
                                                 </Button>   
                                         </ListItem>
                                     )}

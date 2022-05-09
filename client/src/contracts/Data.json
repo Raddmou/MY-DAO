@@ -15,15 +15,15 @@
     "absolutePath": "project:/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        1361
+        1410
       ]
     },
-    "id": 1362,
+    "id": 1411,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1338,
+        "id": 1387,
         "literals": [
           "solidity",
           "^",
@@ -40,9 +40,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1361,
+        "id": 1410,
         "linearizedBaseContracts": [
-          1361
+          1410
         ],
         "name": "Data",
         "nameLocation": "68:4:7",
@@ -50,37 +50,37 @@
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 1342,
+            "id": 1391,
             "members": [
               {
                 "constant": false,
-                "id": 1341,
+                "id": 1390,
                 "mutability": "mutable",
                 "name": "status",
                 "nameLocation": "112:6:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1342,
+                "scope": 1391,
                 "src": "99:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$1356",
+                  "typeIdentifier": "t_enum$_memberStatus_$1405",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 1340,
+                  "id": 1389,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1339,
+                    "id": 1388,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1356,
+                    "referencedDeclaration": 1405,
                     "src": "99:12:7"
                   },
-                  "referencedDeclaration": 1356,
+                  "referencedDeclaration": 1405,
                   "src": "99:12:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$1356",
+                    "typeIdentifier": "t_enum$_memberStatus_$1405",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -90,22 +90,22 @@
             "name": "member",
             "nameLocation": "85:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1361,
+            "scope": 1410,
             "src": "78:76:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.daoData",
-            "id": 1348,
+            "id": 1397,
             "members": [
               {
                 "constant": false,
-                "id": 1344,
+                "id": 1393,
                 "mutability": "mutable",
                 "name": "daoType",
                 "nameLocation": "187:7:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1348,
+                "scope": 1397,
                 "src": "180:14:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -114,7 +114,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1343,
+                  "id": 1392,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "180:6:7",
@@ -127,33 +127,33 @@
               },
               {
                 "constant": false,
-                "id": 1347,
+                "id": 1396,
                 "mutability": "mutable",
                 "name": "visibility",
                 "nameLocation": "216:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1348,
+                "scope": 1397,
                 "src": "201:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1351",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1400",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 1346,
+                  "id": 1395,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1345,
+                    "id": 1394,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1351,
+                    "referencedDeclaration": 1400,
                     "src": "201:14:7"
                   },
-                  "referencedDeclaration": 1351,
+                  "referencedDeclaration": 1400,
                   "src": "201:14:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1351",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1400",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -163,23 +163,23 @@
             "name": "daoData",
             "nameLocation": "165:7:7",
             "nodeType": "StructDefinition",
-            "scope": 1361,
+            "scope": 1410,
             "src": "158:74:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.visibilityEnum",
-            "id": 1351,
+            "id": 1400,
             "members": [
               {
-                "id": 1349,
+                "id": 1398,
                 "name": "privateDao",
                 "nameLocation": "265:10:7",
                 "nodeType": "EnumValue",
                 "src": "265:10:7"
               },
               {
-                "id": 1350,
+                "id": 1399,
                 "name": "publicDao",
                 "nameLocation": "282:9:7",
                 "nodeType": "EnumValue",
@@ -193,31 +193,31 @@
           },
           {
             "canonicalName": "Data.memberStatus",
-            "id": 1356,
+            "id": 1405,
             "members": [
               {
-                "id": 1352,
+                "id": 1401,
                 "name": "notMember",
                 "nameLocation": "327:9:7",
                 "nodeType": "EnumValue",
                 "src": "327:9:7"
               },
               {
-                "id": 1353,
+                "id": 1402,
                 "name": "invited",
                 "nameLocation": "343:7:7",
                 "nodeType": "EnumValue",
                 "src": "343:7:7"
               },
               {
-                "id": 1354,
+                "id": 1403,
                 "name": "asking",
                 "nameLocation": "357:6:7",
                 "nodeType": "EnumValue",
                 "src": "357:6:7"
               },
               {
-                "id": 1355,
+                "id": 1404,
                 "name": "active",
                 "nameLocation": "370:6:7",
                 "nodeType": "EnumValue",
@@ -231,24 +231,24 @@
           },
           {
             "canonicalName": "Data.membershipModeEnum",
-            "id": 1360,
+            "id": 1409,
             "members": [
               {
-                "id": 1357,
+                "id": 1406,
                 "name": "invite",
                 "nameLocation": "418:6:7",
                 "nodeType": "EnumValue",
                 "src": "418:6:7"
               },
               {
-                "id": 1358,
+                "id": 1407,
                 "name": "request",
                 "nameLocation": "431:7:7",
                 "nodeType": "EnumValue",
                 "src": "431:7:7"
               },
               {
-                "id": 1359,
+                "id": 1408,
                 "name": "open",
                 "nameLocation": "445:4:7",
                 "nodeType": "EnumValue",
@@ -261,7 +261,7 @@
             "src": "387:67:7"
           }
         ],
-        "scope": 1362,
+        "scope": 1411,
         "src": "60:397:7",
         "usedErrors": []
       }
@@ -272,15 +272,15 @@
     "absolutePath": "project:/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        1361
+        1410
       ]
     },
-    "id": 1362,
+    "id": 1411,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1338,
+        "id": 1387,
         "literals": [
           "solidity",
           "^",
@@ -297,9 +297,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1361,
+        "id": 1410,
         "linearizedBaseContracts": [
-          1361
+          1410
         ],
         "name": "Data",
         "nameLocation": "68:4:7",
@@ -307,37 +307,37 @@
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 1342,
+            "id": 1391,
             "members": [
               {
                 "constant": false,
-                "id": 1341,
+                "id": 1390,
                 "mutability": "mutable",
                 "name": "status",
                 "nameLocation": "112:6:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1342,
+                "scope": 1391,
                 "src": "99:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$1356",
+                  "typeIdentifier": "t_enum$_memberStatus_$1405",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 1340,
+                  "id": 1389,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1339,
+                    "id": 1388,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1356,
+                    "referencedDeclaration": 1405,
                     "src": "99:12:7"
                   },
-                  "referencedDeclaration": 1356,
+                  "referencedDeclaration": 1405,
                   "src": "99:12:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$1356",
+                    "typeIdentifier": "t_enum$_memberStatus_$1405",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -347,22 +347,22 @@
             "name": "member",
             "nameLocation": "85:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1361,
+            "scope": 1410,
             "src": "78:76:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.daoData",
-            "id": 1348,
+            "id": 1397,
             "members": [
               {
                 "constant": false,
-                "id": 1344,
+                "id": 1393,
                 "mutability": "mutable",
                 "name": "daoType",
                 "nameLocation": "187:7:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1348,
+                "scope": 1397,
                 "src": "180:14:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -371,7 +371,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1343,
+                  "id": 1392,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "180:6:7",
@@ -384,33 +384,33 @@
               },
               {
                 "constant": false,
-                "id": 1347,
+                "id": 1396,
                 "mutability": "mutable",
                 "name": "visibility",
                 "nameLocation": "216:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1348,
+                "scope": 1397,
                 "src": "201:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1351",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1400",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 1346,
+                  "id": 1395,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1345,
+                    "id": 1394,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1351,
+                    "referencedDeclaration": 1400,
                     "src": "201:14:7"
                   },
-                  "referencedDeclaration": 1351,
+                  "referencedDeclaration": 1400,
                   "src": "201:14:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1351",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1400",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -420,23 +420,23 @@
             "name": "daoData",
             "nameLocation": "165:7:7",
             "nodeType": "StructDefinition",
-            "scope": 1361,
+            "scope": 1410,
             "src": "158:74:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.visibilityEnum",
-            "id": 1351,
+            "id": 1400,
             "members": [
               {
-                "id": 1349,
+                "id": 1398,
                 "name": "privateDao",
                 "nameLocation": "265:10:7",
                 "nodeType": "EnumValue",
                 "src": "265:10:7"
               },
               {
-                "id": 1350,
+                "id": 1399,
                 "name": "publicDao",
                 "nameLocation": "282:9:7",
                 "nodeType": "EnumValue",
@@ -450,31 +450,31 @@
           },
           {
             "canonicalName": "Data.memberStatus",
-            "id": 1356,
+            "id": 1405,
             "members": [
               {
-                "id": 1352,
+                "id": 1401,
                 "name": "notMember",
                 "nameLocation": "327:9:7",
                 "nodeType": "EnumValue",
                 "src": "327:9:7"
               },
               {
-                "id": 1353,
+                "id": 1402,
                 "name": "invited",
                 "nameLocation": "343:7:7",
                 "nodeType": "EnumValue",
                 "src": "343:7:7"
               },
               {
-                "id": 1354,
+                "id": 1403,
                 "name": "asking",
                 "nameLocation": "357:6:7",
                 "nodeType": "EnumValue",
                 "src": "357:6:7"
               },
               {
-                "id": 1355,
+                "id": 1404,
                 "name": "active",
                 "nameLocation": "370:6:7",
                 "nodeType": "EnumValue",
@@ -488,24 +488,24 @@
           },
           {
             "canonicalName": "Data.membershipModeEnum",
-            "id": 1360,
+            "id": 1409,
             "members": [
               {
-                "id": 1357,
+                "id": 1406,
                 "name": "invite",
                 "nameLocation": "418:6:7",
                 "nodeType": "EnumValue",
                 "src": "418:6:7"
               },
               {
-                "id": 1358,
+                "id": 1407,
                 "name": "request",
                 "nameLocation": "431:7:7",
                 "nodeType": "EnumValue",
                 "src": "431:7:7"
               },
               {
-                "id": 1359,
+                "id": 1408,
                 "name": "open",
                 "nameLocation": "445:4:7",
                 "nodeType": "EnumValue",
@@ -518,7 +518,7 @@
             "src": "387:67:7"
           }
         ],
-        "scope": 1362,
+        "scope": 1411,
         "src": "60:397:7",
         "usedErrors": []
       }
@@ -531,7 +531,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-09T05:39:05.507Z",
+  "updatedAt": "2022-05-09T22:28:13.201Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

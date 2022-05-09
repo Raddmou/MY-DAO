@@ -177,6 +177,26 @@ export const joinDao = (address: Address) => async (dispatch: any) => {
     }
 };
 
+export const acceptMember = (address: Address, addressMember: Address) => async (dispatch: any) => {
+    try {
+        const success = await daosAPI.acceptMember(address, addressMember);
+        if(success)
+            await getDaoNote(address);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const requestJoinDao = (address: Address) => async (dispatch: any) => {
+    try {
+        const success = await daosAPI.requestJoinDao(address);
+        if(success)
+            await getDaoNote(address);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 export const inviteToDao = (address: Address, addressToInvite: Address) => async (dispatch: any) => {
     try {
         console.log("inviteToDao " + addressToInvite);

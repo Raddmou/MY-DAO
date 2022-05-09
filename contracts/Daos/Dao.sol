@@ -20,14 +20,11 @@ contract Dao is Ownable {
   mapping(address => bool) private authorizedContracts;
   //member[] public members;
 
-  constructor (string memory _name, bool byInvitation, string memory _description, bool isPrivate)
+  constructor (string memory _name, uint8 membershipMode, string memory _description, bool isPrivate)
     {
       name = _name;
       description = _description;
-      if(byInvitation)
-          membershipModeMode = Data.membershipModeEnum.invite;
-      else
-          membershipModeMode = Data.membershipModeEnum.open;
+    membershipModeMode = Data.membershipModeEnum(membershipMode);
       if(isPrivate)
           visibility = Data.visibilityEnum.privateDao;
       else
@@ -37,6 +34,7 @@ contract Dao is Ownable {
   event MemberAdded(address newMember);
   event MemberInvited(address memberInvitor, address memberInvited);
   event MemberJoined(address memberJoined);
+  event MemberAskedJoin(address memberRequestor);
 
 //   struct member {
 //         memberStatus status;
@@ -123,11 +121,23 @@ contract Dao is Ownable {
         emit MemberAdded(addressMember);
     }
 
+    function acceptMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
+        members[addressMember].status = Data.memberStatus.active;
+        emit MemberAdded(addressMember);
+    }
+
     function inviteMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
         members[addressMember].status = Data.memberStatus.invited;
         memberAddresses[membersCount] = addressMember;
         ++membersCount;
         emit MemberInvited(msg.sender, addressMember);
+    }
+
+    function requestJoin() public onlyNotActiveMembers() {
+        members[msg.sender].status = Data.memberStatus.asking;
+        memberAddresses[membersCount] = msg.sender;
+        ++membersCount;
+        emit MemberAskedJoin(msg.sender);
     }
 
     function isActiveMember(address addressMember) public view returns (bool){

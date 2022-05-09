@@ -141,10 +141,10 @@ const Home: React.FC = () => {
                                             size="small"
                                             fullWidth
                                             multiline
-                                            rows={4}
+                                            rows={6}
                                             id="note"
                                             name="note"
-                                            label="Note"
+                                            label="Rules"
                                             disabled
                                             value={daoNote.description}
                                         />

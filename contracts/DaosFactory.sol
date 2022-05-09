@@ -32,8 +32,8 @@ contract DaosFactory is Ownable {
     return (membershipDaos[_addressMember]);
   }
 
-  function createDAO(string calldata _name, bool _byInvitation, string calldata _description, bool isPrivate) public {
-    Dao dao = new Dao(_name, _byInvitation, _description, isPrivate);
+  function createDAO(string calldata _name, uint8 membershipMode, string calldata _description, bool isPrivate) public {
+    Dao dao = new Dao(_name, membershipMode, _description, isPrivate);
     dao.authorizeContract(address(this));
     dao.addMember(msg.sender);
     deployedDao memory _dao;

@@ -11,7 +11,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Box from '@mui/material/Box';
 import { deepOrange, yellow } from '@mui/material/colors';
 
-import { getDaoNote, setDaoNote, joinDao } from '../../redux/reducers/actions';
+import { getDaoNote, setDaoNote, joinDao, requestJoinDao } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
 import { Dao } from '../../types';
 import Tooltip from '@mui/material/Tooltip';
@@ -35,8 +35,13 @@ const DaoCard = ({ dao }: DaoCardProps) => {
 
     const handleClickJoinDao = () => {
         dispatch(joinDao(address));
-        dispatch(getDaoNote(address));
+        //dispatch(getDaoNote(address));
     }
+    const handleClickRequestJoinDao = () => {
+        dispatch(requestJoinDao(address));
+        //dispatch(getDaoNote(address));
+    }
+    
     const handleClickJoinDaoInvitation = () => {
         dispatch(joinDao(address));
         // dispatch(getDaoNote(address));
@@ -70,6 +75,22 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                                     onClick={handleClick}/>
                 </Tooltip>
 
+                {
+                    membershipMode == "1" && member == 2 && (
+                        <Tooltip title="Asking join Dao">
+                            <Person fontSize="large" color="secondary"
+                           />
+                        </Tooltip>
+                    )
+                }
+                {
+                    membershipMode == "1" && member == 0 && (
+                        <Tooltip title="Request join Dao">
+                            <GroupAddIcon fontSize="large" color="primary"
+                            onClick={handleClickRequestJoinDao}/>
+                        </Tooltip>
+                    )
+                }
                 {
                     membershipMode == "2" && member == 0 && (
                         <Tooltip title="Join Dao">

@@ -27,6 +27,7 @@ const AddDao: React.FC = () => {
     const { account } = useAppSelector((state: any) => state.application);
     const dispatch = useAppDispatch();
     const handleSubmit = (formValues: AddDaoFormValues, { resetForm }: any): void => {
+        console.log("add dao membership " + formValues.membershipMode);
         dispatch(
             addNewDao(formValues)
         );
@@ -181,7 +182,7 @@ const AddDao: React.FC = () => {
                         >
                             <FormControlLabel value="0" control={<Radio />} label="Invitation" />                          
                             <FormControlLabel value="2" control={<Radio />} label="Open" /> 
-                            <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
+                            <FormControlLabel value="1" control={<Radio />} label="Request"/>
                         </RadioGroup>
                     </FormControl>
                     </div>
@@ -231,9 +232,9 @@ const AddDao: React.FC = () => {
                             fullWidth
                             id="note"
                             name="note"
-                            label="Note"
+                            label="Rules"
                             multiline
-                            rows={4}
+                            rows={6}
                             value={formik.values.note}
                             onChange={formik.handleChange}
                             error={touched.note && Boolean(errors.note)}

@@ -244,9 +244,9 @@ export const daosAPI = {
     addNewDao: async (dao: any): Promise<Dao> => {
         const contract = await contractFactoryProvider.getContract();
         const { name, visibility, description, membershipMode } = dao;
-        const byInvitation = membershipMode == 0;
+        //const byInvitation = membershipMode == 0;
         const { events } =  await contract.methods
-            .createDAO(name, byInvitation, description, visibility)
+            .createDAO(name, membershipMode, description, visibility)
             //.createDAO(name, false, description, visibility)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
@@ -278,6 +278,42 @@ export const daosAPI = {
         //         from: (window as any).ethereum.selectedAddress 
         //     });
         // console.log("success " + success.returnValues);
+        return true;
+        
+    },
+
+    acceptMember: async (address: Address, addressMember: Address): Promise<boolean> => {
+        const contractDao = await contractDaoProvider.getContract(address);
+
+        await contractDao.methods.acceptMember(addressMember).send({ 
+            from: (window as any).ethereum.selectedAddress })
+			.on("receipt",function(receipt){
+				console.log(receipt);  
+                return true;
+			})
+			.on("error",function(error, receipt){
+				console.log(error);
+				console.log(receipt);
+                return false;
+			});		
+        return true;
+        
+    },
+
+    requestJoinDao: async (address: Address): Promise<boolean> => {
+        const contractDao = await contractDaoProvider.getContract(address);
+
+        await contractDao.methods.requestJoin().send({ 
+            from: (window as any).ethereum.selectedAddress })
+			.on("receipt",function(receipt){
+				console.log(receipt);  
+                return true;
+			})
+			.on("error",function(error, receipt){
+				console.log(error);
+				console.log(receipt);
+                return false;
+			});		
         return true;
         
     },
