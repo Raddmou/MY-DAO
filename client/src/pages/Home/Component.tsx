@@ -146,7 +146,7 @@ const Home: React.FC = () => {
                                             name="note"
                                             label="Rules"
                                             disabled
-                                            value={daoNote.description}
+                                            value={daoNote.note}
                                         />
                                 </div>   
                                 { daoNote.members && (
