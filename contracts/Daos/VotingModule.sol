@@ -20,15 +20,10 @@ contract VotingYesNo is Ownable {
         string name;
         string description;
         bool isTerminated;
-        // voteResult[] votes;
         mapping(address => voteResult) votes;
-        voteSessionResult result;
+        voteResult[] voteResults;
         durationEnum duration;
         bool isCreated;
-    }
-
-    struct voteSessionResult {
-
     }
 
     struct voteResult {
@@ -79,6 +74,7 @@ contract VotingYesNo is Ownable {
 
         voteSessions[voteSessionsCount].votes[msg.sender].response = responseEnum(response);
         voteSessions[voteSessionsCount].votes[msg.sender].voted = true;
+        voteSessions[voteSessionsCount].votes[msg.sender].voteResults.push(voteResult(responseEnum(response), msg.sender));
         
         emit Voted(msg.sender, voteSessionId, response);
     }
