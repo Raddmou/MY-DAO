@@ -14,8 +14,8 @@ contract DaoBase is Ownable {
 
   mapping(address => bool) private authorizedContracts;
   mapping(address => bool) owners;
-  mapping(uint256 => bytes32) code;
-  mapping(bytes32 => Data.Module) modules;
+  mapping(uint256 => bytes32) public code;
+  mapping(bytes32 => Data.Module) public modules;
 
   modifier onlyOwners() {
     require(owners[msg.sender], "Invalid User");
