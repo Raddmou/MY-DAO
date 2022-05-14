@@ -17,7 +17,8 @@ contract DaoBase is Ownable {
   //string[] public modules;
   mapping(string => Module) modules;
 
-  
+  //type: adhesion > membership - nft - token
+  //type: vote > vote yes no - vote assemblée generale...
 
   // modifier onlyActiveMembersOrAuthorizeContracts() {
   //       require(members[msg.sender].status == Data.memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
@@ -48,7 +49,7 @@ contract DaoBase is Ownable {
       visibility = Data.visibilityEnum(_visibility);
   }
 
-  function activateModule(ModuleType _moduleType, string memory code) external {
+  function activateModule(ModuleType _moduleType, string memory code, address _moduleAddress) external {
       modules[code].isActive = true;
       modules[code].moduleAddress = _moduleAddress;
       emit ModuleAdded(code, _moduleAddress, msg.sender);

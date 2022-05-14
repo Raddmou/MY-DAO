@@ -109,6 +109,7 @@ contract Dao is Ownable {
     function getMemberInfo(address _member) external view returns(Data.member memory) {
         return(members[_member]);
     }
+
     function getInfoDao() external view returns(Data.daoData memory info) {
         info.daoType = "DAO, Invite or Request";
         info.visibility = visibility;
