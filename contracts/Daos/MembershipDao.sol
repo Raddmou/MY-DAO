@@ -1,105 +1,105 @@
-// // SPDX-License-Identifier: MIT
-// pragma solidity ^0.8.9;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
 
-// import "../../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-// import "../../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "../../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "../../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "../Data.sol";
 
-// //is DaosFactory
-// contract MembershipDao is Ownable {
-//   using SafeMath for uint256;
-//   uint256 public id;
-//   mapping(address => member) public members;
-//   membershipModeEnum public membershipModeMode;
-//   mapping(address => bool) private authorizedContracts;
-//   //member[] public members;
+//is DaosFactory
+contract MembershipDao is Ownable {
+  using SafeMath for uint256;
+  string public code;
+  uint256 public membersCount;
+  mapping(uint256 => address) public memberAddresses;
+  mapping(address => Data.member) public members;
+  Data.membershipModeEnum public membershipModeMode;
+  Data.visibilityEnum public visibility;
+  mapping(address => bool) private authorizedContracts;
+  //member[] public members;
 
-//   constructor (string memory _name, bool byInvitation, string memory _description)
-//     {
-//       name = _name;
-//       description = _description;
-//       if(byInvitation)
-//           membershipModeMode = membershipModeEnum.invite;
-//       else
-//           membershipModeMode = membershipModeEnum.open;
-//     }
+  constructor (uint8 membershipMode)
+  {
+    membershipModeMode = Data.membershipModeEnum(membershipMode);
+  }
 
-//   event MemberAdded(address newMember);
-//   event MemberInvited(address memberInvitor, address memberInvited);
-//   event MemberJoined(address memberJoined);
+  event MemberAdded(address newMember, address adderAddress);
+  event MemberAccepted(address newMember, address acceptorAddress);
+  event MemberInvited(address memberInvited, address memberInvitor);
+  event MemberJoined(address memberJoined);
+  event MemberAskedJoin(address memberRequestor);
 
-//   struct member {
-//         memberStatus status;
-//         //address memberAddress;
-//     }
+    modifier onlyActiveMembersOrAuthorizeContracts() {
+        require(members[msg.sender].status == Data.memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
+        _;
+    }
 
-//   enum memberStatus {
-//         notMember,
-//         invited,
-//         asking,
-//         active
-//     }
+    modifier onlyNotActiveMembers() {
+        require(members[msg.sender].status != Data.memberStatus.active, "Not authorized");
+        _;
+    }
 
-//     enum membershipModeEnum {
-//         invite,
-//         request,
-//         open
-//     }
+    modifier onlyAuthorizeContracts() {
+        require(authorizedContracts[msg.sender] == true, "Not authorized");
+        _;
+    }
 
-//     modifier onlyActiveMembersOrAuthorizeContracts() {
-//         require(members[msg.sender].status == memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
-//         _;
-//     }
+    modifier onlyAuthorizeContractsOrOwner() {
+        require(((authorizedContracts[msg.sender] == true) || msg.sender == owner()), "Not authorized");
+        _;
+    }
 
-//     modifier onlyNotActiveMembers() {
-//         require(members[msg.sender].status != memberStatus.active, "Not authorized");
-//         _;
-//     }
+    function getMemberInfo(address _member) external view returns(Data.member memory) {
+        return(members[_member]);
+    }
 
-//     modifier onlyAuthorizeContracts() {
-//         require(authorizedContracts[msg.sender] == true, "Not authorized");
-//         _;
-//     }
+    // function getInfoDao() external view returns(Data.daoData memory info) {
+    //     info.daoType = "DAO, Invite or Request";
+    //     info.visibility = visibility;
+    // }
 
-//     modifier onlyAuthorizeContractsOrOwner() {
-//         require(((authorizedContracts[msg.sender] == true) || msg.sender == owner()), "Not authorized");
-//         _;
-//     }
+    function addMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
+        members[addressMember].status = Data.memberStatus.active;
+        memberAddresses[membersCount] = addressMember;
+        ++membersCount;
+        emit MemberAdded(addressMember, msg.sender);
+    }
 
-//     function setMode(membershipModeEnum _mode) public onlyOwner() {
-//        membershipModeMode = _mode;
-//     }
+    function acceptMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
+        members[addressMember].status = Data.memberStatus.active;
+        emit MemberAccepted(addressMember, msg.sender);
+    }
 
-//     function getMemberShipMode() public view returns(membershipModeEnum) {
-//        return membershipModeMode;
-//     }
+    function inviteMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
+        members[addressMember].status = Data.memberStatus.invited;
+        memberAddresses[membersCount] = addressMember;
+        ++membersCount;
+        emit MemberInvited(msg.sender, addressMember);
+    }
 
-//     function addMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
-//         members[addressMember].status = memberStatus.active;
-//         emit MemberAdded(addressMember);
-//     }
+    function requestJoin() public onlyNotActiveMembers() {
+        members[msg.sender].status = Data.memberStatus.asking;
+        memberAddresses[membersCount] = msg.sender;
+        ++membersCount;
+        emit MemberAskedJoin(msg.sender);
+    }
 
-//     function inviteMember(address addressMember) public onlyActiveMembersOrAuthorizeContracts() {
-//         members[addressMember].status = memberStatus.invited;
-//         emit MemberInvited(msg.sender, addressMember);
-//     }
+    function isActiveMember(address addressMember) public view returns (bool){
+        return members[addressMember].status == Data.memberStatus.active;
+    }
 
-//     function isActiveMember(address addressMember) public view returns (bool){
-//         return members[addressMember].status == memberStatus.active;
-//     }
+    function join() public onlyNotActiveMembers() {
+        require((members[msg.sender].status == Data.memberStatus.invited && membershipModeMode == Data.membershipModeEnum.invite)
+         || (members[msg.sender].status == Data.memberStatus.notMember && membershipModeMode == Data.membershipModeEnum.open)
+                , "Impossible to join");
+        members[msg.sender].status = Data.memberStatus.active;
+        emit MemberJoined(msg.sender);
+    }
 
-//     function join() public onlyNotActiveMembers() {
-//         require((members[msg.sender].status == memberStatus.invited && membershipModeMode == membershipModeEnum.invite)
-//          || (members[msg.sender].status == memberStatus.notMember && membershipModeMode == membershipModeEnum.open)
-//                 , "Impossible to join");
-//         members[msg.sender].status = memberStatus.active;
-//         emit MemberJoined(msg.sender);
-//     }
+    function authorizeContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
+        authorizedContracts[_contractAddress] = true;
+    }
 
-//     function authorizeContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
-//         authorizedContracts[_contractAddress] = true;
-//     }
-
-//     function denyContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
-//         authorizedContracts[_contractAddress] = false;
-//     }
-// }
+    function denyContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
+        authorizedContracts[_contractAddress] = false;
+    }
+}
