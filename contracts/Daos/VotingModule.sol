@@ -71,6 +71,7 @@ contract VotingYesNo is Ownable {
         require(voteSessions[voteSessionId].isCreated, "Vote session not found");
         require(isVoteSessionDurationExpired(voteSessionId), "Vote session terminated");
         require(hasVoted(voteSessionId, msg.sender), "Already voted");
+        require(membersDao.isActiveMember(msg.sender), "Not DAO member");
 
         voteSessions[voteSessionsCount].votes[msg.sender].response = responseEnum(response);
         voteSessions[voteSessionsCount].votes[msg.sender].voted = true;
