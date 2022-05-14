@@ -6,6 +6,7 @@ import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 import './interfaces/IDaosFactory.sol';
 import './DaoBase.sol';
+import './Modules/Implementations/MembershipDao.sol';
 
 //is DaosFactory
 contract DaosFactory is Ownable {
@@ -60,16 +61,15 @@ contract DaosFactory is Ownable {
   //   return (membershipDaos[_addressMember]);
   // }
 
-  function createDAO(string calldata _name, uint8 membershipMode, string calldata _description, bool isPrivate) public {
-    Dao dao = new Dao(_name, membershipMode, _description, isPrivate);
+  function createDAO(string calldata _name, uint8 membershipMode, string calldata _description, Data.visibilityEnum _visibility) public {
+    DaoBase dao = new DaoBase(_name, _description, _visibility);
     dao.authorizeContract(address(this));
-    dao.addMember(msg.sender);
+    MembershipDao memberModule = new MembershipDao(membershipMode);
+    dao.addModule(dao.hash("MemberModule"), address(memberModule));
     deployedDao memory _dao;
     _dao.owner = msg.sender;
     _dao.daoAddress = address(dao);
-    daos.push(_dao);
-    //membershipDaos[msg.sender].push(_dao.daoAddress);  
-    //TODO: create membership module
+    daos.push(_dao); 
     dao.transferOwnership(msg.sender);
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }

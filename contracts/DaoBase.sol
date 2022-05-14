@@ -49,10 +49,10 @@ contract DaoBase is Ownable {
   event DaoCreated(address daoAddress, address creatorAddress);
   event ModuleAdded(string moduleCode, address moduleAddress, address adderAddress);
 
-  constructor(string memory _name, string memory _description, uint8 _visibility) {
+  constructor(string memory _name, string memory _description, Data.visibilityEnum _visibility) {
     name = _name;
     description = _description;
-    visibility = Data.visibilityEnum(_visibility);
+    visibility = _visibility;
     owners[msg.sender] = true;
   }
 
@@ -71,11 +71,11 @@ contract DaoBase is Ownable {
 //       emit ModuleAdded(code, _moduleAddress, msg.sender);
 //   }
 
-  function addModule(bytes8 _code, address _moduleAddr) public onlyOwners() {
-    modules[_code].isActive = true;
-    modules[_code].id = modulesCount;
-    modules[_code].moduleAddress = _moduleAddr;
-    moduleType[modulesCount] = _code;
+  function addModule(bytes8 _type, address _moduleAddr) public onlyOwners() {
+    modules[_type].isActive = true;
+    modules[_type].id = modulesCount;
+    modules[_type].moduleAddress = _moduleAddr;
+    moduleType[modulesCount] = _type;
     ++modulesCount;
   }
 

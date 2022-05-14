@@ -21,6 +21,7 @@ contract MembershipDao is Ownable {
   constructor (uint8 membershipMode)
   {
     membershipModeMode = Data.membershipModeEnum(membershipMode);
+    addMember(msg.sender);
   }
 
   event MemberAdded(address newMember, address adderAddress);
