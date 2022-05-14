@@ -110,6 +110,7 @@ const Home: React.FC = () => {
                                     />
                                     
                                 </div>
+                                {daoNote.modules?.some(a => a.type = "MemberModule") && (
                                 <div>
                                     <FormControl>
                                         <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
@@ -124,7 +125,7 @@ const Home: React.FC = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
                                         </RadioGroup>
                                     </FormControl>
-                                </div>
+                                </div>)}
                                 <div className="textInput">
                                     <TextField
                                         size="small"
@@ -149,7 +150,7 @@ const Home: React.FC = () => {
                                             value={daoNote.note}
                                         />
                                 </div>   
-                                { daoNote.members && (
+                                { daoNote.modules?.some(a => a.type = "MemberModule") && daoNote.members && (
                                         <div className='listContainer'>
                                             
                                                 <Typography variant="h5" component="div">Members</Typography>

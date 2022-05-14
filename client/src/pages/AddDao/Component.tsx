@@ -170,7 +170,10 @@ const AddDao: React.FC = () => {
                         <Typography>Public</Typography>
                     </Stack>
                     </div>*/}
-                    <div> 
+
+
+
+                    {/* <div> 
                     <FormControl>
                         <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
                         <RadioGroup
@@ -185,7 +188,11 @@ const AddDao: React.FC = () => {
                             <FormControlLabel value="1" control={<Radio />} label="Request"/>
                         </RadioGroup>
                     </FormControl>
-                    </div>
+                    </div> */}
+
+
+
+
                     {/* <div className="textInput">
                         <TextField
                             size="small"

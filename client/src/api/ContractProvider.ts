@@ -1,6 +1,8 @@
 import Web3 from 'web3';
 import daoFactoryContract from "../contracts/DaosFactory.json";
-import daoContract from "../contracts/Dao.json";
+import daoContract from "../contracts/DaoBase.json";
+import membershipContract from "../contracts/MembershipModule.json";
+import votingContract from "../contracts/VotingYesNo.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
 
@@ -45,6 +47,32 @@ export const contractDaoProvider = {
         const web3 = new Web3(provider);
         const networkId = await web3.eth.net.getId();
         const contract = new web3.eth.Contract(daoContract.abi as any, address);
+
+        return contract;
+    },    
+}
+
+export const contractMembershipModuleProvider = {
+    getContract: async (address): Promise<Contract> => {
+        const provider = 
+        (window as any).ethereum || 
+        (window as any).web3?.currentProvider;
+
+        const web3 = new Web3(provider);
+        const contract = new web3.eth.Contract(membershipContract.abi as any, address);
+
+        return contract;
+    },    
+}
+
+export const contractVotingYesNoModuleProvider = {
+    getContract: async (address): Promise<Contract> => {
+        const provider = 
+        (window as any).ethereum || 
+        (window as any).web3?.currentProvider;
+
+        const web3 = new Web3(provider);
+        const contract = new web3.eth.Contract(votingContract.abi as any, address);
 
         return contract;
     },    

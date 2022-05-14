@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 import './interfaces/IDaosFactory.sol';
 import './DaoBase.sol';
-import './Modules/Implementations/MembershipDao.sol';
 
 //is DaosFactory
 contract DaosFactory is Ownable {
@@ -61,11 +60,11 @@ contract DaosFactory is Ownable {
   //   return (membershipDaos[_addressMember]);
   // }
 
-  function createDAO(string calldata _name, uint8 membershipMode, string calldata _description, Data.visibilityEnum _visibility) public {
+  function createDAO(string calldata _name, string calldata _description, Data.visibilityEnum _visibility) public {
     DaoBase dao = new DaoBase(_name, _description, _visibility);
     dao.authorizeContract(address(this));
-    MembershipDao memberModule = new MembershipDao(membershipMode);
-    dao.addModule(dao.hash("MemberModule"), address(memberModule));
+    // MembershipDao memberModule = new MembershipDao(membershipMode);
+    // dao.addModule(dao.hash("MemberModule"), address(memberModule));
     deployedDao memory _dao;
     _dao.owner = msg.sender;
     _dao.daoAddress = address(dao);

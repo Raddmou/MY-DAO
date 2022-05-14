@@ -1,0 +1,275 @@
+{
+  "contractName": "IModule",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getCode",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Modules/Interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0xf03ef06715fbf5ac125e9ba6db4aac8720579b0a71cb98484651711ec015fdf7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://19bfd003de4be210976a0b04db6f6e50061cafd79475344f2fd722cd518fff86\",\"dweb:/ipfs/QmXdwwG53MvtuoxvwnC2Gnp8Fr3R9LZFc3448Gjrpg8CBh\"]},\"project:/contracts/Modules/Interfaces/IModule.sol\":{\"keccak256\":\"0x66b3ec9906f94a07837466b9c5a53add7f7b74e733cd9e00976e86958b335d50\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://37a46f41906b42bca86de2e19dabeee2e3c590ef499392b743f4dc2b2852ad5c\",\"dweb:/ipfs/QmaPqvShLYNzqWbjsDvAMpfiChQ6TynMiUTH72eLMWtpoT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nimport \"../../Data.sol\";\r\n\r\ninterface IModule {\r\n  function getCode() external view returns(string memory);\r\n}",
+  "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Modules\\Interfaces\\IModule.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Modules/Interfaces/IModule.sol",
+    "exportedSymbols": {
+      "Data": [
+        1065
+      ],
+      "IModule": [
+        2196
+      ]
+    },
+    "id": 2197,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2189,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".9"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:15"
+      },
+      {
+        "absolutePath": "project:/contracts/Data.sol",
+        "file": "../../Data.sol",
+        "id": 2190,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2197,
+        "sourceUnit": 1066,
+        "src": "60:24:15",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IModule",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2196,
+        "linearizedBaseContracts": [
+          2196
+        ],
+        "name": "IModule",
+        "nameLocation": "98:7:15",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "ea879634",
+            "id": 2195,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCode",
+            "nameLocation": "120:7:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2191,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "127:2:15"
+            },
+            "returnParameters": {
+              "id": 2194,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2193,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2195,
+                  "src": "152:13:15",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2192,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "152:6:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "151:15:15"
+            },
+            "scope": 2196,
+            "src": "111:56:15",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2197,
+        "src": "88:82:15",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:137:15"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/Modules/Interfaces/IModule.sol",
+    "exportedSymbols": {
+      "Data": [
+        1065
+      ],
+      "IModule": [
+        2196
+      ]
+    },
+    "id": 2197,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2189,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".9"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:15"
+      },
+      {
+        "absolutePath": "project:/contracts/Data.sol",
+        "file": "../../Data.sol",
+        "id": 2190,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 2197,
+        "sourceUnit": 1066,
+        "src": "60:24:15",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IModule",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2196,
+        "linearizedBaseContracts": [
+          2196
+        ],
+        "name": "IModule",
+        "nameLocation": "98:7:15",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "ea879634",
+            "id": 2195,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCode",
+            "nameLocation": "120:7:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2191,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "127:2:15"
+            },
+            "returnParameters": {
+              "id": 2194,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2193,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2195,
+                  "src": "152:13:15",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2192,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "152:6:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "151:15:15"
+            },
+            "scope": 2196,
+            "src": "111:56:15",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2197,
+        "src": "88:82:15",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:137:15"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-05-14T21:26:06.272Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

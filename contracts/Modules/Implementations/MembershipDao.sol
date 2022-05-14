@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "../../Data.sol";
 
 //is DaosFactory
-contract MembershipDao is Ownable {
+contract MembershipModule is Ownable {
   using SafeMath for uint256;
   bytes8 public moduleCode = bytes8(keccak256(abi.encode("MembershipDao")));
   bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
