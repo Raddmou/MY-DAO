@@ -8,8 +8,8 @@ import "../Data.sol";
 //is DaosFactory
 contract MembershipDao is Ownable {
   using SafeMath for uint256;
-  string public code;
-  uint256 public membersCount;
+  bytes8 public code = bytes8(keccak256(abi.encode("MembershipDao")));
+  uint256 private membersCount;
   mapping(uint256 => address) public memberAddresses;
   mapping(address => Data.member) public members;
   Data.membershipModeEnum public membershipModeMode;
@@ -50,6 +50,12 @@ contract MembershipDao is Ownable {
 
     function getMemberInfo(address _member) external view returns(Data.member memory) {
         return(members[_member]);
+    }
+    function getAddrById(uint256 id) external view returns(address) {
+        return memberAddresses[id];
+    }
+    function getMembersCount() external view returns(uint256) {
+        return membersCount;
     }
 
     // function getInfoDao() external view returns(Data.daoData memory info) {

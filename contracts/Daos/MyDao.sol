@@ -17,7 +17,7 @@ contract MyDao {
   //   DaoVotingSystem
   // }
 
-  constructor(string memory _name, bool byInvitation, string memory _description, bool isPrivate, address[] memory _modules) {
+  constructor(string memory _name, string memory _description, address[] memory _modules) {
     name = _name;
     description = _description;
     // Dao dao = new Dao(_name, byInvitation, _description, isPrivate);

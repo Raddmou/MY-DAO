@@ -14,8 +14,8 @@ contract DaoBase is Ownable {
 
   mapping(address => bool) private authorizedContracts;
   mapping(address => bool) owners;
-  mapping(uint256 => bytes32) public code;
-  mapping(bytes32 => Data.Module) public modules;
+  mapping(uint256 => bytes8) public code;
+  mapping(bytes8 => Data.Module) public modules;
 
   modifier onlyOwners() {
     require(owners[msg.sender], "Invalid User");
@@ -56,8 +56,8 @@ contract DaoBase is Ownable {
   //     modules[code].moduleAddress = _moduleAddress;
   //     emit ModuleAdded(code, _moduleAddress, msg.sender);
   // }
-  function hash(string memory _name) public pure returns(bytes32) {
-    return (keccak256(abi.encodePacked(_name)));
+  function hash(string memory _name) public pure returns(bytes8) {
+    return (bytes8(keccak256(abi.encode(_name))));
   }
   
 //   function activateModule(address _moduleAddress, string memory code) external {
@@ -66,7 +66,7 @@ contract DaoBase is Ownable {
 //       emit ModuleAdded(code, _moduleAddress, msg.sender);
 //   }
 
-  function addModule(bytes32 _code, address _moduleAddr) public onlyOwners() {
+  function addModule(bytes8 _code, address _moduleAddr) public onlyOwners() {
     modules[_code].isActive = true;
     modules[_code].id = modulesCount;
     modules[_code].moduleAddress = _moduleAddr;
@@ -83,8 +83,8 @@ contract DaoBase is Ownable {
   }
 
   // get info
-  function getAllModuleHash() public view returns(bytes32[] memory allModuleHash) {
-    allModuleHash = new bytes32[](modulesCount);
+  function getAllModuleHash() public view returns(bytes8[] memory allModuleHash) {
+    allModuleHash = new bytes8[](modulesCount);
     for (uint256 i = 0; i < modulesCount; ++i) {
       allModuleHash[i] = code[i];
     }
