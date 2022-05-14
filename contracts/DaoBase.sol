@@ -1,10 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "./Dao.sol";
-import "../Data.sol";
-import "./Interfaces/IDao.sol";
-import "./Interfaces/IModule.sol";
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "./Data.sol";
 
 contract DaoBase is Ownable {
   string public name;
@@ -14,8 +12,15 @@ contract DaoBase is Ownable {
 
   mapping(address => bool) private authorizedContracts;
   mapping(address => bool) owners;
-  mapping(uint256 => bytes8) public code;
+  mapping(uint256 => bytes8) public moduleType;
   mapping(bytes8 => Data.Module) public modules;
+  // type => module {code, type, descr}
+  // member => module { "nft member", "", ""}
+
+  //membership => module
+  //nft member => module
+
+  //type => module
 
   modifier onlyOwners() {
     require(owners[msg.sender], "Invalid User");
@@ -70,7 +75,7 @@ contract DaoBase is Ownable {
     modules[_code].isActive = true;
     modules[_code].id = modulesCount;
     modules[_code].moduleAddress = _moduleAddr;
-    code[modulesCount] = _code;
+    moduleType[modulesCount] = _code;
     ++modulesCount;
   }
 
@@ -86,17 +91,17 @@ contract DaoBase is Ownable {
   function getAllModuleHash() public view returns(bytes8[] memory allModuleHash) {
     allModuleHash = new bytes8[](modulesCount);
     for (uint256 i = 0; i < modulesCount; ++i) {
-      allModuleHash[i] = code[i];
+      allModuleHash[i] = moduleType[i];
     }
   }
   function getAllModulesData() public view returns(Data.Module[] memory allModuleData) {
     allModuleData = new Data.Module[](modulesCount);
     for (uint256 i = 0; i < modulesCount; ++i) {
-      allModuleData[i] = modules[code[i]];
+      allModuleData[i] = modules[moduleType[i]];
     }
   }
   function getModuleData(uint256 _moduleId) public view returns(Data.Module memory) {
-    return(modules[code[_moduleId]]);
+    return(modules[moduleType[_moduleId]]);
   }
   // function memberInfo(address _member) external view returns(Data.member memory) {
   //   return(IDao(modules[0]).getMemberInfo(_member));

@@ -46,7 +46,8 @@ library Data {
     address moduleAddress;
     // IModule module;
     bool isActive;
-    ModuleType moduleType;
+    bytes8 moduleType; //member
+    bytes8 moduleCode; //membership
     string moduleInfo;
   }
 

@@ -1,14 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "../../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "../../node_modules/@openzeppelin/contracts/access/Ownable.sol";
-import "../Data.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "../../Data.sol";
 
 //is DaosFactory
 contract MembershipDao is Ownable {
   using SafeMath for uint256;
-  bytes8 public code = bytes8(keccak256(abi.encode("MembershipDao")));
+  bytes8 public moduleCode = bytes8(keccak256(abi.encode("MembershipDao")));
+  bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
   uint256 private membersCount;
   mapping(uint256 => address) public memberAddresses;
   mapping(address => Data.member) public members;

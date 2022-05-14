@@ -5,8 +5,7 @@ import "../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 import './interfaces/IDaosFactory.sol';
-import './Daos/Dao.sol';
-import "./Daos/Interfaces/IModule.sol";
+import './DaoBase.sol';
 
 //is DaosFactory
 contract DaosFactory is Ownable {
@@ -50,12 +49,12 @@ contract DaosFactory is Ownable {
     return daos;
   }
 
-  function activateModule(address _daoAdress, string memory _moduleType, string memory code) public {
-    require(availableModules[code].isActive == true, "Module not found");
-    modulesDaos[_daoAdress][_moduleType].code = code;
-    modulesDaos[_daoAdress][_moduleType].isActive = true;
-    IModule module = new IModule();
-  }
+  // function activateModule(address _daoAdress, string memory _moduleType, string memory code) public {
+  //   require(availableModules[code].isActive == true, "Module not found");
+  //   modulesDaos[_daoAdress][_moduleType].code = code;
+  //   modulesDaos[_daoAdress][_moduleType].isActive = true;
+  //   IModule module = new IModule();
+  // }
 
   //  function getDaosAddressByMember(address _addressMember) external view returns (address[] memory) {
   //   return (membershipDaos[_addressMember]);
@@ -70,6 +69,7 @@ contract DaosFactory is Ownable {
     _dao.daoAddress = address(dao);
     daos.push(_dao);
     //membershipDaos[msg.sender].push(_dao.daoAddress);  
+    //TODO: create membership module
     dao.transferOwnership(msg.sender);
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }

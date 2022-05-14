@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "../../node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "../../node_modules/@openzeppelin/contracts/access/Ownable.sol";
-import "../Data.sol";
-import "../DaoBase.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "../../Data.sol";
+import "../Interfaces/IMembersDAO.sol";
+import "../../DaoBase.sol";
 
 //is DaosFactory
 contract VotingYesNo is Ownable {
@@ -12,10 +13,10 @@ contract VotingYesNo is Ownable {
     DaoBase private dao;
     IMembersDao private membersDao;
     uint256 public voteSessionsCount;
-    mapping(uint256 => vote) public voteSessions;
+    mapping(uint256 => voteSession) public voteSessions;
 
     struct voteSession {
-        address creatorAdress;
+        address creatorAddress;
         uint256 creationTime;
         string name;
         string description;
@@ -56,7 +57,7 @@ contract VotingYesNo is Ownable {
         membersDao = IMembersDao(membersDaoAddress);
     }
 
-    function createVote(string memory name, string memory description, uint8 duration) public onlyActiveMembersOrAuthorizeContracts() {
+    function createVote(string memory name, string memory description, uint8 duration) public {
         ++voteSessionsCount;
         voteSessions[voteSessionsCount].isTerminated = false;
         voteSessions[voteSessionsCount].name = name;
@@ -67,7 +68,7 @@ contract VotingYesNo is Ownable {
         emit VoteSessionCreated(msg.sender, name);
     }
 
-    function vote(uint256 voteSessionId, uint8 response) public onlyActiveMembersOrAuthorizeContracts() {
+    function vote(uint256 voteSessionId, uint8 response) public {
         require(voteSessions[voteSessionId].isCreated, "Vote session not found");
         require(isVoteSessionDurationExpired(voteSessionId), "Vote session terminated");
         require(hasVoted(voteSessionId, msg.sender), "Already voted");
@@ -75,9 +76,9 @@ contract VotingYesNo is Ownable {
 
         voteSessions[voteSessionsCount].votes[msg.sender].response = responseEnum(response);
         voteSessions[voteSessionsCount].votes[msg.sender].voted = true;
-        voteSessions[voteSessionsCount].votes[msg.sender].voteResults.push(voteResult(responseEnum(response), msg.sender));
+        voteSessions[voteSessionsCount].voteResults.push(voteResult(responseEnum(response), msg.sender, true));
         
-        emit Voted(msg.sender, voteSessionId, response);
+        emit Voted(msg.sender, voteSessionId, responseEnum(response));
     }
 
     function isVoteSessionDurationExpired(uint256 voteSessionId) public view returns (bool) {
@@ -87,9 +88,9 @@ contract VotingYesNo is Ownable {
             return true;
 
         uint256 deltaTimestamp = block.timestamp - voteSessions[voteSessionId].creationTime;
-        if(voteSessions[voteSessionId].duration == durationEnum.oneHour && deltaTimestamp > 3600)
+        if(voteSessions[voteSessionId].duration == durationEnum.oneHour && deltaTimestamp > 1 hours)
             return true;
-        if(voteSessions[voteSessionId].duration == durationEnum.oneDay && deltaTimestamp > 86400)
+        if(voteSessions[voteSessionId].duration == durationEnum.oneDay && deltaTimestamp > 1 days)
             return true;
 
         return false;
