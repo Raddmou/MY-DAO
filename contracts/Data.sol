@@ -47,6 +47,7 @@ library Data {
     // IModule module;
     bool isActive;
     ModuleType moduleType;
+    string moduleInfo;
   }
 
   
