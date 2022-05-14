@@ -50,7 +50,4 @@ library Data {
     bytes8 moduleCode; //membership
     string moduleInfo;
   }
-
-  
-  
 }

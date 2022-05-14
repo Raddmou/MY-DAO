@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-import './interfaces/IDaosFactory.sol';
+// import './interfaces/IDaosFactory.sol';
 import './DaoBase.sol';
 
 //is DaosFactory
