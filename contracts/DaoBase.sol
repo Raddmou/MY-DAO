@@ -109,6 +109,14 @@ contract DaoBase is Ownable {
     return(modules[_type]);
   }
 
+  function getDaoSettings() public view returns(Data.DaoSettings memory) {
+    Data.DaoSettings memory daoSettings;
+    daoSettings.name = name;
+    daoSettings.description = description;
+    daoSettings.visibility = visibility;
+    return daoSettings;
+  }
+
   // function memberInfo(address _member) external view returns(Data.member memory) {
   //   return(IDao(modules[0]).getMemberInfo(_member));
   // }

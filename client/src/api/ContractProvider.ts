@@ -54,6 +54,27 @@ export const contractDaoProvider = {
     },    
 }
 
+export const contractMembershipModuleProvider = {
+    getContract: async (address, moduleCode): Promise<Contract> => {
+        const provider = 
+        (window as any).ethereum || 
+        (window as any).web3?.currentProvider;
+        var contract;
+
+        const web3 = new Web3(provider);
+        switch(moduleCode) {
+            case 'OpenMembershipModule':
+                contract = new web3.eth.Contract(openMembershipContract.abi as any, address);
+            case 'InviteMembershipModule':
+                contract = new web3.eth.Contract(inviteMembershipContract.abi as any, address);
+            case 'RequestMembershipModule':
+                contract = new web3.eth.Contract(requestMembershipContract.abi as any, address);
+          }      
+        
+        return contract;
+    },    
+}
+
 export const contractOpenMembershipModuleProvider = {
     getContract: async (address): Promise<Contract> => {
         const provider = 

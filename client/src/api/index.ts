@@ -8,7 +8,7 @@ import { Dao } from '../types';
 import daoFactoryContract from "../contracts/DaosFactory.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
-import { contractFactoryProvider, contractDaoProvider, contractMembershipModuleProvider } from './ContractProvider';
+import { contractFactoryProvider, contractDaoProvider, contractMembershipModuleProvider, contractInviteMembershipModuleProvider, contractOpenMembershipModuleProvider, contractRequestMembershipModuleProvider, contractVotingYesNoModuleProvider } from './ContractProvider';
 import { Address } from 'cluster';
 //import { contractProvider } from './ContractProvider';
 
@@ -55,7 +55,8 @@ export const daosAPI = {
                                         const contractDao = await contractDaoProvider.getContract(address.daoAddress);
                                         const typeHash = await contractDao.methods.hash("MemberModule").call();
                                         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+                                        //TODO: hash code
+                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
                                         const member = await contractMembershipModule.methods.members((window as any).ethereum.selectedAddress).call();
                                         const isMember = member != 0;
                                         return { address, isMember };
@@ -73,7 +74,7 @@ export const daosAPI = {
                                         const contractDao = await contractDaoProvider.getContract(address.daoAddress);
                                         const typeHash = await contractDao.methods.hash("MemberModule").call();
                                         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
                                         const member = await contractMembershipModule.methods.members((window as any).ethereum.selectedAddress).call();
                                         const isMember = member != 0;
                                         return { address, isMember };
@@ -111,10 +112,10 @@ export const daosAPI = {
                                              console.log("moduleMembership " + moduleMembership.isActive );
                                             console.log( "moduleMembership" + moduleMembership.moduleAddress + "here");
                                             // const tt = contractDao.methods.
-                                            const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+                                            const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
                                             member = await contractMembershipModule.methods.members((window as any).ethereum.selectedAddress).call();
                                             isMember = member != 0;
-                                            const membershipMode = await contractMembershipModule.methods.getMemberShipMode().call();
+                                            //const membershipMode = await contractMembershipModule.methods.getMemberShipMode().call();
                                         }
                                         
                                         const name = await contractDao.methods.name().call();
@@ -126,7 +127,7 @@ export const daosAPI = {
                                         console.log( "owner " + owner + " " + (window as any).ethereum.selectedAddress + " "+ isOwner);
                                         
                                         const id = address.toString();
-                                        return { id, address, isMember, name, isVisible, membershipMode, description, member, isOwner };
+                                        return { id, address, isMember, name, isVisible, description, member, isOwner };
                                         // console.log("deployedDao.daoAddress " + deployedDao.daoAddress);
                                         // const contractDao = await contractDaoProvider.getContract(deployedDao.daoAddress);
                                         // console.log("contractDao " + contractDao.methods);
@@ -149,13 +150,13 @@ export const daosAPI = {
                                         const contractDao = await contractDaoProvider.getContract(address);
                                         const typeHash = await contractDao.methods.hash("MemberModule").call();
                                         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
                                         const member = await contractMembershipModule.methods.members((window as any).ethereum.selectedAddress).call();
                                         const isMember = member != 0;
                                         const name = await contractDao.methods.getName().call();
                                         const visibility = await contractDao.methods.getVisibility().call();
                                         const description = await contractDao.methods.getDescription().call();
-                                        const membershipMode = await contractMembershipModule.methods.getMemberShipMode().call();
+                                        //const membershipMode = await contractMembershipModule.methods.getMemberShipMode().call();
                                         // const membersCount = await contractDao.methods.membersCount().call();
                                         // console.log("membersCount " + membersCount);
                                         // var members = [];
@@ -168,7 +169,7 @@ export const daosAPI = {
                                         // } 
                                         
                                         const id = address.toString();
-                                        return { id, address, isMember, name, visibility, membershipMode, description, member };
+                                        return { id, address, isMember, name, visibility, description, member };
                                     });
                                     // .filter(a => a.isMember == true);
 
@@ -191,10 +192,10 @@ export const daosAPI = {
         var modules = [];
         if(moduleMembership.isActive)
         {
-            const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+            const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
             member = await contractMembershipModule.methods.members((window as any).ethereum.selectedAddress).call();
             isMember = member != 0;
-            membershipMode = await contractMembershipModule.methods.getMemberShipMode().call();
+            //membershipMode = await contractMembershipModule.methods.getMemberShipMode().call();
             membersCount = await contractMembershipModule.methods.membersCount().call();
             for (var i = 0; i < membersCount; i++) {
                 const memberAddress = await contractMembershipModule.methods.memberAddresses(i).call();
@@ -277,7 +278,7 @@ export const daosAPI = {
 
     addNewDao: async (dao: any): Promise<Dao> => {
         const contract = await contractFactoryProvider.getContract();
-        const { name, visibility, description, membershipMode } = dao;
+        const { name, visibility, description, modules } = dao;
         //const byInvitation = membershipMode == 0;
         const visibilityEnum = visibility ? 1 : 0;
         const { events } =  await contract.methods
@@ -290,14 +291,14 @@ export const daosAPI = {
         const address = events?.DaoCreated?.returnValues?.daoAddress;
         const id = address.toString();
 
-        return { id, name, visibility, membershipMode, description, address };
+        return { id, name, visibility, description, address, modules };
     },
 
     joinDao: async (address: Address): Promise<boolean> => {
-        const contractDao = await contractMembershipModuleProvider.getContract(address);
+        const contractDao = await contractDaoProvider.getContract(address);
         const typeHash = await contractDao.methods.hash("MemberModule").call();
         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+        const contractMembershipModule = await contractInviteMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
 
         await contractMembershipModule.methods.join().send({ 
             from: (window as any).ethereum.selectedAddress })
@@ -325,7 +326,7 @@ export const daosAPI = {
         const contractDao = await contractDaoProvider.getContract(address);
         const typeHash = await contractDao.methods.hash("MemberModule").call();
         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+        const contractMembershipModule = await contractRequestMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
 
 
         await contractMembershipModule.methods.acceptMember(addressMember).send({ 
@@ -347,7 +348,7 @@ export const daosAPI = {
         const contractDao = await contractDaoProvider.getContract(address);
         const typeHash = await contractDao.methods.hash("MemberModule").call();
         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+        const contractMembershipModule = await contractRequestMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
 
 
         await contractMembershipModule.methods.requestJoin().send({ 
@@ -369,7 +370,7 @@ export const daosAPI = {
         const contractDao = await contractDaoProvider.getContract(address);
         const typeHash = await contractDao.methods.hash("MemberModule").call();
         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
+        const contractMembershipModule = await contractInviteMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
 
 
         await contractMembershipModule.methods.inviteMember(addressToInvite).send({ 

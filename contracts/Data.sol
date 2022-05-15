@@ -19,7 +19,8 @@ struct DaoMember {
   struct DaoSettings {
     address addressDao;
     visibilityEnum visibility;
-    membershipModeEnum membershipMode;
+    string name;
+    string description;
   } 
 
   struct daoData {
