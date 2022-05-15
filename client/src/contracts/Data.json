@@ -1,29 +1,29 @@
 {
   "contractName": "Data",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0xf03ef06715fbf5ac125e9ba6db4aac8720579b0a71cb98484651711ec015fdf7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://19bfd003de4be210976a0b04db6f6e50061cafd79475344f2fd722cd518fff86\",\"dweb:/ipfs/QmXdwwG53MvtuoxvwnC2Gnp8Fr3R9LZFc3448Gjrpg8CBh\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c4b329947074436338413e2e5ce3be8481a1029bf911769a2e16f7432aeead9b64736f6c63430008090033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c4b329947074436338413e2e5ce3be8481a1029bf911769a2e16f7432aeead9b64736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0xd14a4a9f27e807dba2a672c7aa393ab9848ef418c277d3079405089771a1910b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://13cc89d966aca7942c1e157f3995717c212991040e493207a775bd978d482fce\",\"dweb:/ipfs/QmdSYd8eoyqofHPusrk5QWoZrXhe8JSWFn8tWufm2trYp4\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b6474f3114b20b6705a73e8980a8729575be53a534e3d88186c2dc4a5455da9864736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b6474f3114b20b6705a73e8980a8729575be53a534e3d88186c2dc4a5455da9864736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "60:816:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "60:816:7:-:0;;;;;;;;",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nlibrary Data {\r\n  struct member {\r\n    memberStatus status;\r\n    uint256 joinTime;\r\n    //address memberAddress;\r\n  }\r\n\r\n  struct DaoSettings {\r\n    visibilityEnum visibility;\r\n    membershipModeEnum membershipMode;\r\n  } \r\n\r\n  struct daoData {\r\n    string daoType;\r\n    visibilityEnum visibility;\r\n  }\r\n\r\n  enum visibilityEnum {\r\n    privateDao,\r\n    publicDao\r\n  }\r\n\r\n  enum memberStatus {\r\n    notMember,\r\n    invited,\r\n    asking,\r\n    active\r\n  }\r\n\r\n  enum membershipModeEnum {\r\n    invite,\r\n    request,\r\n    open\r\n  }\r\n\r\n  enum ModuleType {\r\n    DaoMemberSystem,\r\n    DaoVotingSystem\r\n  }\r\n\r\n  struct Module {\r\n    uint256 id;\r\n    address moduleAddress;\r\n    // IModule module;\r\n    bool isActive;\r\n    bytes8 moduleType; //member\r\n    bytes8 moduleCode; //membership\r\n    string moduleInfo;\r\n  }\r\n\r\n  \r\n  \r\n}",
+  "sourceMap": "60:1113:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "60:1113:7:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nlibrary Data {\r\n  struct member {\r\n    memberStatus status;\r\n    uint256 joinTime;\r\n    //address memberAddress;\r\n  }\r\n\r\nstruct DaoMember {\r\n    address addressDao;\r\n    uint256 membersCount;\r\n    mapping(uint256 => address) memberAddresses;\r\n    mapping(address => Data.member) members;\r\n    bool isActive;\r\n  } \r\n\r\n  struct DaoSettings {\r\n    address addressDao;\r\n    visibilityEnum visibility;\r\n    membershipModeEnum membershipMode;\r\n  } \r\n\r\n  struct daoData {\r\n    string daoType;\r\n    visibilityEnum visibility;\r\n  }\r\n\r\n  enum visibilityEnum {\r\n    privateDao,\r\n    publicDao\r\n  }\r\n\r\n  enum memberStatus {\r\n    notMember,\r\n    invited,\r\n    asking,\r\n    active\r\n  }\r\n\r\n  enum membershipModeEnum {\r\n    invite,\r\n    request,\r\n    open\r\n  }\r\n\r\n  enum ModuleType {\r\n    DaoMemberSystem,\r\n    DaoVotingSystem\r\n  }\r\n\r\n  struct Module {\r\n    uint256 id;\r\n    address moduleAddress;\r\n    // IModule module;\r\n    bool isActive;\r\n    bytes8 moduleType; //member\r\n    bytes8 moduleCode; //membership\r\n    string moduleInfo;\r\n  }\r\n\r\n  struct ModuleToActivate {\r\n    bytes8 moduleType; \r\n    bytes8 moduleCode; \r\n  }\r\n}",
   "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Data.sol",
   "ast": {
     "absolutePath": "project:/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        1065
+        1271
       ]
     },
-    "id": 1066,
+    "id": 1272,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1017,
+        "id": 1200,
         "literals": [
           "solidity",
           "^",
@@ -40,9 +40,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1065,
+        "id": 1271,
         "linearizedBaseContracts": [
-          1065
+          1271
         ],
         "name": "Data",
         "nameLocation": "68:4:7",
@@ -50,37 +50,37 @@
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 1023,
+            "id": 1206,
             "members": [
               {
                 "constant": false,
-                "id": 1020,
+                "id": 1203,
                 "mutability": "mutable",
                 "name": "status",
                 "nameLocation": "112:6:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1023,
+                "scope": 1206,
                 "src": "99:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$1044",
+                  "typeIdentifier": "t_enum$_memberStatus_$1245",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 1019,
+                  "id": 1202,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1018,
+                    "id": 1201,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1044,
+                    "referencedDeclaration": 1245,
                     "src": "99:12:7"
                   },
-                  "referencedDeclaration": 1044,
+                  "referencedDeclaration": 1245,
                   "src": "99:12:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$1044",
+                    "typeIdentifier": "t_enum$_memberStatus_$1245",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -88,12 +88,12 @@
               },
               {
                 "constant": false,
-                "id": 1022,
+                "id": 1205,
                 "mutability": "mutable",
                 "name": "joinTime",
                 "nameLocation": "133:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1023,
+                "scope": 1206,
                 "src": "125:16:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -102,7 +102,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1021,
+                  "id": 1204,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "125:7:7",
@@ -117,320 +117,23 @@
             "name": "member",
             "nameLocation": "85:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1065,
+            "scope": 1271,
             "src": "78:99:7",
             "visibility": "public"
           },
           {
-            "canonicalName": "Data.DaoSettings",
-            "id": 1030,
+            "canonicalName": "Data.DaoMember",
+            "id": 1222,
             "members": [
               {
                 "constant": false,
-                "id": 1026,
+                "id": 1208,
                 "mutability": "mutable",
-                "name": "visibility",
-                "nameLocation": "224:10:7",
+                "name": "addressDao",
+                "nameLocation": "213:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1030,
-                "src": "209:25:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                  "typeString": "enum Data.visibilityEnum"
-                },
-                "typeName": {
-                  "id": 1025,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 1024,
-                    "name": "visibilityEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1039,
-                    "src": "209:14:7"
-                  },
-                  "referencedDeclaration": 1039,
-                  "src": "209:14:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                    "typeString": "enum Data.visibilityEnum"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1029,
-                "mutability": "mutable",
-                "name": "membershipMode",
-                "nameLocation": "260:14:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1030,
-                "src": "241:33:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_membershipModeEnum_$1048",
-                  "typeString": "enum Data.membershipModeEnum"
-                },
-                "typeName": {
-                  "id": 1028,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 1027,
-                    "name": "membershipModeEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1048,
-                    "src": "241:18:7"
-                  },
-                  "referencedDeclaration": 1048,
-                  "src": "241:18:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_membershipModeEnum_$1048",
-                    "typeString": "enum Data.membershipModeEnum"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "DaoSettings",
-            "nameLocation": "190:11:7",
-            "nodeType": "StructDefinition",
-            "scope": 1065,
-            "src": "183:97:7",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.daoData",
-            "id": 1036,
-            "members": [
-              {
-                "constant": false,
-                "id": 1032,
-                "mutability": "mutable",
-                "name": "daoType",
-                "nameLocation": "316:7:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1036,
-                "src": "309:14:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
-                },
-                "typeName": {
-                  "id": 1031,
-                  "name": "string",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "309:6:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_storage_ptr",
-                    "typeString": "string"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1035,
-                "mutability": "mutable",
-                "name": "visibility",
-                "nameLocation": "345:10:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1036,
-                "src": "330:25:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                  "typeString": "enum Data.visibilityEnum"
-                },
-                "typeName": {
-                  "id": 1034,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 1033,
-                    "name": "visibilityEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1039,
-                    "src": "330:14:7"
-                  },
-                  "referencedDeclaration": 1039,
-                  "src": "330:14:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                    "typeString": "enum Data.visibilityEnum"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "daoData",
-            "nameLocation": "294:7:7",
-            "nodeType": "StructDefinition",
-            "scope": 1065,
-            "src": "287:74:7",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.visibilityEnum",
-            "id": 1039,
-            "members": [
-              {
-                "id": 1037,
-                "name": "privateDao",
-                "nameLocation": "394:10:7",
-                "nodeType": "EnumValue",
-                "src": "394:10:7"
-              },
-              {
-                "id": 1038,
-                "name": "publicDao",
-                "nameLocation": "411:9:7",
-                "nodeType": "EnumValue",
-                "src": "411:9:7"
-              }
-            ],
-            "name": "visibilityEnum",
-            "nameLocation": "372:14:7",
-            "nodeType": "EnumDefinition",
-            "src": "367:58:7"
-          },
-          {
-            "canonicalName": "Data.memberStatus",
-            "id": 1044,
-            "members": [
-              {
-                "id": 1040,
-                "name": "notMember",
-                "nameLocation": "456:9:7",
-                "nodeType": "EnumValue",
-                "src": "456:9:7"
-              },
-              {
-                "id": 1041,
-                "name": "invited",
-                "nameLocation": "472:7:7",
-                "nodeType": "EnumValue",
-                "src": "472:7:7"
-              },
-              {
-                "id": 1042,
-                "name": "asking",
-                "nameLocation": "486:6:7",
-                "nodeType": "EnumValue",
-                "src": "486:6:7"
-              },
-              {
-                "id": 1043,
-                "name": "active",
-                "nameLocation": "499:6:7",
-                "nodeType": "EnumValue",
-                "src": "499:6:7"
-              }
-            ],
-            "name": "memberStatus",
-            "nameLocation": "436:12:7",
-            "nodeType": "EnumDefinition",
-            "src": "431:79:7"
-          },
-          {
-            "canonicalName": "Data.membershipModeEnum",
-            "id": 1048,
-            "members": [
-              {
-                "id": 1045,
-                "name": "invite",
-                "nameLocation": "547:6:7",
-                "nodeType": "EnumValue",
-                "src": "547:6:7"
-              },
-              {
-                "id": 1046,
-                "name": "request",
-                "nameLocation": "560:7:7",
-                "nodeType": "EnumValue",
-                "src": "560:7:7"
-              },
-              {
-                "id": 1047,
-                "name": "open",
-                "nameLocation": "574:4:7",
-                "nodeType": "EnumValue",
-                "src": "574:4:7"
-              }
-            ],
-            "name": "membershipModeEnum",
-            "nameLocation": "521:18:7",
-            "nodeType": "EnumDefinition",
-            "src": "516:67:7"
-          },
-          {
-            "canonicalName": "Data.ModuleType",
-            "id": 1051,
-            "members": [
-              {
-                "id": 1049,
-                "name": "DaoMemberSystem",
-                "nameLocation": "612:15:7",
-                "nodeType": "EnumValue",
-                "src": "612:15:7"
-              },
-              {
-                "id": 1050,
-                "name": "DaoVotingSystem",
-                "nameLocation": "634:15:7",
-                "nodeType": "EnumValue",
-                "src": "634:15:7"
-              }
-            ],
-            "name": "ModuleType",
-            "nameLocation": "594:10:7",
-            "nodeType": "EnumDefinition",
-            "src": "589:65:7"
-          },
-          {
-            "canonicalName": "Data.Module",
-            "id": 1064,
-            "members": [
-              {
-                "constant": false,
-                "id": 1053,
-                "mutability": "mutable",
-                "name": "id",
-                "nameLocation": "689:2:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "681:10:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 1052,
-                  "name": "uint256",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "681:7:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1055,
-                "mutability": "mutable",
-                "name": "moduleAddress",
-                "nameLocation": "706:13:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "698:21:7",
+                "scope": 1222,
+                "src": "205:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -438,10 +141,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1054,
+                  "id": 1207,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "698:7:7",
+                  "src": "205:7:7",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -452,13 +155,140 @@
               },
               {
                 "constant": false,
-                "id": 1057,
+                "id": 1210,
+                "mutability": "mutable",
+                "name": "membersCount",
+                "nameLocation": "238:12:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1222,
+                "src": "230:20:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1209,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "230:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1214,
+                "mutability": "mutable",
+                "name": "memberAddresses",
+                "nameLocation": "285:15:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1222,
+                "src": "257:43:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+                  "typeString": "mapping(uint256 => address)"
+                },
+                "typeName": {
+                  "id": 1213,
+                  "keyType": {
+                    "id": 1211,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "265:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "257:27:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+                    "typeString": "mapping(uint256 => address)"
+                  },
+                  "valueType": {
+                    "id": 1212,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "276:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1219,
+                "mutability": "mutable",
+                "name": "members",
+                "nameLocation": "339:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1222,
+                "src": "307:39:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1206_storage_$",
+                  "typeString": "mapping(address => struct Data.member)"
+                },
+                "typeName": {
+                  "id": 1218,
+                  "keyType": {
+                    "id": 1215,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "315:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "307:31:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1206_storage_$",
+                    "typeString": "mapping(address => struct Data.member)"
+                  },
+                  "valueType": {
+                    "id": 1217,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1216,
+                      "name": "Data.member",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1206,
+                      "src": "326:11:7"
+                    },
+                    "referencedDeclaration": 1206,
+                    "src": "326:11:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_member_$1206_storage_ptr",
+                      "typeString": "struct Data.member"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1221,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "755:8:7",
+                "nameLocation": "358:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "750:13:7",
+                "scope": 1222,
+                "src": "353:13:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -466,10 +296,402 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1056,
+                  "id": 1220,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "750:4:7",
+                  "src": "353:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "DaoMember",
+            "nameLocation": "188:9:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "181:191:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.DaoSettings",
+            "id": 1231,
+            "members": [
+              {
+                "constant": false,
+                "id": 1224,
+                "mutability": "mutable",
+                "name": "addressDao",
+                "nameLocation": "413:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1231,
+                "src": "405:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1223,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "405:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1227,
+                "mutability": "mutable",
+                "name": "visibility",
+                "nameLocation": "445:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1231,
+                "src": "430:25:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                  "typeString": "enum Data.visibilityEnum"
+                },
+                "typeName": {
+                  "id": 1226,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1225,
+                    "name": "visibilityEnum",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1240,
+                    "src": "430:14:7"
+                  },
+                  "referencedDeclaration": 1240,
+                  "src": "430:14:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                    "typeString": "enum Data.visibilityEnum"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1230,
+                "mutability": "mutable",
+                "name": "membershipMode",
+                "nameLocation": "481:14:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1231,
+                "src": "462:33:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_membershipModeEnum_$1249",
+                  "typeString": "enum Data.membershipModeEnum"
+                },
+                "typeName": {
+                  "id": 1229,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1228,
+                    "name": "membershipModeEnum",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1249,
+                    "src": "462:18:7"
+                  },
+                  "referencedDeclaration": 1249,
+                  "src": "462:18:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_membershipModeEnum_$1249",
+                    "typeString": "enum Data.membershipModeEnum"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "DaoSettings",
+            "nameLocation": "386:11:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "379:122:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.daoData",
+            "id": 1237,
+            "members": [
+              {
+                "constant": false,
+                "id": 1233,
+                "mutability": "mutable",
+                "name": "daoType",
+                "nameLocation": "537:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1237,
+                "src": "530:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1232,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "530:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1236,
+                "mutability": "mutable",
+                "name": "visibility",
+                "nameLocation": "566:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1237,
+                "src": "551:25:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                  "typeString": "enum Data.visibilityEnum"
+                },
+                "typeName": {
+                  "id": 1235,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1234,
+                    "name": "visibilityEnum",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1240,
+                    "src": "551:14:7"
+                  },
+                  "referencedDeclaration": 1240,
+                  "src": "551:14:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                    "typeString": "enum Data.visibilityEnum"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "daoData",
+            "nameLocation": "515:7:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "508:74:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.visibilityEnum",
+            "id": 1240,
+            "members": [
+              {
+                "id": 1238,
+                "name": "privateDao",
+                "nameLocation": "615:10:7",
+                "nodeType": "EnumValue",
+                "src": "615:10:7"
+              },
+              {
+                "id": 1239,
+                "name": "publicDao",
+                "nameLocation": "632:9:7",
+                "nodeType": "EnumValue",
+                "src": "632:9:7"
+              }
+            ],
+            "name": "visibilityEnum",
+            "nameLocation": "593:14:7",
+            "nodeType": "EnumDefinition",
+            "src": "588:58:7"
+          },
+          {
+            "canonicalName": "Data.memberStatus",
+            "id": 1245,
+            "members": [
+              {
+                "id": 1241,
+                "name": "notMember",
+                "nameLocation": "677:9:7",
+                "nodeType": "EnumValue",
+                "src": "677:9:7"
+              },
+              {
+                "id": 1242,
+                "name": "invited",
+                "nameLocation": "693:7:7",
+                "nodeType": "EnumValue",
+                "src": "693:7:7"
+              },
+              {
+                "id": 1243,
+                "name": "asking",
+                "nameLocation": "707:6:7",
+                "nodeType": "EnumValue",
+                "src": "707:6:7"
+              },
+              {
+                "id": 1244,
+                "name": "active",
+                "nameLocation": "720:6:7",
+                "nodeType": "EnumValue",
+                "src": "720:6:7"
+              }
+            ],
+            "name": "memberStatus",
+            "nameLocation": "657:12:7",
+            "nodeType": "EnumDefinition",
+            "src": "652:79:7"
+          },
+          {
+            "canonicalName": "Data.membershipModeEnum",
+            "id": 1249,
+            "members": [
+              {
+                "id": 1246,
+                "name": "invite",
+                "nameLocation": "768:6:7",
+                "nodeType": "EnumValue",
+                "src": "768:6:7"
+              },
+              {
+                "id": 1247,
+                "name": "request",
+                "nameLocation": "781:7:7",
+                "nodeType": "EnumValue",
+                "src": "781:7:7"
+              },
+              {
+                "id": 1248,
+                "name": "open",
+                "nameLocation": "795:4:7",
+                "nodeType": "EnumValue",
+                "src": "795:4:7"
+              }
+            ],
+            "name": "membershipModeEnum",
+            "nameLocation": "742:18:7",
+            "nodeType": "EnumDefinition",
+            "src": "737:67:7"
+          },
+          {
+            "canonicalName": "Data.ModuleType",
+            "id": 1252,
+            "members": [
+              {
+                "id": 1250,
+                "name": "DaoMemberSystem",
+                "nameLocation": "833:15:7",
+                "nodeType": "EnumValue",
+                "src": "833:15:7"
+              },
+              {
+                "id": 1251,
+                "name": "DaoVotingSystem",
+                "nameLocation": "855:15:7",
+                "nodeType": "EnumValue",
+                "src": "855:15:7"
+              }
+            ],
+            "name": "ModuleType",
+            "nameLocation": "815:10:7",
+            "nodeType": "EnumDefinition",
+            "src": "810:65:7"
+          },
+          {
+            "canonicalName": "Data.Module",
+            "id": 1265,
+            "members": [
+              {
+                "constant": false,
+                "id": 1254,
+                "mutability": "mutable",
+                "name": "id",
+                "nameLocation": "910:2:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1265,
+                "src": "902:10:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1253,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "902:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1256,
+                "mutability": "mutable",
+                "name": "moduleAddress",
+                "nameLocation": "927:13:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1265,
+                "src": "919:21:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1255,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "919:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1258,
+                "mutability": "mutable",
+                "name": "isActive",
+                "nameLocation": "976:8:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1265,
+                "src": "971:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1257,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "971:4:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -479,13 +701,13 @@
               },
               {
                 "constant": false,
-                "id": 1059,
+                "id": 1260,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "777:10:7",
+                "nameLocation": "998:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "770:17:7",
+                "scope": 1265,
+                "src": "991:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -493,10 +715,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1058,
+                  "id": 1259,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "770:6:7",
+                  "src": "991:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -506,13 +728,13 @@
               },
               {
                 "constant": false,
-                "id": 1061,
+                "id": 1262,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "810:10:7",
+                "nameLocation": "1031:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "803:17:7",
+                "scope": 1265,
+                "src": "1024:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -520,10 +742,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1060,
+                  "id": 1261,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "803:6:7",
+                  "src": "1024:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -533,13 +755,13 @@
               },
               {
                 "constant": false,
-                "id": 1063,
+                "id": 1264,
                 "mutability": "mutable",
                 "name": "moduleInfo",
-                "nameLocation": "847:10:7",
+                "nameLocation": "1068:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "840:17:7",
+                "scope": 1265,
+                "src": "1061:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -547,10 +769,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1062,
+                  "id": 1263,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "840:6:7",
+                  "src": "1061:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -560,33 +782,99 @@
               }
             ],
             "name": "Module",
-            "nameLocation": "667:6:7",
+            "nameLocation": "888:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1065,
-            "src": "660:203:7",
+            "scope": 1271,
+            "src": "881:203:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.ModuleToActivate",
+            "id": 1270,
+            "members": [
+              {
+                "constant": false,
+                "id": 1267,
+                "mutability": "mutable",
+                "name": "moduleType",
+                "nameLocation": "1128:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1270,
+                "src": "1121:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes8",
+                  "typeString": "bytes8"
+                },
+                "typeName": {
+                  "id": 1266,
+                  "name": "bytes8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1121:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1269,
+                "mutability": "mutable",
+                "name": "moduleCode",
+                "nameLocation": "1153:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1270,
+                "src": "1146:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes8",
+                  "typeString": "bytes8"
+                },
+                "typeName": {
+                  "id": 1268,
+                  "name": "bytes8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1146:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ModuleToActivate",
+            "nameLocation": "1097:16:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "1090:80:7",
             "visibility": "public"
           }
         ],
-        "scope": 1066,
-        "src": "60:816:7",
+        "scope": 1272,
+        "src": "60:1113:7",
         "usedErrors": []
       }
     ],
-    "src": "33:843:7"
+    "src": "33:1140:7"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        1065
+        1271
       ]
     },
-    "id": 1066,
+    "id": 1272,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1017,
+        "id": 1200,
         "literals": [
           "solidity",
           "^",
@@ -603,9 +891,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1065,
+        "id": 1271,
         "linearizedBaseContracts": [
-          1065
+          1271
         ],
         "name": "Data",
         "nameLocation": "68:4:7",
@@ -613,37 +901,37 @@
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 1023,
+            "id": 1206,
             "members": [
               {
                 "constant": false,
-                "id": 1020,
+                "id": 1203,
                 "mutability": "mutable",
                 "name": "status",
                 "nameLocation": "112:6:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1023,
+                "scope": 1206,
                 "src": "99:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$1044",
+                  "typeIdentifier": "t_enum$_memberStatus_$1245",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 1019,
+                  "id": 1202,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1018,
+                    "id": 1201,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1044,
+                    "referencedDeclaration": 1245,
                     "src": "99:12:7"
                   },
-                  "referencedDeclaration": 1044,
+                  "referencedDeclaration": 1245,
                   "src": "99:12:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$1044",
+                    "typeIdentifier": "t_enum$_memberStatus_$1245",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -651,12 +939,12 @@
               },
               {
                 "constant": false,
-                "id": 1022,
+                "id": 1205,
                 "mutability": "mutable",
                 "name": "joinTime",
                 "nameLocation": "133:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1023,
+                "scope": 1206,
                 "src": "125:16:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -665,7 +953,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1021,
+                  "id": 1204,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "125:7:7",
@@ -680,320 +968,23 @@
             "name": "member",
             "nameLocation": "85:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1065,
+            "scope": 1271,
             "src": "78:99:7",
             "visibility": "public"
           },
           {
-            "canonicalName": "Data.DaoSettings",
-            "id": 1030,
+            "canonicalName": "Data.DaoMember",
+            "id": 1222,
             "members": [
               {
                 "constant": false,
-                "id": 1026,
+                "id": 1208,
                 "mutability": "mutable",
-                "name": "visibility",
-                "nameLocation": "224:10:7",
+                "name": "addressDao",
+                "nameLocation": "213:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1030,
-                "src": "209:25:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                  "typeString": "enum Data.visibilityEnum"
-                },
-                "typeName": {
-                  "id": 1025,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 1024,
-                    "name": "visibilityEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1039,
-                    "src": "209:14:7"
-                  },
-                  "referencedDeclaration": 1039,
-                  "src": "209:14:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                    "typeString": "enum Data.visibilityEnum"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1029,
-                "mutability": "mutable",
-                "name": "membershipMode",
-                "nameLocation": "260:14:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1030,
-                "src": "241:33:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_membershipModeEnum_$1048",
-                  "typeString": "enum Data.membershipModeEnum"
-                },
-                "typeName": {
-                  "id": 1028,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 1027,
-                    "name": "membershipModeEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1048,
-                    "src": "241:18:7"
-                  },
-                  "referencedDeclaration": 1048,
-                  "src": "241:18:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_membershipModeEnum_$1048",
-                    "typeString": "enum Data.membershipModeEnum"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "DaoSettings",
-            "nameLocation": "190:11:7",
-            "nodeType": "StructDefinition",
-            "scope": 1065,
-            "src": "183:97:7",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.daoData",
-            "id": 1036,
-            "members": [
-              {
-                "constant": false,
-                "id": 1032,
-                "mutability": "mutable",
-                "name": "daoType",
-                "nameLocation": "316:7:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1036,
-                "src": "309:14:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
-                },
-                "typeName": {
-                  "id": 1031,
-                  "name": "string",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "309:6:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_storage_ptr",
-                    "typeString": "string"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1035,
-                "mutability": "mutable",
-                "name": "visibility",
-                "nameLocation": "345:10:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1036,
-                "src": "330:25:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                  "typeString": "enum Data.visibilityEnum"
-                },
-                "typeName": {
-                  "id": 1034,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 1033,
-                    "name": "visibilityEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1039,
-                    "src": "330:14:7"
-                  },
-                  "referencedDeclaration": 1039,
-                  "src": "330:14:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1039",
-                    "typeString": "enum Data.visibilityEnum"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "daoData",
-            "nameLocation": "294:7:7",
-            "nodeType": "StructDefinition",
-            "scope": 1065,
-            "src": "287:74:7",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.visibilityEnum",
-            "id": 1039,
-            "members": [
-              {
-                "id": 1037,
-                "name": "privateDao",
-                "nameLocation": "394:10:7",
-                "nodeType": "EnumValue",
-                "src": "394:10:7"
-              },
-              {
-                "id": 1038,
-                "name": "publicDao",
-                "nameLocation": "411:9:7",
-                "nodeType": "EnumValue",
-                "src": "411:9:7"
-              }
-            ],
-            "name": "visibilityEnum",
-            "nameLocation": "372:14:7",
-            "nodeType": "EnumDefinition",
-            "src": "367:58:7"
-          },
-          {
-            "canonicalName": "Data.memberStatus",
-            "id": 1044,
-            "members": [
-              {
-                "id": 1040,
-                "name": "notMember",
-                "nameLocation": "456:9:7",
-                "nodeType": "EnumValue",
-                "src": "456:9:7"
-              },
-              {
-                "id": 1041,
-                "name": "invited",
-                "nameLocation": "472:7:7",
-                "nodeType": "EnumValue",
-                "src": "472:7:7"
-              },
-              {
-                "id": 1042,
-                "name": "asking",
-                "nameLocation": "486:6:7",
-                "nodeType": "EnumValue",
-                "src": "486:6:7"
-              },
-              {
-                "id": 1043,
-                "name": "active",
-                "nameLocation": "499:6:7",
-                "nodeType": "EnumValue",
-                "src": "499:6:7"
-              }
-            ],
-            "name": "memberStatus",
-            "nameLocation": "436:12:7",
-            "nodeType": "EnumDefinition",
-            "src": "431:79:7"
-          },
-          {
-            "canonicalName": "Data.membershipModeEnum",
-            "id": 1048,
-            "members": [
-              {
-                "id": 1045,
-                "name": "invite",
-                "nameLocation": "547:6:7",
-                "nodeType": "EnumValue",
-                "src": "547:6:7"
-              },
-              {
-                "id": 1046,
-                "name": "request",
-                "nameLocation": "560:7:7",
-                "nodeType": "EnumValue",
-                "src": "560:7:7"
-              },
-              {
-                "id": 1047,
-                "name": "open",
-                "nameLocation": "574:4:7",
-                "nodeType": "EnumValue",
-                "src": "574:4:7"
-              }
-            ],
-            "name": "membershipModeEnum",
-            "nameLocation": "521:18:7",
-            "nodeType": "EnumDefinition",
-            "src": "516:67:7"
-          },
-          {
-            "canonicalName": "Data.ModuleType",
-            "id": 1051,
-            "members": [
-              {
-                "id": 1049,
-                "name": "DaoMemberSystem",
-                "nameLocation": "612:15:7",
-                "nodeType": "EnumValue",
-                "src": "612:15:7"
-              },
-              {
-                "id": 1050,
-                "name": "DaoVotingSystem",
-                "nameLocation": "634:15:7",
-                "nodeType": "EnumValue",
-                "src": "634:15:7"
-              }
-            ],
-            "name": "ModuleType",
-            "nameLocation": "594:10:7",
-            "nodeType": "EnumDefinition",
-            "src": "589:65:7"
-          },
-          {
-            "canonicalName": "Data.Module",
-            "id": 1064,
-            "members": [
-              {
-                "constant": false,
-                "id": 1053,
-                "mutability": "mutable",
-                "name": "id",
-                "nameLocation": "689:2:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "681:10:7",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 1052,
-                  "name": "uint256",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "681:7:7",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1055,
-                "mutability": "mutable",
-                "name": "moduleAddress",
-                "nameLocation": "706:13:7",
-                "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "698:21:7",
+                "scope": 1222,
+                "src": "205:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1001,10 +992,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1054,
+                  "id": 1207,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "698:7:7",
+                  "src": "205:7:7",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1015,13 +1006,140 @@
               },
               {
                 "constant": false,
-                "id": 1057,
+                "id": 1210,
+                "mutability": "mutable",
+                "name": "membersCount",
+                "nameLocation": "238:12:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1222,
+                "src": "230:20:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1209,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "230:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1214,
+                "mutability": "mutable",
+                "name": "memberAddresses",
+                "nameLocation": "285:15:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1222,
+                "src": "257:43:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+                  "typeString": "mapping(uint256 => address)"
+                },
+                "typeName": {
+                  "id": 1213,
+                  "keyType": {
+                    "id": 1211,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "265:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "257:27:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+                    "typeString": "mapping(uint256 => address)"
+                  },
+                  "valueType": {
+                    "id": 1212,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "276:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1219,
+                "mutability": "mutable",
+                "name": "members",
+                "nameLocation": "339:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1222,
+                "src": "307:39:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1206_storage_$",
+                  "typeString": "mapping(address => struct Data.member)"
+                },
+                "typeName": {
+                  "id": 1218,
+                  "keyType": {
+                    "id": 1215,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "315:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "307:31:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1206_storage_$",
+                    "typeString": "mapping(address => struct Data.member)"
+                  },
+                  "valueType": {
+                    "id": 1217,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1216,
+                      "name": "Data.member",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1206,
+                      "src": "326:11:7"
+                    },
+                    "referencedDeclaration": 1206,
+                    "src": "326:11:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_member_$1206_storage_ptr",
+                      "typeString": "struct Data.member"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1221,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "755:8:7",
+                "nameLocation": "358:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "750:13:7",
+                "scope": 1222,
+                "src": "353:13:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1029,10 +1147,402 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1056,
+                  "id": 1220,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "750:4:7",
+                  "src": "353:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "DaoMember",
+            "nameLocation": "188:9:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "181:191:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.DaoSettings",
+            "id": 1231,
+            "members": [
+              {
+                "constant": false,
+                "id": 1224,
+                "mutability": "mutable",
+                "name": "addressDao",
+                "nameLocation": "413:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1231,
+                "src": "405:18:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1223,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "405:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1227,
+                "mutability": "mutable",
+                "name": "visibility",
+                "nameLocation": "445:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1231,
+                "src": "430:25:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                  "typeString": "enum Data.visibilityEnum"
+                },
+                "typeName": {
+                  "id": 1226,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1225,
+                    "name": "visibilityEnum",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1240,
+                    "src": "430:14:7"
+                  },
+                  "referencedDeclaration": 1240,
+                  "src": "430:14:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                    "typeString": "enum Data.visibilityEnum"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1230,
+                "mutability": "mutable",
+                "name": "membershipMode",
+                "nameLocation": "481:14:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1231,
+                "src": "462:33:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_membershipModeEnum_$1249",
+                  "typeString": "enum Data.membershipModeEnum"
+                },
+                "typeName": {
+                  "id": 1229,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1228,
+                    "name": "membershipModeEnum",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1249,
+                    "src": "462:18:7"
+                  },
+                  "referencedDeclaration": 1249,
+                  "src": "462:18:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_membershipModeEnum_$1249",
+                    "typeString": "enum Data.membershipModeEnum"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "DaoSettings",
+            "nameLocation": "386:11:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "379:122:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.daoData",
+            "id": 1237,
+            "members": [
+              {
+                "constant": false,
+                "id": 1233,
+                "mutability": "mutable",
+                "name": "daoType",
+                "nameLocation": "537:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1237,
+                "src": "530:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1232,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "530:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1236,
+                "mutability": "mutable",
+                "name": "visibility",
+                "nameLocation": "566:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1237,
+                "src": "551:25:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                  "typeString": "enum Data.visibilityEnum"
+                },
+                "typeName": {
+                  "id": 1235,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1234,
+                    "name": "visibilityEnum",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1240,
+                    "src": "551:14:7"
+                  },
+                  "referencedDeclaration": 1240,
+                  "src": "551:14:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1240",
+                    "typeString": "enum Data.visibilityEnum"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "daoData",
+            "nameLocation": "515:7:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "508:74:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.visibilityEnum",
+            "id": 1240,
+            "members": [
+              {
+                "id": 1238,
+                "name": "privateDao",
+                "nameLocation": "615:10:7",
+                "nodeType": "EnumValue",
+                "src": "615:10:7"
+              },
+              {
+                "id": 1239,
+                "name": "publicDao",
+                "nameLocation": "632:9:7",
+                "nodeType": "EnumValue",
+                "src": "632:9:7"
+              }
+            ],
+            "name": "visibilityEnum",
+            "nameLocation": "593:14:7",
+            "nodeType": "EnumDefinition",
+            "src": "588:58:7"
+          },
+          {
+            "canonicalName": "Data.memberStatus",
+            "id": 1245,
+            "members": [
+              {
+                "id": 1241,
+                "name": "notMember",
+                "nameLocation": "677:9:7",
+                "nodeType": "EnumValue",
+                "src": "677:9:7"
+              },
+              {
+                "id": 1242,
+                "name": "invited",
+                "nameLocation": "693:7:7",
+                "nodeType": "EnumValue",
+                "src": "693:7:7"
+              },
+              {
+                "id": 1243,
+                "name": "asking",
+                "nameLocation": "707:6:7",
+                "nodeType": "EnumValue",
+                "src": "707:6:7"
+              },
+              {
+                "id": 1244,
+                "name": "active",
+                "nameLocation": "720:6:7",
+                "nodeType": "EnumValue",
+                "src": "720:6:7"
+              }
+            ],
+            "name": "memberStatus",
+            "nameLocation": "657:12:7",
+            "nodeType": "EnumDefinition",
+            "src": "652:79:7"
+          },
+          {
+            "canonicalName": "Data.membershipModeEnum",
+            "id": 1249,
+            "members": [
+              {
+                "id": 1246,
+                "name": "invite",
+                "nameLocation": "768:6:7",
+                "nodeType": "EnumValue",
+                "src": "768:6:7"
+              },
+              {
+                "id": 1247,
+                "name": "request",
+                "nameLocation": "781:7:7",
+                "nodeType": "EnumValue",
+                "src": "781:7:7"
+              },
+              {
+                "id": 1248,
+                "name": "open",
+                "nameLocation": "795:4:7",
+                "nodeType": "EnumValue",
+                "src": "795:4:7"
+              }
+            ],
+            "name": "membershipModeEnum",
+            "nameLocation": "742:18:7",
+            "nodeType": "EnumDefinition",
+            "src": "737:67:7"
+          },
+          {
+            "canonicalName": "Data.ModuleType",
+            "id": 1252,
+            "members": [
+              {
+                "id": 1250,
+                "name": "DaoMemberSystem",
+                "nameLocation": "833:15:7",
+                "nodeType": "EnumValue",
+                "src": "833:15:7"
+              },
+              {
+                "id": 1251,
+                "name": "DaoVotingSystem",
+                "nameLocation": "855:15:7",
+                "nodeType": "EnumValue",
+                "src": "855:15:7"
+              }
+            ],
+            "name": "ModuleType",
+            "nameLocation": "815:10:7",
+            "nodeType": "EnumDefinition",
+            "src": "810:65:7"
+          },
+          {
+            "canonicalName": "Data.Module",
+            "id": 1265,
+            "members": [
+              {
+                "constant": false,
+                "id": 1254,
+                "mutability": "mutable",
+                "name": "id",
+                "nameLocation": "910:2:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1265,
+                "src": "902:10:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1253,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "902:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1256,
+                "mutability": "mutable",
+                "name": "moduleAddress",
+                "nameLocation": "927:13:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1265,
+                "src": "919:21:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1255,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "919:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1258,
+                "mutability": "mutable",
+                "name": "isActive",
+                "nameLocation": "976:8:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1265,
+                "src": "971:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1257,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "971:4:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -1042,13 +1552,13 @@
               },
               {
                 "constant": false,
-                "id": 1059,
+                "id": 1260,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "777:10:7",
+                "nameLocation": "998:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "770:17:7",
+                "scope": 1265,
+                "src": "991:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1056,10 +1566,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1058,
+                  "id": 1259,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "770:6:7",
+                  "src": "991:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -1069,13 +1579,13 @@
               },
               {
                 "constant": false,
-                "id": 1061,
+                "id": 1262,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "810:10:7",
+                "nameLocation": "1031:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "803:17:7",
+                "scope": 1265,
+                "src": "1024:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1083,10 +1593,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1060,
+                  "id": 1261,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "803:6:7",
+                  "src": "1024:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -1096,13 +1606,13 @@
               },
               {
                 "constant": false,
-                "id": 1063,
+                "id": 1264,
                 "mutability": "mutable",
                 "name": "moduleInfo",
-                "nameLocation": "847:10:7",
+                "nameLocation": "1068:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1064,
-                "src": "840:17:7",
+                "scope": 1265,
+                "src": "1061:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1110,10 +1620,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1062,
+                  "id": 1263,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "840:6:7",
+                  "src": "1061:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -1123,19 +1633,85 @@
               }
             ],
             "name": "Module",
-            "nameLocation": "667:6:7",
+            "nameLocation": "888:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1065,
-            "src": "660:203:7",
+            "scope": 1271,
+            "src": "881:203:7",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Data.ModuleToActivate",
+            "id": 1270,
+            "members": [
+              {
+                "constant": false,
+                "id": 1267,
+                "mutability": "mutable",
+                "name": "moduleType",
+                "nameLocation": "1128:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1270,
+                "src": "1121:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes8",
+                  "typeString": "bytes8"
+                },
+                "typeName": {
+                  "id": 1266,
+                  "name": "bytes8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1121:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1269,
+                "mutability": "mutable",
+                "name": "moduleCode",
+                "nameLocation": "1153:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1270,
+                "src": "1146:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes8",
+                  "typeString": "bytes8"
+                },
+                "typeName": {
+                  "id": 1268,
+                  "name": "bytes8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1146:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes8",
+                    "typeString": "bytes8"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ModuleToActivate",
+            "nameLocation": "1097:16:7",
+            "nodeType": "StructDefinition",
+            "scope": 1271,
+            "src": "1090:80:7",
             "visibility": "public"
           }
         ],
-        "scope": 1066,
-        "src": "60:816:7",
+        "scope": 1272,
+        "src": "60:1113:7",
         "usedErrors": []
       }
     ],
-    "src": "33:843:7"
+    "src": "33:1140:7"
   },
   "compiler": {
     "name": "solc",
@@ -1143,7 +1719,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-14T21:26:06.175Z",
+  "updatedAt": "2022-05-15T14:44:37.359Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

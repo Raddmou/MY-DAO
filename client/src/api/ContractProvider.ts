@@ -1,7 +1,9 @@
 import Web3 from 'web3';
 import daoFactoryContract from "../contracts/DaosFactory.json";
 import daoContract from "../contracts/DaoBase.json";
-import membershipContract from "../contracts/MembershipModule.json";
+import openMembershipContract from "../contracts/OpenMembershipModule.json";
+import inviteMembershipContract from "../contracts/InviteMembershipModule.json";
+import requestMembershipContract from "../contracts/RequestMembershipModule.json";
 import votingContract from "../contracts/VotingYesNo.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
@@ -52,14 +54,40 @@ export const contractDaoProvider = {
     },    
 }
 
-export const contractMembershipModuleProvider = {
+export const contractOpenMembershipModuleProvider = {
     getContract: async (address): Promise<Contract> => {
         const provider = 
         (window as any).ethereum || 
         (window as any).web3?.currentProvider;
 
         const web3 = new Web3(provider);
-        const contract = new web3.eth.Contract(membershipContract.abi as any, address);
+        const contract = new web3.eth.Contract(openMembershipContract.abi as any, address);
+
+        return contract;
+    },    
+}
+
+export const contractInviteMembershipModuleProvider = {
+    getContract: async (address): Promise<Contract> => {
+        const provider = 
+        (window as any).ethereum || 
+        (window as any).web3?.currentProvider;
+
+        const web3 = new Web3(provider);
+        const contract = new web3.eth.Contract(inviteMembershipContract.abi as any, address);
+
+        return contract;
+    },    
+}
+
+export const contractRequestMembershipModuleProvider = {
+    getContract: async (address): Promise<Contract> => {
+        const provider = 
+        (window as any).ethereum || 
+        (window as any).web3?.currentProvider;
+
+        const web3 = new Web3(provider);
+        const contract = new web3.eth.Contract(requestMembershipContract.abi as any, address);
 
         return contract;
     },    

@@ -57,7 +57,7 @@ contract DaosFactory is Ownable {
     return daos;
   }
 
-  function activateModule(address _daoAddress, bytes8 _type, bytes8 _code) public onlyDaoOwners(_daoAddress) returns(address) {
+  function activateModuleForDao(address _daoAddress, bytes8 _type, bytes8 _code) public onlyDaoOwners(_daoAddress) returns(address) {
     require(modulesDaos[_type][_code].isActive == true, "Module not found");
     IModule(modulesDaos[_type][_code].moduleAddress).addDao(_daoAddress, msg.sender);
     DaoBase(_daoAddress).addModule(_type, modulesDaos[_type][_code].moduleAddress);
@@ -88,7 +88,7 @@ contract DaosFactory is Ownable {
 
     for(uint i=0; i<_modules.length; ++i){
       require(modulesDaos[_modules[i].moduleType][_modules[i].moduleCode].isActive == true, "Module not found");
-        activateModule(address(dao)
+        activateModuleForDao(address(dao)
         , _modules[i].moduleType
         , _modules[i].moduleCode);
      }
