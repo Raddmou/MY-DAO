@@ -110,7 +110,7 @@ const Home: React.FC = () => {
                                     />
                                     
                                 </div>
-                                {daoNote.modules?.some(a => a.type = "MemberModule") && (
+                                {/* {daoNote.modules?.some(a => a.type = "MemberModule") && (
                                 <div>
                                     <FormControl>
                                         <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
@@ -125,7 +125,7 @@ const Home: React.FC = () => {
                                             <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
                                         </RadioGroup>
                                     </FormControl>
-                                </div>)}
+                                </div>)} */}
                                 <div className="textInput">
                                     <TextField
                                         size="small"
@@ -150,14 +150,18 @@ const Home: React.FC = () => {
                                             value={daoNote.note}
                                         />
                                 </div>   
-                                { daoNote.modules?.some(a => a.type = "MemberModule") && daoNote.members && (
+                                { daoNote.modules?.some(a => a.type == "MemberModule") 
+                                    && daoNote.members 
+                                    && (
                                         <div className='listContainer'>
                                             
                                                 <Typography variant="h5" component="div">Members</Typography>
                                                 <List>
                                                     {
                                                             daoNote.members.map((member: Member) => (
-                                                                <MemberCard key={member.id} member={member} />
+                                                                <MemberCard key={member.id} 
+                                                                member={member} 
+                                                                codeModule={daoNote.modules?.find(a => a.type == "MemberModule")?.code}/>
                                                             ))                                                   
                                                     }
                                                 </List> 
@@ -167,7 +171,9 @@ const Home: React.FC = () => {
 
                                 <div className="textInput">
 
-                                { daoNote.member == 3 && daoNote.membershipMode == 0 && (
+                                { daoNote.modules?.some(a => a.type == "MemberModule" && a.code == "InviteMembershipModule") 
+                                    && daoNote.member == 3 
+                                    && (
                                     <ListItem button divider>
                                         <TextField
                                             size="small"

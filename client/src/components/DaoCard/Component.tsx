@@ -16,6 +16,7 @@ import { useAppDispatch } from '../../hooks';
 import { Dao } from '../../types';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
+import HowToVoteIcon from '@mui/icons-material/HowToVote';
 // import { deepOrange, blue } from '@mui/material/colors';
 
 import { daosAPI } from '../../api';
@@ -25,7 +26,7 @@ type DaoCardProps = {
 };
 
 const DaoCard = ({ dao }: DaoCardProps) => {
-    const { address, name, description, member, membershipMode } = dao;
+    const { address, name, description, member, membershipMode, modules } = dao;
     const dispatch = useAppDispatch();
     // const [refresh, setRefresh] = useState(0);
     
@@ -48,6 +49,11 @@ const DaoCard = ({ dao }: DaoCardProps) => {
         // const dao = await daosAPI.fetchDao(address);
         // dispatch(setDaoNote(dao));
         // setRefresh(refresh + 1);
+    }
+
+    const handleClickOpenVoteModule = () => {
+        //TODO
+        console.log("handleClickOpenVoteModule");
     }
 
     return (
@@ -76,7 +82,9 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                 </Tooltip>
 
                 {
-                    membershipMode == "1" && member == 2 && (
+                    modules?.some(a => a.type == "MemberModule" && a.code == "RequestMembershipModule") 
+                    && member == 2 
+                    && (
                         <Tooltip title="Asking join Dao">
                             <Person fontSize="large" color="secondary"
                            />
@@ -84,7 +92,9 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    membershipMode == "1" && member == 0 && (
+                    modules?.some(a => a.type == "MemberModule" && a.code == "RequestMembershipModule") 
+                    && member == 0 
+                    && (
                         <Tooltip title="Request join Dao">
                             <GroupAddIcon fontSize="large" color="primary"
                             onClick={handleClickRequestJoinDao}/>
@@ -92,7 +102,8 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    membershipMode == "2" && member == 0 && (
+                    modules?.some(a => a.type == "MemberModule" && a.code == "OpenMembershipModule") 
+                    && member == 0 && (
                         <Tooltip title="Join Dao">
                             <GroupAddIcon fontSize="large" color="primary"
                             onClick={handleClickJoinDao}/>
@@ -100,7 +111,8 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    membershipMode == "0" && member == 0 && (
+                    modules?.some(a => a.type == "MemberModule" && a.code == "InviteMembershipModule") 
+                    && member == 0 && (
                         <Tooltip title="Not member">
                             <PersonOutlineIcon fontSize="large" color="primary"
                             />
@@ -133,6 +145,12 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                         </Tooltip> 
                     )
                 }
+
+                <Tooltip title="Vote">
+                    <HowToVoteIcon fontSize="large" color="primary"
+                    onClick={handleClickJoinDaoInvitation}/>
+                    {/* </IconButton> */}
+                </Tooltip>
 
             </Box>
 

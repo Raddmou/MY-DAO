@@ -20,10 +20,11 @@ import {  joinDao, acceptMember } from '../../redux/reducers/actions';
 type MemberCardProps = {
     member: Member,
     isMember: number,
-    daoAddress: Address
+    daoAddress: Address,
+    codeModule : string,
 };
 
-const MemberCard = ({ member, isMember, daoAddress }: MemberCardProps) => {
+const MemberCard = ({ member, isMember, daoAddress, codeModule }: MemberCardProps) => {
     const [refresh, setRefresh] = useState(0);
     const { address, status, id } = member;
     const dispatch = useAppDispatch();
@@ -55,7 +56,7 @@ const MemberCard = ({ member, isMember, daoAddress }: MemberCardProps) => {
             );
         }
         //asking
-        else if(status == 2)
+        else if(codeModule == "RequestMembershipModule" && status == 2)
         {
             return (
                 <Tooltip title="Asking to join">
@@ -69,7 +70,7 @@ const MemberCard = ({ member, isMember, daoAddress }: MemberCardProps) => {
             );
         }
         //invited
-        else if(status == 1)
+        else if(codeModule == "InviteMembershipModule" && status == 1)
         {
             return (
                 <Tooltip title="Pending invitation to join">

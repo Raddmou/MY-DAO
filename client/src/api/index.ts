@@ -182,14 +182,17 @@ export const daosAPI = {
     fetchDao: async (address: Address): Promise<Dao> => {
 
         const contractDao = await contractDaoProvider.getContract(address);
-        const typeHash = await contractDao.methods.hash("MemberModule").call();
-        const moduleMembership = await contractDao.methods.modules(typeHash).call();
+        const typeHashMemberModule = await contractDao.methods.hash("MemberModule").call();
+        const moduleMembership = await contractDao.methods.modules(typeHashMemberModule).call();
+        const typeHashVoteModule = await contractDao.methods.hash("VotingModule").call();
+        const moduleVote = await contractDao.methods.modules(typeHashVoteModule).call();
         var member;
         var isMember;
         var membershipMode;
         var membersCount;
         var members = [];
         var modules = [];
+        
         if(moduleMembership.isActive)
         {
             const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
@@ -205,6 +208,10 @@ export const daosAPI = {
                 members.push(myMember);
             } 
             modules.push({type: "MemberModule", code: "MembershipModule"});
+        }
+        if(moduleVote.isActive)
+        {
+            modules.push({type: "VotingModule", code: "VotingYesNoModule"});
         }
 
         const name = await contractDao.methods.name().call();
