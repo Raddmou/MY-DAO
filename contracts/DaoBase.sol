@@ -89,21 +89,26 @@ contract DaoBase is Ownable {
   }
 
   // get info
-  function getAllModuleHash() public view returns(bytes8[] memory allModuleHash) {
-    allModuleHash = new bytes8[](modulesCount);
-    for (uint256 i = 0; i < modulesCount; ++i) {
-      allModuleHash[i] = moduleType[i];
-    }
+  // function getAllModuleHash() public view returns(bytes8[] memory allModuleHash) {
+  //   allModuleHash = new bytes8[](modulesCount);
+  //   for (uint256 i = 0; i < modulesCount; ++i) {
+  //     allModuleHash[i] = moduleType[i];
+  //   }
+  // }
+  // function getAllModulesData() public view returns(Data.Module[] memory allModuleData) {
+  //   allModuleData = new Data.Module[](modulesCount);
+  //   for (uint256 i = 0; i < modulesCount; ++i) {
+  //     allModuleData[i] = modules[moduleType[i]];
+  //   }
+  // }
+  // function getModuleData(uint256 _moduleId) public view returns(Data.Module memory) {
+  //   return(modules[moduleType[_moduleId]]);
+  // }
+
+  function getModuleData(bytes8 _type) public view returns(Data.Module memory) {
+    return(modules[_type]);
   }
-  function getAllModulesData() public view returns(Data.Module[] memory allModuleData) {
-    allModuleData = new Data.Module[](modulesCount);
-    for (uint256 i = 0; i < modulesCount; ++i) {
-      allModuleData[i] = modules[moduleType[i]];
-    }
-  }
-  function getModuleData(uint256 _moduleId) public view returns(Data.Module memory) {
-    return(modules[moduleType[_moduleId]]);
-  }
+
   // function memberInfo(address _member) external view returns(Data.member memory) {
   //   return(IDao(modules[0]).getMemberInfo(_member));
   // }

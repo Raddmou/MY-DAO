@@ -64,4 +64,8 @@ struct DaoMember {
     bytes8 moduleType; 
     bytes8 moduleCode; 
   }
+
+  function hash(string memory _messageToHash) public pure returns (bytes8) {
+    return bytes8(keccak256(abi.encode(_messageToHash)));
+  }
 }

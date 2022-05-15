@@ -97,4 +97,8 @@ contract DaosFactory is Ownable {
     dao.transferOwnership(msg.sender);
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }
+
+  function hash(string memory _name) public pure returns(bytes8) {
+    return (bytes8(keccak256(abi.encode(_name))));
+  }
 }
