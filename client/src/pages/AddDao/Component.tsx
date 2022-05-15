@@ -21,6 +21,9 @@ import { addNewDao } from '../../redux/reducers/actions';
 import { AddDaoFormValues } from '../../types';
 import './Component.scss'
 import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 const AddDao: React.FC = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -76,6 +79,19 @@ const AddDao: React.FC = () => {
           boxSizing: 'border-box',
         },
       }));
+
+      const handleChoiceModule = () => {
+          console.log("handleChoiceModule");
+      }
+    const [alignment, setAlignment] = React.useState('web');
+
+      const handleChangeMembershipModule = (
+        event: React.MouseEvent<HTMLElement>,
+        newAlignment: string,
+      ) => {
+        console.log("handleChangeMembershipModule");
+        setAlignment(newAlignment);
+      };
 
     const formik: FormikProps<AddDaoFormValues> = useFormik({
         initialValues: {
@@ -247,6 +263,29 @@ const AddDao: React.FC = () => {
                             error={touched.note && Boolean(errors.note)}
                             helperText={touched.note && errors.note}
                         />
+                    </div>
+                    <div>
+                        <ToggleButtonGroup
+                            color="primary"
+                            value={alignment}
+                            exclusive
+                            onChange={handleChangeMembershipModule}
+                            >
+                            <ToggleButton value="web">Open</ToggleButton>
+                            <ToggleButton value="android">Invite</ToggleButton>
+                            <ToggleButton value="ios">Request</ToggleButton>
+                        </ToggleButtonGroup>
+                    </div>
+                    <div>
+                        <ToggleButtonGroup
+                            color="primary"
+                            value={alignment}
+                            exclusive
+                            onChange={handleChangeMembershipModule}
+                            >
+                            <ToggleButton value="web">Voting yes no</ToggleButton>
+                            <ToggleButton value="android" disabled>Voting proposition</ToggleButton>
+                        </ToggleButtonGroup>
                     </div>
                     <Button color="primary" variant="contained" fullWidth type="submit">
                         Submit
