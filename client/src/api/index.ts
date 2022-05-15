@@ -45,18 +45,24 @@ export const daosAPI = {
     },
 
     getDaoCountByUser: async (): Promise<number> => {
+        console.log("getDaoCountByUserrr");
         const contract = await contractFactoryProvider.getContract();
+        console.log("contract" + contract.defaultAccount);
+        console.log("ici ");
         const allDaos = await contract.methods.getdeployedDaos().call();
+        console.log("la ");
         
         //const count = allDaos.filter(c => c.members[(window as any).ethereum.selectedAddress].status != 0).length;
         const transactionsData =  allDaos
                                     .map(async (deployedAddress) => {
                                         const address = deployedAddress.daoAddress;
                                         const contractDao = await contractDaoProvider.getContract(address.daoAddress);
+                                        console.log("before typehash");
                                         const typeHash = await contractDao.methods.hash("MemberModule").call();
+                                        console.log("typeHash " + typeHash);
                                         const moduleMembership = await contractDao.methods.modules(typeHash).call();
-                                        //TODO: hash code
-                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, moduleMembership.moduleCode);
+                                        const codeHash = await contractDao.methods.hash(moduleMembership.moduleCode).call();
+                                        const contractMembershipModule = await contractMembershipModuleProvider.getContract(moduleMembership.moduleAddress, codeHash);
                                         const member = await contractMembershipModule.methods.members((window as any).ethereum.selectedAddress).call();
                                         const isMember = member != 0;
                                         return { address, isMember };
