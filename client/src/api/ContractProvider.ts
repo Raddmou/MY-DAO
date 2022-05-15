@@ -4,7 +4,7 @@ import daoContract from "../contracts/DaoBase.json";
 import openMembershipContract from "../contracts/OpenMembershipModule.json";
 import inviteMembershipContract from "../contracts/InviteMembershipModule.json";
 import requestMembershipContract from "../contracts/RequestMembershipModule.json";
-import votingContract from "../contracts/VotingYesNo.json";
+import votingContract from "../contracts/VotingYesNoModule.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
 

@@ -85,13 +85,14 @@ contract DaosFactory is Ownable {
                     , Data.ModuleToActivate[] memory _modules) public {
     require(_modules.length < 10, "Modules must be less than 10.");
     DaoBase dao = new DaoBase(_name, _description, _visibility);
-    dao.authorizeContract(address(this));
-    dao.transferOwnership(msg.sender);
     // MembershipDao memberModule = new MembershipDao(membershipMode);
     // dao.addModule(dao.hash("MemberModule"), address(memberModule));
     deployedDao memory _dao;
     _dao.owner = msg.sender;
     _dao.daoAddress = address(dao);
+    daos.push(_dao); 
+    dao.authorizeContract(address(this));
+    dao.transferOwnership(msg.sender);
 
     for(uint i=0; i<_modules.length; ++i){
       require(modulesDaos[_modules[i].moduleType][_modules[i].moduleCode].isActive == true, "Module not found");
@@ -100,7 +101,6 @@ contract DaosFactory is Ownable {
         , _modules[i].moduleCode);
      }
     daoOwners[address(dao)][msg.sender] = true;
-    daos.push(_dao); 
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }
 
