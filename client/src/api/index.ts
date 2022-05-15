@@ -281,8 +281,40 @@ export const daosAPI = {
         const { name, visibility, description, modules } = dao;
         //const byInvitation = membershipMode == 0;
         const visibilityEnum = visibility ? 1 : 0;
+        var { member, vote } = modules;
+        const typeHashMember = await contract.methods.hash("MemberModule").call();
+        var codeHashMember;
+        switch (member) {
+            case 'open':
+                codeHashMember = await contract.methods.hash("OpenMembershipModule").call();
+                break;
+            case 'invite':
+                codeHashMember = await contract.methods.hash("InviteMembershipModule").call();
+                break;
+            case 'request':
+                codeHashMember = await contract.methods.hash("RequestMembershipModule").call();
+                break;
+            default:
+                console.log("Need to choose one member module");
+        }
+        member = { typeHashMember, codeHashMember };
+        const typeHashVote = await contract.methods.hash("VoteModule").call();
+        var codeHashVote;
+        switch (vote) {
+            case 'votingSimple':
+                codeHashVote = await contract.methods.hash("OpenMembershipModule").call();
+                break;
+            case 'votingProposition':
+                codeHashVote = await contract.methods.hash("AAA").call();
+                break;
+            default:
+                codeHashMember = null;
+        }
+        vote = { typeHashVote, codeHashVote };
+        const modulesPush = { member, vote };
+
         const { events } =  await contract.methods
-        .createDAO(name, description, visibilityEnum)
+        .createDAO(name, description, visibilityEnum, modules)
             // .createDAO(name, membershipMode, description, visibility)
             //.createDAO(name, false, description, visibility)
             .send({ 
@@ -291,7 +323,7 @@ export const daosAPI = {
         const address = events?.DaoCreated?.returnValues?.daoAddress;
         const id = address.toString();
 
-        return { id, name, visibility, description, address, modules };
+        return { id, name, visibility, description, address, member: 0, Members: [], modules: modulesPush };
     },
 
     joinDao: async (address: Address): Promise<boolean> => {
@@ -386,5 +418,38 @@ export const daosAPI = {
 			});		
         return true;
         
+    },
+    linkMemberModule: async (address: Address, code: string): Promise<boolean> => {
+        const contractDao = await contractDaoProvider.getContract(address);
+        const typeHash = await contractDao.methods.hash("MemberModule").call();
+        var codeHash;
+        switch (code) {
+            case 'open':
+                codeHash = await contractDao.methods.hash("OpenMembershipModule").call();
+                break;
+            case 'invite':
+                codeHash = await contractDao.methods.hash("InviteMembershipModule").call();
+                break;
+            case 'request':
+                codeHash = await contractDao.methods.hash("RequestMembershipModule").call();
+                break;
+            default:
+                console.log("Need to choose one member module");
+                return false;
+        }
+        // const codeHash = await contractDao.methods.hash("OpenMembershipModule").call();
+
+        await contractDao.methods.activateModuleForDao(address, typeHash, codeHash)
+            .send({from: (window as any).ethereum.selectedAddress})
+            .on("receipt",function(receipt){
+                console.log(receipt);  
+                return true;
+            })
+            .on("error",function(error, receipt){
+                console.log(error);
+                console.log(receipt);
+                return false;
+            });
+        return true;
     }
 };

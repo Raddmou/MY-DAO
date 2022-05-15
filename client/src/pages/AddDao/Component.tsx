@@ -30,6 +30,7 @@ const AddDao: React.FC = () => {
     const { account } = useAppSelector((state: any) => state.application);
     const dispatch = useAppDispatch();
     const handleSubmit = (formValues: AddDaoFormValues, { resetForm }: any): void => {
+        var modules = { member, vote };
         console.log("add dao membership " + formValues.membershipMode);
         dispatch(
             addNewDao(formValues)
@@ -83,14 +84,22 @@ const AddDao: React.FC = () => {
       const handleChoiceModule = () => {
           console.log("handleChoiceModule");
       }
-    const [alignment, setAlignment] = React.useState('web');
+    const [member, setMember] = React.useState('web');
+    const [vote, setVote] = React.useState('web');
 
       const handleChangeMembershipModule = (
         event: React.MouseEvent<HTMLElement>,
         newAlignment: string,
       ) => {
         console.log("handleChangeMembershipModule");
-        setAlignment(newAlignment);
+        setMember(newAlignment);
+      };
+      const handleChangeMembershipModule2 = (
+        event: React.MouseEvent<HTMLElement>,
+        newAlignment: string,
+      ) => {
+        console.log("handleChangeMembershipModule");
+        setVote(newAlignment);
       };
 
     const formik: FormikProps<AddDaoFormValues> = useFormik({
@@ -264,27 +273,31 @@ const AddDao: React.FC = () => {
                             helperText={touched.note && errors.note}
                         />
                     </div>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Member Module</FormLabel>
                     <div>
                         <ToggleButtonGroup
                             color="primary"
-                            value={alignment}
+                            value={member}
                             exclusive
                             onChange={handleChangeMembershipModule}
+                            // aria-label="label"
                             >
-                            <ToggleButton value="web">Open</ToggleButton>
-                            <ToggleButton value="android">Invite</ToggleButton>
-                            <ToggleButton value="ios">Request</ToggleButton>
+                            {/* <label>hoho</label> */}
+                            <ToggleButton value="open">Open</ToggleButton>
+                            <ToggleButton value="invite">Invite</ToggleButton>
+                            <ToggleButton value="request">Request</ToggleButton>
                         </ToggleButtonGroup>
                     </div>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Vote Module</FormLabel>
                     <div>
                         <ToggleButtonGroup
                             color="primary"
-                            value={alignment}
+                            value={vote}
                             exclusive
-                            onChange={handleChangeMembershipModule}
+                            onChange={handleChangeMembershipModule2}
                             >
-                            <ToggleButton value="web">Voting yes no</ToggleButton>
-                            <ToggleButton value="android" disabled>Voting proposition</ToggleButton>
+                            <ToggleButton value="votingSimple">Voting yes no</ToggleButton>
+                            <ToggleButton value="votingProposition" disabled>Voting proposition</ToggleButton>
                         </ToggleButtonGroup>
                     </div>
                     <Button color="primary" variant="contained" fullWidth type="submit">

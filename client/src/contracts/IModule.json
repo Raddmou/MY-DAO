@@ -33,32 +33,30 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_daoAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_memberAddress\",\"type\":\"address\"}],\"name\":\"addDao\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Modules/interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0xa285994e977b43a2b47503f422c835436137b74e67ba66d87d7539f467077642\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a1afd448ef293d7fd1518b5bc8a080083ecf5813f1ea0a6a76062edcc5739964\",\"dweb:/ipfs/QmXkr32L4DsPhiC9H9z3worYBwQQB2BWur8tvcKcL5jjLW\"]},\"project:/contracts/Modules/interfaces/IModule.sol\":{\"keccak256\":\"0xae05f0875fc1f3952a20a57b1a4f2611953cd1f9206541627f8d6cb0d9616fc2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a55b8c89e7464d55267f7a9235c7056ac3f5859303a768e9e721b979e3d4d55e\",\"dweb:/ipfs/QmdscSdm9UCu35XCkpamjKhncFPzjksjLsaYUPunGYDbC1\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_daoAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_memberAddress\",\"type\":\"address\"}],\"name\":\"addDao\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0xf30e145003c796b049086abfbad3806af03638e9d337b202f69d709f02f15867\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a46230edc8bbcfd70ca41b6412234a2708bc5487855ee5d4b5a31dbd9a0f65a3\",\"dweb:/ipfs/QmcoeVj1dGsASE8FZ5QEvNju3mhSz5wtsSxRXxBsBvoajR\"]},\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/interfaces/IModule.sol\":{\"keccak256\":\"0x05745b0f56fef251759514dc1dc2bc0d0106895cf0b53526a3911ec5ad5ffbc2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://42c7b91efda16c4d5ebd0501db0164032b20160c0844090cba4bdd71e8e6281b\",\"dweb:/ipfs/QmNsXBKfExXG3UREZ33XvZg1gcZUAMSiJtTZ7sTnFG8Tib\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
-  "generatedSources": [],
-  "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nimport \"../../Data.sol\";\r\n\r\ninterface IModule {\r\n  function getCode() external view returns(string memory);\r\n\r\n  function addDao(address _daoAddress, address _memberAddress) external;\r\n}",
-  "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Modules\\interfaces\\IModule.sol",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\nimport \"../../Data.sol\";\n\ninterface IModule {\n  function getCode() external view returns(string memory);\n\n  function addDao(address _daoAddress, address _memberAddress) external;\n}",
+  "sourcePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/interfaces/IModule.sol",
   "ast": {
-    "absolutePath": "project:/contracts/Modules/interfaces/IModule.sol",
+    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/interfaces/IModule.sol",
     "exportedSymbols": {
       "Data": [
-        1232
+        699
       ],
       "IModule": [
-        3874
+        3341
       ]
     },
-    "id": 3875,
+    "id": 3342,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3860,
+        "id": 3327,
         "literals": [
           "solidity",
           "^",
@@ -66,17 +64,17 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:19"
+        "src": "32:23:14"
       },
       {
-        "absolutePath": "project:/contracts/Data.sol",
+        "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
         "file": "../../Data.sol",
-        "id": 3861,
+        "id": 3328,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3875,
-        "sourceUnit": 1233,
-        "src": "60:24:19",
+        "scope": 3342,
+        "sourceUnit": 700,
+        "src": "57:24:14",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -87,42 +85,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 3874,
+        "id": 3341,
         "linearizedBaseContracts": [
-          3874
+          3341
         ],
         "name": "IModule",
-        "nameLocation": "98:7:19",
+        "nameLocation": "93:7:14",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "ea879634",
-            "id": 3866,
+            "id": 3333,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCode",
-            "nameLocation": "120:7:19",
+            "nameLocation": "114:7:14",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3862,
+              "id": 3329,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "127:2:19"
+              "src": "121:2:14"
             },
             "returnParameters": {
-              "id": 3865,
+              "id": 3332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3864,
+                  "id": 3331,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3866,
-                  "src": "152:13:19",
+                  "scope": 3333,
+                  "src": "146:13:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -130,10 +128,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 3863,
+                    "id": 3330,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "152:6:19",
+                    "src": "146:6:14",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -142,36 +140,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "151:15:19"
+              "src": "145:15:14"
             },
-            "scope": 3874,
-            "src": "111:56:19",
+            "scope": 3341,
+            "src": "105:56:14",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "12ee7e41",
-            "id": 3873,
+            "id": 3340,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "addDao",
-            "nameLocation": "182:6:19",
+            "nameLocation": "174:6:14",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3871,
+              "id": 3338,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3868,
+                  "id": 3335,
                   "mutability": "mutable",
                   "name": "_daoAddress",
-                  "nameLocation": "197:11:19",
+                  "nameLocation": "189:11:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3873,
-                  "src": "189:19:19",
+                  "scope": 3340,
+                  "src": "181:19:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -179,10 +177,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3867,
+                    "id": 3334,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "189:7:19",
+                    "src": "181:7:14",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -193,13 +191,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3870,
+                  "id": 3337,
                   "mutability": "mutable",
                   "name": "_memberAddress",
-                  "nameLocation": "218:14:19",
+                  "nameLocation": "210:14:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3873,
-                  "src": "210:22:19",
+                  "scope": 3340,
+                  "src": "202:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -207,10 +205,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3869,
+                    "id": 3336,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "210:7:19",
+                    "src": "202:7:14",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -220,44 +218,44 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "188:45:19"
+              "src": "180:45:14"
             },
             "returnParameters": {
-              "id": 3872,
+              "id": 3339,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "242:0:19"
+              "src": "234:0:14"
             },
-            "scope": 3874,
-            "src": "173:70:19",
+            "scope": 3341,
+            "src": "165:70:14",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3875,
-        "src": "88:158:19",
+        "scope": 3342,
+        "src": "83:154:14",
         "usedErrors": []
       }
     ],
-    "src": "33:213:19"
+    "src": "32:205:14"
   },
   "legacyAST": {
-    "absolutePath": "project:/contracts/Modules/interfaces/IModule.sol",
+    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/interfaces/IModule.sol",
     "exportedSymbols": {
       "Data": [
-        1232
+        699
       ],
       "IModule": [
-        3874
+        3341
       ]
     },
-    "id": 3875,
+    "id": 3342,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3860,
+        "id": 3327,
         "literals": [
           "solidity",
           "^",
@@ -265,17 +263,17 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:19"
+        "src": "32:23:14"
       },
       {
-        "absolutePath": "project:/contracts/Data.sol",
+        "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
         "file": "../../Data.sol",
-        "id": 3861,
+        "id": 3328,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3875,
-        "sourceUnit": 1233,
-        "src": "60:24:19",
+        "scope": 3342,
+        "sourceUnit": 700,
+        "src": "57:24:14",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -286,42 +284,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 3874,
+        "id": 3341,
         "linearizedBaseContracts": [
-          3874
+          3341
         ],
         "name": "IModule",
-        "nameLocation": "98:7:19",
+        "nameLocation": "93:7:14",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "ea879634",
-            "id": 3866,
+            "id": 3333,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCode",
-            "nameLocation": "120:7:19",
+            "nameLocation": "114:7:14",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3862,
+              "id": 3329,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "127:2:19"
+              "src": "121:2:14"
             },
             "returnParameters": {
-              "id": 3865,
+              "id": 3332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3864,
+                  "id": 3331,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3866,
-                  "src": "152:13:19",
+                  "scope": 3333,
+                  "src": "146:13:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -329,10 +327,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 3863,
+                    "id": 3330,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "152:6:19",
+                    "src": "146:6:14",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -341,36 +339,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "151:15:19"
+              "src": "145:15:14"
             },
-            "scope": 3874,
-            "src": "111:56:19",
+            "scope": 3341,
+            "src": "105:56:14",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "12ee7e41",
-            "id": 3873,
+            "id": 3340,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "addDao",
-            "nameLocation": "182:6:19",
+            "nameLocation": "174:6:14",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3871,
+              "id": 3338,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3868,
+                  "id": 3335,
                   "mutability": "mutable",
                   "name": "_daoAddress",
-                  "nameLocation": "197:11:19",
+                  "nameLocation": "189:11:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3873,
-                  "src": "189:19:19",
+                  "scope": 3340,
+                  "src": "181:19:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -378,10 +376,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3867,
+                    "id": 3334,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "189:7:19",
+                    "src": "181:7:14",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -392,13 +390,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 3870,
+                  "id": 3337,
                   "mutability": "mutable",
                   "name": "_memberAddress",
-                  "nameLocation": "218:14:19",
+                  "nameLocation": "210:14:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3873,
-                  "src": "210:22:19",
+                  "scope": 3340,
+                  "src": "202:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -406,10 +404,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3869,
+                    "id": 3336,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "210:7:19",
+                    "src": "202:7:14",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -419,35 +417,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "188:45:19"
+              "src": "180:45:14"
             },
             "returnParameters": {
-              "id": 3872,
+              "id": 3339,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "242:0:19"
+              "src": "234:0:14"
             },
-            "scope": 3874,
-            "src": "173:70:19",
+            "scope": 3341,
+            "src": "165:70:14",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3875,
-        "src": "88:158:19",
+        "scope": 3342,
+        "src": "83:154:14",
         "usedErrors": []
       }
     ],
-    "src": "33:213:19"
+    "src": "32:205:14"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-15T16:10:08.936Z",
+  "schemaVersion": "3.2.0",
+  "updatedAt": "2022-05-15T18:53:30.584Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
