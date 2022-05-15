@@ -21,13 +21,13 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_messageToHash\",\"type\":\"string\"}],\"name\":\"hash\",\"outputs\":[{\"internalType\":\"bytes8\",\"name\":\"\",\"type\":\"bytes8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0xf30e145003c796b049086abfbad3806af03638e9d337b202f69d709f02f15867\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a46230edc8bbcfd70ca41b6412234a2708bc5487855ee5d4b5a31dbd9a0f65a3\",\"dweb:/ipfs/QmcoeVj1dGsASE8FZ5QEvNju3mhSz5wtsSxRXxBsBvoajR\"]}},\"version\":1}",
-  "bytecode": "0x610390610053600b82828239805160001a607314610046577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea26469706673582212204fcd2e3aa519005bce717ba1b210191e71462a7445158276c236d045cb88bc2264736f6c63430008090033",
-  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea26469706673582212204fcd2e3aa519005bce717ba1b210191e71462a7445158276c236d045cb88bc2264736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_messageToHash\",\"type\":\"string\"}],\"name\":\"hash\",\"outputs\":[{\"internalType\":\"bytes8\",\"name\":\"\",\"type\":\"bytes8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0xdda3a10d03658a2ac7c9e2964b4e44316ef0593cdeed80f587bdd0aba6003c56\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a5a91a85afbca729063b7985f9e3f0e1e84b4e9520993768f64d2aa6e26afb50\",\"dweb:/ipfs/QmRrx2hEMp22rumQPBoCXx1JFCArLQMXjVmp8jzpdomfrS\"]}},\"version\":1}",
+  "bytecode": "0x610390610053600b82828239805160001a607314610046577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea2646970667358221220dc6e8baee57f324e84d91b36a51d6eb8a56b693391e2b3aebe006eec1be65e3f64736f6c63430008090033",
+  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea2646970667358221220dc6e8baee57f324e84d91b36a51d6eb8a56b693391e2b3aebe006eec1be65e3f64736f6c63430008090033",
   "immutableReferences": {},
-  "sourceMap": "57:1192:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "57:1192:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;1111:136;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;1176:6;1225:14;1214:26;;;;;;;;:::i;:::-;;;;;;;;;;;;;1204:37;;;;;;1190:52;;1111:136;;;:::o;7:75:24:-;40:6;73:2;67:9;57:19;;7:75;:::o;88:117::-;197:1;194;187:12;211:117;320:1;317;310:12;334:117;443:1;440;433:12;457:117;566:1;563;556:12;580:102;621:6;672:2;668:7;663:2;656:5;652:14;648:28;638:38;;580:102;;;:::o;688:180::-;736:77;733:1;726:88;833:4;830:1;823:15;857:4;854:1;847:15;874:281;957:27;979:4;957:27;:::i;:::-;949:6;945:40;1087:6;1075:10;1072:22;1051:18;1039:10;1036:34;1033:62;1030:88;;;1098:18;;:::i;:::-;1030:88;1138:10;1134:2;1127:22;917:238;874:281;;:::o;1161:129::-;1195:6;1222:20;;:::i;:::-;1212:30;;1251:33;1279:4;1271:6;1251:33;:::i;:::-;1161:129;;;:::o;1296:308::-;1358:4;1448:18;1440:6;1437:30;1434:56;;;1470:18;;:::i;:::-;1434:56;1508:29;1530:6;1508:29;:::i;:::-;1500:37;;1592:4;1586;1582:15;1574:23;;1296:308;;;:::o;1610:154::-;1694:6;1689:3;1684;1671:30;1756:1;1747:6;1742:3;1738:16;1731:27;1610:154;;;:::o;1770:412::-;1848:5;1873:66;1889:49;1931:6;1889:49;:::i;:::-;1873:66;:::i;:::-;1864:75;;1962:6;1955:5;1948:21;2000:4;1993:5;1989:16;2038:3;2029:6;2024:3;2020:16;2017:25;2014:112;;;2045:79;;:::i;:::-;2014:112;2135:41;2169:6;2164:3;2159;2135:41;:::i;:::-;1854:328;1770:412;;;;;:::o;2202:340::-;2258:5;2307:3;2300:4;2292:6;2288:17;2284:27;2274:122;;2315:79;;:::i;:::-;2274:122;2432:6;2419:20;2457:79;2532:3;2524:6;2517:4;2509:6;2505:17;2457:79;:::i;:::-;2448:88;;2264:278;2202:340;;;;:::o;2548:509::-;2617:6;2666:2;2654:9;2645:7;2641:23;2637:32;2634:119;;;2672:79;;:::i;:::-;2634:119;2820:1;2809:9;2805:17;2792:31;2850:18;2842:6;2839:30;2836:117;;;2872:79;;:::i;:::-;2836:117;2977:63;3032:7;3023:6;3012:9;3008:22;2977:63;:::i;:::-;2967:73;;2763:287;2548:509;;;;:::o;3063:149::-;3099:7;3139:66;3132:5;3128:78;3117:89;;3063:149;;;:::o;3218:123::-;3311:23;3328:5;3311:23;:::i;:::-;3306:3;3299:36;3218:123;;:::o;3347:234::-;3446:4;3484:2;3473:9;3469:18;3461:26;;3497:77;3571:1;3560:9;3556:17;3547:6;3497:77;:::i;:::-;3347:234;;;;:::o;3587:99::-;3639:6;3673:5;3667:12;3657:22;;3587:99;;;:::o;3692:169::-;3776:11;3810:6;3805:3;3798:19;3850:4;3845:3;3841:14;3826:29;;3692:169;;;;:::o;3867:307::-;3935:1;3945:113;3959:6;3956:1;3953:13;3945:113;;;4044:1;4039:3;4035:11;4029:18;4025:1;4020:3;4016:11;4009:39;3981:2;3978:1;3974:10;3969:15;;3945:113;;;4076:6;4073:1;4070:13;4067:101;;;4156:1;4147:6;4142:3;4138:16;4131:27;4067:101;3916:258;3867:307;;;:::o;4180:364::-;4268:3;4296:39;4329:5;4296:39;:::i;:::-;4351:71;4415:6;4410:3;4351:71;:::i;:::-;4344:78;;4431:52;4476:6;4471:3;4464:4;4457:5;4453:16;4431:52;:::i;:::-;4508:29;4530:6;4508:29;:::i;:::-;4503:3;4499:39;4492:46;;4272:272;4180:364;;;;:::o;4550:313::-;4663:4;4701:2;4690:9;4686:18;4678:26;;4750:9;4744:4;4740:20;4736:1;4725:9;4721:17;4714:47;4778:78;4851:4;4842:6;4778:78;:::i;:::-;4770:86;;4550:313;;;;:::o",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\nlibrary Data {\n  struct member {\n    memberStatus status;\n    uint256 joinTime;\n    //address memberAddress;\n  }\n\nstruct DaoMember {\n    address addressDao;\n    uint256 membersCount;\n    mapping(uint256 => address) memberAddresses;\n    mapping(address => Data.member) members;\n    bool isActive;\n  } \n\n  struct DaoSettings {\n    address addressDao;\n    visibilityEnum visibility;\n    string name;\n    string description;\n  } \n\n  struct daoData {\n    string daoType;\n    visibilityEnum visibility;\n  }\n\n  enum visibilityEnum {\n    privateDao,\n    publicDao\n  }\n\n  enum memberStatus {\n    notMember,\n    invited,\n    asking,\n    active\n  }\n\n  enum membershipModeEnum {\n    invite,\n    request,\n    open\n  }\n\n  enum ModuleType {\n    DaoMemberSystem,\n    DaoVotingSystem\n  }\n\n  struct Module {\n    uint256 id;\n    address moduleAddress;\n    // IModule module;\n    bool isActive;\n    bytes8 moduleType; //member\n    bytes8 moduleCode; //membership\n    string moduleInfo;\n  }\n\n  struct ModuleToActivate {\n    bytes8 moduleType; \n    bytes8 moduleCode; \n  }\n\n  function hash(string memory _messageToHash) public pure returns (bytes8) {\n    return bytes8(keccak256(abi.encode(_messageToHash)));\n  }\n}",
+  "sourceMap": "57:1190:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "57:1190:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;1109:136;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;1174:6;1223:14;1212:26;;;;;;;;:::i;:::-;;;;;;;;;;;;;1202:37;;;;;;1188:52;;1109:136;;;:::o;7:75:24:-;40:6;73:2;67:9;57:19;;7:75;:::o;88:117::-;197:1;194;187:12;211:117;320:1;317;310:12;334:117;443:1;440;433:12;457:117;566:1;563;556:12;580:102;621:6;672:2;668:7;663:2;656:5;652:14;648:28;638:38;;580:102;;;:::o;688:180::-;736:77;733:1;726:88;833:4;830:1;823:15;857:4;854:1;847:15;874:281;957:27;979:4;957:27;:::i;:::-;949:6;945:40;1087:6;1075:10;1072:22;1051:18;1039:10;1036:34;1033:62;1030:88;;;1098:18;;:::i;:::-;1030:88;1138:10;1134:2;1127:22;917:238;874:281;;:::o;1161:129::-;1195:6;1222:20;;:::i;:::-;1212:30;;1251:33;1279:4;1271:6;1251:33;:::i;:::-;1161:129;;;:::o;1296:308::-;1358:4;1448:18;1440:6;1437:30;1434:56;;;1470:18;;:::i;:::-;1434:56;1508:29;1530:6;1508:29;:::i;:::-;1500:37;;1592:4;1586;1582:15;1574:23;;1296:308;;;:::o;1610:154::-;1694:6;1689:3;1684;1671:30;1756:1;1747:6;1742:3;1738:16;1731:27;1610:154;;;:::o;1770:412::-;1848:5;1873:66;1889:49;1931:6;1889:49;:::i;:::-;1873:66;:::i;:::-;1864:75;;1962:6;1955:5;1948:21;2000:4;1993:5;1989:16;2038:3;2029:6;2024:3;2020:16;2017:25;2014:112;;;2045:79;;:::i;:::-;2014:112;2135:41;2169:6;2164:3;2159;2135:41;:::i;:::-;1854:328;1770:412;;;;;:::o;2202:340::-;2258:5;2307:3;2300:4;2292:6;2288:17;2284:27;2274:122;;2315:79;;:::i;:::-;2274:122;2432:6;2419:20;2457:79;2532:3;2524:6;2517:4;2509:6;2505:17;2457:79;:::i;:::-;2448:88;;2264:278;2202:340;;;;:::o;2548:509::-;2617:6;2666:2;2654:9;2645:7;2641:23;2637:32;2634:119;;;2672:79;;:::i;:::-;2634:119;2820:1;2809:9;2805:17;2792:31;2850:18;2842:6;2839:30;2836:117;;;2872:79;;:::i;:::-;2836:117;2977:63;3032:7;3023:6;3012:9;3008:22;2977:63;:::i;:::-;2967:73;;2763:287;2548:509;;;;:::o;3063:149::-;3099:7;3139:66;3132:5;3128:78;3117:89;;3063:149;;;:::o;3218:123::-;3311:23;3328:5;3311:23;:::i;:::-;3306:3;3299:36;3218:123;;:::o;3347:234::-;3446:4;3484:2;3473:9;3469:18;3461:26;;3497:77;3571:1;3560:9;3556:17;3547:6;3497:77;:::i;:::-;3347:234;;;;:::o;3587:99::-;3639:6;3673:5;3667:12;3657:22;;3587:99;;;:::o;3692:169::-;3776:11;3810:6;3805:3;3798:19;3850:4;3845:3;3841:14;3826:29;;3692:169;;;;:::o;3867:307::-;3935:1;3945:113;3959:6;3956:1;3953:13;3945:113;;;4044:1;4039:3;4035:11;4029:18;4025:1;4020:3;4016:11;4009:39;3981:2;3978:1;3974:10;3969:15;;3945:113;;;4076:6;4073:1;4070:13;4067:101;;;4156:1;4147:6;4142:3;4138:16;4131:27;4067:101;3916:258;3867:307;;;:::o;4180:364::-;4268:3;4296:39;4329:5;4296:39;:::i;:::-;4351:71;4415:6;4410:3;4351:71;:::i;:::-;4344:78;;4431:52;4476:6;4471:3;4464:4;4457:5;4453:16;4431:52;:::i;:::-;4508:29;4530:6;4508:29;:::i;:::-;4503:3;4499:39;4492:46;;4272:272;4180:364;;;;:::o;4550:313::-;4663:4;4701:2;4690:9;4686:18;4678:26;;4750:9;4744:4;4740:20;4736:1;4725:9;4721:17;4714:47;4778:78;4851:4;4842:6;4778:78;:::i;:::-;4770:86;;4550:313;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\nlibrary Data {\n  struct member {\n    memberStatus status;\n    uint256 joinTime;\n    //address memberAddress;\n  }\n\nstruct DaoMember {\n    address addressDao;\n    uint256 membersCount;\n    mapping(uint256 => address) memberAddresses;\n    mapping(address => Data.member) members;\n    bool isActive;\n  } \n\n  struct DaoSettings {\n    address addressDao;\n    visibilityEnum visibility;\n    string name;\n    string description;\n  } \n\n  struct daoData {\n    string daoType;\n    visibilityEnum visibility;\n  }\n\n  enum visibilityEnum {\n    privateDao,\n    publicDao\n  }\n\n  enum memberStatus {\n    notMember,\n    invited,\n    asking,\n    active\n  }\n\n  enum membershipModeEnum {\n    invite,\n    request,\n    open\n  }\n\n  enum ModuleType {\n    DaoMemberSystem,\n    DaoVotingSystem\n  }\n\n  struct Module {\n    uint256 id;\n    address moduleAddress;\n    // IModule module;\n    bool isActive;\n    bytes8 moduleType; //member\n    bytes8 moduleCode; //membership\n    string moduleInfo;\n  }\n\n  struct ModuleToActivate {\n    bytes8 moduleType;\n    bytes8 moduleCode;\n  }\n\n  function hash(string memory _messageToHash) public pure returns (bytes8) {\n    return bytes8(keccak256(abi.encode(_messageToHash)));\n  }\n}",
   "sourcePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
   "ast": {
     "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
@@ -862,10 +862,10 @@
                 "id": 679,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1091:10:2",
+                "nameLocation": "1090:10:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 680,
-                "src": "1084:17:2",
+                "src": "1083:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -876,7 +876,7 @@
                   "id": 678,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1084:6:2",
+                  "src": "1083:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -889,14 +889,14 @@
             "nameLocation": "1037:16:2",
             "nodeType": "StructDefinition",
             "scope": 699,
-            "src": "1030:77:2",
+            "src": "1030:75:2",
             "visibility": "public"
           },
           {
             "body": {
               "id": 697,
               "nodeType": "Block",
-              "src": "1184:63:2",
+              "src": "1182:63:2",
               "statements": [
                 {
                   "expression": {
@@ -911,7 +911,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 682,
-                                "src": "1225:14:2",
+                                "src": "1223:14:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
                                   "typeString": "string memory"
@@ -931,7 +931,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 4294967295,
-                                "src": "1214:3:2",
+                                "src": "1212:3:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_abi",
                                   "typeString": "abi"
@@ -944,7 +944,7 @@
                               "lValueRequested": false,
                               "memberName": "encode",
                               "nodeType": "MemberAccess",
-                              "src": "1214:10:2",
+                              "src": "1212:10:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
                                 "typeString": "function () pure returns (bytes memory)"
@@ -958,7 +958,7 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "1214:26:2",
+                            "src": "1212:26:2",
                             "tryCall": false,
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -978,7 +978,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967288,
-                          "src": "1204:9:2",
+                          "src": "1202:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
                             "typeString": "function (bytes memory) pure returns (bytes32)"
@@ -992,7 +992,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1204:37:2",
+                        "src": "1202:37:2",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
@@ -1013,7 +1013,7 @@
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "ElementaryTypeNameExpression",
-                      "src": "1197:6:2",
+                      "src": "1195:6:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_bytes8_$",
                         "typeString": "type(bytes8)"
@@ -1022,7 +1022,7 @@
                         "id": 687,
                         "name": "bytes8",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1197:6:2",
+                        "src": "1195:6:2",
                         "typeDescriptions": {}
                       }
                     },
@@ -1034,7 +1034,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1197:45:2",
+                    "src": "1195:45:2",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
@@ -1044,7 +1044,7 @@
                   "functionReturnParameters": 686,
                   "id": 696,
                   "nodeType": "Return",
-                  "src": "1190:52:2"
+                  "src": "1188:52:2"
                 }
               ]
             },
@@ -1054,7 +1054,7 @@
             "kind": "function",
             "modifiers": [],
             "name": "hash",
-            "nameLocation": "1120:4:2",
+            "nameLocation": "1118:4:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 683,
@@ -1065,10 +1065,10 @@
                   "id": 682,
                   "mutability": "mutable",
                   "name": "_messageToHash",
-                  "nameLocation": "1139:14:2",
+                  "nameLocation": "1137:14:2",
                   "nodeType": "VariableDeclaration",
                   "scope": 698,
-                  "src": "1125:28:2",
+                  "src": "1123:28:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1079,7 +1079,7 @@
                     "id": 681,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1125:6:2",
+                    "src": "1123:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1088,7 +1088,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1124:30:2"
+              "src": "1122:30:2"
             },
             "returnParameters": {
               "id": 686,
@@ -1102,7 +1102,7 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 698,
-                  "src": "1176:6:2",
+                  "src": "1174:6:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1113,7 +1113,7 @@
                     "id": 684,
                     "name": "bytes8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1176:6:2",
+                    "src": "1174:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
                       "typeString": "bytes8"
@@ -1122,21 +1122,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1175:8:2"
+              "src": "1173:8:2"
             },
             "scope": 699,
-            "src": "1111:136:2",
+            "src": "1109:136:2",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 700,
-        "src": "57:1192:2",
+        "src": "57:1190:2",
         "usedErrors": []
       }
     ],
-    "src": "32:1217:2"
+    "src": "32:1215:2"
   },
   "legacyAST": {
     "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
@@ -1971,10 +1971,10 @@
                 "id": 679,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1091:10:2",
+                "nameLocation": "1090:10:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 680,
-                "src": "1084:17:2",
+                "src": "1083:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1985,7 +1985,7 @@
                   "id": 678,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1084:6:2",
+                  "src": "1083:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -1998,14 +1998,14 @@
             "nameLocation": "1037:16:2",
             "nodeType": "StructDefinition",
             "scope": 699,
-            "src": "1030:77:2",
+            "src": "1030:75:2",
             "visibility": "public"
           },
           {
             "body": {
               "id": 697,
               "nodeType": "Block",
-              "src": "1184:63:2",
+              "src": "1182:63:2",
               "statements": [
                 {
                   "expression": {
@@ -2020,7 +2020,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 682,
-                                "src": "1225:14:2",
+                                "src": "1223:14:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
                                   "typeString": "string memory"
@@ -2040,7 +2040,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 4294967295,
-                                "src": "1214:3:2",
+                                "src": "1212:3:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_abi",
                                   "typeString": "abi"
@@ -2053,7 +2053,7 @@
                               "lValueRequested": false,
                               "memberName": "encode",
                               "nodeType": "MemberAccess",
-                              "src": "1214:10:2",
+                              "src": "1212:10:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
                                 "typeString": "function () pure returns (bytes memory)"
@@ -2067,7 +2067,7 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "1214:26:2",
+                            "src": "1212:26:2",
                             "tryCall": false,
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -2087,7 +2087,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967288,
-                          "src": "1204:9:2",
+                          "src": "1202:9:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
                             "typeString": "function (bytes memory) pure returns (bytes32)"
@@ -2101,7 +2101,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1204:37:2",
+                        "src": "1202:37:2",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
@@ -2122,7 +2122,7 @@
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "ElementaryTypeNameExpression",
-                      "src": "1197:6:2",
+                      "src": "1195:6:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_bytes8_$",
                         "typeString": "type(bytes8)"
@@ -2131,7 +2131,7 @@
                         "id": 687,
                         "name": "bytes8",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1197:6:2",
+                        "src": "1195:6:2",
                         "typeDescriptions": {}
                       }
                     },
@@ -2143,7 +2143,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1197:45:2",
+                    "src": "1195:45:2",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
@@ -2153,7 +2153,7 @@
                   "functionReturnParameters": 686,
                   "id": 696,
                   "nodeType": "Return",
-                  "src": "1190:52:2"
+                  "src": "1188:52:2"
                 }
               ]
             },
@@ -2163,7 +2163,7 @@
             "kind": "function",
             "modifiers": [],
             "name": "hash",
-            "nameLocation": "1120:4:2",
+            "nameLocation": "1118:4:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 683,
@@ -2174,10 +2174,10 @@
                   "id": 682,
                   "mutability": "mutable",
                   "name": "_messageToHash",
-                  "nameLocation": "1139:14:2",
+                  "nameLocation": "1137:14:2",
                   "nodeType": "VariableDeclaration",
                   "scope": 698,
-                  "src": "1125:28:2",
+                  "src": "1123:28:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -2188,7 +2188,7 @@
                     "id": 681,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1125:6:2",
+                    "src": "1123:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -2197,7 +2197,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1124:30:2"
+              "src": "1122:30:2"
             },
             "returnParameters": {
               "id": 686,
@@ -2211,7 +2211,7 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 698,
-                  "src": "1176:6:2",
+                  "src": "1174:6:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2222,7 +2222,7 @@
                     "id": 684,
                     "name": "bytes8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1176:6:2",
+                    "src": "1174:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
                       "typeString": "bytes8"
@@ -2231,21 +2231,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1175:8:2"
+              "src": "1173:8:2"
             },
             "scope": 699,
-            "src": "1111:136:2",
+            "src": "1109:136:2",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 700,
-        "src": "57:1192:2",
+        "src": "57:1190:2",
         "usedErrors": []
       }
     ],
-    "src": "32:1217:2"
+    "src": "32:1215:2"
   },
   "compiler": {
     "name": "solc",
@@ -2253,7 +2253,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.0",
-  "updatedAt": "2022-05-15T18:53:30.029Z",
+  "updatedAt": "2022-05-15T21:30:25.290Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

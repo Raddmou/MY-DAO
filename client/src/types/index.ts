@@ -9,7 +9,7 @@ export type Dao = {
     description: string,
     member: number,
     Members: [],
-    modules: { member: any, vote: any }
+    modules: []
 };
 
 export type Member = { 
@@ -30,6 +30,9 @@ export type AddDaoFormValues = {
     //membershipMode: string,
     description: string,
     note: string,
+    // member: string,
+    // vote: string,
+    // modules: { member: any, vote: any }
 };
 
 export type InviteDaoFormValues = {

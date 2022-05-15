@@ -31,9 +31,11 @@ const AddDao: React.FC = () => {
     const dispatch = useAppDispatch();
     const handleSubmit = (formValues: AddDaoFormValues, { resetForm }: any): void => {
         var modules = { member, vote };
-        console.log("add dao membership " + formValues.membershipMode);
+        console.log("modules member = " + modules.member);
+        // console.log("member formik = " + formValues.member)
+        // console.log("add dao membership " + formValues.membershipMode);
         dispatch(
-            addNewDao(formValues)
+            addNewDao(formValues, modules)
         );
         setIsFormSubmitted(true);
         resetForm();
@@ -111,6 +113,8 @@ const AddDao: React.FC = () => {
             //membershipMode: '0',
             description: '',
             note: '',
+            member: '',
+            vote: '',
         },
         validationSchema,
         onSubmit: handleSubmit,
@@ -277,6 +281,9 @@ const AddDao: React.FC = () => {
                     <div>
                         <ToggleButtonGroup
                             color="primary"
+                            id="member"
+                            name="member"
+                            label="member"
                             value={member}
                             exclusive
                             onChange={handleChangeMembershipModule}
@@ -292,6 +299,9 @@ const AddDao: React.FC = () => {
                     <div>
                         <ToggleButtonGroup
                             color="primary"
+                            id="vote"
+                            name="vote"
+                            label="vote"
                             value={vote}
                             exclusive
                             onChange={handleChangeMembershipModule2}

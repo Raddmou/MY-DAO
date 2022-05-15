@@ -62,8 +62,8 @@ struct DaoMember {
   }
 
   struct ModuleToActivate {
-    bytes8 moduleType; 
-    bytes8 moduleCode; 
+    bytes8 moduleType;
+    bytes8 moduleCode;
   }
 
   function hash(string memory _messageToHash) public pure returns (bytes8) {

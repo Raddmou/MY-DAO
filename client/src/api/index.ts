@@ -276,12 +276,13 @@ export const daosAPI = {
     //     return { id, age, name, city };
     // },
 
-    addNewDao: async (dao: any): Promise<Dao> => {
+    addNewDao: async (dao: any, module: any): Promise<Dao> => {
         const contract = await contractFactoryProvider.getContract();
         const { name, visibility, description, modules } = dao;
         //const byInvitation = membershipMode == 0;
         const visibilityEnum = visibility ? 1 : 0;
-        var { member, vote } = modules;
+        console.log('module =>' + module);
+        var { member, vote } = module;
         const typeHashMember = await contract.methods.hash("MemberModule").call();
         var codeHashMember;
         switch (member) {
@@ -297,7 +298,7 @@ export const daosAPI = {
             default:
                 console.log("Need to choose one member module");
         }
-        member = { typeHashMember, codeHashMember };
+        member = { moduleType: typeHashMember, moduleCode: codeHashMember };
         const typeHashVote = await contract.methods.hash("VoteModule").call();
         var codeHashVote;
         switch (vote) {
@@ -310,11 +311,12 @@ export const daosAPI = {
             default:
                 codeHashMember = null;
         }
-        vote = { typeHashVote, codeHashVote };
-        const modulesPush = { member, vote };
+        vote = { moduleType: typeHashVote, moduleCode: codeHashVote };
+        const modulesPush = [ member, vote ];
+        console.log("name="+name,"\ndescription="+description,"\nvisibilityEnum="+visibilityEnum+"\nmodules="+modulesPush);
 
         const { events } =  await contract.methods
-        .createDAO(name, description, visibilityEnum, modules)
+            .createDAO(name, description, visibilityEnum, modulesPush)
             // .createDAO(name, membershipMode, description, visibility)
             //.createDAO(name, false, description, visibility)
             .send({ 
@@ -323,7 +325,7 @@ export const daosAPI = {
         const address = events?.DaoCreated?.returnValues?.daoAddress;
         const id = address.toString();
 
-        return { id, name, visibility, description, address, member: 0, Members: [], modules: modulesPush };
+        return { id, name, visibility, description, address, modules };
     },
 
     joinDao: async (address: Address): Promise<boolean> => {

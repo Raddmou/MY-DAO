@@ -101,9 +101,9 @@ export const getDaosCountByMember = () => async (dispatch: any) => {
     }
 };
 
-export const addNewDao = (formValues: AddDaoFormValues) => async (dispatch: any) => {
+export const addNewDao = (formValues: AddDaoFormValues, module: any) => async (dispatch: any) => {
     try {
-        const dao = await daosAPI.addNewDao(formValues);
+        const dao = await daosAPI.addNewDao(formValues, module);
         dispatch(addNewDaoAction(dao));
     } catch ({ message }) {
         console.error(message);
