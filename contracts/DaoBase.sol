@@ -71,6 +71,7 @@ contract DaoBase is Ownable {
 //       emit ModuleAdded(code, _moduleAddress, msg.sender);
 //   }
 
+
   function addModule(bytes8 _type, address _moduleAddr) public onlyOwners() {
     modules[_type].isActive = true;
     modules[_type].id = modulesCount;

@@ -8,14 +8,18 @@ library Data {
     //address memberAddress;
   }
 
-  struct DaoSettings {
+struct DaoMember {
     address addressDao;
     uint256 membersCount;
-    visibilityEnum visibility;
-    membershipModeEnum membershipMode;
     mapping(uint256 => address) memberAddresses;
     mapping(address => Data.member) members;
     bool isActive;
+  } 
+
+  struct DaoSettings {
+    address addressDao;
+    visibilityEnum visibility;
+    membershipModeEnum membershipMode;
   } 
 
   struct daoData {
@@ -54,5 +58,10 @@ library Data {
     bytes8 moduleType; //member
     bytes8 moduleCode; //membership
     string moduleInfo;
+  }
+
+  struct ModuleToActivate {
+    bytes8 moduleType; 
+    bytes8 moduleCode; 
   }
 }
