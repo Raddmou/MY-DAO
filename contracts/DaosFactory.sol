@@ -16,6 +16,7 @@ contract DaosFactory is Ownable {
   // //user > daos
   // mapping(address => address[]) public membershipDaos;
   deployedDao[] public daos;
+  mapping(address => mapping(address => bool)) daoOwners;
   //MyModule[] public availableModules;
   //mapping(string => MyModule) public availableModules;
   // mapping(address => ModuleDao[]) public modulesDaos;
@@ -47,11 +48,16 @@ contract DaosFactory is Ownable {
   event DaoCreated(address user, string name, address daoAddress);
   event ModuleActivated(address user, string name, address daoAddress);
 
+  modifier onlyDaoOwners(address _daoAddress) {
+    require(daoOwners[_daoAddress][msg.sender], "Invalid User");
+    _;
+  }
+
   function getdeployedDaos() external view returns (deployedDao[] memory) {
     return daos;
   }
 
-  function activateModule(address _daoAddress, bytes8 _type, bytes8 _code) public returns (address) {
+  function activateModule(address _daoAddress, bytes8 _type, bytes8 _code) public onlyDaoOwners(_daoAddress) returns(address) {
     require(modulesDaos[_type][_code].isActive == true, "Module not found");
     IModule(modulesDaos[_type][_code].moduleAddress).addDao(_daoAddress, msg.sender);
     DaoBase(_daoAddress).addModule(_type, modulesDaos[_type][_code].moduleAddress);
@@ -86,7 +92,7 @@ contract DaosFactory is Ownable {
         , _modules[i].moduleType
         , _modules[i].moduleCode);
      }
-
+    daoOwners[address(dao)][msg.sender] = true;
     daos.push(_dao); 
     dao.transferOwnership(msg.sender);
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
