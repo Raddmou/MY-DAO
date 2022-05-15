@@ -306,11 +306,11 @@ export const daosAPI = {
                 console.log("Need to choose one member module");
         }
         member = { moduleType: typeHashMember, moduleCode: codeHashMember };
-        const typeHashVote = await contract.methods.hash("VoteModule").call();
+        const typeHashVote = await contract.methods.hash("VotingModule").call();
         var codeHashVote;
         switch (vote) {
             case 'votingSimple':
-                codeHashVote = await contract.methods.hash("OpenMembershipModule").call();
+                codeHashVote = await contract.methods.hash("VotingYesNoModule").call();
                 break;
             case 'votingProposition':
                 codeHashVote = await contract.methods.hash("AAA").call();
@@ -322,6 +322,8 @@ export const daosAPI = {
         const modulesPush = [ member, vote ];
         console.log("name="+name,"\ndescription="+description,"\nvisibilityEnum="+visibilityEnum+"\nmodules="+modulesPush);
 
+        const res = await contract.methods.modulesDaos(typeHashMember, codeHashMember).call();
+        console.log("modulesDaos"+res);
         const { events } =  await contract.methods
             .createDAO(name, description, visibilityEnum, modulesPush)
             // .createDAO(name, membershipMode, description, visibility)

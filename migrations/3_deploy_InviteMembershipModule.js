@@ -6,8 +6,8 @@ module.exports = async function(deployer) {
 
   const inviteMembership = await InviteMembershipModule.deployed();
   const daosFactory = await DaosFactory.deployed();
-  const typeHashed = await daosFactory.hash("InviteMembershipModule");
-  const codeHashed = await daosFactory.hash("MemberModule");
+  const typeHashed = await daosFactory.hash("MemberModule");
+  const codeHashed = await daosFactory.hash("InviteMembershipModule");
 
   daosFactory.addModule(inviteMembership.address
     , typeHashed
