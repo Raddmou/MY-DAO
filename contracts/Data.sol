@@ -9,8 +9,13 @@ library Data {
   }
 
   struct DaoSettings {
+    address addressDao;
+    uint256 membersCount;
     visibilityEnum visibility;
     membershipModeEnum membershipMode;
+    mapping(uint256 => address) memberAddresses;
+    mapping(address => Data.member) members;
+    bool isActive;
   } 
 
   struct daoData {
