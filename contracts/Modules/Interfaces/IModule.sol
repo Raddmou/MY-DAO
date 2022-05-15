@@ -6,5 +6,5 @@ import "../../Data.sol";
 interface IModule {
   function getCode() external view returns(string memory);
 
-  function addDao(address _contractDao) external;
+  function addDao(address _daoAddress, address _memberAddress) external;
 }

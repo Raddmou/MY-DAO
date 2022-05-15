@@ -4,8 +4,9 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-import './interfaces/IModule.sol';
+import './Modules/interfaces/IModule.sol';
 import './DaoBase.sol';
+import './Data.sol';
 
 //is DaosFactory
 contract DaosFactory is Ownable {
@@ -51,19 +52,17 @@ contract DaosFactory is Ownable {
   }
 
   function activateModule(address _daoAddress, bytes8 _type, bytes8 _code) public returns (address) {
-    require(modulesDaos[_moduleType][_code].isActive == true, "Module not found");
-    IModule module = new IModule(modulesDaos[_moduleType][_code].moduleAddress);
-    module.addDao(_daoAddress, msg.sender);
-    DaoBase(_daoAddress).addModule(_type, modulesDaos[_moduleType][_code].moduleAddress);
-    return modulesDaos[_moduleType][_code].moduleAddress;  
+    require(modulesDaos[_type][_code].isActive == true, "Module not found");
+    IModule(modulesDaos[_type][_code].moduleAddress).addDao(_daoAddress, msg.sender);
+    DaoBase(_daoAddress).addModule(_type, modulesDaos[_type][_code].moduleAddress);
+    return modulesDaos[_type][_code].moduleAddress;  
   }
 
   function addModule(address _moduleAddress, bytes8 _type, bytes8 _code) public onlyOwner {
-    modulesDaos[_moduleType][_code].isActive = true;
-    modulesDaos[_moduleType][_code].moduleType = _type;
-    modulesDaos[_moduleType][_code].moduleCode = _code;
-    modulesDaos[_moduleType][_code].moduleAddress = _moduleAddress;
-    module.addDao(_daoAddress, msg.sender);
+    modulesDaos[_type][_code].isActive = true;
+    modulesDaos[_type][_code].moduleType = _type;
+    modulesDaos[_type][_code].moduleCode = _code;
+    modulesDaos[_type][_code].moduleAddress = _moduleAddress;
   }
 
   //  function getDaosAddressByMember(address _addressMember) external view returns (address[] memory) {
@@ -71,7 +70,7 @@ contract DaosFactory is Ownable {
   // }
 
   function createDAO(string calldata _name, string calldata _description, Data.visibilityEnum _visibility
-                    , ModuleToActivate[] memory _modules) public {
+                    , Data.ModuleToActivate[] memory _modules) public {
     require(_modules.length < 10, "Modules must be less than 10.");
     DaoBase dao = new DaoBase(_name, _description, _visibility);
     dao.authorizeContract(address(this));
