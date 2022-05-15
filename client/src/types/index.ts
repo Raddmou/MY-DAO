@@ -5,11 +5,11 @@ export type Dao = {
     name: string, 
     id: string,
     visibility: boolean,
-    membershipMode: string,
+    // membershipMode: string,
     description: string,
     member: number,
-    Members: []
-    modules: [] 
+    Members: [],
+    modules: { member: any, vote: any }
 };
 
 export type Member = { 
@@ -29,7 +29,7 @@ export type AddDaoFormValues = {
     visibility: boolean,
     //membershipMode: string,
     description: string,
-    note: string
+    note: string,
 };
 
 export type InviteDaoFormValues = {
