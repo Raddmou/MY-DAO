@@ -33,44 +33,32 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_daoAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_memberAddress\",\"type\":\"address\"}],\"name\":\"addDao\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/Interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0xf1907778b1e7277af4a1710ed5ed1e3f53380f536db224480624225ee833b1f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://84ba51fbe501caa1a2fe4852decd33849d9719b7e62a95ccab470842272efb04\",\"dweb:/ipfs/QmdG8eBgVN1w4ATAMCLn1e57QpCjN3SE8DKAaQN74wH6N1\"]},\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/Interfaces/IModule.sol\":{\"keccak256\":\"0x05745b0f56fef251759514dc1dc2bc0d0106895cf0b53526a3911ec5ad5ffbc2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://42c7b91efda16c4d5ebd0501db0164032b20160c0844090cba4bdd71e8e6281b\",\"dweb:/ipfs/QmNsXBKfExXG3UREZ33XvZg1gcZUAMSiJtTZ7sTnFG8Tib\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_daoAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_memberAddress\",\"type\":\"address\"}],\"name\":\"addDao\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Modules/Interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0x2a926d43d1ffa6327b84e92b4a2acdb1ca867125dd37e36ea94f4e4aea0087a4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e5f1b0655acb018bf775015fd422768e3e2ebdd77250c7f396595643e4016cf\",\"dweb:/ipfs/QmactSyQpEwN75zc9rZb3h7bMkwNwp6v4yGmmu7LZUbuUK\"]},\"project:/contracts/Modules/Interfaces/IModule.sol\":{\"keccak256\":\"0xae05f0875fc1f3952a20a57b1a4f2611953cd1f9206541627f8d6cb0d9616fc2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a55b8c89e7464d55267f7a9235c7056ac3f5859303a768e9e721b979e3d4d55e\",\"dweb:/ipfs/QmdscSdm9UCu35XCkpamjKhncFPzjksjLsaYUPunGYDbC1\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\nimport \"../../Data.sol\";\n\ninterface IModule {\n  function getCode() external view returns(string memory);\n\n  function addDao(address _daoAddress, address _memberAddress) external;\n}",
-  "sourcePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/Interfaces/IModule.sol",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nimport \"../../Data.sol\";\r\n\r\ninterface IModule {\r\n  function getCode() external view returns(string memory);\r\n\r\n  function addDao(address _daoAddress, address _memberAddress) external;\r\n}",
+  "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Modules\\Interfaces\\IModule.sol",
   "ast": {
-    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/Interfaces/IModule.sol",
+    "absolutePath": "project:/contracts/Modules/Interfaces/IModule.sol",
     "exportedSymbols": {
       "Data": [
-<<<<<<< HEAD
-        1324
+        1342
       ],
       "IModule": [
-        3966
+        4082
       ]
     },
-    "id": 3967,
-=======
-        757
-      ],
-      "IModule": [
-        3423
-      ]
-    },
-    "id": 3424,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+    "id": 4083,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-<<<<<<< HEAD
-        "id": 3952,
-=======
-        "id": 3409,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "id": 4068,
         "literals": [
           "solidity",
           "^",
@@ -78,26 +66,17 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:13"
+        "src": "33:23:18"
       },
       {
-        "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
+        "absolutePath": "project:/contracts/Data.sol",
         "file": "../../Data.sol",
-<<<<<<< HEAD
-        "id": 3953,
+        "id": 4069,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3967,
-        "sourceUnit": 1325,
-        "src": "60:24:19",
-=======
-        "id": 3410,
-        "nameLocation": "-1:-1:-1",
-        "nodeType": "ImportDirective",
-        "scope": 3424,
-        "sourceUnit": 758,
-        "src": "57:24:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "scope": 4083,
+        "sourceUnit": 1343,
+        "src": "60:24:18",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -108,69 +87,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-<<<<<<< HEAD
-        "id": 3966,
+        "id": 4082,
         "linearizedBaseContracts": [
-          3966
-=======
-        "id": 3423,
-        "linearizedBaseContracts": [
-          3423
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+          4082
         ],
         "name": "IModule",
-        "nameLocation": "93:7:13",
+        "nameLocation": "98:7:18",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "ea879634",
-<<<<<<< HEAD
-            "id": 3958,
-=======
-            "id": 3415,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 4074,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCode",
-            "nameLocation": "114:7:13",
+            "nameLocation": "120:7:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 3954,
-=======
-              "id": 3411,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4070,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "121:2:13"
+              "src": "127:2:18"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 3957,
-=======
-              "id": 3414,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4073,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 3956,
-=======
-                  "id": 3413,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 4072,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 3958,
-                  "src": "152:13:19",
-=======
-                  "scope": 3415,
-                  "src": "146:13:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "scope": 4074,
+                  "src": "152:13:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -178,14 +130,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 3955,
-=======
-                    "id": 3412,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 4071,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "146:6:13",
+                    "src": "152:6:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -194,58 +142,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "145:15:13"
+              "src": "151:15:18"
             },
-<<<<<<< HEAD
-            "scope": 3966,
-            "src": "111:56:19",
-=======
-            "scope": 3423,
-            "src": "105:56:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "scope": 4082,
+            "src": "111:56:18",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "12ee7e41",
-<<<<<<< HEAD
-            "id": 3965,
-=======
-            "id": 3422,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 4081,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "addDao",
-            "nameLocation": "174:6:13",
+            "nameLocation": "182:6:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 3963,
-=======
-              "id": 3420,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4079,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 3960,
-=======
-                  "id": 3417,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 4076,
                   "mutability": "mutable",
                   "name": "_daoAddress",
-                  "nameLocation": "189:11:13",
+                  "nameLocation": "197:11:18",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 3965,
-                  "src": "189:19:19",
-=======
-                  "scope": 3422,
-                  "src": "181:19:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "scope": 4081,
+                  "src": "189:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -253,14 +179,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 3959,
-=======
-                    "id": 3416,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 4075,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "181:7:13",
+                    "src": "189:7:18",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -271,22 +193,13 @@
                 },
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 3962,
-=======
-                  "id": 3419,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 4078,
                   "mutability": "mutable",
                   "name": "_memberAddress",
-                  "nameLocation": "210:14:13",
+                  "nameLocation": "218:14:18",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 3965,
-                  "src": "210:22:19",
-=======
-                  "scope": 3422,
-                  "src": "202:22:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "scope": 4081,
+                  "src": "210:22:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -294,14 +207,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 3961,
-=======
-                    "id": 3418,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 4077,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "202:7:13",
+                    "src": "210:7:18",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -311,72 +220,44 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "180:45:13"
+              "src": "188:45:18"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 3964,
-=======
-              "id": 3421,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4080,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "234:0:13"
+              "src": "242:0:18"
             },
-<<<<<<< HEAD
-            "scope": 3966,
-            "src": "173:70:19",
-=======
-            "scope": 3423,
-            "src": "165:70:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "scope": 4082,
+            "src": "173:70:18",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-<<<<<<< HEAD
-        "scope": 3967,
-        "src": "88:158:19",
-=======
-        "scope": 3424,
-        "src": "83:154:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "scope": 4083,
+        "src": "88:158:18",
         "usedErrors": []
       }
     ],
-    "src": "32:205:13"
+    "src": "33:213:18"
   },
   "legacyAST": {
-    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Modules/Interfaces/IModule.sol",
+    "absolutePath": "project:/contracts/Modules/Interfaces/IModule.sol",
     "exportedSymbols": {
       "Data": [
-<<<<<<< HEAD
-        1324
+        1342
       ],
       "IModule": [
-        3966
+        4082
       ]
     },
-    "id": 3967,
-=======
-        757
-      ],
-      "IModule": [
-        3423
-      ]
-    },
-    "id": 3424,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+    "id": 4083,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-<<<<<<< HEAD
-        "id": 3952,
-=======
-        "id": 3409,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "id": 4068,
         "literals": [
           "solidity",
           "^",
@@ -384,26 +265,17 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:13"
+        "src": "33:23:18"
       },
       {
-        "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
+        "absolutePath": "project:/contracts/Data.sol",
         "file": "../../Data.sol",
-<<<<<<< HEAD
-        "id": 3953,
+        "id": 4069,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 3967,
-        "sourceUnit": 1325,
-        "src": "60:24:19",
-=======
-        "id": 3410,
-        "nameLocation": "-1:-1:-1",
-        "nodeType": "ImportDirective",
-        "scope": 3424,
-        "sourceUnit": 758,
-        "src": "57:24:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "scope": 4083,
+        "sourceUnit": 1343,
+        "src": "60:24:18",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -414,69 +286,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-<<<<<<< HEAD
-        "id": 3966,
+        "id": 4082,
         "linearizedBaseContracts": [
-          3966
-=======
-        "id": 3423,
-        "linearizedBaseContracts": [
-          3423
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+          4082
         ],
         "name": "IModule",
-        "nameLocation": "93:7:13",
+        "nameLocation": "98:7:18",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "ea879634",
-<<<<<<< HEAD
-            "id": 3958,
-=======
-            "id": 3415,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 4074,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCode",
-            "nameLocation": "114:7:13",
+            "nameLocation": "120:7:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 3954,
-=======
-              "id": 3411,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4070,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "121:2:13"
+              "src": "127:2:18"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 3957,
-=======
-              "id": 3414,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4073,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 3956,
-=======
-                  "id": 3413,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 4072,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 3958,
-                  "src": "152:13:19",
-=======
-                  "scope": 3415,
-                  "src": "146:13:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "scope": 4074,
+                  "src": "152:13:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -484,14 +329,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 3955,
-=======
-                    "id": 3412,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 4071,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "146:6:13",
+                    "src": "152:6:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -500,58 +341,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "145:15:13"
+              "src": "151:15:18"
             },
-<<<<<<< HEAD
-            "scope": 3966,
-            "src": "111:56:19",
-=======
-            "scope": 3423,
-            "src": "105:56:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "scope": 4082,
+            "src": "111:56:18",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "12ee7e41",
-<<<<<<< HEAD
-            "id": 3965,
-=======
-            "id": 3422,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 4081,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "addDao",
-            "nameLocation": "174:6:13",
+            "nameLocation": "182:6:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 3963,
-=======
-              "id": 3420,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4079,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 3960,
-=======
-                  "id": 3417,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 4076,
                   "mutability": "mutable",
                   "name": "_daoAddress",
-                  "nameLocation": "189:11:13",
+                  "nameLocation": "197:11:18",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 3965,
-                  "src": "189:19:19",
-=======
-                  "scope": 3422,
-                  "src": "181:19:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "scope": 4081,
+                  "src": "189:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -559,14 +378,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 3959,
-=======
-                    "id": 3416,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 4075,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "181:7:13",
+                    "src": "189:7:18",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -577,22 +392,13 @@
                 },
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 3962,
-=======
-                  "id": 3419,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 4078,
                   "mutability": "mutable",
                   "name": "_memberAddress",
-                  "nameLocation": "210:14:13",
+                  "nameLocation": "218:14:18",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 3965,
-                  "src": "210:22:19",
-=======
-                  "scope": 3422,
-                  "src": "202:22:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "scope": 4081,
+                  "src": "210:22:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -600,14 +406,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 3961,
-=======
-                    "id": 3418,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 4077,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "202:7:13",
+                    "src": "210:7:18",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -617,54 +419,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "180:45:13"
+              "src": "188:45:18"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 3964,
-=======
-              "id": 3421,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 4080,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "234:0:13"
+              "src": "242:0:18"
             },
-<<<<<<< HEAD
-            "scope": 3966,
-            "src": "173:70:19",
-=======
-            "scope": 3423,
-            "src": "165:70:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "scope": 4082,
+            "src": "173:70:18",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-<<<<<<< HEAD
-        "scope": 3967,
-        "src": "88:158:19",
-=======
-        "scope": 3424,
-        "src": "83:154:13",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "scope": 4083,
+        "src": "88:158:18",
         "usedErrors": []
       }
     ],
-    "src": "32:205:13"
+    "src": "33:213:18"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
   "networks": {},
-<<<<<<< HEAD
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-15T22:21:09.589Z",
-=======
-  "schemaVersion": "3.2.0",
-  "updatedAt": "2022-05-15T22:44:17.378Z",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+  "updatedAt": "2022-05-16T19:58:15.380Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

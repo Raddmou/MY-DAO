@@ -72,38 +72,29 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"DaoCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"createDao\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"getDao\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getDaos\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Interfaces/IDaosFactory.sol\":\"IDaosFactory\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Interfaces/IDaosFactory.sol\":{\"keccak256\":\"0xce83c62f08449fd8560da85f33088e7277f4213b049e45f5e4e3828049fda108\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2a3c08486deefb0120a67d8a155798fb2a34a6c66205558136cd356d622efc3d\",\"dweb:/ipfs/QmcW1mYz9DVgCfDbM1kdv68vMwaufrZW4zFWSsMw3ZwWrm\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"DaoCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"createDao\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"getDao\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getDaos\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Interfaces/IDaosFactory.sol\":\"IDaosFactory\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Interfaces/IDaosFactory.sol\":{\"keccak256\":\"0x96a27726817c2e9e2f5cab3e8f10ad5327e6bd853bdec12caa0b7f951f2a98f4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://04b3eeed4f7c7327c4f64f6a98db10656d31935db46c0a128f6c5294579dd9b4\",\"dweb:/ipfs/QmQcsTZywdK6CrqxNLJxt8kfxQeaitHkEYoMYXZ8wjxDGW\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\ninterface IDaosFactory {\n    \n    event DaoCreated(address indexed _address);\n    function getDao(address _address) external view returns (address pair);\n    function getDaos(uint) external view returns (address pair);\n    function createDao(address _address) external returns (address pair);\n}",
-  "sourcePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Interfaces/IDaosFactory.sol",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\ninterface IDaosFactory {\r\n    \r\n    event DaoCreated(address indexed _address);\r\n    function getDao(address _address) external view returns (address pair);\r\n    function getDaos(uint) external view returns (address pair);\r\n    function createDao(address _address) external returns (address pair);\r\n}",
+  "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Interfaces\\IDaosFactory.sol",
   "ast": {
-    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Interfaces/IDaosFactory.sol",
+    "absolutePath": "project:/contracts/Interfaces/IDaosFactory.sol",
     "exportedSymbols": {
       "IDaosFactory": [
-<<<<<<< HEAD
-        1352
+        1370
       ]
     },
-    "id": 1353,
-=======
-        785
-      ]
-    },
-    "id": 786,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+    "id": 1371,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-<<<<<<< HEAD
-        "id": 1326,
-=======
-        "id": 759,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "id": 1344,
         "literals": [
           "solidity",
           "^",
@@ -111,7 +102,7 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:3"
+        "src": "33:23:8"
       },
       {
         "abstract": false,
@@ -120,57 +111,34 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-<<<<<<< HEAD
-        "id": 1352,
+        "id": 1370,
         "linearizedBaseContracts": [
-          1352
-=======
-        "id": 785,
-        "linearizedBaseContracts": [
-          785
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+          1370
         ],
         "name": "IDaosFactory",
-        "nameLocation": "67:12:3",
+        "nameLocation": "70:12:8",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "anonymous": false,
-<<<<<<< HEAD
-            "id": 1330,
-=======
-            "id": 763,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1348,
             "name": "DaoCreated",
-            "nameLocation": "97:10:3",
+            "nameLocation": "102:10:8",
             "nodeType": "EventDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1329,
-=======
-              "id": 762,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1347,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1328,
-=======
-                  "id": 761,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1346,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "124:8:3",
+                  "nameLocation": "129:8:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1330,
+                  "scope": 1348,
                   "src": "113:24:8",
-=======
-                  "scope": 763,
-                  "src": "108:24:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -178,14 +146,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1327,
-=======
-                    "id": 760,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1345,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "108:7:3",
+                    "src": "113:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -195,49 +159,32 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "107:26:3"
+              "src": "112:26:8"
             },
-            "src": "91:43:3"
+            "src": "96:43:8"
           },
           {
             "functionSelector": "54f76993",
-<<<<<<< HEAD
-            "id": 1337,
-=======
-            "id": 770,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1355,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getDao",
-            "nameLocation": "148:6:3",
+            "nameLocation": "154:6:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1333,
-=======
-              "id": 766,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1351,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1332,
-=======
-                  "id": 765,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1350,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "163:8:3",
+                  "nameLocation": "169:8:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1337,
+                  "scope": 1355,
                   "src": "161:16:8",
-=======
-                  "scope": 770,
-                  "src": "155:16:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -245,14 +192,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1331,
-=======
-                    "id": 764,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1349,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "155:7:3",
+                    "src": "161:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -262,34 +205,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "154:18:3"
+              "src": "160:18:8"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 1336,
-=======
-              "id": 769,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1354,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1335,
-=======
-                  "id": 768,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1353,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "204:4:3",
+                  "nameLocation": "210:4:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1337,
+                  "scope": 1355,
                   "src": "202:12:8",
-=======
-                  "scope": 770,
-                  "src": "196:12:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -297,14 +227,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1334,
-=======
-                    "id": 767,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1352,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "196:7:3",
+                    "src": "202:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -314,58 +240,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "195:14:3"
+              "src": "201:14:8"
             },
-<<<<<<< HEAD
-            "scope": 1352,
+            "scope": 1370,
             "src": "145:71:8",
-=======
-            "scope": 785,
-            "src": "139:71:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "322a59b3",
-<<<<<<< HEAD
-            "id": 1344,
-=======
-            "id": 777,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1362,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getDaos",
-            "nameLocation": "224:7:3",
+            "nameLocation": "231:7:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1340,
-=======
-              "id": 773,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1358,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1339,
-=======
-                  "id": 772,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1357,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1344,
+                  "scope": 1362,
                   "src": "239:4:8",
-=======
-                  "scope": 777,
-                  "src": "232:4:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -373,14 +277,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1338,
-=======
-                    "id": 771,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1356,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "232:4:3",
+                    "src": "239:4:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -389,34 +289,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "231:6:3"
+              "src": "238:6:8"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 1343,
-=======
-              "id": 776,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1361,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1342,
-=======
-                  "id": 775,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1360,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "269:4:3",
+                  "nameLocation": "276:4:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1344,
+                  "scope": 1362,
                   "src": "268:12:8",
-=======
-                  "scope": 777,
-                  "src": "261:12:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -424,14 +311,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1341,
-=======
-                    "id": 774,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1359,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "261:7:3",
+                    "src": "268:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -441,58 +324,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "260:14:3"
+              "src": "267:14:8"
             },
-<<<<<<< HEAD
-            "scope": 1352,
+            "scope": 1370,
             "src": "222:60:8",
-=======
-            "scope": 785,
-            "src": "215:60:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "34c55c81",
-<<<<<<< HEAD
-            "id": 1351,
-=======
-            "id": 784,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1369,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createDao",
-            "nameLocation": "289:9:3",
+            "nameLocation": "297:9:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1347,
-=======
-              "id": 780,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1365,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1346,
-=======
-                  "id": 779,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1364,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "307:8:3",
+                  "nameLocation": "315:8:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1351,
+                  "scope": 1369,
                   "src": "307:16:8",
-=======
-                  "scope": 784,
-                  "src": "299:16:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -500,14 +361,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1345,
-=======
-                    "id": 778,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1363,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "299:7:3",
+                    "src": "307:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -517,34 +374,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "298:18:3"
+              "src": "306:18:8"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 1350,
-=======
-              "id": 783,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1368,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1349,
-=======
-                  "id": 782,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1367,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "343:4:3",
+                  "nameLocation": "351:4:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1351,
+                  "scope": 1369,
                   "src": "343:12:8",
-=======
-                  "scope": 784,
-                  "src": "335:12:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -552,14 +396,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1348,
-=======
-                    "id": 781,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1366,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "335:7:3",
+                    "src": "343:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -569,56 +409,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "334:14:3"
+              "src": "342:14:8"
             },
-<<<<<<< HEAD
-            "scope": 1352,
+            "scope": 1370,
             "src": "288:69:8",
-=======
-            "scope": 785,
-            "src": "280:69:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-<<<<<<< HEAD
-        "scope": 1353,
+        "scope": 1371,
         "src": "60:300:8",
-=======
-        "scope": 786,
-        "src": "57:294:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
         "usedErrors": []
       }
     ],
-    "src": "32:319:3"
+    "src": "33:327:8"
   },
   "legacyAST": {
-    "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Interfaces/IDaosFactory.sol",
+    "absolutePath": "project:/contracts/Interfaces/IDaosFactory.sol",
     "exportedSymbols": {
       "IDaosFactory": [
-<<<<<<< HEAD
-        1352
+        1370
       ]
     },
-    "id": 1353,
-=======
-        785
-      ]
-    },
-    "id": 786,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+    "id": 1371,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-<<<<<<< HEAD
-        "id": 1326,
-=======
-        "id": 759,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+        "id": 1344,
         "literals": [
           "solidity",
           "^",
@@ -626,7 +445,7 @@
           ".9"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:3"
+        "src": "33:23:8"
       },
       {
         "abstract": false,
@@ -635,57 +454,34 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-<<<<<<< HEAD
-        "id": 1352,
+        "id": 1370,
         "linearizedBaseContracts": [
-          1352
-=======
-        "id": 785,
-        "linearizedBaseContracts": [
-          785
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+          1370
         ],
         "name": "IDaosFactory",
-        "nameLocation": "67:12:3",
+        "nameLocation": "70:12:8",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "anonymous": false,
-<<<<<<< HEAD
-            "id": 1330,
-=======
-            "id": 763,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1348,
             "name": "DaoCreated",
-            "nameLocation": "97:10:3",
+            "nameLocation": "102:10:8",
             "nodeType": "EventDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1329,
-=======
-              "id": 762,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1347,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1328,
-=======
-                  "id": 761,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1346,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "124:8:3",
+                  "nameLocation": "129:8:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1330,
+                  "scope": 1348,
                   "src": "113:24:8",
-=======
-                  "scope": 763,
-                  "src": "108:24:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -693,14 +489,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1327,
-=======
-                    "id": 760,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1345,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "108:7:3",
+                    "src": "113:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -710,49 +502,32 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "107:26:3"
+              "src": "112:26:8"
             },
-            "src": "91:43:3"
+            "src": "96:43:8"
           },
           {
             "functionSelector": "54f76993",
-<<<<<<< HEAD
-            "id": 1337,
-=======
-            "id": 770,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1355,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getDao",
-            "nameLocation": "148:6:3",
+            "nameLocation": "154:6:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1333,
-=======
-              "id": 766,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1351,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1332,
-=======
-                  "id": 765,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1350,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "163:8:3",
+                  "nameLocation": "169:8:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1337,
+                  "scope": 1355,
                   "src": "161:16:8",
-=======
-                  "scope": 770,
-                  "src": "155:16:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -760,14 +535,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1331,
-=======
-                    "id": 764,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1349,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "155:7:3",
+                    "src": "161:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -777,34 +548,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "154:18:3"
+              "src": "160:18:8"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 1336,
-=======
-              "id": 769,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1354,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1335,
-=======
-                  "id": 768,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1353,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "204:4:3",
+                  "nameLocation": "210:4:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1337,
+                  "scope": 1355,
                   "src": "202:12:8",
-=======
-                  "scope": 770,
-                  "src": "196:12:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -812,14 +570,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1334,
-=======
-                    "id": 767,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1352,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "196:7:3",
+                    "src": "202:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -829,58 +583,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "195:14:3"
+              "src": "201:14:8"
             },
-<<<<<<< HEAD
-            "scope": 1352,
+            "scope": 1370,
             "src": "145:71:8",
-=======
-            "scope": 785,
-            "src": "139:71:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "322a59b3",
-<<<<<<< HEAD
-            "id": 1344,
-=======
-            "id": 777,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1362,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getDaos",
-            "nameLocation": "224:7:3",
+            "nameLocation": "231:7:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1340,
-=======
-              "id": 773,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1358,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1339,
-=======
-                  "id": 772,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1357,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1344,
+                  "scope": 1362,
                   "src": "239:4:8",
-=======
-                  "scope": 777,
-                  "src": "232:4:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -888,14 +620,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1338,
-=======
-                    "id": 771,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1356,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "232:4:3",
+                    "src": "239:4:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -904,34 +632,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "231:6:3"
+              "src": "238:6:8"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 1343,
-=======
-              "id": 776,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1361,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1342,
-=======
-                  "id": 775,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1360,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "269:4:3",
+                  "nameLocation": "276:4:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1344,
+                  "scope": 1362,
                   "src": "268:12:8",
-=======
-                  "scope": 777,
-                  "src": "261:12:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -939,14 +654,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1341,
-=======
-                    "id": 774,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1359,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "261:7:3",
+                    "src": "268:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -956,58 +667,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "260:14:3"
+              "src": "267:14:8"
             },
-<<<<<<< HEAD
-            "scope": 1352,
+            "scope": 1370,
             "src": "222:60:8",
-=======
-            "scope": 785,
-            "src": "215:60:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "34c55c81",
-<<<<<<< HEAD
-            "id": 1351,
-=======
-            "id": 784,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+            "id": 1369,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createDao",
-            "nameLocation": "289:9:3",
+            "nameLocation": "297:9:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-              "id": 1347,
-=======
-              "id": 780,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1365,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1346,
-=======
-                  "id": 779,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1364,
                   "mutability": "mutable",
                   "name": "_address",
-                  "nameLocation": "307:8:3",
+                  "nameLocation": "315:8:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1351,
+                  "scope": 1369,
                   "src": "307:16:8",
-=======
-                  "scope": 784,
-                  "src": "299:16:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1015,14 +704,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1345,
-=======
-                    "id": 778,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1363,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "299:7:3",
+                    "src": "307:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1032,34 +717,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "298:18:3"
+              "src": "306:18:8"
             },
             "returnParameters": {
-<<<<<<< HEAD
-              "id": 1350,
-=======
-              "id": 783,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+              "id": 1368,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-                  "id": 1349,
-=======
-                  "id": 782,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                  "id": 1367,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "343:4:3",
+                  "nameLocation": "351:4:8",
                   "nodeType": "VariableDeclaration",
-<<<<<<< HEAD
-                  "scope": 1351,
+                  "scope": 1369,
                   "src": "343:12:8",
-=======
-                  "scope": 784,
-                  "src": "335:12:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1067,14 +739,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-                    "id": 1348,
-=======
-                    "id": 781,
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+                    "id": 1366,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "335:7:3",
+                    "src": "343:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1084,44 +752,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "334:14:3"
+              "src": "342:14:8"
             },
-<<<<<<< HEAD
-            "scope": 1352,
+            "scope": 1370,
             "src": "288:69:8",
-=======
-            "scope": 785,
-            "src": "280:69:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-<<<<<<< HEAD
-        "scope": 1353,
+        "scope": 1371,
         "src": "60:300:8",
-=======
-        "scope": 786,
-        "src": "57:294:3",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
         "usedErrors": []
       }
     ],
-    "src": "32:319:3"
+    "src": "33:327:8"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
   "networks": {},
-<<<<<<< HEAD
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-15T22:21:09.427Z",
-=======
-  "schemaVersion": "3.2.0",
-  "updatedAt": "2022-05-15T22:22:44.210Z",
->>>>>>> 710ff970baa83726dd2c135e5e87a0e755b79332
+  "updatedAt": "2022-05-16T19:58:15.196Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

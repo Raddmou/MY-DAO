@@ -29,6 +29,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
     const { address, name, description, member, membershipMode, modules } = dao;
     const dispatch = useAppDispatch();
     // const [refresh, setRefresh] = useState(0);
+    console.log("CarCard member" + member + " address " +  address +  " modules " +  modules?.length);
     
     const handleClick = () => {
         dispatch(getDaoNote(address));

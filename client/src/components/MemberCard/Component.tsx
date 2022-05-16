@@ -43,6 +43,7 @@ const MemberCard = ({ member, isMember, daoAddress, codeModule }: MemberCardProp
     const getContent = () =>
     {
         //active
+        console.log("MemberCard status " + status);
         if(status == 3)
         {
             return (
