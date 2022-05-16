@@ -2,10 +2,10 @@ var RequestMembershipModule = artifacts.require("./RequestMembershipModule.sol")
 var DaosFactory = artifacts.require("./DaosFactory.sol");
 
 module.exports = async function(deployer) {
-  await deployer.deploy(RequestMembershipModule);
 
-  const requestMembership = await RequestMembershipModule.deployed();
   const daosFactory = await DaosFactory.deployed();
+  await deployer.deploy(RequestMembershipModule, daosFactory.address);
+  const requestMembership = await RequestMembershipModule.deployed();
   const typeHashed = await daosFactory.hash("MemberModule");
   const codeHashed = await daosFactory.hash("RequestMembershipModule");
 

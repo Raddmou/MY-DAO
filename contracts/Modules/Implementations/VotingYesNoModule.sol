@@ -54,8 +54,16 @@ contract VotingYesNoModule is Ownable {
     event VoteSessionCreated(address creatorAddress, string name);
     event Voted(address voterAddress, uint256 voteSessionId, responseEnum response);
 
+    constructor(address _contractFactory) {
+        _transferOwnership(_contractFactory);
+    }
+
     modifier onlyAuthorizeContracts(address _contractDao) {
-        require(authorizedContracts[_contractDao][msg.sender] == true, "Not authorized");
+        require(authorizedContracts[_contractDao][msg.sender] == true, "Not authorized BB");
+        _;
+    }
+    modifier onlyAuthorizeContractsOrOwner(address _contractDao) {
+        require(authorizedContracts[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized BBB");
         _;
     }
 
@@ -104,11 +112,18 @@ contract VotingYesNoModule is Ownable {
         return voteSessions[_contractDao][voteSessionId].votes[voter].voted;
     }     
 
-    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeContracts(_contractDao) {
+    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeContractsOrOwner(_contractDao) {
         require(!daos[_contractDao].isActive, "Dao already added");
         daos[_contractDao].isActive = true;
         daos[_contractDao].addressDao = _contractDao;
         memberModuleAddress = DaoBase(_contractDao).getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
     }
-  
+
+    function authorizeContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
+        authorizedContracts[_contractDao][_contractAddress] = true;
+    }
+
+    function denyContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
+        authorizedContracts[_contractDao][_contractAddress] = false;
+    }
 }

@@ -8,7 +8,7 @@ library Data {
     //address memberAddress;
   }
 
-struct DaoMember {
+  struct DaoMember {
     address addressDao;
     uint256 membersCount;
     mapping(uint256 => address) memberAddresses;

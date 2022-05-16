@@ -20,9 +20,14 @@ contract RequestMembershipModule is Ownable {
   event MemberJoined(address memberJoined);
   event MemberAskedJoin(address memberRequestor);
 
+  constructor(address _contractFactory) {
+    _transferOwnership(_contractFactory);
+  }
+
     modifier onlyActiveMembersOrAuthorizeContracts(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.active 
-        || authorizedContracts[_contractDao][msg.sender] == true, "Not authorized");
+        || authorizedContracts[_contractDao][msg.sender] == true
+        || msg.sender == owner(), "Not authorized");
         _;
     }
 
@@ -37,7 +42,7 @@ contract RequestMembershipModule is Ownable {
     }
 
     modifier onlyAuthorizeContractsOrOwner(address _contractDao) {
-        require(((authorizedContracts[_contractDao][msg.sender] == true) || msg.sender == owner()), "Not authorized");
+        require(authorizedContracts[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
         _;
     }
 
@@ -74,7 +79,7 @@ contract RequestMembershipModule is Ownable {
         return daos[_contractDao].members[addressMember].status == Data.memberStatus.active;
     }
 
-    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeContracts(_contractDao) {
+    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeContractsOrOwner(_contractDao) {
         require(!daos[_contractDao].isActive, "Dao already added");
         daos[_contractDao].isActive = true;
         daos[_contractDao].addressDao = _contractDao;
