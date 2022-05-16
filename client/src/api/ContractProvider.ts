@@ -7,6 +7,8 @@ import requestMembershipContract from "../contracts/RequestMembershipModule.json
 import votingContract from "../contracts/VotingYesNoModule.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
+import { MODULE_MEMBER_CODE_INVITE, MODULE_MEMBER_CODE_OPEN, MODULE_MEMBER_CODE_REQUEST
+    , MODULE_MEMBER_TYPE, MODULE_VOTE_CODE_YESNO, MODULE_VOTE_TYPE} from '../redux/reducers/moduleTypes'
 
 export const contractFactoryProvider = {
     getContract: async (): Promise<Contract> => {
@@ -59,11 +61,11 @@ export const contractMembershipModuleProvider = {
 
          var contract;
         switch(moduleCode) {
-            case "0x6bf7a9053457d398": // 'OpenMembershipModule':
+            case MODULE_MEMBER_CODE_OPEN: // 'OpenMembershipModule':
                 contract = await contractOpenMembershipModuleProvider.getContract(address);
-            case "0x2bd4373f9dfab999": // 'InviteMembershipModule':
+            case MODULE_MEMBER_CODE_INVITE: // 'InviteMembershipModule':
                 contract = await contractInviteMembershipModuleProvider.getContract(address);
-            case "RequestMembershipModule":
+            case MODULE_MEMBER_CODE_REQUEST:
                 contract = await contractRequestMembershipModuleProvider.getContract(address);
           }             
         return contract;

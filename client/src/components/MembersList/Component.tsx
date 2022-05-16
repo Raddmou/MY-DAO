@@ -29,7 +29,11 @@ const MembersList: React.FC = () => {
             <List>
                 {
                     daos.map((dao: Member) => (
-                        <MemberCard key={dao.id} member={dao} />
+                        <MemberCard key={dao.id} 
+                        member={dao} 
+                        isMember={dao.member}
+                        daoAddress={dao.address}
+                        codeModule={dao.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}/>
                     ))
                 }
             </List>

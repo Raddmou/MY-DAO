@@ -21,6 +21,7 @@ library Data {
     visibilityEnum visibility;
     string name;
     string description;
+    string rules;
   } 
 
   struct daoData {

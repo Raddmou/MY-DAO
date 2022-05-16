@@ -31,7 +31,7 @@ contract OpenMembershipModule is Ownable {
         || msg.sender == owner(), "Not authorized");
         _;
     }
-
+    
     modifier onlyNotActiveMembers(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status != Data.memberStatus.active, "Not authorized");
         _;
@@ -50,9 +50,11 @@ contract OpenMembershipModule is Ownable {
     function getMemberInfo(address _contractDao, address _member) external view returns(Data.member memory) {
         return(daos[_contractDao].members[_member]);
     }
+
     function getAddrById(address _contractDao, uint256 id) external view returns(address) {
         return daos[_contractDao].memberAddresses[id];
     }
+
     function getMembersCount(address _contractDao) external view returns(uint256) {
         return daos[_contractDao].membersCount;
     }

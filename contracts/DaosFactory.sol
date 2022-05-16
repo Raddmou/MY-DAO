@@ -63,7 +63,7 @@ contract DaosFactory is Ownable {
     DaoBase(_daoAddress).addModule(_type, _code, modulesDaos[_type][_code].moduleAddress);
     return modulesDaos[_type][_code].moduleAddress;  
   }
-  
+
   function _activateModuleForDao(address _daoAddress, bytes8 _type, bytes8 _code) internal returns(address) {
     require(modulesDaos[_type][_code].isActive == true, "Module not found");
     IModule(modulesDaos[_type][_code].moduleAddress).addDao(_daoAddress, msg.sender);
@@ -83,9 +83,10 @@ contract DaosFactory is Ownable {
   // }
 
   function createDAO(string calldata _name, string calldata _description, Data.visibilityEnum _visibility
+                    , string memory _rules
                     , Data.ModuleToActivate[] memory _modules) public {
     require(_modules.length < 10, "Modules must be less than 10.");
-    DaoBase dao = new DaoBase(_name, _description, _visibility);
+    DaoBase dao = new DaoBase(_name, _description, _visibility, _rules);
     // MembershipDao memberModule = new MembershipDao(membershipMode);
     // dao.addModule(dao.hash("MemberModule"), address(memberModule));
     deployedDao memory _dao;

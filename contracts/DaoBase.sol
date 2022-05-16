@@ -7,6 +7,7 @@ import "./Data.sol";
 contract DaoBase is Ownable {
   string public name;
   string public description;
+  string public rules;
   Data.visibilityEnum public visibility;
   uint256 public modulesCount;
 
@@ -49,9 +50,11 @@ contract DaoBase is Ownable {
   event DaoCreated(address daoAddress, address creatorAddress);
   event ModuleAdded(string moduleCode, address moduleAddress, address adderAddress);
 
-  constructor(string memory _name, string memory _description, Data.visibilityEnum _visibility) {
+  constructor(string memory _name, string memory _description, Data.visibilityEnum _visibility
+            , string memory _rules) {
     name = _name;
     description = _description;
+    rules = rules;
     visibility = _visibility;
     owners[msg.sender] = true;
   }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { MODULE_MEMBER_CODE_INVITE, MODULE_MEMBER_CODE_OPEN, MODULE_MEMBER_CODE_REQUEST,
+     MODULE_MEMBER_TYPE, MODULE_VOTE_CODE_YESNO, MODULE_VOTE_TYPE} from '../../redux/reducers/moduleTypes';
 
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -29,8 +31,12 @@ const DaoCard = ({ dao }: DaoCardProps) => {
     const { address, name, description, member, membershipMode, modules } = dao;
     const dispatch = useAppDispatch();
     // const [refresh, setRefresh] = useState(0);
-    console.log("CarCard member" + member + " address " +  address +  " modules " +  modules?.length);
+    console.log("DaoCard member" + member + " address " +  address +  " modules " +  modules?.length);
     
+    for (let index = 0; index < modules.length; index++) {
+        console.log(" module type " + modules[index].type + " code " + modules[index].code);   
+    }
+
     const handleClick = () => {
         dispatch(getDaoNote(address));
     }
@@ -77,13 +83,25 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                 },
             }}
             >
+                {
+                    modules?.some(a => a.type == MODULE_VOTE_TYPE && a.code == MODULE_VOTE_CODE_YESNO) 
+                    &&  (
+                    <Tooltip title="Vote">
+                        <HowToVoteIcon fontSize="large" color="primary"
+                        onClick={handleClickJoinDaoInvitation}/>
+                        {/* </IconButton> */}
+                    </Tooltip>
+                    )
+                }
+
+
                 <Tooltip title="View Dao">
                     <ViewHeadlineIcon fontSize="large" color="primary"
                                     onClick={handleClick}/>
                 </Tooltip>
 
                 {
-                    modules?.some(a => a.type == "MemberModule" && a.code == "RequestMembershipModule") 
+                    modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_REQUEST) 
                     && member == 2 
                     && (
                         <Tooltip title="Asking join Dao">
@@ -93,7 +111,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    modules?.some(a => a.type == "MemberModule" && a.code == "RequestMembershipModule") 
+                    modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_REQUEST) 
                     && member == 0 
                     && (
                         <Tooltip title="Request join Dao">
@@ -103,7 +121,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    modules?.some(a => a.type == "MemberModule" && a.code == "OpenMembershipModule") 
+                    modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_OPEN) 
                     && member == 0 && (
                         <Tooltip title="Join Dao">
                             <GroupAddIcon fontSize="large" color="primary"
@@ -112,7 +130,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    modules?.some(a => a.type == "MemberModule" && a.code == "InviteMembershipModule") 
+                    modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_INVITE) 
                     && member == 0 && (
                         <Tooltip title="Not member">
                             <PersonOutlineIcon fontSize="large" color="primary"
@@ -133,7 +151,8 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
                 {
-                    member == 1 && (
+                    modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_INVITE) 
+                    && member == 1 && (
                         <Tooltip title="Pending invitation">
                             {/* <IconButton> */}
                                 {/* <Avatar
@@ -146,12 +165,6 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                         </Tooltip> 
                     )
                 }
-
-                <Tooltip title="Vote">
-                    <HowToVoteIcon fontSize="large" color="primary"
-                    onClick={handleClickJoinDaoInvitation}/>
-                    {/* </IconButton> */}
-                </Tooltip>
 
             </Box>
 

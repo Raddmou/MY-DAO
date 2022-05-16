@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+
+import { MODULE_MEMBER_CODE_INVITE, MODULE_MEMBER_CODE_OPEN, MODULE_MEMBER_CODE_REQUEST,
+    MODULE_MEMBER_TYPE, MODULE_VOTE_CODE_YESNO, MODULE_VOTE_TYPE} from '../../redux/reducers/moduleTypes';
+
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -57,10 +61,10 @@ const MemberCard = ({ member, isMember, daoAddress, codeModule }: MemberCardProp
             );
         }
         //asking
-        else if(codeModule == "RequestMembershipModule" && status == 2)
+        else if(codeModule == MODULE_MEMBER_CODE_REQUEST && status == 2)
         {
             return (
-                <Tooltip title="Asking to join">
+                <Tooltip title="Accept asking to join">
                 <IconButton>
                     <Avatar
                     sx={{ bgcolor: deepOrange[500] }}
@@ -71,7 +75,7 @@ const MemberCard = ({ member, isMember, daoAddress, codeModule }: MemberCardProp
             );
         }
         //invited
-        else if(codeModule == "InviteMembershipModule" && status == 1)
+        else if(codeModule == MODULE_MEMBER_CODE_INVITE && status == 1)
         {
             return (
                 <Tooltip title="Pending invitation to join">

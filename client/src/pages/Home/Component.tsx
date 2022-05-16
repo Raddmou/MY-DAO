@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { MODULE_MEMBER_CODE_INVITE, MODULE_MEMBER_CODE_OPEN, MODULE_MEMBER_CODE_REQUEST,
+    MODULE_MEMBER_TYPE, MODULE_VOTE_CODE_YESNO, MODULE_VOTE_TYPE} from '../../redux/reducers/moduleTypes';
+
 import Button from '@mui/material/Button';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
@@ -19,6 +22,8 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import MemberCard from '../../components/MemberCard/Component';
 import ListItem from '@mui/material/ListItem';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import { inviteToDao } from '../../redux/reducers/actions';
 import { Member, InviteDaoFormValues } from '../../types';
@@ -84,6 +89,7 @@ const Home: React.FC = () => {
                                     },
                                 }}
                                 >
+                                <Typography variant="h5" component="div">General</Typography>
                                 <div className="textInput">
                                     <TextField
                                         size="small"
@@ -95,21 +101,7 @@ const Home: React.FC = () => {
                                         value={daoNote.name}
                                     />
                                 </div>
-                                <div className="textInput">
-                                    <FormControlLabel
-                                        control={
-                                            <Switch  
-                                                size="small"
-                                                id="visibility"
-                                                name="visibility"
-                                                disabled
-                                                value={daoNote.visibility}
-                                            />
-                                            }
-                                            label="Private"
-                                    />
-                                    
-                                </div>
+                                
                                 {/* {daoNote.modules?.some(a => a.type = "MemberModule") && (
                                 <div>
                                     <FormControl>
@@ -150,18 +142,58 @@ const Home: React.FC = () => {
                                             value={daoNote.note}
                                         />
                                 </div>   
-                                { daoNote.modules?.some(a => a.type == "MemberModule") 
+
+                                <div className="textInput">
+                                    <FormControlLabel
+                                        control={
+                                            <Switch  
+                                                size="small"
+                                                id="visibility"
+                                                name="visibility"
+                                                disabled
+                                                value={daoNote.visibility}
+                                            />
+                                            }
+                                            label="Private"
+                                    />
+                                    
+                                </div>
+
+                                <Typography variant="h5" component="div">Modules</Typography>
+
+                                <FormLabel id="demo-row-radio-buttons-group-label">Membership Modules</FormLabel>
+                                <div>
+                                    <ToggleButtonGroup
+                                        color="primary"
+                                        id="member"
+                                        name="member"
+                                        label="member"
+                                        value={daoNote.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}
+                                        exclusive
+                                        disabled
+                                        // aria-label="label"
+                                        >
+                                        {/* <label>hoho</label> */}
+                                        <ToggleButton value={MODULE_MEMBER_CODE_OPEN}>Open</ToggleButton>
+                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invite</ToggleButton>
+                                        <ToggleButton value={MODULE_MEMBER_CODE_REQUEST}>Request</ToggleButton>
+                                    </ToggleButtonGroup>
+                                </div>
+
+                                { daoNote.modules?.some(a => a.type == MODULE_MEMBER_TYPE) 
                                     && daoNote.members 
                                     && (
                                         <div className='listContainer'>
                                             
-                                                <Typography variant="h5" component="div">Members</Typography>
+                                                <Typography variant="h6" component="div">Members</Typography>
                                                 <List>
                                                     {
                                                             daoNote.members.map((member: Member) => (
                                                                 <MemberCard key={member.id} 
                                                                 member={member} 
-                                                                codeModule={daoNote.modules?.find(a => a.type == "MemberModule")?.code}/>
+                                                                isMember={daoNote.member} 
+                                                                daoAddress={daoNote.address}
+                                                                codeModule={daoNote.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}/>
                                                             ))                                                   
                                                     }
                                                 </List> 
@@ -171,7 +203,7 @@ const Home: React.FC = () => {
 
                                 <div className="textInput">
 
-                                { daoNote.modules?.some(a => a.type == "MemberModule" && a.code == "InviteMembershipModule") 
+                                { daoNote.modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_INVITE) 
                                     && daoNote.member == 3 
                                     && (
                                     <ListItem button divider>

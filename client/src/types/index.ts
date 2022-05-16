@@ -5,6 +5,7 @@ export type Dao = {
     name: string, 
     id: string,
     visibility: boolean,
+    note: string,
     // membershipMode: string,
     description: string,
     member: number,

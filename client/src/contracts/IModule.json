@@ -33,7 +33,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_daoAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_memberAddress\",\"type\":\"address\"}],\"name\":\"addDao\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Modules/Interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0x2a926d43d1ffa6327b84e92b4a2acdb1ca867125dd37e36ea94f4e4aea0087a4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e5f1b0655acb018bf775015fd422768e3e2ebdd77250c7f396595643e4016cf\",\"dweb:/ipfs/QmactSyQpEwN75zc9rZb3h7bMkwNwp6v4yGmmu7LZUbuUK\"]},\"project:/contracts/Modules/Interfaces/IModule.sol\":{\"keccak256\":\"0xae05f0875fc1f3952a20a57b1a4f2611953cd1f9206541627f8d6cb0d9616fc2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a55b8c89e7464d55267f7a9235c7056ac3f5859303a768e9e721b979e3d4d55e\",\"dweb:/ipfs/QmdscSdm9UCu35XCkpamjKhncFPzjksjLsaYUPunGYDbC1\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_daoAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_memberAddress\",\"type\":\"address\"}],\"name\":\"addDao\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Modules/Interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0x1e324aa1830edb7a0cc3e477953c178325ca371f12829f0ac07af913dde49635\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://78c236c19dafadbdd816ae3a6e5bab02b501c36ec1583ef0c81fe42f7e77bfe0\",\"dweb:/ipfs/QmYNBoCPEoX9uDzMgqVpT2deWpdnL4c7qFF9gZARrN7gUM\"]},\"project:/contracts/Modules/Interfaces/IModule.sol\":{\"keccak256\":\"0xae05f0875fc1f3952a20a57b1a4f2611953cd1f9206541627f8d6cb0d9616fc2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a55b8c89e7464d55267f7a9235c7056ac3f5859303a768e9e721b979e3d4d55e\",\"dweb:/ipfs/QmdscSdm9UCu35XCkpamjKhncFPzjksjLsaYUPunGYDbC1\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -47,18 +47,18 @@
     "absolutePath": "project:/contracts/Modules/Interfaces/IModule.sol",
     "exportedSymbols": {
       "Data": [
-        1342
+        1355
       ],
       "IModule": [
-        4082
+        4095
       ]
     },
-    "id": 4083,
+    "id": 4096,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4068,
+        "id": 4081,
         "literals": [
           "solidity",
           "^",
@@ -71,11 +71,11 @@
       {
         "absolutePath": "project:/contracts/Data.sol",
         "file": "../../Data.sol",
-        "id": 4069,
+        "id": 4082,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4083,
-        "sourceUnit": 1343,
+        "scope": 4096,
+        "sourceUnit": 1356,
         "src": "60:24:18",
         "symbolAliases": [],
         "unitAlias": ""
@@ -87,9 +87,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 4082,
+        "id": 4095,
         "linearizedBaseContracts": [
-          4082
+          4095
         ],
         "name": "IModule",
         "nameLocation": "98:7:18",
@@ -97,7 +97,7 @@
         "nodes": [
           {
             "functionSelector": "ea879634",
-            "id": 4074,
+            "id": 4087,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -105,23 +105,23 @@
             "nameLocation": "120:7:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4070,
+              "id": 4083,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "127:2:18"
             },
             "returnParameters": {
-              "id": 4073,
+              "id": 4086,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4072,
+                  "id": 4085,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4074,
+                  "scope": 4087,
                   "src": "152:13:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -130,7 +130,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4071,
+                    "id": 4084,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "152:6:18",
@@ -144,7 +144,7 @@
               ],
               "src": "151:15:18"
             },
-            "scope": 4082,
+            "scope": 4095,
             "src": "111:56:18",
             "stateMutability": "view",
             "virtual": false,
@@ -152,7 +152,7 @@
           },
           {
             "functionSelector": "12ee7e41",
-            "id": 4081,
+            "id": 4094,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -160,17 +160,17 @@
             "nameLocation": "182:6:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4079,
+              "id": 4092,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4076,
+                  "id": 4089,
                   "mutability": "mutable",
                   "name": "_daoAddress",
                   "nameLocation": "197:11:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4081,
+                  "scope": 4094,
                   "src": "189:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -179,7 +179,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 4075,
+                    "id": 4088,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:18",
@@ -193,12 +193,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 4078,
+                  "id": 4091,
                   "mutability": "mutable",
                   "name": "_memberAddress",
                   "nameLocation": "218:14:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4081,
+                  "scope": 4094,
                   "src": "210:22:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -207,7 +207,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 4077,
+                    "id": 4090,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "210:7:18",
@@ -223,19 +223,19 @@
               "src": "188:45:18"
             },
             "returnParameters": {
-              "id": 4080,
+              "id": 4093,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "242:0:18"
             },
-            "scope": 4082,
+            "scope": 4095,
             "src": "173:70:18",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 4083,
+        "scope": 4096,
         "src": "88:158:18",
         "usedErrors": []
       }
@@ -246,18 +246,18 @@
     "absolutePath": "project:/contracts/Modules/Interfaces/IModule.sol",
     "exportedSymbols": {
       "Data": [
-        1342
+        1355
       ],
       "IModule": [
-        4082
+        4095
       ]
     },
-    "id": 4083,
+    "id": 4096,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4068,
+        "id": 4081,
         "literals": [
           "solidity",
           "^",
@@ -270,11 +270,11 @@
       {
         "absolutePath": "project:/contracts/Data.sol",
         "file": "../../Data.sol",
-        "id": 4069,
+        "id": 4082,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4083,
-        "sourceUnit": 1343,
+        "scope": 4096,
+        "sourceUnit": 1356,
         "src": "60:24:18",
         "symbolAliases": [],
         "unitAlias": ""
@@ -286,9 +286,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 4082,
+        "id": 4095,
         "linearizedBaseContracts": [
-          4082
+          4095
         ],
         "name": "IModule",
         "nameLocation": "98:7:18",
@@ -296,7 +296,7 @@
         "nodes": [
           {
             "functionSelector": "ea879634",
-            "id": 4074,
+            "id": 4087,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -304,23 +304,23 @@
             "nameLocation": "120:7:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4070,
+              "id": 4083,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "127:2:18"
             },
             "returnParameters": {
-              "id": 4073,
+              "id": 4086,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4072,
+                  "id": 4085,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4074,
+                  "scope": 4087,
                   "src": "152:13:18",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -329,7 +329,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4071,
+                    "id": 4084,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "152:6:18",
@@ -343,7 +343,7 @@
               ],
               "src": "151:15:18"
             },
-            "scope": 4082,
+            "scope": 4095,
             "src": "111:56:18",
             "stateMutability": "view",
             "virtual": false,
@@ -351,7 +351,7 @@
           },
           {
             "functionSelector": "12ee7e41",
-            "id": 4081,
+            "id": 4094,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -359,17 +359,17 @@
             "nameLocation": "182:6:18",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4079,
+              "id": 4092,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4076,
+                  "id": 4089,
                   "mutability": "mutable",
                   "name": "_daoAddress",
                   "nameLocation": "197:11:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4081,
+                  "scope": 4094,
                   "src": "189:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -378,7 +378,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 4075,
+                    "id": 4088,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:18",
@@ -392,12 +392,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 4078,
+                  "id": 4091,
                   "mutability": "mutable",
                   "name": "_memberAddress",
                   "nameLocation": "218:14:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4081,
+                  "scope": 4094,
                   "src": "210:22:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -406,7 +406,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 4077,
+                    "id": 4090,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "210:7:18",
@@ -422,19 +422,19 @@
               "src": "188:45:18"
             },
             "returnParameters": {
-              "id": 4080,
+              "id": 4093,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "242:0:18"
             },
-            "scope": 4082,
+            "scope": 4095,
             "src": "173:70:18",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 4083,
+        "scope": 4096,
         "src": "88:158:18",
         "usedErrors": []
       }
@@ -447,7 +447,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-16T19:58:15.380Z",
+  "updatedAt": "2022-05-16T22:35:22.765Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

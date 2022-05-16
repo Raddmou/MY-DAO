@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { MODULE_MEMBER_CODE_INVITE, MODULE_MEMBER_CODE_OPEN, MODULE_MEMBER_CODE_REQUEST,
+    MODULE_MEMBER_TYPE, MODULE_VOTE_CODE_YESNO, MODULE_VOTE_TYPE} from '../../redux/reducers/moduleTypes';
+
 import Button from '@mui/material/Button';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
@@ -13,6 +16,8 @@ import { Checkbox, Switch } from "@mui/material";
 import MemberCard from '../../components/MemberCard/Component';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -126,6 +131,7 @@ const ExploreDaos: React.FC = () => {
                                     },
                                 }}
                                 >
+                                    <Typography variant="h5" component="div">General</Typography>
                                     <div className="textInput">
                                         <TextField
                                             size="small"
@@ -137,24 +143,8 @@ const ExploreDaos: React.FC = () => {
                                             value={daoNote.name}
                                         />
                                     </div>
-                                    <div className="textInput">
-                                        <FormControl>
-                                        <FormLabel id="demo-row-radio-buttons-group-label">Visibility</FormLabel>
-                                            <FormControlLabel
-                                                control={
-                                                    <Switch  
-                                                        size="small"
-                                                        id="visibility"
-                                                        name="visibility"
-                                                        disabled
-                                                        value={daoNote.visibility}
-                                                    />
-                                                    }
-                                                    label="Private"
-                                            />     
-                                        </FormControl>
-                                    </div>
-                                    <div>
+                                    
+                                    {/* <div>
                                         <FormControl>
                                             <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
                                             <RadioGroup
@@ -168,7 +158,7 @@ const ExploreDaos: React.FC = () => {
                                                 <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
                                             </RadioGroup>
                                         </FormControl>
-                                    </div>
+                                    </div> */}
                                     <div className="textInput">
                                         <TextField
                                             size="small"
@@ -193,52 +183,101 @@ const ExploreDaos: React.FC = () => {
                                             value={daoNote.note}
                                         />
                                     </div>  
-                                    { daoNote.members && (
+                                    <div className="textInput">
+                                        <FormControl>
+                                        <FormLabel id="demo-row-radio-buttons-group-label">Visibility</FormLabel>
+                                            <FormControlLabel
+                                                control={
+                                                    <Switch  
+                                                        size="small"
+                                                        id="visibility"
+                                                        name="visibility"
+                                                        disabled
+                                                        value={daoNote.visibility}
+                                                    />
+                                                    }
+                                                    label="Private"
+                                            />     
+                                        </FormControl>
+                                    </div>
+
+
+                                    <Typography variant="h5" component="div">Modules</Typography>
+
+                                <FormLabel id="demo-row-radio-buttons-group-label">Membership Modules</FormLabel>
+                                <div>
+                                    <ToggleButtonGroup
+                                        color="primary"
+                                        id="member"
+                                        name="member"
+                                        label="member"
+                                        value={daoNote.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}
+                                        exclusive
+                                        disabled
+                                        // aria-label="label"
+                                        >
+                                        {/* <label>hoho</label> */}
+                                        <ToggleButton value={MODULE_MEMBER_CODE_OPEN}>Open</ToggleButton>
+                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invite</ToggleButton>
+                                        <ToggleButton value={MODULE_MEMBER_CODE_REQUEST}>Request</ToggleButton>
+                                    </ToggleButtonGroup>
+                                </div>
+
+                                { daoNote.modules?.some(a => a.type == MODULE_MEMBER_TYPE) 
+                                    && daoNote.members 
+                                    && (
                                         <div className='listContainer'>
                                             
-                                                <Typography variant="h5" component="div">Members</Typography>
+                                                <Typography variant="h6" component="div">Members</Typography>
                                                 <List>
                                                     {
                                                             daoNote.members.map((member: Member) => (
-                                                                <MemberCard key={member.id} member={member} isMember={daoNote.member} daoAddress={daoNote.address}/>
+                                                                <MemberCard key={member.id} 
+                                                                member={member} 
+                                                                isMember={daoNote.member} 
+                                                                daoAddress={daoNote.address}
+                                                                codeModule={daoNote.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}/>
                                                             ))                                                   
                                                     }
                                                 </List> 
                                         </div> 
                                         )
-                                    } 
-                                    <div className="textInput">
+                                } 
 
-                                    { daoNote.member == 3 && daoNote.membershipMode == 0 && (
-                                        <ListItem button divider>
-                                            <TextField
-                                                size="small"
-                                                fullWidth
-                                                id="name"
-                                                name="name"
-                                                label="Guest address"
-                                                //value={formik.values.address}
-                                                value={addressToInvite}
-                                                onChange={(e) => setAddressToInvite(e.target.value)}
-                                                //onChange={formik.handleChange}
-                                                // error={touched.address && Boolean(errors.address)}
-                                                // helperText={touched.address && errors.address}
+                                <div className="textInput">
+
+                                { daoNote.modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_INVITE) 
+                                    && daoNote.member == 3 
+                                    && (
+                                    <ListItem button divider>
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            id="name"
+                                            name="name"
+                                            label="Guest address"
+                                            //value={formik.values.address}
+                                            value={addressToInvite}
+                                            onChange={(e) => setAddressToInvite(e.target.value)}
+                                            //onChange={formik.handleChange}
+                                            // error={touched.address && Boolean(errors.address)}
+                                            // helperText={touched.address && errors.address}
+                                        />
+                                        {/* <IconButton>
+                                            <Avatar 
+                                            sx={{ bgcolor: blue[500] }}
+                                            alt="Invite" 
                                             />
-                                            {/* <IconButton>
-                                                <Avatar 
-                                                sx={{ bgcolor: blue[500] }}
-                                                alt="Invite" 
-                                                />
-                                            </IconButton> */}
-                                            {/* <GroupAddIcon fontSize="large" color="primary"
-                                            type="submit"/> */}
-                                            <Button color="primary" variant="contained" fullWidth onClick={HandleInviteMember}>
-                                                Invite
-                                                </Button>   
-                                        </ListItem>
-                                    )}
-                                        
-                                    </div>   
+                                        </IconButton> */}
+                                        {/* <GroupAddIcon fontSize="large" color="primary"
+                                        type="submit"/> */}
+                                        <Button color="primary" variant="contained" fullWidth onClick={HandleInviteMember}>
+                                            Add
+                                            </Button>   
+                                    </ListItem>
+                                )}
+                                    
+                                </div>  
                                 </Box>  
                             {/* </form>   */}
                         </DialogContent>

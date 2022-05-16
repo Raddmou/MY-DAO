@@ -145,6 +145,7 @@ const AddDao: React.FC = () => {
                     },
                 }}
                 >
+                    <Typography variant="h6" component="div">General</Typography>
                     <div className="textInput">
                         <TextField
                             size="small"
@@ -158,36 +159,7 @@ const AddDao: React.FC = () => {
                             helperText={touched.name && errors.name}
                         />
                     </div>
-                    <div className="textInput">
-                        <FormControl>
-                            <FormLabel id="demo-row-radio-buttons-group-label">Visibility</FormLabel>
-                                <FormControlLabel
-                                    control={
-                                        <Switch  
-                                            size="small"
-                                            id="visibility"
-                                            name="visibility"
-                                            value={formik.values.visibility}
-                                            onChange={formik.handleChange}
-                                        />
-                                        }
-                                        label="Private"
-                                />     
-                        </FormControl>
-                            {/* <FormControlLabel
-                        control={
-                            <Switch  
-                            size="small"
-                            id="visibility"
-                            name="visibility"
-                            value={formik.values.visibility}
-                            onChange={formik.handleChange}
-                        />
-                                }
-                        label="Public"
-                        /> */}
-                        
-                    </div>
+                    
                     {/* <div>
                     <Stack direction="row" spacing={1} alignItems="center">
                         <Typography>Private</Typography>
@@ -277,7 +249,38 @@ const AddDao: React.FC = () => {
                             helperText={touched.note && errors.note}
                         />
                     </div>
-                    <FormLabel id="demo-row-radio-buttons-group-label">Member Module</FormLabel>
+                    <div className="textInput">
+                        <FormControl>
+                            <FormLabel id="demo-row-radio-buttons-group-label">Visibility</FormLabel>
+                                <FormControlLabel
+                                    control={
+                                        <Switch  
+                                            size="small"
+                                            id="visibility"
+                                            name="visibility"
+                                            value={formik.values.visibility}
+                                            onChange={formik.handleChange}
+                                        />
+                                        }
+                                        label="Private"
+                                />     
+                        </FormControl>
+                            {/* <FormControlLabel
+                        control={
+                            <Switch  
+                            size="small"
+                            id="visibility"
+                            name="visibility"
+                            value={formik.values.visibility}
+                            onChange={formik.handleChange}
+                        />
+                                }
+                        label="Public"
+                        /> */}
+                        
+                    </div>
+                    <Typography variant="h6" component="div">Modules</Typography>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Membership Modules</FormLabel>
                     <div>
                         <ToggleButtonGroup
                             color="primary"
@@ -295,7 +298,7 @@ const AddDao: React.FC = () => {
                             <ToggleButton value="request">Request</ToggleButton>
                         </ToggleButtonGroup>
                     </div>
-                    <FormLabel id="demo-row-radio-buttons-group-label">Vote Module</FormLabel>
+                    <FormLabel id="demo-row-radio-buttons-group-label">Vote Modules</FormLabel>
                     <div>
                         <ToggleButtonGroup
                             color="primary"

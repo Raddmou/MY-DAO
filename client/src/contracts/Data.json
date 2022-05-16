@@ -21,9 +21,9 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_messageToHash\",\"type\":\"string\"}],\"name\":\"hash\",\"outputs\":[{\"internalType\":\"bytes8\",\"name\":\"\",\"type\":\"bytes8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0x2a926d43d1ffa6327b84e92b4a2acdb1ca867125dd37e36ea94f4e4aea0087a4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e5f1b0655acb018bf775015fd422768e3e2ebdd77250c7f396595643e4016cf\",\"dweb:/ipfs/QmactSyQpEwN75zc9rZb3h7bMkwNwp6v4yGmmu7LZUbuUK\"]}},\"version\":1}",
-  "bytecode": "0x610390610053600b82828239805160001a607314610046577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea26469706673582212206845481e971732b245139207f521531f7cbe9ec98349eb0b6aa25c8851dbd90b64736f6c63430008090033",
-  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea26469706673582212206845481e971732b245139207f521531f7cbe9ec98349eb0b6aa25c8851dbd90b64736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_messageToHash\",\"type\":\"string\"}],\"name\":\"hash\",\"outputs\":[{\"internalType\":\"bytes8\",\"name\":\"\",\"type\":\"bytes8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Data.sol\":{\"keccak256\":\"0x1e324aa1830edb7a0cc3e477953c178325ca371f12829f0ac07af913dde49635\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://78c236c19dafadbdd816ae3a6e5bab02b501c36ec1583ef0c81fe42f7e77bfe0\",\"dweb:/ipfs/QmYNBoCPEoX9uDzMgqVpT2deWpdnL4c7qFF9gZARrN7gUM\"]}},\"version\":1}",
+  "bytecode": "0x610390610053600b82828239805160001a607314610046577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea2646970667358221220236552f2b29c7dad39dead5a32cb7fd14d1634568d65f977fe7badaba535ba5164736f6c63430008090033",
+  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea2646970667358221220236552f2b29c7dad39dead5a32cb7fd14d1634568d65f977fe7badaba535ba5164736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [
@@ -2572,23 +2572,23 @@
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "60:1240:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "60:1240:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;1159:138;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;1224:6;1274:14;1263:26;;;;;;;;:::i;:::-;;;;;;;;;;;;;1253:37;;;;;;1239:52;;1159:138;;;:::o;7:75:24:-;40:6;73:2;67:9;57:19;;7:75;:::o;88:117::-;197:1;194;187:12;211:117;320:1;317;310:12;334:117;443:1;440;433:12;457:117;566:1;563;556:12;580:102;621:6;672:2;668:7;663:2;656:5;652:14;648:28;638:38;;580:102;;;:::o;688:180::-;736:77;733:1;726:88;833:4;830:1;823:15;857:4;854:1;847:15;874:281;957:27;979:4;957:27;:::i;:::-;949:6;945:40;1087:6;1075:10;1072:22;1051:18;1039:10;1036:34;1033:62;1030:88;;;1098:18;;:::i;:::-;1030:88;1138:10;1134:2;1127:22;917:238;874:281;;:::o;1161:129::-;1195:6;1222:20;;:::i;:::-;1212:30;;1251:33;1279:4;1271:6;1251:33;:::i;:::-;1161:129;;;:::o;1296:308::-;1358:4;1448:18;1440:6;1437:30;1434:56;;;1470:18;;:::i;:::-;1434:56;1508:29;1530:6;1508:29;:::i;:::-;1500:37;;1592:4;1586;1582:15;1574:23;;1296:308;;;:::o;1610:154::-;1694:6;1689:3;1684;1671:30;1756:1;1747:6;1742:3;1738:16;1731:27;1610:154;;;:::o;1770:412::-;1848:5;1873:66;1889:49;1931:6;1889:49;:::i;:::-;1873:66;:::i;:::-;1864:75;;1962:6;1955:5;1948:21;2000:4;1993:5;1989:16;2038:3;2029:6;2024:3;2020:16;2017:25;2014:112;;;2045:79;;:::i;:::-;2014:112;2135:41;2169:6;2164:3;2159;2135:41;:::i;:::-;1854:328;1770:412;;;;;:::o;2202:340::-;2258:5;2307:3;2300:4;2292:6;2288:17;2284:27;2274:122;;2315:79;;:::i;:::-;2274:122;2432:6;2419:20;2457:79;2532:3;2524:6;2517:4;2509:6;2505:17;2457:79;:::i;:::-;2448:88;;2264:278;2202:340;;;;:::o;2548:509::-;2617:6;2666:2;2654:9;2645:7;2641:23;2637:32;2634:119;;;2672:79;;:::i;:::-;2634:119;2820:1;2809:9;2805:17;2792:31;2850:18;2842:6;2839:30;2836:117;;;2872:79;;:::i;:::-;2836:117;2977:63;3032:7;3023:6;3012:9;3008:22;2977:63;:::i;:::-;2967:73;;2763:287;2548:509;;;;:::o;3063:149::-;3099:7;3139:66;3132:5;3128:78;3117:89;;3063:149;;;:::o;3218:123::-;3311:23;3328:5;3311:23;:::i;:::-;3306:3;3299:36;3218:123;;:::o;3347:234::-;3446:4;3484:2;3473:9;3469:18;3461:26;;3497:77;3571:1;3560:9;3556:17;3547:6;3497:77;:::i;:::-;3347:234;;;;:::o;3587:99::-;3639:6;3673:5;3667:12;3657:22;;3587:99;;;:::o;3692:169::-;3776:11;3810:6;3805:3;3798:19;3850:4;3845:3;3841:14;3826:29;;3692:169;;;;:::o;3867:307::-;3935:1;3945:113;3959:6;3956:1;3953:13;3945:113;;;4044:1;4039:3;4035:11;4029:18;4025:1;4020:3;4016:11;4009:39;3981:2;3978:1;3974:10;3969:15;;3945:113;;;4076:6;4073:1;4070:13;4067:101;;;4156:1;4147:6;4142:3;4138:16;4131:27;4067:101;3916:258;3867:307;;;:::o;4180:364::-;4268:3;4296:39;4329:5;4296:39;:::i;:::-;4351:71;4415:6;4410:3;4351:71;:::i;:::-;4344:78;;4431:52;4476:6;4471:3;4464:4;4457:5;4453:16;4431:52;:::i;:::-;4508:29;4530:6;4508:29;:::i;:::-;4503:3;4499:39;4492:46;;4272:272;4180:364;;;;:::o;4550:313::-;4663:4;4701:2;4690:9;4686:18;4678:26;;4750:9;4744:4;4740:20;4736:1;4725:9;4721:17;4714:47;4778:78;4851:4;4842:6;4778:78;:::i;:::-;4770:86;;4550:313;;;;:::o",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nlibrary Data {\r\n  struct member {\r\n    memberStatus status;\r\n    uint256 joinTime;\r\n    //address memberAddress;\r\n  }\r\n\r\n  struct DaoMember {\r\n    address addressDao;\r\n    uint256 membersCount;\r\n    mapping(uint256 => address) memberAddresses;\r\n    mapping(address => Data.member) members;\r\n    bool isActive;\r\n  } \r\n\r\n  struct DaoSettings {\r\n    address addressDao;\r\n    visibilityEnum visibility;\r\n    string name;\r\n    string description;\r\n  } \r\n\r\n  struct daoData {\r\n    string daoType;\r\n    visibilityEnum visibility;\r\n  }\r\n\r\n  enum visibilityEnum {\r\n    privateDao,\r\n    publicDao\r\n  }\r\n\r\n  enum memberStatus {\r\n    notMember,\r\n    invited,\r\n    asking,\r\n    active\r\n  }\r\n\r\n  enum membershipModeEnum {\r\n    invite,\r\n    request,\r\n    open\r\n  }\r\n\r\n  enum ModuleType {\r\n    DaoMemberSystem,\r\n    DaoVotingSystem\r\n  }\r\n\r\n  struct Module {\r\n    uint256 id;\r\n    address moduleAddress;\r\n    // IModule module;\r\n    bool isActive;\r\n    bytes8 moduleType; \r\n    bytes8 moduleCode; \r\n    string moduleInfo;\r\n  }\r\n\r\n  struct ModuleToActivate {\r\n    bytes8 moduleType;\r\n    bytes8 moduleCode;\r\n  }\r\n\r\n  function hash(string memory _messageToHash) public pure returns (bytes8) {\r\n    return bytes8(keccak256(abi.encode(_messageToHash)));\r\n  }\r\n}",
+  "sourceMap": "60:1259:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "60:1259:7:-:0;;;;;;;;;;;;;;;;;;;;;;;;;1178:138;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;1243:6;1293:14;1282:26;;;;;;;;:::i;:::-;;;;;;;;;;;;;1272:37;;;;;;1258:52;;1178:138;;;:::o;7:75:24:-;40:6;73:2;67:9;57:19;;7:75;:::o;88:117::-;197:1;194;187:12;211:117;320:1;317;310:12;334:117;443:1;440;433:12;457:117;566:1;563;556:12;580:102;621:6;672:2;668:7;663:2;656:5;652:14;648:28;638:38;;580:102;;;:::o;688:180::-;736:77;733:1;726:88;833:4;830:1;823:15;857:4;854:1;847:15;874:281;957:27;979:4;957:27;:::i;:::-;949:6;945:40;1087:6;1075:10;1072:22;1051:18;1039:10;1036:34;1033:62;1030:88;;;1098:18;;:::i;:::-;1030:88;1138:10;1134:2;1127:22;917:238;874:281;;:::o;1161:129::-;1195:6;1222:20;;:::i;:::-;1212:30;;1251:33;1279:4;1271:6;1251:33;:::i;:::-;1161:129;;;:::o;1296:308::-;1358:4;1448:18;1440:6;1437:30;1434:56;;;1470:18;;:::i;:::-;1434:56;1508:29;1530:6;1508:29;:::i;:::-;1500:37;;1592:4;1586;1582:15;1574:23;;1296:308;;;:::o;1610:154::-;1694:6;1689:3;1684;1671:30;1756:1;1747:6;1742:3;1738:16;1731:27;1610:154;;;:::o;1770:412::-;1848:5;1873:66;1889:49;1931:6;1889:49;:::i;:::-;1873:66;:::i;:::-;1864:75;;1962:6;1955:5;1948:21;2000:4;1993:5;1989:16;2038:3;2029:6;2024:3;2020:16;2017:25;2014:112;;;2045:79;;:::i;:::-;2014:112;2135:41;2169:6;2164:3;2159;2135:41;:::i;:::-;1854:328;1770:412;;;;;:::o;2202:340::-;2258:5;2307:3;2300:4;2292:6;2288:17;2284:27;2274:122;;2315:79;;:::i;:::-;2274:122;2432:6;2419:20;2457:79;2532:3;2524:6;2517:4;2509:6;2505:17;2457:79;:::i;:::-;2448:88;;2264:278;2202:340;;;;:::o;2548:509::-;2617:6;2666:2;2654:9;2645:7;2641:23;2637:32;2634:119;;;2672:79;;:::i;:::-;2634:119;2820:1;2809:9;2805:17;2792:31;2850:18;2842:6;2839:30;2836:117;;;2872:79;;:::i;:::-;2836:117;2977:63;3032:7;3023:6;3012:9;3008:22;2977:63;:::i;:::-;2967:73;;2763:287;2548:509;;;;:::o;3063:149::-;3099:7;3139:66;3132:5;3128:78;3117:89;;3063:149;;;:::o;3218:123::-;3311:23;3328:5;3311:23;:::i;:::-;3306:3;3299:36;3218:123;;:::o;3347:234::-;3446:4;3484:2;3473:9;3469:18;3461:26;;3497:77;3571:1;3560:9;3556:17;3547:6;3497:77;:::i;:::-;3347:234;;;;:::o;3587:99::-;3639:6;3673:5;3667:12;3657:22;;3587:99;;;:::o;3692:169::-;3776:11;3810:6;3805:3;3798:19;3850:4;3845:3;3841:14;3826:29;;3692:169;;;;:::o;3867:307::-;3935:1;3945:113;3959:6;3956:1;3953:13;3945:113;;;4044:1;4039:3;4035:11;4029:18;4025:1;4020:3;4016:11;4009:39;3981:2;3978:1;3974:10;3969:15;;3945:113;;;4076:6;4073:1;4070:13;4067:101;;;4156:1;4147:6;4142:3;4138:16;4131:27;4067:101;3916:258;3867:307;;;:::o;4180:364::-;4268:3;4296:39;4329:5;4296:39;:::i;:::-;4351:71;4415:6;4410:3;4351:71;:::i;:::-;4344:78;;4431:52;4476:6;4471:3;4464:4;4457:5;4453:16;4431:52;:::i;:::-;4508:29;4530:6;4508:29;:::i;:::-;4503:3;4499:39;4492:46;;4272:272;4180:364;;;;:::o;4550:313::-;4663:4;4701:2;4690:9;4686:18;4678:26;;4750:9;4744:4;4740:20;4736:1;4725:9;4721:17;4714:47;4778:78;4851:4;4842:6;4778:78;:::i;:::-;4770:86;;4550:313;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.9;\r\n\r\nlibrary Data {\r\n  struct member {\r\n    memberStatus status;\r\n    uint256 joinTime;\r\n    //address memberAddress;\r\n  }\r\n\r\n  struct DaoMember {\r\n    address addressDao;\r\n    uint256 membersCount;\r\n    mapping(uint256 => address) memberAddresses;\r\n    mapping(address => Data.member) members;\r\n    bool isActive;\r\n  } \r\n\r\n  struct DaoSettings {\r\n    address addressDao;\r\n    visibilityEnum visibility;\r\n    string name;\r\n    string description;\r\n    string rules;\r\n  } \r\n\r\n  struct daoData {\r\n    string daoType;\r\n    visibilityEnum visibility;\r\n  }\r\n\r\n  enum visibilityEnum {\r\n    privateDao,\r\n    publicDao\r\n  }\r\n\r\n  enum memberStatus {\r\n    notMember,\r\n    invited,\r\n    asking,\r\n    active\r\n  }\r\n\r\n  enum membershipModeEnum {\r\n    invite,\r\n    request,\r\n    open\r\n  }\r\n\r\n  enum ModuleType {\r\n    DaoMemberSystem,\r\n    DaoVotingSystem\r\n  }\r\n\r\n  struct Module {\r\n    uint256 id;\r\n    address moduleAddress;\r\n    // IModule module;\r\n    bool isActive;\r\n    bytes8 moduleType; \r\n    bytes8 moduleCode; \r\n    string moduleInfo;\r\n  }\r\n\r\n  struct ModuleToActivate {\r\n    bytes8 moduleType;\r\n    bytes8 moduleCode;\r\n  }\r\n\r\n  function hash(string memory _messageToHash) public pure returns (bytes8) {\r\n    return bytes8(keccak256(abi.encode(_messageToHash)));\r\n  }\r\n}",
   "sourcePath": "C:\\Users\\mdmou\\source\\repos\\MY-DAO\\contracts\\Data.sol",
   "ast": {
     "absolutePath": "project:/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        1342
+        1355
       ]
     },
-    "id": 1343,
+    "id": 1356,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1252,
+        "id": 1263,
         "literals": [
           "solidity",
           "^",
@@ -2605,9 +2605,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1342,
+        "id": 1355,
         "linearizedBaseContracts": [
-          1342
+          1355
         ],
         "name": "Data",
         "nameLocation": "68:4:7",
@@ -2615,37 +2615,37 @@
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 1258,
+            "id": 1269,
             "members": [
               {
                 "constant": false,
-                "id": 1255,
+                "id": 1266,
                 "mutability": "mutable",
                 "name": "status",
                 "nameLocation": "112:6:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1258,
+                "scope": 1269,
                 "src": "99:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$1298",
+                  "typeIdentifier": "t_enum$_memberStatus_$1311",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 1254,
+                  "id": 1265,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1253,
+                    "id": 1264,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1298,
+                    "referencedDeclaration": 1311,
                     "src": "99:12:7"
                   },
-                  "referencedDeclaration": 1298,
+                  "referencedDeclaration": 1311,
                   "src": "99:12:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$1298",
+                    "typeIdentifier": "t_enum$_memberStatus_$1311",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -2653,12 +2653,12 @@
               },
               {
                 "constant": false,
-                "id": 1257,
+                "id": 1268,
                 "mutability": "mutable",
                 "name": "joinTime",
                 "nameLocation": "133:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1258,
+                "scope": 1269,
                 "src": "125:16:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2667,7 +2667,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1256,
+                  "id": 1267,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "125:7:7",
@@ -2682,22 +2682,22 @@
             "name": "member",
             "nameLocation": "85:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
+            "scope": 1355,
             "src": "78:99:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoMember",
-            "id": 1274,
+            "id": 1285,
             "members": [
               {
                 "constant": false,
-                "id": 1260,
+                "id": 1271,
                 "mutability": "mutable",
                 "name": "addressDao",
                 "nameLocation": "215:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "207:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2706,7 +2706,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1259,
+                  "id": 1270,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "207:7:7",
@@ -2720,12 +2720,12 @@
               },
               {
                 "constant": false,
-                "id": 1262,
+                "id": 1273,
                 "mutability": "mutable",
                 "name": "membersCount",
                 "nameLocation": "240:12:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "232:20:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2734,7 +2734,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1261,
+                  "id": 1272,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "232:7:7",
@@ -2747,12 +2747,12 @@
               },
               {
                 "constant": false,
-                "id": 1266,
+                "id": 1277,
                 "mutability": "mutable",
                 "name": "memberAddresses",
                 "nameLocation": "287:15:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "259:43:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2761,9 +2761,9 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 1265,
+                  "id": 1276,
                   "keyType": {
-                    "id": 1263,
+                    "id": 1274,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "267:7:7",
@@ -2779,7 +2779,7 @@
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 1264,
+                    "id": 1275,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "278:7:7",
@@ -2794,23 +2794,23 @@
               },
               {
                 "constant": false,
-                "id": 1271,
+                "id": 1282,
                 "mutability": "mutable",
                 "name": "members",
                 "nameLocation": "341:7:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "309:39:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1258_storage_$",
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1269_storage_$",
                   "typeString": "mapping(address => struct Data.member)"
                 },
                 "typeName": {
-                  "id": 1270,
+                  "id": 1281,
                   "keyType": {
-                    "id": 1267,
+                    "id": 1278,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "317:7:7",
@@ -2822,23 +2822,23 @@
                   "nodeType": "Mapping",
                   "src": "309:31:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1258_storage_$",
+                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1269_storage_$",
                     "typeString": "mapping(address => struct Data.member)"
                   },
                   "valueType": {
-                    "id": 1269,
+                    "id": 1280,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1268,
+                      "id": 1279,
                       "name": "Data.member",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1258,
+                      "referencedDeclaration": 1269,
                       "src": "328:11:7"
                     },
-                    "referencedDeclaration": 1258,
+                    "referencedDeclaration": 1269,
                     "src": "328:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_member_$1258_storage_ptr",
+                      "typeIdentifier": "t_struct$_member_$1269_storage_ptr",
                       "typeString": "struct Data.member"
                     }
                   }
@@ -2847,12 +2847,12 @@
               },
               {
                 "constant": false,
-                "id": 1273,
+                "id": 1284,
                 "mutability": "mutable",
                 "name": "isActive",
                 "nameLocation": "360:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "355:13:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2861,7 +2861,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1272,
+                  "id": 1283,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "355:4:7",
@@ -2876,22 +2876,22 @@
             "name": "DaoMember",
             "nameLocation": "190:9:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
+            "scope": 1355,
             "src": "183:191:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoSettings",
-            "id": 1284,
+            "id": 1297,
             "members": [
               {
                 "constant": false,
-                "id": 1276,
+                "id": 1287,
                 "mutability": "mutable",
                 "name": "addressDao",
                 "nameLocation": "415:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "407:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2900,7 +2900,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1275,
+                  "id": 1286,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "407:7:7",
@@ -2914,33 +2914,33 @@
               },
               {
                 "constant": false,
-                "id": 1279,
+                "id": 1290,
                 "mutability": "mutable",
                 "name": "visibility",
                 "nameLocation": "447:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "432:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 1278,
+                  "id": 1289,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1277,
+                    "id": 1288,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1293,
+                    "referencedDeclaration": 1306,
                     "src": "432:14:7"
                   },
-                  "referencedDeclaration": 1293,
+                  "referencedDeclaration": 1306,
                   "src": "432:14:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -2948,12 +2948,12 @@
               },
               {
                 "constant": false,
-                "id": 1281,
+                "id": 1292,
                 "mutability": "mutable",
                 "name": "name",
                 "nameLocation": "471:4:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "464:11:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2962,7 +2962,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1280,
+                  "id": 1291,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "464:6:7",
@@ -2975,12 +2975,12 @@
               },
               {
                 "constant": false,
-                "id": 1283,
+                "id": 1294,
                 "mutability": "mutable",
                 "name": "description",
                 "nameLocation": "489:11:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "482:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2989,10 +2989,37 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1282,
+                  "id": 1293,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "482:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1296,
+                "mutability": "mutable",
+                "name": "rules",
+                "nameLocation": "514:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1297,
+                "src": "507:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1295,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "507:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -3004,23 +3031,23 @@
             "name": "DaoSettings",
             "nameLocation": "388:11:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "381:125:7",
+            "scope": 1355,
+            "src": "381:144:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.daoData",
-            "id": 1290,
+            "id": 1303,
             "members": [
               {
                 "constant": false,
-                "id": 1286,
+                "id": 1299,
                 "mutability": "mutable",
                 "name": "daoType",
-                "nameLocation": "542:7:7",
+                "nameLocation": "561:7:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1290,
-                "src": "535:14:7",
+                "scope": 1303,
+                "src": "554:14:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3028,10 +3055,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1285,
+                  "id": 1298,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "535:6:7",
+                  "src": "554:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -3041,33 +3068,33 @@
               },
               {
                 "constant": false,
-                "id": 1289,
+                "id": 1302,
                 "mutability": "mutable",
                 "name": "visibility",
-                "nameLocation": "571:10:7",
+                "nameLocation": "590:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1290,
-                "src": "556:25:7",
+                "scope": 1303,
+                "src": "575:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 1288,
+                  "id": 1301,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1287,
+                    "id": 1300,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1293,
-                    "src": "556:14:7"
+                    "referencedDeclaration": 1306,
+                    "src": "575:14:7"
                   },
-                  "referencedDeclaration": 1293,
-                  "src": "556:14:7",
+                  "referencedDeclaration": 1306,
+                  "src": "575:14:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -3075,142 +3102,142 @@
               }
             ],
             "name": "daoData",
-            "nameLocation": "520:7:7",
+            "nameLocation": "539:7:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "513:74:7",
+            "scope": 1355,
+            "src": "532:74:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.visibilityEnum",
-            "id": 1293,
+            "id": 1306,
             "members": [
               {
-                "id": 1291,
+                "id": 1304,
                 "name": "privateDao",
-                "nameLocation": "620:10:7",
+                "nameLocation": "639:10:7",
                 "nodeType": "EnumValue",
-                "src": "620:10:7"
+                "src": "639:10:7"
               },
               {
-                "id": 1292,
+                "id": 1305,
                 "name": "publicDao",
-                "nameLocation": "637:9:7",
+                "nameLocation": "656:9:7",
                 "nodeType": "EnumValue",
-                "src": "637:9:7"
+                "src": "656:9:7"
               }
             ],
             "name": "visibilityEnum",
-            "nameLocation": "598:14:7",
+            "nameLocation": "617:14:7",
             "nodeType": "EnumDefinition",
-            "src": "593:58:7"
+            "src": "612:58:7"
           },
           {
             "canonicalName": "Data.memberStatus",
-            "id": 1298,
+            "id": 1311,
             "members": [
               {
-                "id": 1294,
+                "id": 1307,
                 "name": "notMember",
-                "nameLocation": "682:9:7",
+                "nameLocation": "701:9:7",
                 "nodeType": "EnumValue",
-                "src": "682:9:7"
+                "src": "701:9:7"
               },
               {
-                "id": 1295,
+                "id": 1308,
                 "name": "invited",
-                "nameLocation": "698:7:7",
+                "nameLocation": "717:7:7",
                 "nodeType": "EnumValue",
-                "src": "698:7:7"
+                "src": "717:7:7"
               },
               {
-                "id": 1296,
+                "id": 1309,
                 "name": "asking",
-                "nameLocation": "712:6:7",
+                "nameLocation": "731:6:7",
                 "nodeType": "EnumValue",
-                "src": "712:6:7"
+                "src": "731:6:7"
               },
               {
-                "id": 1297,
+                "id": 1310,
                 "name": "active",
-                "nameLocation": "725:6:7",
+                "nameLocation": "744:6:7",
                 "nodeType": "EnumValue",
-                "src": "725:6:7"
+                "src": "744:6:7"
               }
             ],
             "name": "memberStatus",
-            "nameLocation": "662:12:7",
+            "nameLocation": "681:12:7",
             "nodeType": "EnumDefinition",
-            "src": "657:79:7"
+            "src": "676:79:7"
           },
           {
             "canonicalName": "Data.membershipModeEnum",
-            "id": 1302,
+            "id": 1315,
             "members": [
               {
-                "id": 1299,
+                "id": 1312,
                 "name": "invite",
-                "nameLocation": "773:6:7",
+                "nameLocation": "792:6:7",
                 "nodeType": "EnumValue",
-                "src": "773:6:7"
+                "src": "792:6:7"
               },
               {
-                "id": 1300,
+                "id": 1313,
                 "name": "request",
-                "nameLocation": "786:7:7",
+                "nameLocation": "805:7:7",
                 "nodeType": "EnumValue",
-                "src": "786:7:7"
+                "src": "805:7:7"
               },
               {
-                "id": 1301,
+                "id": 1314,
                 "name": "open",
-                "nameLocation": "800:4:7",
+                "nameLocation": "819:4:7",
                 "nodeType": "EnumValue",
-                "src": "800:4:7"
+                "src": "819:4:7"
               }
             ],
             "name": "membershipModeEnum",
-            "nameLocation": "747:18:7",
+            "nameLocation": "766:18:7",
             "nodeType": "EnumDefinition",
-            "src": "742:67:7"
+            "src": "761:67:7"
           },
           {
             "canonicalName": "Data.ModuleType",
-            "id": 1305,
-            "members": [
-              {
-                "id": 1303,
-                "name": "DaoMemberSystem",
-                "nameLocation": "838:15:7",
-                "nodeType": "EnumValue",
-                "src": "838:15:7"
-              },
-              {
-                "id": 1304,
-                "name": "DaoVotingSystem",
-                "nameLocation": "860:15:7",
-                "nodeType": "EnumValue",
-                "src": "860:15:7"
-              }
-            ],
-            "name": "ModuleType",
-            "nameLocation": "820:10:7",
-            "nodeType": "EnumDefinition",
-            "src": "815:65:7"
-          },
-          {
-            "canonicalName": "Data.Module",
             "id": 1318,
             "members": [
               {
+                "id": 1316,
+                "name": "DaoMemberSystem",
+                "nameLocation": "857:15:7",
+                "nodeType": "EnumValue",
+                "src": "857:15:7"
+              },
+              {
+                "id": 1317,
+                "name": "DaoVotingSystem",
+                "nameLocation": "879:15:7",
+                "nodeType": "EnumValue",
+                "src": "879:15:7"
+              }
+            ],
+            "name": "ModuleType",
+            "nameLocation": "839:10:7",
+            "nodeType": "EnumDefinition",
+            "src": "834:65:7"
+          },
+          {
+            "canonicalName": "Data.Module",
+            "id": 1331,
+            "members": [
+              {
                 "constant": false,
-                "id": 1307,
+                "id": 1320,
                 "mutability": "mutable",
                 "name": "id",
-                "nameLocation": "915:2:7",
+                "nameLocation": "934:2:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "907:10:7",
+                "scope": 1331,
+                "src": "926:10:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3218,10 +3245,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1306,
+                  "id": 1319,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "907:7:7",
+                  "src": "926:7:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -3231,13 +3258,13 @@
               },
               {
                 "constant": false,
-                "id": 1309,
+                "id": 1322,
                 "mutability": "mutable",
                 "name": "moduleAddress",
-                "nameLocation": "932:13:7",
+                "nameLocation": "951:13:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "924:21:7",
+                "scope": 1331,
+                "src": "943:21:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3245,10 +3272,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1308,
+                  "id": 1321,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "924:7:7",
+                  "src": "943:7:7",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -3259,13 +3286,13 @@
               },
               {
                 "constant": false,
-                "id": 1311,
+                "id": 1324,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "981:8:7",
+                "nameLocation": "1000:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "976:13:7",
+                "scope": 1331,
+                "src": "995:13:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3273,10 +3300,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1310,
+                  "id": 1323,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "976:4:7",
+                  "src": "995:4:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -3286,13 +3313,13 @@
               },
               {
                 "constant": false,
-                "id": 1313,
+                "id": 1326,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1003:10:7",
+                "nameLocation": "1022:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "996:17:7",
+                "scope": 1331,
+                "src": "1015:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3300,10 +3327,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1312,
+                  "id": 1325,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "996:6:7",
+                  "src": "1015:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -3313,13 +3340,13 @@
               },
               {
                 "constant": false,
-                "id": 1315,
+                "id": 1328,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1028:10:7",
+                "nameLocation": "1047:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "1021:17:7",
+                "scope": 1331,
+                "src": "1040:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3327,10 +3354,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1314,
+                  "id": 1327,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1021:6:7",
+                  "src": "1040:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -3340,13 +3367,13 @@
               },
               {
                 "constant": false,
-                "id": 1317,
+                "id": 1330,
                 "mutability": "mutable",
                 "name": "moduleInfo",
-                "nameLocation": "1053:10:7",
+                "nameLocation": "1072:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "1046:17:7",
+                "scope": 1331,
+                "src": "1065:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3354,10 +3381,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1316,
+                  "id": 1329,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1046:6:7",
+                  "src": "1065:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -3367,25 +3394,25 @@
               }
             ],
             "name": "Module",
-            "nameLocation": "893:6:7",
+            "nameLocation": "912:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "886:183:7",
+            "scope": 1355,
+            "src": "905:183:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.ModuleToActivate",
-            "id": 1323,
+            "id": 1336,
             "members": [
               {
                 "constant": false,
-                "id": 1320,
+                "id": 1333,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1113:10:7",
+                "nameLocation": "1132:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
-                "src": "1106:17:7",
+                "scope": 1336,
+                "src": "1125:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3393,10 +3420,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1319,
+                  "id": 1332,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1106:6:7",
+                  "src": "1125:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -3406,13 +3433,13 @@
               },
               {
                 "constant": false,
-                "id": 1322,
+                "id": 1335,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1137:10:7",
+                "nameLocation": "1156:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
-                "src": "1130:17:7",
+                "scope": 1336,
+                "src": "1149:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -3420,10 +3447,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1321,
+                  "id": 1334,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1130:6:7",
+                  "src": "1149:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -3433,17 +3460,17 @@
               }
             ],
             "name": "ModuleToActivate",
-            "nameLocation": "1082:16:7",
+            "nameLocation": "1101:16:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "1075:78:7",
+            "scope": 1355,
+            "src": "1094:78:7",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1340,
+              "id": 1353,
               "nodeType": "Block",
-              "src": "1232:65:7",
+              "src": "1251:65:7",
               "statements": [
                 {
                   "expression": {
@@ -3453,12 +3480,12 @@
                           {
                             "arguments": [
                               {
-                                "id": 1335,
+                                "id": 1348,
                                 "name": "_messageToHash",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1325,
-                                "src": "1274:14:7",
+                                "referencedDeclaration": 1338,
+                                "src": "1293:14:7",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
                                   "typeString": "string memory"
@@ -3473,31 +3500,31 @@
                                 }
                               ],
                               "expression": {
-                                "id": 1333,
+                                "id": 1346,
                                 "name": "abi",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 4294967295,
-                                "src": "1263:3:7",
+                                "src": "1282:3:7",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_abi",
                                   "typeString": "abi"
                                 }
                               },
-                              "id": 1334,
+                              "id": 1347,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "lValueRequested": false,
                               "memberName": "encode",
                               "nodeType": "MemberAccess",
-                              "src": "1263:10:7",
+                              "src": "1282:10:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
                                 "typeString": "function () pure returns (bytes memory)"
                               }
                             },
-                            "id": 1336,
+                            "id": 1349,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -3505,7 +3532,7 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "1263:26:7",
+                            "src": "1282:26:7",
                             "tryCall": false,
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -3520,18 +3547,18 @@
                               "typeString": "bytes memory"
                             }
                           ],
-                          "id": 1332,
+                          "id": 1345,
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967288,
-                          "src": "1253:9:7",
+                          "src": "1272:9:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
                             "typeString": "function (bytes memory) pure returns (bytes32)"
                           }
                         },
-                        "id": 1337,
+                        "id": 1350,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3539,7 +3566,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1253:37:7",
+                        "src": "1272:37:7",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
@@ -3554,26 +3581,26 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 1331,
+                      "id": 1344,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "ElementaryTypeNameExpression",
-                      "src": "1246:6:7",
+                      "src": "1265:6:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_bytes8_$",
                         "typeString": "type(bytes8)"
                       },
                       "typeName": {
-                        "id": 1330,
+                        "id": 1343,
                         "name": "bytes8",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1246:6:7",
+                        "src": "1265:6:7",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 1338,
+                    "id": 1351,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3581,41 +3608,41 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1246:45:7",
+                    "src": "1265:45:7",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
                       "typeString": "bytes8"
                     }
                   },
-                  "functionReturnParameters": 1329,
-                  "id": 1339,
+                  "functionReturnParameters": 1342,
+                  "id": 1352,
                   "nodeType": "Return",
-                  "src": "1239:52:7"
+                  "src": "1258:52:7"
                 }
               ]
             },
             "functionSelector": "b411ee94",
-            "id": 1341,
+            "id": 1354,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "hash",
-            "nameLocation": "1168:4:7",
+            "nameLocation": "1187:4:7",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1326,
+              "id": 1339,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1325,
+                  "id": 1338,
                   "mutability": "mutable",
                   "name": "_messageToHash",
-                  "nameLocation": "1187:14:7",
+                  "nameLocation": "1206:14:7",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1341,
-                  "src": "1173:28:7",
+                  "scope": 1354,
+                  "src": "1192:28:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -3623,10 +3650,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1324,
+                    "id": 1337,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1173:6:7",
+                    "src": "1192:6:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -3635,21 +3662,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1172:30:7"
+              "src": "1191:30:7"
             },
             "returnParameters": {
-              "id": 1329,
+              "id": 1342,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1328,
+                  "id": 1341,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1341,
-                  "src": "1224:6:7",
+                  "scope": 1354,
+                  "src": "1243:6:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3657,10 +3684,10 @@
                     "typeString": "bytes8"
                   },
                   "typeName": {
-                    "id": 1327,
+                    "id": 1340,
                     "name": "bytes8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1224:6:7",
+                    "src": "1243:6:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
                       "typeString": "bytes8"
@@ -3669,35 +3696,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1223:8:7"
+              "src": "1242:8:7"
             },
-            "scope": 1342,
-            "src": "1159:138:7",
+            "scope": 1355,
+            "src": "1178:138:7",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1343,
-        "src": "60:1240:7",
+        "scope": 1356,
+        "src": "60:1259:7",
         "usedErrors": []
       }
     ],
-    "src": "33:1267:7"
+    "src": "33:1286:7"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        1342
+        1355
       ]
     },
-    "id": 1343,
+    "id": 1356,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1252,
+        "id": 1263,
         "literals": [
           "solidity",
           "^",
@@ -3714,9 +3741,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1342,
+        "id": 1355,
         "linearizedBaseContracts": [
-          1342
+          1355
         ],
         "name": "Data",
         "nameLocation": "68:4:7",
@@ -3724,37 +3751,37 @@
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 1258,
+            "id": 1269,
             "members": [
               {
                 "constant": false,
-                "id": 1255,
+                "id": 1266,
                 "mutability": "mutable",
                 "name": "status",
                 "nameLocation": "112:6:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1258,
+                "scope": 1269,
                 "src": "99:19:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$1298",
+                  "typeIdentifier": "t_enum$_memberStatus_$1311",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 1254,
+                  "id": 1265,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1253,
+                    "id": 1264,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1298,
+                    "referencedDeclaration": 1311,
                     "src": "99:12:7"
                   },
-                  "referencedDeclaration": 1298,
+                  "referencedDeclaration": 1311,
                   "src": "99:12:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$1298",
+                    "typeIdentifier": "t_enum$_memberStatus_$1311",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -3762,12 +3789,12 @@
               },
               {
                 "constant": false,
-                "id": 1257,
+                "id": 1268,
                 "mutability": "mutable",
                 "name": "joinTime",
                 "nameLocation": "133:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1258,
+                "scope": 1269,
                 "src": "125:16:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -3776,7 +3803,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1256,
+                  "id": 1267,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "125:7:7",
@@ -3791,22 +3818,22 @@
             "name": "member",
             "nameLocation": "85:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
+            "scope": 1355,
             "src": "78:99:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoMember",
-            "id": 1274,
+            "id": 1285,
             "members": [
               {
                 "constant": false,
-                "id": 1260,
+                "id": 1271,
                 "mutability": "mutable",
                 "name": "addressDao",
                 "nameLocation": "215:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "207:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -3815,7 +3842,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1259,
+                  "id": 1270,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "207:7:7",
@@ -3829,12 +3856,12 @@
               },
               {
                 "constant": false,
-                "id": 1262,
+                "id": 1273,
                 "mutability": "mutable",
                 "name": "membersCount",
                 "nameLocation": "240:12:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "232:20:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -3843,7 +3870,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1261,
+                  "id": 1272,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "232:7:7",
@@ -3856,12 +3883,12 @@
               },
               {
                 "constant": false,
-                "id": 1266,
+                "id": 1277,
                 "mutability": "mutable",
                 "name": "memberAddresses",
                 "nameLocation": "287:15:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "259:43:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -3870,9 +3897,9 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 1265,
+                  "id": 1276,
                   "keyType": {
-                    "id": 1263,
+                    "id": 1274,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "267:7:7",
@@ -3888,7 +3915,7 @@
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 1264,
+                    "id": 1275,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "278:7:7",
@@ -3903,23 +3930,23 @@
               },
               {
                 "constant": false,
-                "id": 1271,
+                "id": 1282,
                 "mutability": "mutable",
                 "name": "members",
                 "nameLocation": "341:7:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "309:39:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1258_storage_$",
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1269_storage_$",
                   "typeString": "mapping(address => struct Data.member)"
                 },
                 "typeName": {
-                  "id": 1270,
+                  "id": 1281,
                   "keyType": {
-                    "id": 1267,
+                    "id": 1278,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "317:7:7",
@@ -3931,23 +3958,23 @@
                   "nodeType": "Mapping",
                   "src": "309:31:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1258_storage_$",
+                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$1269_storage_$",
                     "typeString": "mapping(address => struct Data.member)"
                   },
                   "valueType": {
-                    "id": 1269,
+                    "id": 1280,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1268,
+                      "id": 1279,
                       "name": "Data.member",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1258,
+                      "referencedDeclaration": 1269,
                       "src": "328:11:7"
                     },
-                    "referencedDeclaration": 1258,
+                    "referencedDeclaration": 1269,
                     "src": "328:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_member_$1258_storage_ptr",
+                      "typeIdentifier": "t_struct$_member_$1269_storage_ptr",
                       "typeString": "struct Data.member"
                     }
                   }
@@ -3956,12 +3983,12 @@
               },
               {
                 "constant": false,
-                "id": 1273,
+                "id": 1284,
                 "mutability": "mutable",
                 "name": "isActive",
                 "nameLocation": "360:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1274,
+                "scope": 1285,
                 "src": "355:13:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -3970,7 +3997,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1272,
+                  "id": 1283,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "355:4:7",
@@ -3985,22 +4012,22 @@
             "name": "DaoMember",
             "nameLocation": "190:9:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
+            "scope": 1355,
             "src": "183:191:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoSettings",
-            "id": 1284,
+            "id": 1297,
             "members": [
               {
                 "constant": false,
-                "id": 1276,
+                "id": 1287,
                 "mutability": "mutable",
                 "name": "addressDao",
                 "nameLocation": "415:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "407:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4009,7 +4036,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1275,
+                  "id": 1286,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "407:7:7",
@@ -4023,33 +4050,33 @@
               },
               {
                 "constant": false,
-                "id": 1279,
+                "id": 1290,
                 "mutability": "mutable",
                 "name": "visibility",
                 "nameLocation": "447:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "432:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 1278,
+                  "id": 1289,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1277,
+                    "id": 1288,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1293,
+                    "referencedDeclaration": 1306,
                     "src": "432:14:7"
                   },
-                  "referencedDeclaration": 1293,
+                  "referencedDeclaration": 1306,
                   "src": "432:14:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -4057,12 +4084,12 @@
               },
               {
                 "constant": false,
-                "id": 1281,
+                "id": 1292,
                 "mutability": "mutable",
                 "name": "name",
                 "nameLocation": "471:4:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "464:11:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4071,7 +4098,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1280,
+                  "id": 1291,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "464:6:7",
@@ -4084,12 +4111,12 @@
               },
               {
                 "constant": false,
-                "id": 1283,
+                "id": 1294,
                 "mutability": "mutable",
                 "name": "description",
                 "nameLocation": "489:11:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1284,
+                "scope": 1297,
                 "src": "482:18:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4098,10 +4125,37 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1282,
+                  "id": 1293,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "482:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1296,
+                "mutability": "mutable",
+                "name": "rules",
+                "nameLocation": "514:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 1297,
+                "src": "507:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1295,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "507:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -4113,23 +4167,23 @@
             "name": "DaoSettings",
             "nameLocation": "388:11:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "381:125:7",
+            "scope": 1355,
+            "src": "381:144:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.daoData",
-            "id": 1290,
+            "id": 1303,
             "members": [
               {
                 "constant": false,
-                "id": 1286,
+                "id": 1299,
                 "mutability": "mutable",
                 "name": "daoType",
-                "nameLocation": "542:7:7",
+                "nameLocation": "561:7:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1290,
-                "src": "535:14:7",
+                "scope": 1303,
+                "src": "554:14:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4137,10 +4191,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1285,
+                  "id": 1298,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "535:6:7",
+                  "src": "554:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -4150,33 +4204,33 @@
               },
               {
                 "constant": false,
-                "id": 1289,
+                "id": 1302,
                 "mutability": "mutable",
                 "name": "visibility",
-                "nameLocation": "571:10:7",
+                "nameLocation": "590:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1290,
-                "src": "556:25:7",
+                "scope": 1303,
+                "src": "575:25:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 1288,
+                  "id": 1301,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1287,
+                    "id": 1300,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1293,
-                    "src": "556:14:7"
+                    "referencedDeclaration": 1306,
+                    "src": "575:14:7"
                   },
-                  "referencedDeclaration": 1293,
-                  "src": "556:14:7",
+                  "referencedDeclaration": 1306,
+                  "src": "575:14:7",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$1293",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$1306",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -4184,142 +4238,142 @@
               }
             ],
             "name": "daoData",
-            "nameLocation": "520:7:7",
+            "nameLocation": "539:7:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "513:74:7",
+            "scope": 1355,
+            "src": "532:74:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.visibilityEnum",
-            "id": 1293,
+            "id": 1306,
             "members": [
               {
-                "id": 1291,
+                "id": 1304,
                 "name": "privateDao",
-                "nameLocation": "620:10:7",
+                "nameLocation": "639:10:7",
                 "nodeType": "EnumValue",
-                "src": "620:10:7"
+                "src": "639:10:7"
               },
               {
-                "id": 1292,
+                "id": 1305,
                 "name": "publicDao",
-                "nameLocation": "637:9:7",
+                "nameLocation": "656:9:7",
                 "nodeType": "EnumValue",
-                "src": "637:9:7"
+                "src": "656:9:7"
               }
             ],
             "name": "visibilityEnum",
-            "nameLocation": "598:14:7",
+            "nameLocation": "617:14:7",
             "nodeType": "EnumDefinition",
-            "src": "593:58:7"
+            "src": "612:58:7"
           },
           {
             "canonicalName": "Data.memberStatus",
-            "id": 1298,
+            "id": 1311,
             "members": [
               {
-                "id": 1294,
+                "id": 1307,
                 "name": "notMember",
-                "nameLocation": "682:9:7",
+                "nameLocation": "701:9:7",
                 "nodeType": "EnumValue",
-                "src": "682:9:7"
+                "src": "701:9:7"
               },
               {
-                "id": 1295,
+                "id": 1308,
                 "name": "invited",
-                "nameLocation": "698:7:7",
+                "nameLocation": "717:7:7",
                 "nodeType": "EnumValue",
-                "src": "698:7:7"
+                "src": "717:7:7"
               },
               {
-                "id": 1296,
+                "id": 1309,
                 "name": "asking",
-                "nameLocation": "712:6:7",
+                "nameLocation": "731:6:7",
                 "nodeType": "EnumValue",
-                "src": "712:6:7"
+                "src": "731:6:7"
               },
               {
-                "id": 1297,
+                "id": 1310,
                 "name": "active",
-                "nameLocation": "725:6:7",
+                "nameLocation": "744:6:7",
                 "nodeType": "EnumValue",
-                "src": "725:6:7"
+                "src": "744:6:7"
               }
             ],
             "name": "memberStatus",
-            "nameLocation": "662:12:7",
+            "nameLocation": "681:12:7",
             "nodeType": "EnumDefinition",
-            "src": "657:79:7"
+            "src": "676:79:7"
           },
           {
             "canonicalName": "Data.membershipModeEnum",
-            "id": 1302,
+            "id": 1315,
             "members": [
               {
-                "id": 1299,
+                "id": 1312,
                 "name": "invite",
-                "nameLocation": "773:6:7",
+                "nameLocation": "792:6:7",
                 "nodeType": "EnumValue",
-                "src": "773:6:7"
+                "src": "792:6:7"
               },
               {
-                "id": 1300,
+                "id": 1313,
                 "name": "request",
-                "nameLocation": "786:7:7",
+                "nameLocation": "805:7:7",
                 "nodeType": "EnumValue",
-                "src": "786:7:7"
+                "src": "805:7:7"
               },
               {
-                "id": 1301,
+                "id": 1314,
                 "name": "open",
-                "nameLocation": "800:4:7",
+                "nameLocation": "819:4:7",
                 "nodeType": "EnumValue",
-                "src": "800:4:7"
+                "src": "819:4:7"
               }
             ],
             "name": "membershipModeEnum",
-            "nameLocation": "747:18:7",
+            "nameLocation": "766:18:7",
             "nodeType": "EnumDefinition",
-            "src": "742:67:7"
+            "src": "761:67:7"
           },
           {
             "canonicalName": "Data.ModuleType",
-            "id": 1305,
-            "members": [
-              {
-                "id": 1303,
-                "name": "DaoMemberSystem",
-                "nameLocation": "838:15:7",
-                "nodeType": "EnumValue",
-                "src": "838:15:7"
-              },
-              {
-                "id": 1304,
-                "name": "DaoVotingSystem",
-                "nameLocation": "860:15:7",
-                "nodeType": "EnumValue",
-                "src": "860:15:7"
-              }
-            ],
-            "name": "ModuleType",
-            "nameLocation": "820:10:7",
-            "nodeType": "EnumDefinition",
-            "src": "815:65:7"
-          },
-          {
-            "canonicalName": "Data.Module",
             "id": 1318,
             "members": [
               {
+                "id": 1316,
+                "name": "DaoMemberSystem",
+                "nameLocation": "857:15:7",
+                "nodeType": "EnumValue",
+                "src": "857:15:7"
+              },
+              {
+                "id": 1317,
+                "name": "DaoVotingSystem",
+                "nameLocation": "879:15:7",
+                "nodeType": "EnumValue",
+                "src": "879:15:7"
+              }
+            ],
+            "name": "ModuleType",
+            "nameLocation": "839:10:7",
+            "nodeType": "EnumDefinition",
+            "src": "834:65:7"
+          },
+          {
+            "canonicalName": "Data.Module",
+            "id": 1331,
+            "members": [
+              {
                 "constant": false,
-                "id": 1307,
+                "id": 1320,
                 "mutability": "mutable",
                 "name": "id",
-                "nameLocation": "915:2:7",
+                "nameLocation": "934:2:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "907:10:7",
+                "scope": 1331,
+                "src": "926:10:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4327,10 +4381,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1306,
+                  "id": 1319,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "907:7:7",
+                  "src": "926:7:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -4340,13 +4394,13 @@
               },
               {
                 "constant": false,
-                "id": 1309,
+                "id": 1322,
                 "mutability": "mutable",
                 "name": "moduleAddress",
-                "nameLocation": "932:13:7",
+                "nameLocation": "951:13:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "924:21:7",
+                "scope": 1331,
+                "src": "943:21:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4354,10 +4408,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1308,
+                  "id": 1321,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "924:7:7",
+                  "src": "943:7:7",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -4368,13 +4422,13 @@
               },
               {
                 "constant": false,
-                "id": 1311,
+                "id": 1324,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "981:8:7",
+                "nameLocation": "1000:8:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "976:13:7",
+                "scope": 1331,
+                "src": "995:13:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4382,10 +4436,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1310,
+                  "id": 1323,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "976:4:7",
+                  "src": "995:4:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -4395,13 +4449,13 @@
               },
               {
                 "constant": false,
-                "id": 1313,
+                "id": 1326,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1003:10:7",
+                "nameLocation": "1022:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "996:17:7",
+                "scope": 1331,
+                "src": "1015:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4409,10 +4463,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1312,
+                  "id": 1325,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "996:6:7",
+                  "src": "1015:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -4422,13 +4476,13 @@
               },
               {
                 "constant": false,
-                "id": 1315,
+                "id": 1328,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1028:10:7",
+                "nameLocation": "1047:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "1021:17:7",
+                "scope": 1331,
+                "src": "1040:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4436,10 +4490,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1314,
+                  "id": 1327,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1021:6:7",
+                  "src": "1040:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -4449,13 +4503,13 @@
               },
               {
                 "constant": false,
-                "id": 1317,
+                "id": 1330,
                 "mutability": "mutable",
                 "name": "moduleInfo",
-                "nameLocation": "1053:10:7",
+                "nameLocation": "1072:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1318,
-                "src": "1046:17:7",
+                "scope": 1331,
+                "src": "1065:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4463,10 +4517,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1316,
+                  "id": 1329,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1046:6:7",
+                  "src": "1065:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -4476,25 +4530,25 @@
               }
             ],
             "name": "Module",
-            "nameLocation": "893:6:7",
+            "nameLocation": "912:6:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "886:183:7",
+            "scope": 1355,
+            "src": "905:183:7",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.ModuleToActivate",
-            "id": 1323,
+            "id": 1336,
             "members": [
               {
                 "constant": false,
-                "id": 1320,
+                "id": 1333,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1113:10:7",
+                "nameLocation": "1132:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
-                "src": "1106:17:7",
+                "scope": 1336,
+                "src": "1125:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4502,10 +4556,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1319,
+                  "id": 1332,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1106:6:7",
+                  "src": "1125:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -4515,13 +4569,13 @@
               },
               {
                 "constant": false,
-                "id": 1322,
+                "id": 1335,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1137:10:7",
+                "nameLocation": "1156:10:7",
                 "nodeType": "VariableDeclaration",
-                "scope": 1323,
-                "src": "1130:17:7",
+                "scope": 1336,
+                "src": "1149:17:7",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -4529,10 +4583,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 1321,
+                  "id": 1334,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1130:6:7",
+                  "src": "1149:6:7",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -4542,17 +4596,17 @@
               }
             ],
             "name": "ModuleToActivate",
-            "nameLocation": "1082:16:7",
+            "nameLocation": "1101:16:7",
             "nodeType": "StructDefinition",
-            "scope": 1342,
-            "src": "1075:78:7",
+            "scope": 1355,
+            "src": "1094:78:7",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1340,
+              "id": 1353,
               "nodeType": "Block",
-              "src": "1232:65:7",
+              "src": "1251:65:7",
               "statements": [
                 {
                   "expression": {
@@ -4562,12 +4616,12 @@
                           {
                             "arguments": [
                               {
-                                "id": 1335,
+                                "id": 1348,
                                 "name": "_messageToHash",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1325,
-                                "src": "1274:14:7",
+                                "referencedDeclaration": 1338,
+                                "src": "1293:14:7",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
                                   "typeString": "string memory"
@@ -4582,31 +4636,31 @@
                                 }
                               ],
                               "expression": {
-                                "id": 1333,
+                                "id": 1346,
                                 "name": "abi",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 4294967295,
-                                "src": "1263:3:7",
+                                "src": "1282:3:7",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_abi",
                                   "typeString": "abi"
                                 }
                               },
-                              "id": 1334,
+                              "id": 1347,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "lValueRequested": false,
                               "memberName": "encode",
                               "nodeType": "MemberAccess",
-                              "src": "1263:10:7",
+                              "src": "1282:10:7",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
                                 "typeString": "function () pure returns (bytes memory)"
                               }
                             },
-                            "id": 1336,
+                            "id": 1349,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -4614,7 +4668,7 @@
                             "lValueRequested": false,
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "1263:26:7",
+                            "src": "1282:26:7",
                             "tryCall": false,
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes_memory_ptr",
@@ -4629,18 +4683,18 @@
                               "typeString": "bytes memory"
                             }
                           ],
-                          "id": 1332,
+                          "id": 1345,
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967288,
-                          "src": "1253:9:7",
+                          "src": "1272:9:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
                             "typeString": "function (bytes memory) pure returns (bytes32)"
                           }
                         },
-                        "id": 1337,
+                        "id": 1350,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -4648,7 +4702,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1253:37:7",
+                        "src": "1272:37:7",
                         "tryCall": false,
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
@@ -4663,26 +4717,26 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 1331,
+                      "id": 1344,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "ElementaryTypeNameExpression",
-                      "src": "1246:6:7",
+                      "src": "1265:6:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_bytes8_$",
                         "typeString": "type(bytes8)"
                       },
                       "typeName": {
-                        "id": 1330,
+                        "id": 1343,
                         "name": "bytes8",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1246:6:7",
+                        "src": "1265:6:7",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 1338,
+                    "id": 1351,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4690,41 +4744,41 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1246:45:7",
+                    "src": "1265:45:7",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
                       "typeString": "bytes8"
                     }
                   },
-                  "functionReturnParameters": 1329,
-                  "id": 1339,
+                  "functionReturnParameters": 1342,
+                  "id": 1352,
                   "nodeType": "Return",
-                  "src": "1239:52:7"
+                  "src": "1258:52:7"
                 }
               ]
             },
             "functionSelector": "b411ee94",
-            "id": 1341,
+            "id": 1354,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "hash",
-            "nameLocation": "1168:4:7",
+            "nameLocation": "1187:4:7",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1326,
+              "id": 1339,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1325,
+                  "id": 1338,
                   "mutability": "mutable",
                   "name": "_messageToHash",
-                  "nameLocation": "1187:14:7",
+                  "nameLocation": "1206:14:7",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1341,
-                  "src": "1173:28:7",
+                  "scope": 1354,
+                  "src": "1192:28:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -4732,10 +4786,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1324,
+                    "id": 1337,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1173:6:7",
+                    "src": "1192:6:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -4744,21 +4798,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1172:30:7"
+              "src": "1191:30:7"
             },
             "returnParameters": {
-              "id": 1329,
+              "id": 1342,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1328,
+                  "id": 1341,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1341,
-                  "src": "1224:6:7",
+                  "scope": 1354,
+                  "src": "1243:6:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4766,10 +4820,10 @@
                     "typeString": "bytes8"
                   },
                   "typeName": {
-                    "id": 1327,
+                    "id": 1340,
                     "name": "bytes8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1224:6:7",
+                    "src": "1243:6:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes8",
                       "typeString": "bytes8"
@@ -4778,21 +4832,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1223:8:7"
+              "src": "1242:8:7"
             },
-            "scope": 1342,
-            "src": "1159:138:7",
+            "scope": 1355,
+            "src": "1178:138:7",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1343,
-        "src": "60:1240:7",
+        "scope": 1356,
+        "src": "60:1259:7",
         "usedErrors": []
       }
     ],
-    "src": "33:1267:7"
+    "src": "33:1286:7"
   },
   "compiler": {
     "name": "solc",
@@ -4800,7 +4854,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-16T19:58:15.180Z",
+  "updatedAt": "2022-05-16T22:35:22.563Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
