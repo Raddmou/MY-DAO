@@ -23,10 +23,13 @@ $ cd ../MY-DAO
 $ npm install
 ```
 * Open ganache cli or app
+
 `$ ganache-cli`
 * Migrate smart-contract on ganache 
+
 `$ truffle migrate --reset`
 * Start app
+
 `$ npm start`
 
 # Demo 
