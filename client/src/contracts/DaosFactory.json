@@ -13244,7 +13244,7 @@
         1355
       ],
       "IModule": [
-        4111
+        4303
       ],
       "Ownable": [
         104
@@ -13299,7 +13299,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1262,
-        "sourceUnit": 4112,
+        "sourceUnit": 4304,
         "src": "175:42:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -14479,10 +14479,10 @@
                           "name": "IModule",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4111,
+                          "referencedDeclaration": 4303,
                           "src": "1845:7:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IModule_$4111_$",
+                            "typeIdentifier": "t_type$_t_contract$_IModule_$4303_$",
                             "typeString": "type(contract IModule)"
                           }
                         },
@@ -14497,7 +14497,7 @@
                         "src": "1845:48:6",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IModule_$4111",
+                          "typeIdentifier": "t_contract$_IModule_$4303",
                           "typeString": "contract IModule"
                         }
                       },
@@ -14508,7 +14508,7 @@
                       "lValueRequested": false,
                       "memberName": "addDao",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4110,
+                      "referencedDeclaration": 4302,
                       "src": "1845:55:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$returns$__$",
@@ -15311,10 +15311,10 @@
                           "name": "IModule",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4111,
+                          "referencedDeclaration": 4303,
                           "src": "2275:7:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IModule_$4111_$",
+                            "typeIdentifier": "t_type$_t_contract$_IModule_$4303_$",
                             "typeString": "type(contract IModule)"
                           }
                         },
@@ -15329,7 +15329,7 @@
                         "src": "2275:48:6",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IModule_$4111",
+                          "typeIdentifier": "t_contract$_IModule_$4303",
                           "typeString": "contract IModule"
                         }
                       },
@@ -15340,7 +15340,7 @@
                       "lValueRequested": false,
                       "memberName": "addDao",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4110,
+                      "referencedDeclaration": 4302,
                       "src": "2275:55:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$returns$__$",
@@ -18474,7 +18474,7 @@
         1355
       ],
       "IModule": [
-        4111
+        4303
       ],
       "Ownable": [
         104
@@ -18529,7 +18529,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1262,
-        "sourceUnit": 4112,
+        "sourceUnit": 4304,
         "src": "175:42:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -19709,10 +19709,10 @@
                           "name": "IModule",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4111,
+                          "referencedDeclaration": 4303,
                           "src": "1845:7:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IModule_$4111_$",
+                            "typeIdentifier": "t_type$_t_contract$_IModule_$4303_$",
                             "typeString": "type(contract IModule)"
                           }
                         },
@@ -19727,7 +19727,7 @@
                         "src": "1845:48:6",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IModule_$4111",
+                          "typeIdentifier": "t_contract$_IModule_$4303",
                           "typeString": "contract IModule"
                         }
                       },
@@ -19738,7 +19738,7 @@
                       "lValueRequested": false,
                       "memberName": "addDao",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4110,
+                      "referencedDeclaration": 4302,
                       "src": "1845:55:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$returns$__$",
@@ -20541,10 +20541,10 @@
                           "name": "IModule",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4111,
+                          "referencedDeclaration": 4303,
                           "src": "2275:7:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IModule_$4111_$",
+                            "typeIdentifier": "t_type$_t_contract$_IModule_$4303_$",
                             "typeString": "type(contract IModule)"
                           }
                         },
@@ -20559,7 +20559,7 @@
                         "src": "2275:48:6",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IModule_$4111",
+                          "typeIdentifier": "t_contract$_IModule_$4303",
                           "typeString": "contract IModule"
                         }
                       },
@@ -20570,7 +20570,7 @@
                       "lValueRequested": false,
                       "memberName": "addDao",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4110,
+                      "referencedDeclaration": 4302,
                       "src": "2275:55:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$returns$__$",
@@ -23766,12 +23766,12 @@
         }
       },
       "links": {},
-      "address": "0x6f44ed72F1BBA8d02Aa97C5D449925eEDc78E397",
-      "transactionHash": "0xc9e758933cc8b1808eec6c681040644f58abaec2e7ade7bb9ae68fd6b5924355"
+      "address": "0x6a1a50142f89b045e5E29F2012cFC02e144c7E55",
+      "transactionHash": "0xc564bf4c7e2edfab7def3698149c9b3dd7a66ef470f43008d06a060a6997cdba"
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-05-16T22:35:48.454Z",
+  "updatedAt": "2022-05-17T15:55:26.750Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

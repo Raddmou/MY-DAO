@@ -228,6 +228,8 @@ const AddDao: React.FC = () => {
                             id="description"
                             name="description"
                             label="Description"
+                            multiline
+                            rows={4}
                             value={formik.values.description}
                             onChange={formik.handleChange}
                             error={touched.description && Boolean(errors.description)}
@@ -242,7 +244,7 @@ const AddDao: React.FC = () => {
                             name="note"
                             label="Rules"
                             multiline
-                            rows={6}
+                            rows={8}
                             value={formik.values.note}
                             onChange={formik.handleChange}
                             error={touched.note && Boolean(errors.note)}

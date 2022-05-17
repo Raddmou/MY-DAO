@@ -12,7 +12,7 @@ contract VotingYesNoModule is Ownable {
     using SafeMath for uint256;
     //DaoBase private dao;
     IMembersDao private membersDao;
-    uint256 public voteSessionsCount;
+    mapping(address => uint256) public voteSessionsCount;
     mapping(address => mapping(uint256 => voteSession)) public voteSessions;
     mapping(address => Data.DaoMember) public daos;
     mapping(address => mapping(address => bool)) private authorizedContracts;
@@ -24,7 +24,9 @@ contract VotingYesNoModule is Ownable {
         string name;
         string description;
         bool isTerminated;
+        uint256 votersCount;
         mapping(address => voteResult) votes;
+        mapping(uint256 => address) voterAddresses;
         voteResult[] voteResults;
         durationEnum duration;
         bool isCreated;
@@ -67,13 +69,49 @@ contract VotingYesNoModule is Ownable {
         _;
     }
 
+    function getVotesCount(address _contractDao) public view returns (uint256)
+    {
+        return voteSessionsCount[_contractDao];
+    }
+
+    // function getVote(address _contractDao, uint256 voteSessionId) external view returns (voteSession memory)
+    // {
+    //     return (voteSessions[_contractDao][voteSessionId]);
+    // }
+
+    function getVoteInfo(address _contractDao, uint256 voteSessionId, address _voterAddress) external view returns(voteResult memory) {
+        return(voteSessions[_contractDao][voteSessionId].votes[_voterAddress]);
+    }
+
+    function getVoteSessionInfo(address _contractDao, uint256 voteSessionId) external view returns(address creatorAddress,
+                                                                                                                            uint256 creationTime,
+                                                                                                                            string memory name,
+                                                                                                                            string memory description,
+                                                                                                                            bool isTerminated,
+                                                                                                                            uint256 votersCount) {
+         creatorAddress = voteSessions[_contractDao][voteSessionId].creatorAddress;
+         creationTime = voteSessions[_contractDao][voteSessionId].creationTime;
+         name = voteSessions[_contractDao][voteSessionId].name;
+         description = voteSessions[_contractDao][voteSessionId].description;
+         isTerminated = voteSessions[_contractDao][voteSessionId].isTerminated;
+         votersCount = voteSessions[_contractDao][voteSessionId].votersCount;
+    }
+
+    function getVoterAddressById(address _contractDao, uint256 voteSessionId, uint256 voterId) external view returns(address) {
+        return voteSessions[_contractDao][voteSessionId].voterAddresses[voterId];
+    }
+
+    function getVotersCount(address _contractDao, uint256 voteSessionId) external view returns(uint256) {
+        return voteSessions[_contractDao][voteSessionId].votersCount;
+    }
+
     function createVote(address _contractDao, string memory name, string memory description, uint8 duration) public {
-        ++voteSessionsCount;
-        voteSessions[_contractDao][voteSessionsCount].isTerminated = false;
-        voteSessions[_contractDao][voteSessionsCount].name = name;
-        voteSessions[_contractDao][voteSessionsCount].description = description;
-        voteSessions[_contractDao][voteSessionsCount].creatorAddress = msg.sender;
-        voteSessions[_contractDao][voteSessionsCount].duration = durationEnum(duration);
+        ++voteSessionsCount[_contractDao];
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].isTerminated = false;
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].name = name;
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].description = description;
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].creatorAddress = msg.sender;
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].duration = durationEnum(duration);
         
         emit VoteSessionCreated(msg.sender, name);
     }
@@ -84,9 +122,14 @@ contract VotingYesNoModule is Ownable {
         require(hasVoted(_contractDao, voteSessionId, msg.sender), "Already voted");
         require(IMembersDao(memberModuleAddress).isActiveMember(msg.sender), "Not DAO member");
 
-        voteSessions[_contractDao][voteSessionsCount].votes[msg.sender].response = responseEnum(response);
-        voteSessions[_contractDao][voteSessionsCount].votes[msg.sender].voted = true;
-        voteSessions[_contractDao][voteSessionsCount].voteResults.push(voteResult(responseEnum(response), msg.sender, true));
+        //add voter address
+        voteSessions[_contractDao][voteSessionId].voterAddresses[voteSessions[_contractDao][voteSessionId].votersCount] = msg.sender;
+        ++voteSessions[_contractDao][voteSessionId].votersCount;
+
+        //add voter vote
+        voteSessions[_contractDao][voteSessionId].votes[msg.sender].response = responseEnum(response);
+        voteSessions[_contractDao][voteSessionId].votes[msg.sender].voted = true;
+        voteSessions[_contractDao][voteSessionId].voteResults.push(voteResult(responseEnum(response), msg.sender, true));
         
         emit Voted(msg.sender, voteSessionId, responseEnum(response));
     }

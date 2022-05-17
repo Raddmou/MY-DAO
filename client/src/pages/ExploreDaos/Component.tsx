@@ -166,6 +166,8 @@ const ExploreDaos: React.FC = () => {
                                             id="description"
                                             name="description"
                                             label="Description"
+                                            multiline
+                                            rows={4}
                                             disabled
                                             value={daoNote.description}
                                         />
@@ -175,7 +177,7 @@ const ExploreDaos: React.FC = () => {
                                             size="small"
                                             fullWidth
                                             multiline
-                                            rows={6}
+                                            rows={8}
                                             id="note"
                                             name="note"
                                             label="Rules"

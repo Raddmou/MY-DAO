@@ -12,6 +12,7 @@ export const validationSchema = yup.object({
     name: yup
       .string()
       .required('Name can\'t be empty'),
+      //TODO: max length
     // membershipMode: yup
     //   .string()
     //   .required('membershipMode is required'),

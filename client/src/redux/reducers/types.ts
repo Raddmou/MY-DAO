@@ -1,6 +1,7 @@
 import { 
     // FETCH_CITIZENS_SUCCESS, 
     FETCH_DAOS_SUCCESS, 
+    FETCH_VOTE_SESSIONS_SUCCESS,
     FETCH_PUBLIC_DAOS_SUCCESS,
     // FETCH_CITIZENS_PENDING, 
     // FETCH_CITIZENS_ERROR, 
@@ -17,9 +18,11 @@ import {
     FETCH_CONTRACT,
     FETCH_DAOS_COUNT,
     FETCH_DAOS_ERROR,
-    FETCH_DAOS_PENDING
+    FETCH_DAOS_PENDING,
+    CLEAR_VOTE_SESSIONS,
+    FETCH_VOTES_SUCCESS
 } from './actionTypes';
-import { Dao } from '../../types'
+import { Dao, VoteSession, VoteModule } from '../../types'
 import { Contract } from 'web3-eth-contract';
 
 // interface ISetCitizensAction {
@@ -31,6 +34,17 @@ interface ISetDaosAction {
     type: typeof FETCH_DAOS_SUCCESS,
     daos: Dao[]
 };
+
+interface ISetVoteSessionsAction {
+    type: typeof FETCH_VOTE_SESSIONS_SUCCESS,
+    daos: VoteSession[]
+};
+
+interface ISetVoteModuleAction {
+    type: typeof FETCH_VOTES_SUCCESS,
+    daos: VoteModule
+};
+
 
 interface ISetPublicDaosAction {
     type: typeof FETCH_PUBLIC_DAOS_SUCCESS,
@@ -74,6 +88,10 @@ interface ISetDaoDescriptionAction {
 
 interface IClearDaoNoteAction {
     type: typeof CLEAR_DAO_NOTE
+};
+
+interface IClearVoteSessionsAction {
+    type: typeof CLEAR_VOTE_SESSIONS
 };
 
 interface IClearAddressInvitedMemberAction {
@@ -128,9 +146,12 @@ export type ActionTypes =
     ISetDaosAction |
     ISetDaoDescriptionAction |
     IClearDaoNoteAction |
+    IClearVoteSessionsAction |
     ISetPublicDaosAction |
     ISetDaoNoteAction |
-    IClearAddressInvitedMemberAction;
+    IClearAddressInvitedMemberAction |
+    ISetVoteSessionsAction |
+    ISetVoteModuleAction;
 
 export type DaosState = {
     daos: Dao[],

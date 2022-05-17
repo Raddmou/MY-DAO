@@ -13,7 +13,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Box from '@mui/material/Box';
 import { deepOrange, yellow } from '@mui/material/colors';
 
-import { getDaoNote, setDaoNote, joinDao, requestJoinDao } from '../../redux/reducers/actions';
+import { getDaoNote, setDaoNote, joinDao, requestJoinDao, fetchVoteSessions } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
 import { Dao } from '../../types';
 import Tooltip from '@mui/material/Tooltip';
@@ -33,7 +33,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
     // const [refresh, setRefresh] = useState(0);
     console.log("DaoCard member" + member + " address " +  address +  " modules " +  modules?.length);
     
-    for (let index = 0; index < modules.length; index++) {
+    for (let index = 0; index < modules?.length; index++) {
         console.log(" module type " + modules[index].type + " code " + modules[index].code);   
     }
 
@@ -59,7 +59,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
     }
 
     const handleClickOpenVoteModule = () => {
-        //TODO
+        dispatch(fetchVoteSessions(address));
         console.log("handleClickOpenVoteModule");
     }
 
@@ -88,7 +88,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     &&  (
                     <Tooltip title="Vote">
                         <HowToVoteIcon fontSize="large" color="primary"
-                        onClick={handleClickJoinDaoInvitation}/>
+                        onClick={handleClickOpenVoteModule}/>
                         {/* </IconButton> */}
                     </Tooltip>
                     )

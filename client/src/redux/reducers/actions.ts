@@ -5,17 +5,21 @@ import {
     FETCH_PUBLIC_DAOS_SUCCESS,
     FETCH_DAOS_ERROR,
     FETCH_NOTE_SUCCESS,
+    FETCH_VOTES_SUCCESS,
     FETCH_DESCRIPTION_SUCCESS,
     CLEAR_DAO_NOTE,
+    CLEAR_VOTE_SESSIONS,
     CLEAR_ADDRESS_INVITED_MEMBER,
     ADD_NEW_DAO,
     FETCH_ACCOUNT,
     FETCH_DAOS_COUNT,
     FETCH_CHAIN_ID,
     FETCH_CONTRACT,
-    FETCH_DAOS_SUCCESS
+    FETCH_DAOS_SUCCESS,
+    FETCH_VOTE_SESSIONS_SUCCESS,
+    CLEAR_VOTE_MODULE
 } from './actionTypes';
- import { Dao, AddDaoFormValues } from '../../types';
+ import { Dao, AddDaoFormValues, VoteSession, VoteModule } from '../../types';
 import { ActionTypes } from './types'
 import { Contract } from 'web3-eth-contract';
 import { Address } from 'cluster';
@@ -43,6 +47,16 @@ export const setDaoNote = (daoNote: Dao): ActionTypes => ({
     daoNote
 });
 
+export const setVoteSessions = (voteSessions: VoteSession[]): ActionTypes => ({
+    type: FETCH_NOTE_SUCCESS,
+    voteSessions
+});
+
+export const setVoteModule = (voteModule: VoteModule): ActionTypes => ({
+    type: FETCH_VOTES_SUCCESS,
+    voteModule
+});
+
 export const setDaoDescription = (daoDescription: string): ActionTypes => ({
     type: FETCH_DESCRIPTION_SUCCESS,
     daoDescription
@@ -50,6 +64,14 @@ export const setDaoDescription = (daoDescription: string): ActionTypes => ({
 
 export const clearDaoNote = (): ActionTypes => ({
     type: CLEAR_DAO_NOTE
+});
+
+export const clearVoteSessions = (): ActionTypes => ({
+    type: CLEAR_VOTE_SESSIONS
+});
+
+export const clearVoteModule = (): ActionTypes => ({
+    type: CLEAR_VOTE_MODULE
 });
 
 export const clearAddressInvitedMember = (): ActionTypes => ({
@@ -162,6 +184,17 @@ export const getDaoNote = (address: Address) => async (dispatch: any) => {
     try {
         const dao = await daosAPI.fetchDao(address);
         dispatch(setDaoNote(dao));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const fetchVoteSessions = (address: Address) => async (dispatch: any) => {
+    try {
+        const voteSessions = await daosAPI.fetchVoteSessions(address);
+        dispatch(setVoteSessions(voteSessions));
+        var voteModule = {isCharged: true};
+        dispatch(setVoteModule(voteModule));
     } catch (error) {
         console.error(error);
     }

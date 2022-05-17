@@ -13,6 +13,22 @@ export type Dao = {
     modules: []
 };
 
+export type VoteModule = { 
+    isCharged: boolean
+};
+
+export type VoteSession = { 
+    address: Address, 
+    creationTime: number,
+    name: string,
+    description: string,
+    isTerminated: boolean,
+    votersCount: number,
+    voters: [],
+    voteResult: [],
+    duration: number
+};
+
 export type Member = { 
     address: Address, 
     id: number,

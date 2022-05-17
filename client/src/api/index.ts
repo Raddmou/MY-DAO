@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { CONTACT_ABI, CONTACT_ADDRESS } from '../constants';
 // import { getCitizensIdsToSearch } from './utils';
 import { getDaosIdsToSearch } from './utils';
-import { Dao } from '../types';
+import { Dao, VoteSession} from '../types';
 import daoFactoryContract from "../contracts/DaosFactory.json";
 import { useAppSelector } from '../hooks';
 import { Contract } from 'web3-eth-contract';
@@ -261,6 +261,8 @@ export const daosAPI = {
 
     // }
 
+    
+
     fetchDao: async (address: Address): Promise<Dao> => {
         console.log("fetchDao start " +  address);
         const contractDao = await contractDaoProvider.getContract(address);
@@ -313,6 +315,52 @@ export const daosAPI = {
         var member = memberConnectedInfo?.status;
         return { id, address, name, isVisible, membershipMode, description, member, members, isMember, isOwner, modules, note };
 
+        //return (await Promise.all(transactionsData));
+
+    },
+
+    fetchVoteSessions: async (address: Address): Promise<VoteSession[]> => {
+        console.log("fetchVote start " +  address);
+        const contractDao = await contractDaoProvider.getContract(address);
+        const moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE).call();
+        console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
+        var votes = [];
+        
+        if(moduleVote.isActive && moduleVote.moduleCode != "0x0000000000000000")
+        {
+            const contractVoteYesNoModule = await contractVotingYesNoModuleProvider.getContract(moduleVote.moduleAddress);
+            var votesCount = await contractVoteYesNoModule.methods.getVotesCount(address).call();
+            
+            //foreach vote session
+            for (let i = 0; i < votesCount.length; i++) {
+                var voters = [];
+                //General infos:
+                var voteSessionInfo =  await contractVoteYesNoModule.methods.getVoteSessionInfo(address, i).call();
+                //vote resuluts:
+                var votersCount = await contractVoteYesNoModule.methods.getVotersCount(address, i).call();
+                //foreach voter in a vote session
+                var voteResult = [];
+                for (let j = 0; j < votersCount.length; j++) {
+                    var voterAdress = await contractVoteYesNoModule.methods.getVoterAddressById(address, i, j).call();
+                    voters.push(voterAdress);
+                    var voteInfo = await contractVoteYesNoModule.methods.getVoteInfo(address, i, voterAdress).call();
+                    voteResult.push({response: voteInfo.response
+                        , voter: voteInfo.voterAdress
+                        , voted: voteInfo.voted});
+                }
+                votes.push({creationTime: voteSessionInfo.creationTime
+                    , name: voteSessionInfo.name
+                    , description: voteSessionInfo.description
+                    , isTerminated: voteSessionInfo.isTerminated
+                    , votersCount: voteSessionInfo.votersCount
+                    , voters: voters
+                    , voteResult: voteResult
+                });
+            }
+        }
+        var isCharged = true;
+        return { isCharged, votes};
+            
         //return (await Promise.all(transactionsData));
 
     },
