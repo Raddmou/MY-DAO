@@ -30,11 +30,11 @@ Recommend to install MetaMask extention and create ethereum wallet before starti
 
 ### To run this project
 * Clone the repository
-* Install it locally using npm or yarn:
-```
-$ cd MY-DAO/
-$ npm install
-```
+`git clone git@github.com:Raddmou/MY-DAO.git`
+* Enter MY-DAO
+`$ cd MY-DAO/`
+* Install depedency using npm or yarn:
+`$ npm install`
 * Open ganache cli or app in another terminal
 `$ ganache-cli`
 * Migrate smart-contract on ganache
@@ -45,10 +45,10 @@ $ npm install
 ## Test
 To lunch test of all smart-contract
 * Open a terminal in root
-`$ cd MY-DAO/'
+`$ cd MY-DAO/`
 * Open ganache cli or app in another terminal
 `$ ganache-cli`
-* Run the test for all
+* Run all test
 `$ truffle test test/DaosFactory.test.js`
 
 
