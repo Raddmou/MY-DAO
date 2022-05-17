@@ -26,7 +26,8 @@ export type VoteSession = {
     votersCount: number,
     voters: [],
     voteResult: [],
-    duration: number
+    duration: number,
+    id: string,
 };
 
 export type Member = { 
@@ -41,7 +42,13 @@ export type Module = {
     code: string
 };
 
-export type AddDaoFormValues = {
+export type AddVoteFormValues = {
+    name: string,
+    description: string,
+    duration: number
+};
+
+export type AddDaoFormValues  = {
     name: string,
     visibility: boolean,
     //membershipMode: string,

@@ -220,8 +220,10 @@ const ExploreDaos: React.FC = () => {
                                         >
                                         {/* <label>hoho</label> */}
                                         <ToggleButton value={MODULE_MEMBER_CODE_OPEN}>Open</ToggleButton>
-                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invite</ToggleButton>
+                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invitation</ToggleButton>
                                         <ToggleButton value={MODULE_MEMBER_CODE_REQUEST}>Request</ToggleButton>
+                                        <ToggleButton value="request" disabled>NFT</ToggleButton>
+                                        <ToggleButton value="request" disabled>Token</ToggleButton>
                                     </ToggleButtonGroup>
                                 </div>
 

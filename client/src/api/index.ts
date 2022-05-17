@@ -355,11 +355,12 @@ export const daosAPI = {
                     , votersCount: voteSessionInfo.votersCount
                     , voters: voters
                     , voteResult: voteResult
+                    , id: i
                 });
             }
         }
-        var isCharged = true;
-        return { isCharged, votes};
+
+        return { votes};
             
         //return (await Promise.all(transactionsData));
 
@@ -484,6 +485,22 @@ export const daosAPI = {
         const id = address.toString();
 
         return { id, name, visibility, description, address, modules, note };
+    },
+
+    addNewVote: async (address: Address, vote: any): Promise<VoteSession> => {
+        const contract = await contractFactoryProvider.getContract();
+        const { name, duration, description } = vote;
+
+        
+        const moduleVote = await contract.methods.modules(MODULE_VOTE_TYPE).call();
+        const { events } =  await moduleVote.methods
+            .createVote(contract, name, description, duration)
+            .send({ 
+                from: (window as any).ethereum.selectedAddress 
+            });
+        const id = address.toString();
+
+        return { id, name, description, duration };
     },
 
     joinDao: async (address: Address): Promise<boolean> => {

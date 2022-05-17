@@ -11,6 +11,7 @@ import {
     CLEAR_VOTE_SESSIONS,
     CLEAR_ADDRESS_INVITED_MEMBER,
     ADD_NEW_DAO,
+    ADD_NEW_VOTE,
     FETCH_ACCOUNT,
     FETCH_DAOS_COUNT,
     FETCH_CHAIN_ID,
@@ -19,7 +20,7 @@ import {
     FETCH_VOTE_SESSIONS_SUCCESS,
     CLEAR_VOTE_MODULE
 } from './actionTypes';
- import { Dao, AddDaoFormValues, VoteSession, VoteModule } from '../../types';
+ import { Dao, AddDaoFormValues, AddVoteFormValues, VoteSession, VoteModule } from '../../types';
 import { ActionTypes } from './types'
 import { Contract } from 'web3-eth-contract';
 import { Address } from 'cluster';
@@ -83,6 +84,11 @@ export const addNewDaoAction = (dao: Dao): ActionTypes => ({
     dao
 })
 
+export const addNewVoteAction = (dao: Dao): ActionTypes => ({
+    type: ADD_NEW_VOTE,
+    voteSession
+})
+
 export const setAccount = (account: string): ActionTypes => ({
     type: FETCH_ACCOUNT,
     account
@@ -127,6 +133,17 @@ export const addNewDao = (formValues: AddDaoFormValues, module: any) => async (d
     try {
         const dao = await daosAPI.addNewDao(formValues, module);
         dispatch(addNewDaoAction(dao));
+    } catch ({ message }) {
+        console.error(message);
+    }
+};
+
+export const addNewVote = (formValues: AddVoteFormValues, address: Address) => async (dispatch: any) => {
+    try {
+        console.log("addNewVote action start " + address);
+        const vote = await daosAPI.addNewVote(address, formValues);
+        dispatch(addNewDaoAction(vote));
+        console.log("addNewVote action end");
     } catch ({ message }) {
         console.error(message);
     }
@@ -195,6 +212,7 @@ export const fetchVoteSessions = (address: Address) => async (dispatch: any) => 
         dispatch(setVoteSessions(voteSessions));
         var voteModule = {isCharged: true};
         dispatch(setVoteModule(voteModule));
+        console.log(" setVoteModule in fetchVoteSessions " + voteModule.isCharged);
     } catch (error) {
         console.error(error);
     }

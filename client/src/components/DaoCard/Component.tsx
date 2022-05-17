@@ -12,6 +12,7 @@ import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Box from '@mui/material/Box';
 import { deepOrange, yellow } from '@mui/material/colors';
+import { useSearchParams, Link } from "react-router-dom";
 
 import { getDaoNote, setDaoNote, joinDao, requestJoinDao, fetchVoteSessions } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
@@ -19,9 +20,12 @@ import { Dao } from '../../types';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
+import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
 // import { deepOrange, blue } from '@mui/material/colors';
 
 import { daosAPI } from '../../api';
+// import Link from '@mui/material/Link';
 
 type DaoCardProps = {
     dao: Dao
@@ -87,10 +91,18 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     modules?.some(a => a.type == MODULE_VOTE_TYPE && a.code == MODULE_VOTE_CODE_YESNO) 
                     &&  (
                     <Tooltip title="Vote">
-                        <HowToVoteIcon fontSize="large" color="primary"
-                        onClick={handleClickOpenVoteModule}/>
-                        {/* </IconButton> */}
+                        <HowToVoteIcon fontSize="large" color="primary" onClick={handleClickOpenVoteModule} 
+                         />
+                           
+                        {/* </HowToVoteIcon> */}
                     </Tooltip>
+
+                    /* <MenuItem
+                    // component={Link}
+                    // to="/votes"
+                    // >
+                    // <Typography textAlign="center">Explore DAOs</Typography>
+                    // </MenuItem> */
                     )
                 }
 
@@ -166,28 +178,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     )
                 }
 
-            </Box>
-
-            
-            { console.log(" membershipMode " + membershipMode) }
-            { console.log(" member " + member) }
-            
-            {/* <Tooltip title="Active member">
-                <IconButton>
-                    <Avatar 
-                    sx={{ bgcolor: blue[500] }}
-                     />
-                </IconButton>
-            </Tooltip> 
-            <Tooltip title="Pending invitation">
-                <IconButton>
-                    <Avatar
-                    sx={{ bgcolor: deepOrange[500] }}
-                    alt="Accept invitation"
-                ></Avatar>
-                </IconButton>
-            </Tooltip>  */}
-            
+            </Box>            
         </ListItem>
     )
 };
