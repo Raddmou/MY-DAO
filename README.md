@@ -5,13 +5,14 @@
 * [General info](#general-info)
 * [Objective](#objective)
 * [Setup](#setup)
+* [Test](#test)
 * [Demo](#demo)
 
 ## Intro
-MY-DAO it's a protocol that let u create ur own DAO without any programming knowledge
+MY-DAO it's a protocol that let you create you'r own DAO without any programming knowledge
 * Differents smart-contracts for each Module (Membership, vote, funds)
-* Simplified method for create ur DAO and gas efficient
-* Interact with ur DAO directly on ur protocol
+* Simplified method for create you'r DAO and gas efficient
+* Interact with ur DAO directly on you'r protocol
 
 ## Objective
 * Democratize the use of DAOs and bring it to the general public
@@ -31,15 +32,25 @@ Recommend to install MetaMask extention and create ethereum wallet before starti
 * Clone the repository
 * Install it locally using npm or yarn:
 ```
-$ cd ../MY-DAO
+$ cd MY-DAO/
 $ npm install
 ```
-* Open ganache cli or app
+* Open ganache cli or app in another terminal
 `$ ganache-cli`
 * Migrate smart-contract on ganache
 `$ truffle migrate --reset`
 * Start app
 `$ npm start`
 
-# Demo 
+## Test
+To lunch test of all smart-contract
+* Open a terminal in root
+`$ cd MY-DAO/'
+* Open ganache cli or app in another terminal
+`$ ganache-cli`
+* Run the test for all
+`$ truffle test test/DaosFactory.test.js`
+
+
+## Demo
 App is deployed to test here: https://raddmou.github.io/MY-DAO/
