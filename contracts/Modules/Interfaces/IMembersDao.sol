@@ -7,6 +7,6 @@ interface IMembersDao {
   function getAddrById(uint256 id) external view returns(address);
   // function getMembers() external view returns(address);
   function getMembersCount() external view returns(uint256);
-  function getMemberInfo(address member) external view returns(Data.member[] memory);
-  function isActiveMember(address member) external view returns(bool);
+  function getMemberInfo(address dao, address member) external view returns(Data.member[] memory);
+  function isActiveMember(address dao, address member) external view returns(bool);
 }

@@ -82,7 +82,7 @@ contract VotingYesNoModule is Ownable {
         require(voteSessions[_contractDao][voteSessionId].isCreated, "Vote session not found");
         require(isVoteSessionDurationExpired(_contractDao, voteSessionId), "Vote session terminated");
         require(hasVoted(_contractDao, voteSessionId, msg.sender), "Already voted");
-        require(IMembersDao(memberModuleAddress).isActiveMember(msg.sender), "Not DAO member");
+        require(IMembersDao(memberModuleAddress).isActiveMember(_contractDao, msg.sender), "Not DAO member");
 
         voteSessions[_contractDao][voteSessionsCount].votes[msg.sender].response = responseEnum(response);
         voteSessions[_contractDao][voteSessionsCount].votes[msg.sender].voted = true;
