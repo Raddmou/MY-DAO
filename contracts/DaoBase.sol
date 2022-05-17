@@ -24,7 +24,7 @@ contract DaoBase is Ownable {
   //type => module
 
   modifier onlyOwners() {
-    require(owners[msg.sender], "Invalid User");
+    require(owners[msg.sender], "Invalid User: DaoBase");
     _;
   }
   // modifier onlyActiveMembersOrAuthorizeContracts() {

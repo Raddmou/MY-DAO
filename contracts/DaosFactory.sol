@@ -49,7 +49,7 @@ contract DaosFactory is Ownable {
   event ModuleActivated(address user, string name, address daoAddress);
 
   modifier onlyDaoOwners(address _daoAddress) {
-    require(daoOwners[_daoAddress][msg.sender], "Invalid User");
+    require(daoOwners[_daoAddress][msg.sender], "Invalid User: DaosFactory");
     _;
   }
 
