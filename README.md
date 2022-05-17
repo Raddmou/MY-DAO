@@ -10,9 +10,9 @@
 
 ## Intro
 MY-DAO it's a protocol that let you create you'r own DAO without any programming knowledge
-* Differents smart-contracts for each Module (Membership, vote, funds)
+* Differents smart-contracts for each Module (Membership, vote, funds and more)
 * Simplified method for create you'r DAO and gas efficient
-* Interact with ur DAO directly on you'r protocol
+* Interact with ur DAO directly on the protocol
 
 ## Objective
 * Democratize the use of DAOs and bring it to the general public
@@ -30,7 +30,7 @@ Recommend to install MetaMask extention and create ethereum wallet before starti
 
 ### To run this project
 * Clone the repository
-`git clone git@github.com:Raddmou/MY-DAO.git`
+`$ git clone git@github.com:Raddmou/MY-DAO.git`
 * Enter MY-DAO
 `$ cd MY-DAO/`
 * Install depedency using npm or yarn:
