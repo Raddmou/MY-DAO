@@ -13,7 +13,7 @@ contract InviteMembershipModule is Ownable {
   bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
   mapping(address => Data.DaoMember) public daos;
   Data.visibilityEnum public visibility;
-  mapping(address => mapping(address => bool)) private authorizedContracts;
+  mapping(address => mapping(address => bool)) public authorizedContracts;
   event MemberAdded(address newMember, address adderAddress);
   event MemberAccepted(address newMember, address acceptorAddress);
   event MemberInvited(address memberInvited, address memberInvitor);
@@ -59,6 +59,7 @@ contract InviteMembershipModule is Ownable {
     function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeContracts(_contractDao) {
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
+        daos[_contractDao].members[addressMember].joinTime = block.timestamp;
         ++daos[_contractDao].membersCount;
         emit MemberAdded(addressMember, msg.sender);
     }
@@ -71,6 +72,7 @@ contract InviteMembershipModule is Ownable {
     function inviteMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeContracts(_contractDao) {
         daos[_contractDao].members[addressMember].status = Data.memberStatus.invited;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
+        daos[_contractDao].members[addressMember].joinTime = block.timestamp;
         ++daos[_contractDao].membersCount;
         emit MemberInvited(msg.sender, addressMember);
     }
@@ -78,6 +80,7 @@ contract InviteMembershipModule is Ownable {
     function requestJoin(address _contractDao) public onlyNotActiveMembers(_contractDao) {
         daos[_contractDao].members[msg.sender].status = Data.memberStatus.asking;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = msg.sender;
+        daos[_contractDao].members[msg.sender].joinTime = block.timestamp;
         ++daos[_contractDao].membersCount;
         emit MemberAskedJoin(msg.sender);
     }

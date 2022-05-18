@@ -15,7 +15,7 @@ contract VotingYesNoModule is Ownable {
     mapping(address => uint256) public voteSessionsCount;
     mapping(address => mapping(uint256 => voteSession)) public voteSessions;
     mapping(address => Data.DaoMember) public daos;
-    mapping(address => mapping(address => bool)) private authorizedContracts;
+    mapping(address => mapping(address => bool)) public authorizedContracts;
     address private memberModuleAddress;
 
     struct voteSession {

@@ -8,22 +8,22 @@ import "../../DaoBase.sol";
 
 //is DaosFactory
 contract OpenMembershipModule is Ownable {
-  using SafeMath for uint256;
-  bytes8 public moduleCode = bytes8(keccak256(abi.encode("OpenMembershipModule")));
-  bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
-  mapping(address => Data.DaoMember) public daos;
-  Data.visibilityEnum public visibility;
-  mapping(address => mapping(address => bool)) private authorizedContracts;
+    using SafeMath for uint256;
+    bytes8 public moduleCode = bytes8(keccak256(abi.encode("OpenMembershipModule")));
+    bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
+    mapping(address => Data.DaoMember) public daos;
+    Data.visibilityEnum public visibility;
+    mapping(address => mapping(address => bool)) public authorizedContracts;
 
-  event MemberAdded(address newMember, address adderAddress);
-  event MemberAccepted(address newMember, address acceptorAddress);
-  event MemberInvited(address memberInvited, address memberInvitor);
-  event MemberJoined(address memberJoined);
-  event MemberAskedJoin(address memberRequestor);
+    event MemberAdded(address newMember, address adderAddress);
+    event MemberAccepted(address newMember, address acceptorAddress);
+    event MemberInvited(address memberInvited, address memberInvitor);
+    event MemberJoined(address memberJoined);
+    event MemberAskedJoin(address memberRequestor);
 
-  constructor(address _contractFactory) {
-    _transferOwnership(_contractFactory);
-  }
+    constructor(address _contractFactory) {
+        _transferOwnership(_contractFactory);
+    }
 
     modifier onlyActiveMembersOrAuthorizeContracts(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.active 
@@ -59,9 +59,11 @@ contract OpenMembershipModule is Ownable {
         return daos[_contractDao].membersCount;
     }
 
+    // NOTE maybe add more Member Info
     function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeContracts(_contractDao) {
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
+        daos[_contractDao].members[addressMember].joinTime = block.timestamp;
         ++daos[_contractDao].membersCount;
         emit MemberAdded(addressMember, msg.sender);
     }
@@ -74,6 +76,9 @@ contract OpenMembershipModule is Ownable {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.notMember
                 , "Impossible to join");
         daos[_contractDao].members[msg.sender].status = Data.memberStatus.active;
+        daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = msg.sender;
+        daos[_contractDao].members[msg.sender].joinTime = block.timestamp;
+        ++daos[_contractDao].membersCount;
         emit MemberJoined(msg.sender);
     }
 

@@ -1,6 +1,10 @@
 const { default: Web3 } = require('web3');
 
 const DaosFactory = artifacts.require("./DaosFactory.sol");
+const InviteMembershipModule = artifacts.require("./InviteMembershipModule.sol");
+const OpenMembershipModule = artifacts.require("./OpenMembershipModule.sol");
+const RequestMembershipModule = artifacts.require("./RequestMembershipModule.sol");
+const VotingYesNoModule = artifacts.require("./VotingYesNoModule.sol");
 
 require('chai')
   .use(require('chai-as-promised'))
@@ -16,7 +20,7 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
   const CodeHashInvite = "0x2bd4373f9dfab999";
   const CodeHashRequest = "0xea7de0043801a72e";
   const CodeHashVoteYesNo = "0xfde50a81ae34bf89";
-  it("deploy instance", async () => {
+  it("Recover Instance", async () => {
     DaosFactoryInstance = await DaosFactory.deployed();
     // console.log(DaosFactoryInstance);
     // DaosFactoryInstance = await DaosFactory.deployed();
@@ -97,6 +101,7 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
   })
   describe("DAO", async () => {
     var daoOpen;
+    var addrDao;
     const name = "TEST";
     const description = "TEST";
     const rules = "ole ola nene nana wagmi"
@@ -108,7 +113,7 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
           // console.log(daoOpen)
         })
         it("Check DAO Owner", async () => {
-          var addrDao = daoOpen.logs[2].args.daoAddress;
+          addrDao = daoOpen.logs[2].args.daoAddress;
           var owner = await DaosFactoryInstance.daoOwners(addrDao, user1);
           owner.should.equal(true);
         })
@@ -119,38 +124,28 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
           deployedDao = await DaosFactoryInstance.getdeployedDaos();
         })
         it("Check Deployed DAOs", async () => {
-          var addrDao = daoOpen.logs[2].args.daoAddress;
           deployedDao[deployedDao.length - 1].owner.should.equal(user1);
           deployedDao[deployedDao.length - 1].daoAddress.should.equal(addrDao);
         })
       })
       describe("New Module", () => {
-        // var addrDao = daoOpen.logs[2].args.daoAddress;
         describe("Success", () => {
           it("Activate Module Vote", async () => {
-            // console.log("AAAAA");
-            var addrDao = daoOpen.logs[2].args.daoAddress;
-            // console.log("AAAAA");
             let res = await DaosFactoryInstance
               .activateModuleForDao(addrDao, typeHashVote, CodeHashVoteYesNo, {from: user1})
-            // console.log(res);
-            // console.log("SSSS");
           })
         })
         describe("Fail", () => {
           it("Fail Activate New Module Caller Not Owner", async () => {
-            var addrDao = daoOpen.logs[2].args.daoAddress;
             let res =await DaosFactoryInstance
               .activateModuleForDao(addrDao, typeHashVote, CodeHashVoteYesNo, {from: user2})
                 .should.be.rejectedWith("M Exception while processing transaction: revert Invalid User")
-            // console.log(res);
           })
         })
       })
       describe("Event", () => {
         it("check event OwnershipTransferred 1", async () => {
           const log = daoOpen.logs[0];
-          // console.log(log);
           log.event.should.equal('OwnershipTransferred');
           const res = log.args;
           res.previousOwner.should.equal(ADDR0);
@@ -169,6 +164,70 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
           const res = log.args;
           res.user.should.equal(user1, "correct user");
           res.name.should.equal(name, "correct name");
+        })
+      })
+      describe("OpenMembershipModule", () => {
+        var OpenMembershipModuleInstance;
+        var addrOpenMembership;
+        it("Recover Open Membership Module", async () => {
+          OpenMembershipModuleInstance = await OpenMembershipModule.deployed();
+          addrOpenMembership = OpenMembershipModuleInstance.address
+          // console.log(OpenMembershipModuleInstance)
+        })
+        describe("Check Membership", () => {
+          it("Check Members Count", async () => {
+            const memberCount = await OpenMembershipModuleInstance.getMembersCount(addrDao);
+            memberCount.toString().should.equal('1');
+          })
+          it("Check Address By Id", async () => {
+            const addrById = await OpenMembershipModuleInstance.getAddrById(addrDao, 0);
+            addrById.should.equal(user1);
+          })
+          it("Check Member Info", async () => {
+            const memberInfo = await OpenMembershipModuleInstance.getMemberInfo(addrDao, user1);
+            memberInfo.status.should.equal('3');
+            console.log("                  Join Time = " + memberInfo.joinTime);
+            // memberInfo.joinTime.should.be.a('number')
+          })
+          it("Check isActive Member Success", async () => {
+            const isActive = await OpenMembershipModuleInstance.isActiveMember(addrDao, user1);
+            isActive.should.equal(true);
+          })
+          it("Check isActive Member Fail", async () => {
+            const isActive = await OpenMembershipModuleInstance.isActiveMember(addrDao, user2);
+            isActive.should.equal(false);
+          })
+          it("Add Authorized Contract", async () => {
+            const AuthorizedContract = await OpenMembershipModuleInstance
+              .authorizeContract(addrDao, addrOpenMembership, {from: deployer})
+            console.log(AuthorizedContract)
+          })
+          it("Check Authorized Contract", async () => {
+            const AuthorizedContract = await OpenMembershipModuleInstance
+              .authorizedContracts(addrDao, addrOpenMembership);
+            AuthorizedContract.should.equal(true);
+          })
+        })
+        describe("Join The Open DAO", () => {
+          var join;
+          it("User2 Join The Open DAO", async () => {
+            join = await OpenMembershipModuleInstance.join(addrDao, {from: user2});
+            join.receipt.status.should.equal(true);
+          })
+          it("Check User2 isActive", async () => {
+            const isActive = await OpenMembershipModuleInstance.isActiveMember(addrDao, user2);
+            isActive.should.equal(true);
+          })
+          it("Check Members Count Updated", async () => {
+            const memberCount = await OpenMembershipModuleInstance.getMembersCount(addrDao);
+            memberCount.toString().should.equal('2');
+          })
+          it("Check Event", async () => {
+            const log = join.logs[0];
+            log.event.should.equal('MemberJoined');
+            const res = log.args;
+            res.memberJoined.should.equal(user2);
+          })
         })
       })
     })

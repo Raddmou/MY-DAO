@@ -92,7 +92,7 @@ contract DaosFactory is Ownable {
     deployedDao memory _dao;
     _dao.owner = msg.sender;
     _dao.daoAddress = address(dao);
-    daos.push(_dao); 
+    daos.push(_dao);
     dao.authorizeContract(address(this));
     dao.transferOwnership(msg.sender);
 
