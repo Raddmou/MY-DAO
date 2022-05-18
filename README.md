@@ -54,3 +54,12 @@ To lunch test of all smart-contract
 
 ## Demo
 App is deployed to test here: https://raddmou.github.io/MY-DAO/
+
+
+### Rinkeby TestNet
+
+This section contains the list of the deployed contract addresses on the Ethereum testnet `rinkeby`.
+
+| Contract Name     | Address                                    |
+|---                |---                                         |
+| `aa`              | aa                                         |
