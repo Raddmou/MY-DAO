@@ -11,6 +11,7 @@ import Home from './pages/Home/Component';
 import AddDao from './pages/AddDao/Component';
 import ExploreDao from './pages/ExploreDaos/Component';
 import Header from "./components/Header/Component";
+import Votes from "./pages/Votes/Component";
 import { useAppDispatch } from './hooks';
 import { setAccount, getDaoByMember, getDaosCountByMember } from './redux/reducers/actions';
 import { contractFactoryProvider } from './api/ContractProvider';
@@ -44,6 +45,7 @@ const App: React.FC = () => {
                     <Route path="/" element={ <Home /> } />
                     <Route path="add-new-dao" element={<AddDao />} />
                     <Route path="explore-daos" element={<ExploreDao />} />
+                    <Route path="votes" element={<Votes />} />
                 </Routes>
             </main>
           </Container>

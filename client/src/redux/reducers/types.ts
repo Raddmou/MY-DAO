@@ -37,12 +37,12 @@ interface ISetDaosAction {
 
 interface ISetVoteSessionsAction {
     type: typeof FETCH_VOTE_SESSIONS_SUCCESS,
-    daos: VoteSession[]
+    voteSessions: VoteSession[]
 };
 
 interface ISetVoteModuleAction {
     type: typeof FETCH_VOTES_SUCCESS,
-    daos: VoteModule
+    voteModule: VoteModule
 };
 
 
@@ -109,6 +109,11 @@ interface IAddNewDaoAction {
     dao: Dao
 };
 
+interface IAddNewDVoteAction {
+    type: typeof ADD_NEW_VOTE,
+    voteSession: VoteSession
+};
+
 interface ISetAccountAction {
     type: typeof FETCH_ACCOUNT,
     account: string
@@ -151,7 +156,8 @@ export type ActionTypes =
     ISetDaoNoteAction |
     IClearAddressInvitedMemberAction |
     ISetVoteSessionsAction |
-    ISetVoteModuleAction;
+    ISetVoteModuleAction |
+    IAddNewDVoteAction;
 
 export type DaosState = {
     daos: Dao[],
@@ -160,6 +166,8 @@ export type DaosState = {
     daoNote: string,
     addressMemberToInvite: string,
     daosCount: number,
+    voteSessions: VoteSession[],
+    voteModule: VoteModule
 };
 
 export type ApplicationState = {

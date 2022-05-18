@@ -39,7 +39,7 @@ const Home: React.FC = () => {
     const [addressToInvite, setAddressToInvite] = useState("");
     const [ searchParams, setSearchParams ] = useSearchParams({});
     //const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
-    const { daosCount, daoNote, account, voteSessions } = useAppSelector(homeSelector);
+    const { daosCount, daoNote, account, voteSessions, voteModule } = useAppSelector(homeSelector);
     const dispatch = useAppDispatch();
 
     const handleNoteClose = (): void => {
@@ -59,7 +59,6 @@ const Home: React.FC = () => {
         if (!account) return;
 
         const page = searchParams.get('page') || DEFAULT_PAGE;
-        // dispatch(getCitizens(Number(page) , PAGE_LIMIT));
         dispatch(getDaoByMember(Number(page) , PAGE_LIMIT));
     }, [searchParams, account])
 
@@ -184,8 +183,10 @@ const Home: React.FC = () => {
                                         >
                                         {/* <label>hoho</label> */}
                                         <ToggleButton value={MODULE_MEMBER_CODE_OPEN}>Open</ToggleButton>
-                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invite</ToggleButton>
+                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invitation</ToggleButton>
                                         <ToggleButton value={MODULE_MEMBER_CODE_REQUEST}>Request</ToggleButton>
+                                        <ToggleButton value="request" disabled>NFT</ToggleButton>
+                                        <ToggleButton value="request" disabled>Token</ToggleButton>
                                     </ToggleButtonGroup>
                                 </div>
 
@@ -255,10 +256,12 @@ const Home: React.FC = () => {
             }
 
             {console.log("voteSessions " + voteSessions?.length)}
+            {console.log("voteModule " + voteModule?.isCharged)}
+            
             {
-                 voteSessions?.isCharged && (
-                    <Dialog onClose={handleNoteClose} open={Boolean(daoNote)}  maxWidth="md" fullWidth>
-                        <DialogTitle>My DAO</DialogTitle>
+                 voteModule?.isCharged && (
+                    <Dialog onClose={handleVoteClose} open={Boolean(voteModule?.isCharged)}  maxWidth="md" fullWidth>
+                        <DialogTitle>Vote Module YES NO</DialogTitle>
                         <DialogContent>
                         <Box
                                 sx={{
@@ -267,7 +270,19 @@ const Home: React.FC = () => {
                                     },
                                 }}
                                 >
-                                <Typography variant="h5" component="div">General</Typography>
+                                    <div className="textInput">
+                                    <TextField
+                                        size="small"
+                                        fullWidth
+                                        id="name"
+                                        name="name"
+                                        label="Name"
+                                        disabled
+                                        
+                                    />
+                                </div> 
+
+                                {/* <Typography variant="h5" component="div">General</Typography>
                                 <div className="textInput">
                                     <TextField
                                         size="small"
@@ -278,7 +293,7 @@ const Home: React.FC = () => {
                                         disabled
                                         value={daoNote.name}
                                     />
-                                </div>
+                                </div> */}
                                 
                                 {/* {daoNote.modules?.some(a => a.type = "MemberModule") && (
                                 <div>
@@ -296,7 +311,7 @@ const Home: React.FC = () => {
                                         </RadioGroup>
                                     </FormControl>
                                 </div>)} */}
-                                <div className="textInput">
+                                {/* <div className="textInput">
                                     <TextField
                                         size="small"
                                         fullWidth
@@ -337,84 +352,7 @@ const Home: React.FC = () => {
                                             label="Private"
                                     />
                                     
-                                </div>
-
-                                <Typography variant="h5" component="div">Modules</Typography>
-
-                                <FormLabel id="demo-row-radio-buttons-group-label">Membership Modules</FormLabel>
-                                <div>
-                                    <ToggleButtonGroup
-                                        color="primary"
-                                        id="member"
-                                        name="member"
-                                        label="member"
-                                        value={daoNote.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}
-                                        exclusive
-                                        disabled
-                                        // aria-label="label"
-                                        >
-                                        {/* <label>hoho</label> */}
-                                        <ToggleButton value={MODULE_MEMBER_CODE_OPEN}>Open</ToggleButton>
-                                        <ToggleButton value={MODULE_MEMBER_CODE_INVITE}>Invite</ToggleButton>
-                                        <ToggleButton value={MODULE_MEMBER_CODE_REQUEST}>Request</ToggleButton>
-                                    </ToggleButtonGroup>
-                                </div>
-
-                                { daoNote.modules?.some(a => a.type == MODULE_MEMBER_TYPE) 
-                                    && daoNote.members 
-                                    && (
-                                        <div className='listContainer'>
-                                            
-                                                <Typography variant="h6" component="div">Members</Typography>
-                                                <List>
-                                                    {
-                                                            daoNote.members.map((member: Member) => (
-                                                                <MemberCard key={member.id} 
-                                                                member={member} 
-                                                                isMember={daoNote.member} 
-                                                                daoAddress={daoNote.address}
-                                                                codeModule={daoNote.modules?.find(a => a.type == MODULE_MEMBER_TYPE)?.code}/>
-                                                            ))                                                   
-                                                    }
-                                                </List> 
-                                        </div> 
-                                        )
-                                } 
-
-                                <div className="textInput">
-
-                                { daoNote.modules?.some(a => a.type == MODULE_MEMBER_TYPE && a.code == MODULE_MEMBER_CODE_INVITE) 
-                                    && daoNote.member == 3 
-                                    && (
-                                    <ListItem button divider>
-                                        <TextField
-                                            size="small"
-                                            fullWidth
-                                            id="name"
-                                            name="name"
-                                            label="Guest address"
-                                            //value={formik.values.address}
-                                            value={addressToInvite}
-                                            onChange={(e) => setAddressToInvite(e.target.value)}
-                                            //onChange={formik.handleChange}
-                                            // error={touched.address && Boolean(errors.address)}
-                                            // helperText={touched.address && errors.address}
-                                        />
-                                        {/* <IconButton>
-                                            <Avatar 
-                                            sx={{ bgcolor: blue[500] }}
-                                            alt="Invite" 
-                                            />
-                                        </IconButton> */}
-                                        {/* <GroupAddIcon fontSize="large" color="primary"
-                                        type="submit"/> */}
-                                        <Button color="primary" variant="contained" fullWidth onClick={HandleInviteMember}>
-                                            Add
-                                            </Button>   
-                                    </ListItem>
-                                )}
-                                    
-                                </div>  
+                                </div> */}
 
                             </Box>   
                         </DialogContent>
