@@ -84,7 +84,7 @@ export const addNewDaoAction = (dao: Dao): ActionTypes => ({
     dao
 })
 
-export const addNewVoteAction = (dao: Dao): ActionTypes => ({
+export const addNewVoteAction = (voteSession: VoteSession): ActionTypes => ({
     type: ADD_NEW_VOTE,
     voteSession
 })
@@ -142,7 +142,7 @@ export const addNewVote = (formValues: AddVoteFormValues, address: Address) => a
     try {
         console.log("addNewVote action start " + address);
         const vote = await daosAPI.addNewVote(address, formValues);
-        dispatch(addNewDaoAction(vote));
+        dispatch(addNewVoteAction(vote));
         console.log("addNewVote action end");
     } catch ({ message }) {
         console.error(message);

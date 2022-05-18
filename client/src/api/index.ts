@@ -330,20 +330,29 @@ export const daosAPI = {
         {
             const contractVoteYesNoModule = await contractVotingYesNoModuleProvider.getContract(moduleVote.moduleAddress);
             var votesCount = await contractVoteYesNoModule.methods.getVotesCount(address).call();
+
+            console.log(" vote count " + votesCount);
+            console.log(" vote module address " + moduleVote.moduleAddress);
             
             //foreach vote session
             for (let i = 0; i < votesCount.length; i++) {
                 var voters = [];
                 //General infos:
+                console.log(" compteur i " + i);
                 var voteSessionInfo =  await contractVoteYesNoModule.methods.getVoteSessionInfo(address, i).call();
+                console.log(" voteSessionInfo " + voteSessionInfo?.name);
                 //vote resuluts:
                 var votersCount = await contractVoteYesNoModule.methods.getVotersCount(address, i).call();
+                console.log(" votersCount " + votersCount);
                 //foreach voter in a vote session
                 var voteResult = [];
                 for (let j = 0; j < votersCount.length; j++) {
+                    console.log(" compteur j " + j);
                     var voterAdress = await contractVoteYesNoModule.methods.getVoterAddressById(address, i, j).call();
+                    console.log(" voterAdress " + voterAdress);
                     voters.push(voterAdress);
                     var voteInfo = await contractVoteYesNoModule.methods.getVoteInfo(address, i, voterAdress).call();
+                    console.log(" voteInfo " + voteInfo);
                     voteResult.push({response: voteInfo.response
                         , voter: voteInfo.voterAdress
                         , voted: voteInfo.voted});
@@ -487,14 +496,15 @@ export const daosAPI = {
         return { id, name, visibility, description, address, modules, note };
     },
 
-    addNewVote: async (address: Address, vote: any): Promise<VoteSession> => {
-        const contract = await contractFactoryProvider.getContract();
+    addNewVote: async (address: any, vote: any): Promise<VoteSession> => {
+        const contractDao = await contractDaoProvider.getContract(address);
         const { name, duration, description } = vote;
 
+        const moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE).call();
+        const contractVoteYesNoModule = await contractVotingYesNoModuleProvider.getContract(moduleVote.moduleAddress);       
         
-        const moduleVote = await contract.methods.modules(MODULE_VOTE_TYPE).call();
-        const { events } =  await moduleVote.methods
-            .createVote(contract, name, description, duration)
+        const { events } =  await contractVoteYesNoModule.methods
+            .createVote(address, name, description, duration)
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });

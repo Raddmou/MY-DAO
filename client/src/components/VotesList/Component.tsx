@@ -20,7 +20,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useFormik, FormikProps } from 'formik';
 import { AddVoteFormValues } from '../../types';
 import { validationSchema } from './validation';
-import { addNewVote } from '../../redux/reducers/actions';
+import { addNewVote, fetchVoteSessions } from '../../redux/reducers/actions';
 import TextField from '@mui/material/TextField';
 import FormLabel from '@mui/material/FormLabel';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -29,23 +29,31 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from '@mui/material/FormControl';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
+import { useSearchParams, Link } from "react-router-dom";
 
 const VotesList: React.FC = () => {
     //const { voteSessions } = useAppSelector(VotesSelector);
+    const [searchParams] = useSearchParams({});
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [openAddVoteDialog, setOpenAddVoteDialog] = useState(false);
     const dispatch = useAppDispatch();
     const { voteSessions, voteModule, daoNote } = useAppSelector(VotesSelector);
-
+    const address = searchParams.get('dao');
     const handleSubmit = (formValues: AddVoteFormValues, { resetForm }: any): void => {
-        console.log("handleSubmit form add vote start");
+        console.log("handleSubmit form add vote start " + address );
         dispatch(
-            addNewVote(formValues, daoNote.address )
+            addNewVote(formValues, address)
         );
         setIsFormSubmitted(true);
         resetForm();
         console.log("handleSubmit form add vote end");
     };
+
+    useEffect((): void => {
+        dispatch(
+            fetchVoteSessions(address)
+        );
+    }, [searchParams, isFormSubmitted])
 
     const formik: FormikProps<AddVoteFormValues> = useFormik({
         initialValues: {
@@ -76,8 +84,14 @@ const VotesList: React.FC = () => {
 
     return (
         <div className='listContainer'>
-            <Typography variant="h5" component="div">Votes</Typography>
+            {
+                isFormSubmitted && (
+                    <Alert severity="info">Please confirm creating new vote in MetaMask.</Alert>
+                )
+            }
+            <Typography variant="h5" component="div">Vote sessions</Typography>
             <List>
+                {console.log(" voteSession near voteCard " + voteSessions?.length)}
                 {
                     voteSessions?.map((voteSession: VoteSession) => (
                         <VoteCard key={voteSession.id} voteSession={voteSession} />
@@ -86,7 +100,7 @@ const VotesList: React.FC = () => {
             </List>
             <Button variant="contained" endIcon={<AddIcon />}
                 onClick={HandleOpenDialog}>
-                Add
+                Create new vote
             </Button>
 
             {
@@ -134,7 +148,6 @@ const VotesList: React.FC = () => {
                                                 helperText={touched.description && errors.description}
                                             />
                                         </div>
-                                        <FormLabel id="demo-row-radio-buttons-group-label">Duration</FormLabel>
                                         <div>
                                             {/* <ToggleButtonGroup
                                                 color="primary"
@@ -151,7 +164,7 @@ const VotesList: React.FC = () => {
                                             */}
 
                                             <FormControl>
-                                                <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
+                                                <FormLabel id="demo-row-radio-buttons-group-label">Duration</FormLabel>
                                                 <RadioGroup
                                                     row
                                                     aria-labelledby="demo-row-radio-buttons-group-label"

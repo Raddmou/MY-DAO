@@ -23,6 +23,7 @@ import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 // import { deepOrange, blue } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
 
 import { daosAPI } from '../../api';
 // import Link from '@mui/material/Link';
@@ -32,7 +33,7 @@ type DaoCardProps = {
 };
 
 const DaoCard = ({ dao }: DaoCardProps) => {
-    const { address, name, description, member, membershipMode, modules } = dao;
+    const { address, name, description, member, modules } = dao;
     const dispatch = useAppDispatch();
     // const [refresh, setRefresh] = useState(0);
     console.log("DaoCard member" + member + " address " +  address +  " modules " +  modules?.length);
@@ -61,10 +62,14 @@ const DaoCard = ({ dao }: DaoCardProps) => {
         // dispatch(setDaoNote(dao));
         // setRefresh(refresh + 1);
     }
-
+    
+    const navigate = useNavigate();
     const handleClickOpenVoteModule = () => {
+        // dispatch(fetchVoteSessions(address));
+        // console.log("handleClickOpenVoteModule");
+        dispatch(getDaoNote(address));
         dispatch(fetchVoteSessions(address));
-        console.log("handleClickOpenVoteModule");
+        navigate('/votes?dao='+address);
     }
 
     return (

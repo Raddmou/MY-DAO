@@ -43,6 +43,8 @@ import { useFormik, FormikProps } from 'formik';
 import { inviteToDao } from '../../redux/reducers/actions';
 import { validationSchema } from './validation';
 import { number } from 'yup';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 const ExploreDaos: React.FC = () => {
     const [refresh, setRefresh] = useState(0);
@@ -131,6 +133,12 @@ const ExploreDaos: React.FC = () => {
                                     },
                                 }}
                                 >
+
+                                    <Stack direction="row" spacing={1}>
+                                        <Chip label="Address" />
+                                        <Chip label={daoNote.address} variant="outlined" />
+                                    </Stack>
+
                                     <Typography variant="h5" component="div">General</Typography>
                                     <div className="textInput">
                                         <TextField

@@ -27,7 +27,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import { inviteToDao } from '../../redux/reducers/actions';
 import { Member, InviteDaoFormValues } from '../../types';
-import { getDaoByMember, clearDaoNote, clearVoteSessions, clearVoteModule } from '../../redux/reducers/actions';
+import { getDaoByMember, clearDaoNote, clearVoteSessions, clearVoteModule , fetchVoteSessions} from '../../redux/reducers/actions';
 import VotesList from '../../components/VotesList/Component';
 import Pagination from '../../components/Pagination/Component';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -41,16 +41,13 @@ const Votes: React.FC = () => {
     //const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
     const { voteSessions, voteModule, account } = useAppSelector(VotesSelector);
     const dispatch = useAppDispatch();
+    //const address = searchParams.get('dao');
 
     const handleNoteClose = (): void => {
-        // dispatch(clearCitizenNote());
-        setAddressToInvite("");
         dispatch(clearDaoNote());
     };
 
     const handleVoteClose = (): void => {
-        // dispatch(clearCitizenNote());
-        setAddressToInvite("");
         dispatch(clearVoteSessions());
         dispatch(clearVoteModule());
     };
@@ -58,8 +55,8 @@ const Votes: React.FC = () => {
     useEffect((): void => {
         if (!account) return;
 
-        const page = searchParams.get('page') || DEFAULT_PAGE;
-        // dispatch(getDaoByMember(Number(page) , PAGE_LIMIT));
+        const address = searchParams.get('dao');
+        fetchVoteSessions(address);
     }, [searchParams, account])
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number): void => {

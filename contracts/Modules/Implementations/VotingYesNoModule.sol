@@ -106,12 +106,13 @@ contract VotingYesNoModule is Ownable {
     }
 
     function createVote(address _contractDao, string memory name, string memory description, uint8 duration) public {
-        ++voteSessionsCount[_contractDao];
+        
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].isTerminated = false;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].name = name;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].description = description;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].creatorAddress = msg.sender;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].duration = durationEnum(duration);
+        ++voteSessionsCount[_contractDao];
         
         emit VoteSessionCreated(msg.sender, name);
     }

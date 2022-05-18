@@ -34,6 +34,9 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { homeSelector } from './selector';
 import { DEFAULT_PAGE, PAGE_LIMIT } from './constants';
 import './Component.scss';
+import VotesList from '../../components/VotesList/Component';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 const Home: React.FC = () => {
     const [addressToInvite, setAddressToInvite] = useState("");
@@ -95,6 +98,12 @@ const Home: React.FC = () => {
                                     },
                                 }}
                                 >
+
+                                <Stack direction="row" spacing={1}>
+                                    <Chip label="Address" />
+                                    <Chip label={daoNote.address} variant="outlined" />
+                                </Stack>
+
                                 <Typography variant="h5" component="div">General</Typography>
                                 <div className="textInput">
                                     <TextField
@@ -271,16 +280,18 @@ const Home: React.FC = () => {
                                 }}
                                 >
                                     <div className="textInput">
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        id="name"
-                                        name="name"
-                                        label="Name"
-                                        disabled
-                                        
-                                    />
-                                </div> 
+                                        <TextField
+                                            size="small"
+                                            fullWidth
+                                            id="name"
+                                            name="name"
+                                            label="Name"
+                                            disabled
+                                            
+                                        />
+                                    </div> 
+                                    <VotesList dao={daoNote} 
+                                        voteSession={voteSessions}/>
 
                                 {/* <Typography variant="h5" component="div">General</Typography>
                                 <div className="textInput">

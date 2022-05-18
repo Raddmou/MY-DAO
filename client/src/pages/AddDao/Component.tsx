@@ -296,7 +296,7 @@ const AddDao: React.FC = () => {
                             >
                             {/* <label>hoho</label> */}
                             <ToggleButton value="open">Open</ToggleButton>
-                            <ToggleButton value="invitation">Invitation</ToggleButton>
+                            <ToggleButton value="invite">Invitation</ToggleButton>
                             <ToggleButton value="request">Request</ToggleButton>
                             <ToggleButton value="request" disabled>NFT</ToggleButton>
                             <ToggleButton value="request" disabled>Token</ToggleButton>
