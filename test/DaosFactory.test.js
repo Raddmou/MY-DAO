@@ -197,16 +197,16 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
             const isActive = await OpenMembershipModuleInstance.isActiveMember(addrDao, user2);
             isActive.should.equal(false);
           })
-          it("Add Authorized Contract", async () => {
-            const AuthorizedContract = await OpenMembershipModuleInstance
-              .authorizeContract(addrDao, addrOpenMembership, {from: deployer})
-            console.log(AuthorizedContract)
-          })
-          it("Check Authorized Contract", async () => {
-            const AuthorizedContract = await OpenMembershipModuleInstance
-              .authorizedContracts(addrDao, addrOpenMembership);
-            AuthorizedContract.should.equal(true);
-          })
+          // it("Add Authorized Contract", async () => {
+          //   const AuthorizedContract = await OpenMembershipModuleInstance
+          //     .authorizeContract(addrDao, addrOpenMembership, {from: deployer})
+          //   console.log(AuthorizedContract)
+          // })
+          // it("Check Authorized Contract", async () => {
+          //   const AuthorizedContract = await OpenMembershipModuleInstance
+          //     .authorizedContracts(addrDao, addrOpenMembership);
+          //   AuthorizedContract.should.equal(true);
+          // })
         })
         describe("Join The Open DAO", () => {
           var join;
