@@ -316,7 +316,7 @@ export const daosAPI = {
         return { id, address, name, isVisible, membershipMode, description, member, members, isMember, isOwner, modules, note };
 
         //return (await Promise.all(transactionsData));
-
+        
     },
 
     fetchVoteSessions: async (address: Address): Promise<VoteSession[]> => {
@@ -369,10 +369,8 @@ export const daosAPI = {
             }
         }
 
-        return { votes};
-            
-        //return (await Promise.all(transactionsData));
-
+        console.log(" votes output fetchVoteSessions " + votes.length);
+        return  votes;
     },
 
     // fetchCitizens: async (page: number, limit: number, count: number): Promise<Citizen[]> => {

@@ -13,6 +13,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Box from '@mui/material/Box';
 import { deepOrange, yellow } from '@mui/material/colors';
 import { useSearchParams, Link } from "react-router-dom";
+import Badge from '@mui/material/Badge';
 
 import { getDaoNote, setDaoNote, joinDao, requestJoinDao, fetchVoteSessions } from '../../redux/reducers/actions';
 import { useAppDispatch } from '../../hooks';
@@ -33,10 +34,10 @@ type DaoCardProps = {
 };
 
 const DaoCard = ({ dao }: DaoCardProps) => {
-    const { address, name, description, member, modules } = dao;
+    const { address, name, description, member, modules, Members } = dao;
     const dispatch = useAppDispatch();
     // const [refresh, setRefresh] = useState(0);
-    console.log("DaoCard member" + member + " address " +  address +  " modules " +  modules?.length);
+    console.log("DaoCard member" + member + " address " +  address +  " modules " +  modules?.length + " members " + Members?.length);
     
     for (let index = 0; index < modules?.length; index++) {
         console.log(" module type " + modules[index].type + " code " + modules[index].code);   
@@ -75,6 +76,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
     return (
         <ListItem button divider >
             <ListItemAvatar>
+                <Badge badgeContent={dao.members?.length} color="primary">
                 <Avatar
                     sx={{ bgcolor: 'grey' }}
                     alt={name} 
@@ -82,6 +84,7 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                     {name.charAt(0).toUpperCase()}
                     {/* {name} */}
                 </Avatar>
+                </Badge>
             </ListItemAvatar>
             <ListItemText primary={name} secondary={description} /> 
 
@@ -163,7 +166,8 @@ const DaoCard = ({ dao }: DaoCardProps) => {
                                 sx={{ bgcolor: blue[500] }}
                                 />
                             </IconButton> */}
-                            <Person fontSize="large" color="primary"/>
+                            
+                                <Person fontSize="large" color="primary"/>
                         </Tooltip> 
                     )
                 }

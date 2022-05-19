@@ -37,7 +37,7 @@ const VotesList: React.FC = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const [openAddVoteDialog, setOpenAddVoteDialog] = useState(false);
     const dispatch = useAppDispatch();
-    const { voteSessions, voteModule, daoNote } = useAppSelector(VotesSelector);
+    const { voteSessions, voteModule, daoNote } = useAppSelector((state: any) => state.daos);// useAppSelector(VotesSelector);
     const address = searchParams.get('dao');
     const handleSubmit = (formValues: AddVoteFormValues, { resetForm }: any): void => {
         console.log("handleSubmit form add vote start " + address );
@@ -53,7 +53,7 @@ const VotesList: React.FC = () => {
         dispatch(
             fetchVoteSessions(address)
         );
-    }, [searchParams, isFormSubmitted])
+    }, [searchParams, isFormSubmitted, voteSessions])
 
     const formik: FormikProps<AddVoteFormValues> = useFormik({
         initialValues: {
@@ -93,9 +93,11 @@ const VotesList: React.FC = () => {
             <List>
                 {console.log(" voteSession near voteCard " + voteSessions?.length)}
                 {
-                    voteSessions?.map((voteSession: VoteSession) => (
-                        <VoteCard key={voteSession.id} voteSession={voteSession} />
-                    ))
+                    voteSessions && (
+                        voteSessions?.map((voteSession: VoteSession) => (
+                            <VoteCard key={voteSession.id} voteSession={voteSession} />
+                        ))
+                    )
                 }
             </List>
             <Button variant="contained" endIcon={<AddIcon />}

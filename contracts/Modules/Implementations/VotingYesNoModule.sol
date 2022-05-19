@@ -16,7 +16,7 @@ contract VotingYesNoModule is Ownable {
     mapping(address => mapping(uint256 => voteSession)) public voteSessions;
     mapping(address => Data.DaoMember) public daos;
     mapping(address => mapping(address => bool)) public authorizedContracts;
-    address private memberModuleAddress;
+    mapping(address => address) private memberModuleAddresses;
 
     struct voteSession {
         address creatorAddress;
@@ -84,11 +84,11 @@ contract VotingYesNoModule is Ownable {
     }
 
     function getVoteSessionInfo(address _contractDao, uint256 voteSessionId) external view returns(address creatorAddress,
-                                                                                                                            uint256 creationTime,
-                                                                                                                            string memory name,
-                                                                                                                            string memory description,
-                                                                                                                            bool isTerminated,
-                                                                                                                            uint256 votersCount) {
+                                                                                                    uint256 creationTime,
+                                                                                                    string memory name,
+                                                                                                    string memory description,
+                                                                                                    bool isTerminated,
+                                                                                                    uint256 votersCount) {
          creatorAddress = voteSessions[_contractDao][voteSessionId].creatorAddress;
          creationTime = voteSessions[_contractDao][voteSessionId].creationTime;
          name = voteSessions[_contractDao][voteSessionId].name;
@@ -113,7 +113,7 @@ contract VotingYesNoModule is Ownable {
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].creatorAddress = msg.sender;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].duration = durationEnum(duration);
         ++voteSessionsCount[_contractDao];
-        
+
         emit VoteSessionCreated(msg.sender, name);
     }
 
@@ -121,7 +121,7 @@ contract VotingYesNoModule is Ownable {
         require(voteSessions[_contractDao][voteSessionId].isCreated, "Vote session not found");
         require(isVoteSessionDurationExpired(_contractDao, voteSessionId), "Vote session terminated");
         require(hasVoted(_contractDao, voteSessionId, msg.sender), "Already voted");
-        require(IMembersDao(memberModuleAddress).isActiveMember(_contractDao, msg.sender), "Not DAO member");
+        require(IMembersDao(memberModuleAddresses[_contractDao]).isActiveMember(_contractDao, msg.sender), "Not DAO member");
 
         //add voter address
         voteSessions[_contractDao][voteSessionId].voterAddresses[voteSessions[_contractDao][voteSessionId].votersCount] = msg.sender;
@@ -160,7 +160,7 @@ contract VotingYesNoModule is Ownable {
         require(!daos[_contractDao].isActive, "Dao already added");
         daos[_contractDao].isActive = true;
         daos[_contractDao].addressDao = _contractDao;
-        memberModuleAddress = DaoBase(_contractDao).getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
+        memberModuleAddresses[_contractDao] = DaoBase(_contractDao).getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
     }
 
     function authorizeContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {

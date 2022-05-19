@@ -36,12 +36,9 @@ import { DEFAULT_PAGE, PAGE_LIMIT } from './constants';
 import './Component.scss';
 
 const Votes: React.FC = () => {
-    const [addressToInvite, setAddressToInvite] = useState("");
     const [ searchParams, setSearchParams ] = useSearchParams({});
-    //const { citizensCount, citizenNote, account } = useAppSelector(homeSelector);
     const { voteSessions, voteModule, account } = useAppSelector(VotesSelector);
     const dispatch = useAppDispatch();
-    //const address = searchParams.get('dao');
 
     const handleNoteClose = (): void => {
         dispatch(clearDaoNote());
@@ -56,8 +53,8 @@ const Votes: React.FC = () => {
         if (!account) return;
 
         const address = searchParams.get('dao');
-        fetchVoteSessions(address);
-    }, [searchParams, account])
+        dispatch(fetchVoteSessions(address));
+    }, [searchParams, account, voteSessions])
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number): void => {
         setSearchParams({ page: String(page)});

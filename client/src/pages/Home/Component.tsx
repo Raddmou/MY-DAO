@@ -267,7 +267,7 @@ const Home: React.FC = () => {
             {console.log("voteSessions " + voteSessions?.length)}
             {console.log("voteModule " + voteModule?.isCharged)}
             
-            {
+            {/* {
                  voteModule?.isCharged && (
                     <Dialog onClose={handleVoteClose} open={Boolean(voteModule?.isCharged)}  maxWidth="md" fullWidth>
                         <DialogTitle>Vote Module YES NO</DialogTitle>
@@ -292,79 +292,6 @@ const Home: React.FC = () => {
                                     </div> 
                                     <VotesList dao={daoNote} 
                                         voteSession={voteSessions}/>
-
-                                {/* <Typography variant="h5" component="div">General</Typography>
-                                <div className="textInput">
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        id="name"
-                                        name="name"
-                                        label="Name"
-                                        disabled
-                                        value={daoNote.name}
-                                    />
-                                </div> */}
-                                
-                                {/* {daoNote.modules?.some(a => a.type = "MemberModule") && (
-                                <div>
-                                    <FormControl>
-                                        <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
-                                        <RadioGroup
-                                            row
-                                            aria-labelledby="demo-row-radio-buttons-group-label"
-                                            name="membershipMode"
-                                            value={daoNote.membershipMode}
-                                        >
-                                            <FormControlLabel value="0" control={<Radio />} label="Invitation" disabled/>                                                         
-                                            <FormControlLabel value="2" control={<Radio />} label="Open" disabled/>  
-                                            <FormControlLabel value="1" control={<Radio />} label="Request" disabled/>
-                                        </RadioGroup>
-                                    </FormControl>
-                                </div>)} */}
-                                {/* <div className="textInput">
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        id="description"
-                                        name="description"
-                                        label="Description"
-                                        multiline
-                                        rows={4}
-                                        disabled
-                                        value={daoNote.description}
-                                    />
-                                </div>
-                                <div className="textInput">
-                                        <TextField
-                                            size="small"
-                                            fullWidth
-                                            multiline
-                                            rows={8}
-                                            id="note"
-                                            name="note"
-                                            label="Rules"
-                                            disabled
-                                            value={daoNote.note}
-                                        />
-                                </div>   
-
-                                <div className="textInput">
-                                    <FormControlLabel
-                                        control={
-                                            <Switch  
-                                                size="small"
-                                                id="visibility"
-                                                name="visibility"
-                                                disabled
-                                                value={daoNote.visibility}
-                                            />
-                                            }
-                                            label="Private"
-                                    />
-                                    
-                                </div> */}
-
                             </Box>   
                         </DialogContent>
                         <DialogActions>
@@ -372,7 +299,7 @@ const Home: React.FC = () => {
                         </DialogActions>
                     </Dialog>
                 )
-            }
+            } */}
 
 
 

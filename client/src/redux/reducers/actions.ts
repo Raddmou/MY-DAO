@@ -49,7 +49,7 @@ export const setDaoNote = (daoNote: Dao): ActionTypes => ({
 });
 
 export const setVoteSessions = (voteSessions: VoteSession[]): ActionTypes => ({
-    type: FETCH_NOTE_SUCCESS,
+    type: FETCH_VOTE_SESSIONS_SUCCESS,
     voteSessions
 });
 
@@ -213,6 +213,7 @@ export const fetchVoteSessions = (address: Address) => async (dispatch: any) => 
         var voteModule = {isCharged: true};
         dispatch(setVoteModule(voteModule));
         console.log(" setVoteModule in fetchVoteSessions " + voteModule.isCharged);
+        console.log(" voteSessions " + voteSessions.length);
     } catch (error) {
         console.error(error);
     }

@@ -70,7 +70,7 @@ export default function(state = initialDaoState, action: ActionTypes): DaosState
     case FETCH_VOTE_SESSIONS_SUCCESS: {
       return {
         ...state,
-        voteSessions: action.VoteSession
+        voteSessions: action.VoteSessions
       };
     }
     case FETCH_VOTES_SUCCESS: {
