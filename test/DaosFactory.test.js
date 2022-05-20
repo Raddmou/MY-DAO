@@ -246,20 +246,22 @@ contract("DaosFactory", ([deployer, user1, user2, user3]) => {
       })
     })
     describe("DAO INVITE", () => {
+      var daoInvite;
+      var addrDao;
       describe("Init", () => {
         it("create DAO Invite", async () => {
-          daoOpen = await DaosFactoryInstance.createDAO(
+          daoInvite = await DaosFactoryInstance.createDAO(
             name,
             description,
             0,
             rules,
-            [{moduleType:typeHashMember, moduleCode:CodeHashOpen}],
+            [{moduleType:typeHashMember, moduleCode:CodeHashInvite}],
             {from: user1}
           );
-          daoOpen.receipt.status.should.equal(true);
+          daoInvite.receipt.status.should.equal(true);
         })
         it("Check Dao Owner", async () => {
-          var addrDao = daoOpen.logs[2].args.daoAddress;
+          addrDao = daoInvite.logs[2].args.daoAddress;
           var owner = await DaosFactoryInstance.daoOwners(addrDao, user1);
           owner.should.equal(true);
         })
@@ -270,7 +272,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3]) => {
           deployedDao = await DaosFactoryInstance.getdeployedDaos();
         })
         it("Check Deployed DAOs", async () => {
-          var addrDao = daoOpen.logs[2].args.daoAddress;
+          // var addrDao = daoInvite.logs[2].args.daoAddress;
           deployedDao[deployedDao.length - 1].owner.should.equal(user1);
           deployedDao[deployedDao.length - 1].daoAddress.should.equal(addrDao);
         })
@@ -325,6 +327,30 @@ contract("DaosFactory", ([deployer, user1, user2, user3]) => {
           await inviteMembershipModuleInstance
             .authorizeAddress(addrDao, addrInviteMembership, {from: user2})
             .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
+        })
+        describe("Check Membership", () => {
+          it("Check Members Count", async () => {
+            const memberCount = await inviteMembershipModuleInstance.getMembersCount(addrDao);
+            memberCount.toString().should.equal('1');
+          })
+          it("Check Address By Id", async () => {
+            const addrById = await inviteMembershipModuleInstance.getAddrById(addrDao, 0);
+            addrById.should.equal(user1);
+          })
+          it("Check Member Info", async () => {
+            const memberInfo = await inviteMembershipModuleInstance.getMemberInfo(addrDao, user1);
+            memberInfo.status.should.equal('3');
+            // console.log("                  Join Time = " + memberInfo.joinTime);
+            // memberInfo.joinTime.should.be.a('number')
+          })
+          it("Check isActive Member Success", async () => {
+            const isActive = await inviteMembershipModuleInstance.isActiveMember(addrDao, user1);
+            isActive.should.equal(true);
+          })
+          it("Check isActive Member Fail", async () => {
+            const isActive = await inviteMembershipModuleInstance.isActiveMember(addrDao, user2);
+            isActive.should.equal(false);
+          })
         })
       })
     })
