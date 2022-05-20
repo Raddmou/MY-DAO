@@ -54,7 +54,7 @@ const Votes: React.FC = () => {
 
         const address = searchParams.get('dao');
         dispatch(fetchVoteSessions(address));
-    }, [searchParams, account, voteSessions])
+    }, [searchParams, account])
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number): void => {
         setSearchParams({ page: String(page)});
@@ -70,13 +70,16 @@ const Votes: React.FC = () => {
 
     return (
         <div className='homeContainer'>
+
+
+
             <VotesList />
             
-            {/* <Pagination
+            <Pagination
                 limit={PAGE_LIMIT}
-                total={daosCount}
+                total={voteSessions?.length}
                 handleChange={handleChange}
-            /> */}
+            />
         </div>
     )
 };

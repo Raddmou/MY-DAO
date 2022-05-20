@@ -159,68 +159,7 @@ const AddDao: React.FC = () => {
                             helperText={touched.name && errors.name}
                         />
                     </div>
-                    
-                    {/* <div>
-                    <Stack direction="row" spacing={1} alignItems="center">
-                        <Typography>Private</Typography>
-                        <AntSwitch inputProps={{ 'aria-label': 'ant design' }} 
-                            id="visibility"
-                            name="visibility"
-                            value={formik.values.visibility}
-                            onChange={formik.handleChange}/>
-                        <Typography>Public</Typography>
-                    </Stack>
-                    </div>*/}
 
-
-
-                    {/* <div> 
-                    <FormControl>
-                        <FormLabel id="demo-row-radio-buttons-group-label">Membership mode</FormLabel>
-                        <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="membershipMode"
-                            value={formik.values.membershipMode}
-                            onChange={formik.handleChange}
-                        >
-                            <FormControlLabel value="0" control={<Radio />} label="Invitation" />                          
-                            <FormControlLabel value="2" control={<Radio />} label="Open" /> 
-                            <FormControlLabel value="1" control={<Radio />} label="Request"/>
-                        </RadioGroup>
-                    </FormControl>
-                    </div> */}
-
-
-
-
-                    {/* <div className="textInput">
-                        <TextField
-                            size="small"
-                            fullWidth
-                            id="age"
-                            name="age"
-                            label="Age"
-                            type="number"
-                            value={formik.values.age}
-                            onChange={formik.handleChange}
-                            error={touched.age && Boolean(errors.age)}
-                            helperText={touched.age && errors.age}
-                        />
-                    </div> */}
-                    {/* <div className="textInput">
-                        <TextField
-                            size="small"
-                            fullWidth
-                            id="city"
-                            name="city"
-                            label="City"
-                            value={formik.values.city}
-                            onChange={formik.handleChange}
-                            error={touched.city && Boolean(errors.city)}
-                            helperText={touched.city && errors.city}
-                        />
-                    </div> */}
                     <div className="textInput">
                         <TextField
                             size="small"
@@ -267,18 +206,6 @@ const AddDao: React.FC = () => {
                                         label="Private"
                                 />     
                         </FormControl>
-                            {/* <FormControlLabel
-                        control={
-                            <Switch  
-                            size="small"
-                            id="visibility"
-                            name="visibility"
-                            value={formik.values.visibility}
-                            onChange={formik.handleChange}
-                        />
-                                }
-                        label="Public"
-                        /> */}
                         
                     </div>
                     <Typography variant="h6" component="div">Modules</Typography>

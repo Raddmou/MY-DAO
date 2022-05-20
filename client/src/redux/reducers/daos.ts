@@ -23,7 +23,7 @@ const initialDaoState: DaosState = {
   daoNote: '',
   daosCount: 0,
   voteModule: null,
-  voteSessions: []
+  voteSessions: [],
 };
 
 export default function(state = initialDaoState, action: ActionTypes): DaosState {
@@ -68,9 +68,14 @@ export default function(state = initialDaoState, action: ActionTypes): DaosState
       };
     }
     case FETCH_VOTE_SESSIONS_SUCCESS: {
+      const voteSessions = action.voteSessions.sort((a: any, b: any) => b.id - a.id);
+
       return {
         ...state,
-        voteSessions: action.VoteSessions
+        voteSessions,
+        pending: false,
+        error: false,
+        daoNote: ''
       };
     }
     case FETCH_VOTES_SUCCESS: {

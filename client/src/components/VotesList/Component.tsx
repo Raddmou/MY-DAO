@@ -50,10 +50,10 @@ const VotesList: React.FC = () => {
     };
 
     useEffect((): void => {
-        dispatch(
-            fetchVoteSessions(address)
-        );
-    }, [searchParams, isFormSubmitted, voteSessions])
+        // dispatch(
+        //     fetchVoteSessions(address)
+        // );
+    }, [searchParams, isFormSubmitted])
 
     const formik: FormikProps<AddVoteFormValues> = useFormik({
         initialValues: {
@@ -89,21 +89,37 @@ const VotesList: React.FC = () => {
                     <Alert severity="info">Please confirm creating new vote in MetaMask.</Alert>
                 )
             }
+            <Box
+            sx={{
+                '& > :not(style)': {
+                m: 1,
+                },
+            }}
+            >
             <Typography variant="h5" component="div">Vote sessions</Typography>
-            <List>
-                {console.log(" voteSession near voteCard " + voteSessions?.length)}
-                {
-                    voteSessions && (
-                        voteSessions?.map((voteSession: VoteSession) => (
-                            <VoteCard key={voteSession.id} voteSession={voteSession} />
-                        ))
-                    )
-                }
-            </List>
             <Button variant="contained" endIcon={<AddIcon />}
                 onClick={HandleOpenDialog}>
                 Create new vote
             </Button>
+            <List>
+                {console.log(" voteSession near voteCard " + voteSessions?.length)}
+                {console.log(" voteSession id " + voteSessions?.id)}
+                {console.log(" voteSession name " + voteSessions)}
+                {
+                    voteSessions && (
+                        voteSessions?.map((voteSession: VoteSession) => (
+                            <VoteCard key={voteSession.id} 
+                            voteSession={voteSession}
+                            id={voteSession.id} 
+                            address={address}/>
+                        ))
+                    )
+                }
+            </List>
+
+            </Box> 
+            
+            
 
             {
                 openAddVoteDialog && (

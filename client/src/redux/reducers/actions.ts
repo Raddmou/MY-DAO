@@ -264,6 +264,19 @@ export const inviteToDao = (address: Address, addressToInvite: Address) => async
     }
 };
 
+export const voteYesNo = (address: Address, voteSession: number, response: number) => async (dispatch: any) => {
+    try {
+        const success = await daosAPI.voteYesNo(address, voteSession, response);
+        if(success)
+        {         
+            await fetchVoteSessions(address);
+        }
+            
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 export const getDaoDescription = (address: Address) => async (dispatch: any) => {
     try {
         const daoDescription = await daosAPI.fetchDescription(address);

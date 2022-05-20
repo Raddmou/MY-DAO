@@ -335,37 +335,44 @@ export const daosAPI = {
             console.log(" vote module address " + moduleVote.moduleAddress);
             
             //foreach vote session
-            for (let i = 0; i < votesCount.length; i++) {
-                var voters = [];
-                //General infos:
-                console.log(" compteur i " + i);
-                var voteSessionInfo =  await contractVoteYesNoModule.methods.getVoteSessionInfo(address, i).call();
-                console.log(" voteSessionInfo " + voteSessionInfo?.name);
-                //vote resuluts:
-                var votersCount = await contractVoteYesNoModule.methods.getVotersCount(address, i).call();
-                console.log(" votersCount " + votersCount);
-                //foreach voter in a vote session
-                var voteResult = [];
-                for (let j = 0; j < votersCount.length; j++) {
-                    console.log(" compteur j " + j);
-                    var voterAdress = await contractVoteYesNoModule.methods.getVoterAddressById(address, i, j).call();
-                    console.log(" voterAdress " + voterAdress);
-                    voters.push(voterAdress);
-                    var voteInfo = await contractVoteYesNoModule.methods.getVoteInfo(address, i, voterAdress).call();
-                    console.log(" voteInfo " + voteInfo);
-                    voteResult.push({response: voteInfo.response
-                        , voter: voteInfo.voterAdress
-                        , voted: voteInfo.voted});
+            if(votesCount > 0)
+            {
+                for (let i = 0; i < votesCount; i++) {
+                    var voters = [];
+                    //General infos:
+                    console.log(" compteur i " + i);
+                    var voteSessionInfo =  await contractVoteYesNoModule.methods.getVoteSessionInfo(address, i).call();
+                    console.log(" voteSessionInfo " + voteSessionInfo?.name);
+                    //vote resuluts:
+                    var votersCount = await contractVoteYesNoModule.methods.getVotersCount(address, i).call();
+                    console.log(" votersCount " + votersCount);
+                    //foreach voter in a vote session
+                    var voteResult = [];
+                    if(votersCount > 0)
+                    {
+                        for (let j = 0; j < votersCount.length; j++) {
+                            console.log(" compteur j " + j);
+                            var voterAdress = await contractVoteYesNoModule.methods.getVoterAddressById(address, i, j).call();
+                            console.log(" voterAdress " + voterAdress);
+                            voters.push(voterAdress);
+                            var voteInfo = await contractVoteYesNoModule.methods.getVoteInfo(address, i, voterAdress).call();
+                            console.log(" voteInfo " + voteInfo);
+                            voteResult.push({response: voteInfo.response
+                                , voter: voteInfo.voterAdress
+                                , voted: voteInfo.voted});
+                        }
+                    }
+                    votes.push({creationTime: voteSessionInfo.creationTime
+                        , name: voteSessionInfo.name
+                        , description: voteSessionInfo.description
+                        , isTerminated: voteSessionInfo.isTerminated
+                        , votersCount: voteSessionInfo.votersCount
+                        , voters: voters
+                        , voteResult: voteResult
+                        , duration: voteSessionInfo.duration
+                        , id: i
+                    });
                 }
-                votes.push({creationTime: voteSessionInfo.creationTime
-                    , name: voteSessionInfo.name
-                    , description: voteSessionInfo.description
-                    , isTerminated: voteSessionInfo.isTerminated
-                    , votersCount: voteSessionInfo.votersCount
-                    , voters: voters
-                    , voteResult: voteResult
-                    , id: i
-                });
             }
         }
 
@@ -590,6 +597,27 @@ export const daosAPI = {
 
 
         await contractMembershipModule.methods.inviteMember(address, addressToInvite).send({ 
+            from: (window as any).ethereum.selectedAddress })
+			.on("receipt",function(receipt){
+				console.log(receipt);  
+                return true;
+			})
+			.on("error",function(error, receipt){
+				console.log(error);
+				console.log(receipt);
+                return false;
+			});		
+        return true;
+        
+    },
+
+    voteYesNo: async (address: Address, voteSession: number, response: number): Promise<boolean> => {
+        const contractDao = await contractDaoProvider.getContract(address);
+        const moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE).call();
+        const contractVoteModule = await contractVotingYesNoModuleProvider.getContract(moduleVote.moduleAddress);
+
+
+        await contractVoteModule.methods.vote(address, voteSession, response).send({ 
             from: (window as any).ethereum.selectedAddress })
 			.on("receipt",function(receipt){
 				console.log(receipt);  

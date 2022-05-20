@@ -88,13 +88,15 @@ contract VotingYesNoModule is Ownable {
                                                                                                     string memory name,
                                                                                                     string memory description,
                                                                                                     bool isTerminated,
-                                                                                                    uint256 votersCount) {
+                                                                                                    uint256 votersCount,
+                                                                                                    durationEnum duration) {
          creatorAddress = voteSessions[_contractDao][voteSessionId].creatorAddress;
          creationTime = voteSessions[_contractDao][voteSessionId].creationTime;
          name = voteSessions[_contractDao][voteSessionId].name;
          description = voteSessions[_contractDao][voteSessionId].description;
          isTerminated = voteSessions[_contractDao][voteSessionId].isTerminated;
          votersCount = voteSessions[_contractDao][voteSessionId].votersCount;
+         duration = voteSessions[_contractDao][voteSessionId].duration;
     }
 
     function getVoterAddressById(address _contractDao, uint256 voteSessionId, uint256 voterId) external view returns(address) {
@@ -106,8 +108,10 @@ contract VotingYesNoModule is Ownable {
     }
 
     function createVote(address _contractDao, string memory name, string memory description, uint8 duration) public {
+        require(IMembersDao(memberModuleAddresses[_contractDao]).isActiveMember(_contractDao, msg.sender), "Not DAO member");
         
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].isTerminated = false;
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].isCreated = false;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].name = name;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].description = description;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].creatorAddress = msg.sender;
