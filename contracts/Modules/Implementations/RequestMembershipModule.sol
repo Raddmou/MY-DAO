@@ -57,6 +57,8 @@ contract RequestMembershipModule is Ownable {
     }
 
     function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
+        require(daos[_contractDao].members[addressMember].status == Data.memberStatus.notMember
+            , "Invalid Member: must be not a member");
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
         daos[_contractDao].members[addressMember].joinTime = block.timestamp;
@@ -65,11 +67,15 @@ contract RequestMembershipModule is Ownable {
     }
 
     function acceptMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
+        require(daos[_contractDao].members[addressMember].status == Data.memberStatus.asking
+            , "Invalid Member: must be asking");
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         emit MemberAccepted(addressMember, msg.sender);
     }
 
     function requestJoin(address _contractDao) public onlyNotActiveMembers(_contractDao) {
+        require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.notMember
+            , "Invalid Member: must be not a member");
         daos[_contractDao].members[msg.sender].status = Data.memberStatus.asking;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = msg.sender;
         daos[_contractDao].members[msg.sender].joinTime = block.timestamp;

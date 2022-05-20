@@ -27,7 +27,7 @@ contract InviteMembershipModule is Ownable {
     modifier onlyActiveMembersOrAuthorizeAddress(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.active
         || authorizedAddress[_contractDao][msg.sender] == true
-        || msg.sender == owner(), "Not authorized AAAA");
+        || msg.sender == owner(), "Not authorized");
         _;
     }
 
@@ -37,7 +37,7 @@ contract InviteMembershipModule is Ownable {
     }
 
     modifier onlyAuthorizeAddress(address _contractDao) {
-        require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized A");
+        require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized");
         _;
     }
 
@@ -57,6 +57,8 @@ contract InviteMembershipModule is Ownable {
     }
 
     function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
+        require(daos[_contractDao].members[addressMember].status == Data.memberStatus.notMember
+            , "Invalid Member: must be not a member");
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
         daos[_contractDao].members[addressMember].joinTime = block.timestamp;
@@ -70,11 +72,13 @@ contract InviteMembershipModule is Ownable {
     }
 
     function inviteMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
+        require(daos[_contractDao].members[addressMember].status == Data.memberStatus.notMember
+            , "Invalid Member: must be not a member");
         daos[_contractDao].members[addressMember].status = Data.memberStatus.invited;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
         daos[_contractDao].members[addressMember].joinTime = block.timestamp;
         ++daos[_contractDao].membersCount;
-        emit MemberInvited(msg.sender, addressMember);
+        emit MemberInvited(addressMember, msg.sender);
     }
 
     function requestJoin(address _contractDao) public onlyNotActiveMembers(_contractDao) {
