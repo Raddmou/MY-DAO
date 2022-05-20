@@ -163,11 +163,11 @@ contract VotingYesNoModule is Ownable {
         memberModuleAddresses[_contractDao] = DaoBase(_contractDao).getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
     }
 
-    function authorizeContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
+    function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
         authorizedContracts[_contractDao][_contractAddress] = true;
     }
 
-    function denyContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
+    function denyAddress(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
         authorizedContracts[_contractDao][_contractAddress] = false;
     }
 }

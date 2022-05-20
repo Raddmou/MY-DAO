@@ -14,7 +14,7 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
   bytes8 public moduleType = bytes8(keccak256(abi.encode("FundsModule")));
 
   mapping(address => daosInfo) public daos;
-  mapping(address => mapping(address => bool)) public authorizedContracts; // address = DaoBaseAddr => address authorized => true or false
+  mapping(address => mapping(address => bool)) public authorizedAddress; // address = DaoBaseAddr => address authorized => true or false
   mapping(address => address) private memberModuleAddress; // address = DaoBaseAddr => address memberModule
   mapping(address => mapping(uint256 => daoDonationsInfo)) public daoDonations; // addresDaoBase => nonce => funds
   mapping(address => uint256) public nonce;
@@ -39,28 +39,30 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     _transferOwnership(_contractFactory);
   }
 
-  modifier onlyAuthorizeContracts(address _contractDao) {
-    require(authorizedContracts[_contractDao][msg.sender] == true, "Not authorized");
+  modifier onlyAuthorizeAddress(address _contractDao) {
+    require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized");
     _;
   }
-  modifier onlyAuthorizeContractsOrOwner(address _contractDao) {
-    require(authorizedContracts[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
+  modifier onlyAuthorizeAddressOrOwner(address _contractDao) {
+    require(authorizedAddress[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
     _;
   }
-  function addDao(address _contractDao, address _memberDao) external onlyAuthorizeContractsOrOwner(_contractDao) {
+  function addDao(address _contractDao, address _memberDao) external onlyAuthorizeAddressOrOwner(_contractDao) {
     require(!daos[_contractDao].isActive, "Dao already added");
     daos[_contractDao].isActive = true;
     daos[_contractDao].addressDao = _contractDao;
     nonce[_contractDao] = 0;
-    memberModuleAddress[_contractDao] = DaoBase(_contractDao).getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
+    authorizedAddress[_contractDao][_memberDao] = true;
+    memberModuleAddress[_contractDao] = DaoBase(_contractDao)
+      .getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
   }
 
-  function authorizeContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
-    authorizedContracts[_contractDao][_contractAddress] = true;
+  function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
+    authorizedAddress[_contractDao][_contractAddress] = true;
   }
 
-  function denyContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
-    authorizedContracts[_contractDao][_contractAddress] = false;
+  function denyAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
+    authorizedAddress[_contractDao][_contractAddress] = false;
   }
 
   function createNewDonation(
@@ -68,7 +70,7 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     address _receiver,
     uint256 _startTime,
     uint256 _endTime
-  ) external onlyAuthorizeContractsOrOwner(_contractDao) {
+  ) external onlyAuthorizeAddressOrOwner(_contractDao) {
     daoDonationsInfo memory info;
     info.id = nonce[_contractDao];
     info.receiverFunds = _receiver;
@@ -80,16 +82,17 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     daoDonations[_contractDao][nonce[_contractDao]] = info;
   }
   function donate(address _contractDao, uint256 _nonce) external payable {
-    daoDonationsInfo memory info = daoDonations[_contractDao][nonce[_contractDao]];
+    daoDonationsInfo memory info = daoDonations[_contractDao][_nonce];
     require(info.endTime > block.timestamp, "Outdated");
     info.funds = info.funds.add(msg.value);
     info.donationsCount = info.donationsCount.add(1);
-    daoDonations[_contractDao][nonce[_contractDao]] = info;
+    daoDonations[_contractDao][_nonce] = info;
   }
   function sendFunds(address _contractDao, uint256 _nonce) external nonReentrant() {
-    daoDonationsInfo memory info = daoDonations[_contractDao][nonce[_contractDao]];
+    daoDonationsInfo memory info = daoDonations[_contractDao][_nonce];
     require(info.endTime < block.timestamp, "Failed not finish");
     (bool success, ) = payable(info.receiverFunds).call{value: info.funds}("");
+    require(success, "Fail withdraw");
     info.funds = 0;
     info.isActive = false;
   }

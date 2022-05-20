@@ -12,7 +12,7 @@ require('chai')
 
 ADDR0 = "0x0000000000000000000000000000000000000000";
 
-contract("DaosFactory", ([deployer, user1, user2]) => {
+contract("DaosFactory", ([deployer, user1, user2, user3]) => {
   var DaosFactoryInstance;
   const typeHashMember = "0x3ecd26b50115fb28";
   const typeHashVote = "0xac1652a4636fa1ef";
@@ -174,6 +174,26 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
           addrOpenMembership = OpenMembershipModuleInstance.address
           // console.log(OpenMembershipModuleInstance)
         })
+        it("Add Authorized Address", async () => {
+          const AuthorizedAddress = await OpenMembershipModuleInstance
+            .authorizeAddress(addrDao, addrOpenMembership, {from: user1})
+          AuthorizedAddress.receipt.status.should.equal(true);
+        })
+        it("Check Authorized Address", async () => {
+          const AuthorizedAddress = await OpenMembershipModuleInstance
+            .authorizedAddress(addrDao, addrOpenMembership);
+          AuthorizedAddress.should.equal(true);
+        })
+        it("Deny Authorized Address", async () => {
+          const denyAddress = await OpenMembershipModuleInstance
+            .denyAddress(addrDao, addrOpenMembership, {from: user1});
+          denyAddress.receipt.status.should.equal(true);
+        })
+        it("Fail to Authorized Address when not Authorized", async () => {
+          await OpenMembershipModuleInstance
+            .authorizeAddress(addrDao, addrOpenMembership, {from: user2})
+            .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
+        })
         describe("Check Membership", () => {
           it("Check Members Count", async () => {
             const memberCount = await OpenMembershipModuleInstance.getMembersCount(addrDao);
@@ -186,7 +206,7 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
           it("Check Member Info", async () => {
             const memberInfo = await OpenMembershipModuleInstance.getMemberInfo(addrDao, user1);
             memberInfo.status.should.equal('3');
-            console.log("                  Join Time = " + memberInfo.joinTime);
+            // console.log("                  Join Time = " + memberInfo.joinTime);
             // memberInfo.joinTime.should.be.a('number')
           })
           it("Check isActive Member Success", async () => {
@@ -197,16 +217,6 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
             const isActive = await OpenMembershipModuleInstance.isActiveMember(addrDao, user2);
             isActive.should.equal(false);
           })
-          // it("Add Authorized Contract", async () => {
-          //   const AuthorizedContract = await OpenMembershipModuleInstance
-          //     .authorizeContract(addrDao, addrOpenMembership, {from: deployer})
-          //   console.log(AuthorizedContract)
-          // })
-          // it("Check Authorized Contract", async () => {
-          //   const AuthorizedContract = await OpenMembershipModuleInstance
-          //     .authorizedContracts(addrDao, addrOpenMembership);
-          //   AuthorizedContract.should.equal(true);
-          // })
         })
         describe("Join The Open DAO", () => {
           var join;
@@ -228,18 +238,29 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
             const res = log.args;
             res.memberJoined.should.equal(user2);
           })
+          it("Fail When User2 join again", async () => {
+            await OpenMembershipModuleInstance.join(addrDao, {from: user2})
+              .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
+          })
         })
       })
     })
     describe("DAO INVITE", () => {
       describe("Init", () => {
         it("create DAO Invite", async () => {
-          daoOpen = await DaosFactoryInstance.createDAO(name, description, 0, rules, [{moduleType:typeHashMember, moduleCode:CodeHashOpen}], {from: user2});
+          daoOpen = await DaosFactoryInstance.createDAO(
+            name,
+            description,
+            0,
+            rules,
+            [{moduleType:typeHashMember, moduleCode:CodeHashOpen}],
+            {from: user1}
+          );
           daoOpen.receipt.status.should.equal(true);
         })
         it("Check Dao Owner", async () => {
           var addrDao = daoOpen.logs[2].args.daoAddress;
-          var owner = await DaosFactoryInstance.daoOwners(addrDao, user2);
+          var owner = await DaosFactoryInstance.daoOwners(addrDao, user1);
           owner.should.equal(true);
         })
       })
@@ -247,11 +268,10 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
         var deployedDao;
         it("Get Deployed DAOs", async () => {
           deployedDao = await DaosFactoryInstance.getdeployedDaos();
-          // console.log(deployedDao)
         })
         it("Check Deployed DAOs", async () => {
           var addrDao = daoOpen.logs[2].args.daoAddress;
-          deployedDao[deployedDao.length - 1].owner.should.equal(user2);
+          deployedDao[deployedDao.length - 1].owner.should.equal(user1);
           deployedDao[deployedDao.length - 1].daoAddress.should.equal(addrDao);
         })
       })
@@ -269,14 +289,42 @@ contract("DaosFactory", ([deployer, user1, user2]) => {
           log.event.should.equal('OwnershipTransferred');
           const res = log.args;
           res.previousOwner.should.equal(DaosFactoryInstance.address);
-          res.newOwner.should.equal(user2);
+          res.newOwner.should.equal(user1);
         })
         it("check event DaoCreated", async () => {
           const log = daoOpen.logs[2];
           log.event.should.equal('DaoCreated');
           const res = log.args;
-          res.user.should.equal(user2, "correct user");
+          res.user.should.equal(user1, "correct user");
           res.name.should.equal(name, "correct name");
+        })
+      })
+      describe("InviteMembershipModule", () => {
+        var inviteMembershipModuleInstance;
+        var addrInviteMembership;
+        it("Recover Invite Membership Module", async () => {
+          inviteMembershipModuleInstance = await InviteMembershipModule.deployed();
+          addrInviteMembership = inviteMembershipModuleInstance.address
+        })
+        it("Add Authorized Address", async () => {
+          const AuthorizedAddress = await inviteMembershipModuleInstance
+            .authorizeAddress(addrDao, user3, {from: user1})
+          AuthorizedAddress.receipt.status.should.equal(true);
+        })
+        it("Check Authorized Address", async () => {
+          const AuthorizedAddress = await inviteMembershipModuleInstance
+            .authorizedAddress(addrDao, user1);
+          AuthorizedAddress.should.equal(true);
+        })
+        it("Deny Authorized Address", async () => {
+          const denyAddress = await inviteMembershipModuleInstance
+            .denyAddress(addrDao, addrInviteMembership, {from: user1});
+          denyAddress.receipt.status.should.equal(true);
+        })
+        it("Fail to Authorized Address when not Authorized", async () => {
+          await inviteMembershipModuleInstance
+            .authorizeAddress(addrDao, addrInviteMembership, {from: user2})
+            .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
         })
       })
     })

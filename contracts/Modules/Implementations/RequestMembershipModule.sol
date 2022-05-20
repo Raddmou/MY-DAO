@@ -12,7 +12,7 @@ contract RequestMembershipModule is Ownable {
   bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
   mapping(address => Data.DaoMember) public daos;
   Data.visibilityEnum public visibility;
-  mapping(address => mapping(address => bool)) public authorizedContracts;
+  mapping(address => mapping(address => bool)) public authorizedAddress;
 
   event MemberAdded(address newMember, address adderAddress);
   event MemberAccepted(address newMember, address acceptorAddress);
@@ -24,9 +24,9 @@ contract RequestMembershipModule is Ownable {
     _transferOwnership(_contractFactory);
   }
 
-    modifier onlyActiveMembersOrAuthorizeContracts(address _contractDao) {
+    modifier onlyActiveMembersOrAuthorizeAddress(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.active 
-        || authorizedContracts[_contractDao][msg.sender] == true
+        || authorizedAddress[_contractDao][msg.sender] == true
         || msg.sender == owner(), "Not authorized");
         _;
     }
@@ -36,13 +36,13 @@ contract RequestMembershipModule is Ownable {
         _;
     }
 
-    modifier onlyAuthorizeContracts(address _contractDao) {
-        require(authorizedContracts[_contractDao][msg.sender] == true, "Not authorized");
+    modifier onlyAuthorizeAddress(address _contractDao) {
+        require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized");
         _;
     }
 
-    modifier onlyAuthorizeContractsOrOwner(address _contractDao) {
-        require(authorizedContracts[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
+    modifier onlyAuthorizeAddressOrOwner(address _contractDao) {
+        require(authorizedAddress[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
         _;
     }
 
@@ -56,7 +56,7 @@ contract RequestMembershipModule is Ownable {
         return daos[_contractDao].membersCount;
     }
 
-    function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeContracts(_contractDao) {
+    function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
         daos[_contractDao].members[addressMember].joinTime = block.timestamp;
@@ -64,7 +64,7 @@ contract RequestMembershipModule is Ownable {
         emit MemberAdded(addressMember, msg.sender);
     }
 
-    function acceptMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeContracts(_contractDao) {
+    function acceptMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
         daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
         emit MemberAccepted(addressMember, msg.sender);
     }
@@ -81,18 +81,19 @@ contract RequestMembershipModule is Ownable {
         return daos[_contractDao].members[addressMember].status == Data.memberStatus.active;
     }
 
-    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeContractsOrOwner(_contractDao) {
+    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeAddressOrOwner(_contractDao) {
         require(!daos[_contractDao].isActive, "Dao already added");
         daos[_contractDao].isActive = true;
         daos[_contractDao].addressDao = _contractDao;
         addMember(_contractDao, _memberDao);
+         authorizedAddress[_contractDao][_memberDao] = true;
     }
 
-    function authorizeContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
-        authorizedContracts[_contractDao][_contractAddress] = true;
+    function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
+        authorizedAddress[_contractDao][_contractAddress] = true;
     }
 
-    function denyContract(address _contractDao, address _contractAddress) external onlyAuthorizeContractsOrOwner(_contractDao) {
-        authorizedContracts[_contractDao][_contractAddress] = false;
+    function denyAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
+        authorizedAddress[_contractDao][_contractAddress] = false;
     }
 }
