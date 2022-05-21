@@ -61,6 +61,7 @@ library Data {
     uint256 id;
     address moduleAddress;
     bool isActive;
+    bool isExclusive;
     bytes8 moduleType; 
     bytes8 moduleCode; 
     string moduleInfo;

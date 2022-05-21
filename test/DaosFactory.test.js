@@ -83,7 +83,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       describe("Success", () => {
         var newModule;
         it("Add New Module", async () => {
-          newModule = await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, {from :deployer});
+          newModule = await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, true, {from :deployer});
         })
         it("Check Module Added", async () => {
           newModule = await DaosFactoryInstance.modulesDaos(typeHashTest, codeHashTest);
@@ -96,7 +96,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       })
       describe("Fail", () => {
         it("Fail Add Module Caller Not Owner", async () => {
-          await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, {from: user1})
+          await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, true, {from: user1})
             .should.be.rejectedWith("VM Exception while processing transaction: revert Ownable: caller is not the owne");
         })
       })

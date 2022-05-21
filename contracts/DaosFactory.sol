@@ -97,10 +97,14 @@ contract DaosFactory is Ownable {
   * @param _code: the code hash of the module see ./Data.sol
   * @return address of the module deployed
   */
-  function _activateModuleForDao(address _daoAddress, bytes8 _type, bytes8 _code) internal returns(address) {
+  function _activateModuleForDao(address _daoAddress, bytes8 _type, bytes8 _code)
+    internal
+    returns(address)
+  {
     require(modulesDaos[_type][_code].isActive == true, "Module not found");
     IModule(modulesDaos[_type][_code].moduleAddress).addDao(_daoAddress, msg.sender);
-    DaoBase(_daoAddress).addModule(_type, _code, modulesDaos[_type][_code].moduleAddress);
+    DaoBase(_daoAddress).addModule(_type, _code, modulesDaos[_type][_code].moduleAddress,
+      modulesDaos[_type][_code].isExclusive);
     return modulesDaos[_type][_code].moduleAddress;  
   }
 
@@ -110,19 +114,20 @@ contract DaosFactory is Ownable {
   * @param _moduleAddress: the dao address to add
   * @param _type: the type hash of the module see ./Data.sol
   * @param _code: the code hash of the module see ./Data.sol
+  * @param _isExclusive: if the type module can have multiple modules
   */
-  function addModule(address _moduleAddress, bytes8 _type, bytes8 _code) public onlyOwner {
+  function addModule(address _moduleAddress, bytes8 _type, bytes8 _code, bool _isExclusive)
+    public
+    onlyOwner
+  {
     Data.Module memory module;
     module.isActive = true;
+    module.isExclusive = _isExclusive;
     module.moduleType = _type;
     module.moduleCode = _code;
     module.moduleAddress = _moduleAddress;
     modulesDaos[_type][_code] = module;
   }
-
-  //  function getDaosAddressByMember(address _addressMember) external view returns (address[] memory) {
-  //   return (membershipDaos[_addressMember]);
-  // }
 
   /*
   * @title createDao
@@ -151,12 +156,14 @@ contract DaosFactory is Ownable {
     _dao.daoAddress = address(dao);
     daos.push(_dao);
 
-    for(uint i=0; i<_modules.length; ++i){
+    for(uint i=0; i < _modules.length; ++i) {
       require(modulesDaos[_modules[i].moduleType][_modules[i].moduleCode].isActive == true, "Module not found");
-        _activateModuleForDao(address(dao)
-        , _modules[i].moduleType
-        , _modules[i].moduleCode);
-     }
+      _activateModuleForDao(
+        address(dao),
+        _modules[i].moduleType,
+        _modules[i].moduleCode
+      );
+    }
     daoOwners[address(dao)][msg.sender] = true;
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }

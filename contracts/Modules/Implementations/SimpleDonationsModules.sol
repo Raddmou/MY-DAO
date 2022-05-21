@@ -54,7 +54,7 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     nonce[_contractDao] = 0;
     authorizedAddress[_contractDao][_memberDao] = true;
     memberModuleAddress[_contractDao] = DaoBase(_contractDao)
-      .getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
+      .getModuleDataByIndex(bytes8(keccak256(abi.encode("MemberModule"))), 0).moduleAddress;
   }
 
   function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {

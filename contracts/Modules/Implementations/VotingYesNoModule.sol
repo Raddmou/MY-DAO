@@ -72,7 +72,11 @@ contract VotingYesNoModule is Ownable {
     //     return (voteSessions[_contractDao][voteSessionId]);
     // }
 
-    function getVoteInfo(address _contractDao, uint256 voteSessionId, address _voterAddress) external view returns(voteResult memory) {
+    function getVoteInfo(address _contractDao, uint256 voteSessionId, address _voterAddress)
+        external
+        view
+        returns(voteResult memory)
+    {
         return(voteSessions[_contractDao][voteSessionId].votes[_voterAddress]);
     }
 
@@ -98,15 +102,30 @@ contract VotingYesNoModule is Ownable {
         duration = voteSessions[_contractDao][voteSessionId].duration;
     }
 
-    function getVoterAddressById(address _contractDao, uint256 voteSessionId, uint256 voterId) external view returns(address) {
+    function getVoterAddressById(address _contractDao, uint256 voteSessionId, uint256 voterId)
+        external
+        view
+        returns(address)
+    {
         return voteSessions[_contractDao][voteSessionId].voterAddresses[voterId];
     }
 
-    function getVotersCount(address _contractDao, uint256 voteSessionId) external view returns(uint256) {
+    function getVotersCount(address _contractDao, uint256 voteSessionId)
+        external
+        view
+        returns(uint256)
+    {
         return voteSessions[_contractDao][voteSessionId].votersCount;
     }
 
-    function createVote(address _contractDao, string memory name, string memory description, uint256 duration) public {
+    function createVote(
+        address _contractDao,
+        string memory name,
+        string memory description,
+        uint256 duration
+    )   
+        public
+    {
         require(IMembersDao(memberModuleAddresses[_contractDao]).isActiveMember(_contractDao, msg.sender), "Not DAO member");
         
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].isTerminated = false;
@@ -141,25 +160,39 @@ contract VotingYesNoModule is Ownable {
         emit Voted(msg.sender, voteSessionId, responseEnum(response));
     }
 
-    function hasVoted(address _contractDao, uint256 voteSessionId, address voter) public view returns (bool) {
+    function hasVoted(address _contractDao, uint256 voteSessionId, address voter)
+        public
+        view
+        returns(bool)
+    {
         require(voteSessions[_contractDao][voteSessionId].isCreated, "Vote session not found");
 
         return voteSessions[_contractDao][voteSessionId].votes[voter].voted;
     }
 
-    function addDao(address _contractDao, address _memberDao) external onlyAuthorizeAddressOrOwner(_contractDao) {
+    function addDao(address _contractDao, address _memberDao)
+        external
+        onlyAuthorizeAddressOrOwner(_contractDao)
+    {
         require(!daos[_contractDao].isActive, "Dao already added");
         daos[_contractDao].isActive = true;
         daos[_contractDao].addressDao = _contractDao;
-        memberModuleAddresses[_contractDao] = DaoBase(_contractDao).getModuleData(bytes8(keccak256(abi.encode("MemberModule")))).moduleAddress;
+        memberModuleAddresses[_contractDao] = DaoBase(_contractDao)
+            .getModuleDataByIndex(bytes8(keccak256(abi.encode("MemberModule"))), 0).moduleAddress;
         authorizedAddress[_contractDao][_memberDao] = true;
     }
 
-    function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
+    function authorizeAddress(address _contractDao, address _contractAddress)
+        external
+        onlyAuthorizeAddressOrOwner(_contractDao)
+    {
         authorizedAddress[_contractDao][_contractAddress] = true;
     }
 
-    function denyAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
+    function denyAddress(address _contractDao, address _contractAddress)
+        external
+        onlyAuthorizeAddressOrOwner(_contractDao)
+    {
         authorizedAddress[_contractDao][_contractAddress] = false;
     }
 }
