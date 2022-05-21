@@ -1,4 +1,7 @@
-const { default: Web3 } = require('web3');
+// const { default: Web3 } = require('web3');
+// const { ethers } = require('ethers');
+
+const { web3 } = require('@openzeppelin/test-helpers/src/setup');
 
 const DaosFactory = artifacts.require("./DaosFactory.sol");
 const InviteMembershipModule = artifacts.require("./InviteMembershipModule.sol");
@@ -100,13 +103,13 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
     })
   })
   describe("DAO", async () => {
-    var daoOpen;
-    var addrDao;
     const name = "TEST";
     const description = "TEST";
     const rules = "ole ola nene nana wagmi";
 
     describe("DAO OPEN", () => {
+      var daoOpen;
+      var addrDao;
       describe("Init", () => {
         it("Create DAO Open", async () => {
           daoOpen = await DaosFactoryInstance.createDAO(name, description, 0, rules, [{moduleType:typeHashMember, moduleCode:CodeHashOpen}], {from: user1});
@@ -566,13 +569,13 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
             const isActive = await requestMembershipModuleInstance.isActiveMember(addrDao, user1);
             isActive.should.equal(true);
           })
-          it("Check isActive Member Fail", async () => {
+          it("Check isActive Member notMember", async () => {
             const isActive = await requestMembershipModuleInstance.isActiveMember(addrDao, user2);
             isActive.should.equal(false);
           })
         })
         describe("Join the Request DAO", () => {
-          describe("Invite User2", () => {
+          describe("User2 request Owner accept", () => {
             var success;
             it("Fail to join when not Approved", async () => {
               await requestMembershipModuleInstance.addMember(addrDao, user2, {from: user2})
@@ -619,6 +622,240 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
             it("Fail When User2 accepted again", async () => {
               await requestMembershipModuleInstance.acceptMember(addrDao, user2, {from: user1})
                 .should.be.rejectedWith("VM Exception while processing transaction: revert Invalid Member: must be asking");
+            })
+          })
+          describe("User3 request Member accept", () => {
+            var success;
+            it("Fail to join when not Approved", async () => {
+              await requestMembershipModuleInstance.addMember(addrDao, user3, {from: user3})
+               .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
+            })
+            it("Request to Join the DAO", async () => {
+              success = await requestMembershipModuleInstance.requestJoin(addrDao, {from: user3});
+              success.receipt.status.should.equal(true);
+            })
+            it("Check Event", async () => {
+              const log = success.logs[0];
+              log.event.should.equal('MemberAskedJoin');
+              const res = log.args;
+              res.memberRequestor.should.equal(user3);
+            })
+            it("Check if info is correct", async () => {
+              const info = await requestMembershipModuleInstance.getMemberInfo(addrDao, user3);
+              info.status.toString().should.equal("2");
+            })
+            it("Fail to request again", async () => {
+              await requestMembershipModuleInstance.requestJoin(addrDao, {from: user3})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Invalid Member: must be not a member");
+            })
+            var acceptMember;
+            it("User2 Accepted by a Member", async () => {
+              acceptMember = await requestMembershipModuleInstance.acceptMember(addrDao, user3, {from: user2});
+              acceptMember.receipt.status.should.equal(true);
+            })
+            it("Check Event acceptMember", async () => {
+              const log = acceptMember.logs[0];
+              log.event.should.equal("MemberAccepted");
+              const res = log.args;
+              res.newMember.should.equal(user3);
+              res.acceptorAddress.should.equal(user2);
+            })
+            it("Check status isActive", async () => {
+              const isActive = await requestMembershipModuleInstance.isActiveMember(addrDao, user3);
+              isActive.should.equal(true);
+            })
+            it("Check Members Count Updated", async () => {
+              const memberCount = await requestMembershipModuleInstance.getMembersCount(addrDao);
+              memberCount.toString().should.equal('3');
+            })
+            it("Fail When User3 accepted again", async () => {
+              await requestMembershipModuleInstance.acceptMember(addrDao, user3, {from: user2})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Invalid Member: must be asking");
+            })
+          })
+          describe("Check addMember function", () => {
+            var addMember;
+            it("Add user4 with addMember", async () => {
+              addMember = await requestMembershipModuleInstance.addMember(addrDao, user4, {from: user2});
+              addMember.receipt.status.should.equal(true);
+            })
+            it("Check Event", async () => {
+              const log = addMember.logs[0];
+              log.event.should.equal("MemberAdded");
+              const res = log.args;
+              res.newMember.should.equal(user4);
+              res.adderAddress.should.equal(user2);
+            })
+            it("Check Members Count Updated", async () => {
+              const memberCount = await requestMembershipModuleInstance.getMembersCount(addrDao);
+              memberCount.toString().should.equal('4');
+            })
+            it("Failed to add active member", async () => {
+              await requestMembershipModuleInstance.addMember(addrDao, user4, {from: user2})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Invalid Member: must be not a member");
+            })
+          })
+        })
+      })
+    })
+
+    describe("DAO MEMBERSHIP(OPEN) + VOTING YES NO", () => {
+      var daoOpenVoteYesNo;
+      var addrDao;
+      describe("Init", () => {
+        it("create DAO Open + Vote Yes No", async () => {
+          daoOpenVoteYesNo = await DaosFactoryInstance.createDAO(
+            name,
+            description,
+            0,
+            rules,
+            [
+              {moduleType:typeHashMember, moduleCode:CodeHashOpen},
+              {moduleType:typeHashVote, moduleCode:CodeHashVoteYesNo}
+            ],
+            {from: user1}
+          );
+          daoOpenVoteYesNo.receipt.status.should.equal(true);
+        })
+        it("Check Dao Owner", async () => {
+          addrDao = daoOpenVoteYesNo.logs[2].args.daoAddress;
+          var owner = await DaosFactoryInstance.daoOwners(addrDao, user1);
+          owner.should.equal(true);
+        })
+      })
+      describe("Deployed DAOs", () => {
+        var deployedDao;
+        it("Get Deployed DAOs", async () => {
+          deployedDao = await DaosFactoryInstance.getdeployedDaos();
+        })
+        it("Check Deployed DAOs", async () => {
+          deployedDao.length.should.equal(4);
+          deployedDao[deployedDao.length - 1].owner.should.equal(user1);
+          deployedDao[deployedDao.length - 1].daoAddress.should.equal(addrDao);
+        })
+      })
+      describe("Event", () => {
+        it("check event OwnershipTransferred 1", async () => {
+          const log = daoOpenVoteYesNo.logs[0];
+          log.event.should.equal('OwnershipTransferred');
+          const res = log.args;
+          res.previousOwner.should.equal(ADDR0);
+          res.newOwner.should.equal(DaosFactoryInstance.address);
+        })
+        it("check event OwnershipTransferred 2", async () => {
+          const log = daoOpenVoteYesNo.logs[1];
+          log.event.should.equal('OwnershipTransferred');
+          const res = log.args;
+          res.previousOwner.should.equal(DaosFactoryInstance.address);
+          res.newOwner.should.equal(user1);
+        })
+        it("check event DaoCreated", async () => {
+          const log = daoOpenVoteYesNo.logs[2];
+          log.event.should.equal('DaoCreated');
+          const res = log.args;
+          res.user.should.equal(user1, "correct user");
+          res.name.should.equal(name, "correct name");
+        })
+      })
+      describe("VotingYesNoModule", () => {
+        var votingYesNoModuleInstance;
+        var addrVotingYesNoModule;
+        it("Recover Invite Membership Module", async () => {
+          votingYesNoModuleInstance = await VotingYesNoModule.deployed();
+          addrVotingYesNoModule = votingYesNoModuleInstance.address
+        })
+        it("Add Authorized Address", async () => {
+          const AuthorizedAddress = await votingYesNoModuleInstance
+            .authorizeAddress(addrDao, user3, {from: user1})
+          AuthorizedAddress.receipt.status.should.equal(true);
+        })
+        it("Check Authorized Address", async () => {
+          const AuthorizedAddress = await votingYesNoModuleInstance
+            .authorizedAddress(addrDao, user1);
+          AuthorizedAddress.should.equal(true);
+        })
+        it("Deny Authorized Address", async () => {
+          const denyAddress = await votingYesNoModuleInstance
+            .denyAddress(addrDao, user3, {from: user1});
+          denyAddress.receipt.status.should.equal(true);
+        })
+        it("Fail to Authorized Address when not Authorized", async () => {
+          await votingYesNoModuleInstance
+            .authorizeAddress(addrDao, addrVotingYesNoModule, {from: user2})
+            .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
+        })
+        describe("VotingYesNo", () => {
+          var voteSession;
+          var name = "test vote";
+          var description = "this is a test WAGMI";
+          describe("Create Vote", () => {
+            it("Check Vote Count equal 0", async () => {
+              const voteCount = await votingYesNoModuleInstance.getVotesCount(addrDao);
+              voteCount.toString().should.equal('0');
+            })
+            it("Create a New Vote", async () => {
+              const oneDay = 1 * 24 * 60 * 60;
+              voteSession = await votingYesNoModuleInstance
+                .createVote(addrDao, name, description, oneDay, {from: user1});
+              voteSession.receipt.status.should.equal(true);
+            })
+            it("Check Event", async () => {
+              const log = voteSession.logs[0];
+              log.event.should.equal('VoteSessionCreated');
+              const res = log.args;
+              res.creatorAddress.should.equal(user1);
+              res.name.should.equal(name);
+              res.description.should.equal(description);
+              res.id.toString().should.equal('0');
+            })
+            it("Check Vote Count Equal 1", async () => {
+              const voteCount = await votingYesNoModuleInstance.getVotesCount(addrDao);
+              voteCount.toString().should.equal('1');
+            })
+            it("Check Vote Session Info", async () => {
+              const currentBlock = await web3.eth.getBlock("latest");
+              const voteSessionInfo = await votingYesNoModuleInstance
+                .getVoteSessionInfo(addrDao, 0);
+              voteSessionInfo.creatorAddress.should.equal(user1);
+              voteSessionInfo.creationTime.toString().should.equal(currentBlock.timestamp.toString());
+              voteSessionInfo.name.should.equal(name);
+              voteSessionInfo.description.should.equal(description);
+              voteSessionInfo.isTerminated.should.equal(false);
+              voteSessionInfo.votersCount.toString().should.equal('0');
+            })
+            it("Failed To Create Bote When Not Member Of The DAO", async () => {
+              await votingYesNoModuleInstance
+                .createVote(addrDao, name, description, 1, {from: user4})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Not DAO member");
+            })
+          })
+          describe("Vote", () => {
+            var newVote;
+            it("Add Vote", async () => {
+              const res = await votingYesNoModuleInstance.hasVoted(addrDao, 0, user1);
+              res.should.equal(false);
+              newVote = await votingYesNoModuleInstance.vote(addrDao, 0, 1, {from: user1});
+              newVote.receipt.status.should.equal(true);
+            })
+            it("Check Event", async () => {
+              const log = newVote.logs[0];
+              log.event.should.equal('Voted');
+              const res = log.args;
+              res.voterAddress.should.equal(user1);
+              res.voteSessionId.toString().should.equal('0');
+              res.response.toString().should.equal("1");
+            })
+            it("Check Vote Status", async () => {
+              const res = await votingYesNoModuleInstance.hasVoted(addrDao, 0, user1);
+              res.should.equal(true);
+            })
+            it("Check Voter Count", async () => {
+              const voterCount = await votingYesNoModuleInstance.getVotersCount(addrDao, 0);
+              voterCount.toString().should.equal("1");
+            })
+            it("Fail to Vote Again", async () => {
+              await votingYesNoModuleInstance.vote(addrDao, 0, 1, {from: user1})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Already voted");
             })
           })
         })
