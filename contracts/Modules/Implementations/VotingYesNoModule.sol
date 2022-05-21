@@ -111,7 +111,7 @@ contract VotingYesNoModule is Ownable {
         require(IMembersDao(memberModuleAddresses[_contractDao]).isActiveMember(_contractDao, msg.sender), "Not DAO member");
         
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].isTerminated = false;
-        voteSessions[_contractDao][voteSessionsCount[_contractDao]].isCreated = false;
+        voteSessions[_contractDao][voteSessionsCount[_contractDao]].isCreated = true;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].name = name;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].description = description;
         voteSessions[_contractDao][voteSessionsCount[_contractDao]].creatorAddress = msg.sender;
