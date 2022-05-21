@@ -1,6 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
+/*
+* @title Data
+* @author chixx.eth & mourad
+* @notice Library of struct and enum for MY-DAO
+*/
 library Data {
   struct member {
     memberStatus status;
@@ -55,7 +60,6 @@ library Data {
   struct Module {
     uint256 id;
     address moduleAddress;
-    // IModule module;
     bool isActive;
     bytes8 moduleType; 
     bytes8 moduleCode; 
