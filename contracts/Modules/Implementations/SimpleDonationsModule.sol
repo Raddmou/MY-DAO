@@ -8,22 +8,72 @@ import "../../Data.sol";
 import "../Interfaces/IMembersDAO.sol";
 import "../../DaoBase.sol";
 
+/**
+* @title SimpleDonationsModule
+* @author chixx.eth & mourad
+* @notice Module Simple Donations: create a new donation instance with a preset address for 
+* the receiver that cant be changed. When instance finish everyone can send funds to receiver address
+*/
 contract SimpleDonationsModule is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
+
+  /// @notice store the module code hash
   bytes8 public moduleCode = bytes8(keccak256(abi.encode("SimpleDonationsModule")));
+
+  /// @notice store the module code hash
   bytes8 public moduleType = bytes8(keccak256(abi.encode("FundsModule")));
 
+  /**
+  * @notice store daos info
+  * @dev param address is address of the daoBase. return daosInfo struct
+  */
   mapping(address => daosInfo) public daos;
-  mapping(address => mapping(address => bool)) public authorizedAddress; // address = DaoBaseAddr => address authorized => true or false
+
+  /**
+  * @notice store authorized address
+  * @dev param0 address is address of the daoBase, param1 address to authorized. return bool true or false
+  */
+  mapping(address => mapping(address => bool)) public authorizedAddress;
+  
+  /**
+  * @notice store membership module address of the daoBase
+  * @dev param0 address is address of the daoBase. return address of the membership module
+  */
   mapping(address => address) private memberModuleAddress; // address = DaoBaseAddr => address memberModule
+  
+  /**
+  * @notice store each instance of donation
+  * @dev param0 address is address of the daoBase, param 1 the nonce of the instance.
+  * return dao donation instance info see struct daoDonationsInfo
+  */
   mapping(address => mapping(uint256 => daoDonationsInfo)) public daoDonations; // addresDaoBase => nonce => funds
+  
+  /**
+  * @notice store total nonce of a dao
+  * @dev param0 address is address of the daoBase. return the total nonce
+  */
   mapping(address => uint256) public nonce;
 
+  /**
+  * @notice store dao info
+  * @return addressDao the address of the dao
+  * @return isActive if the dao is active
+  */
   struct daosInfo {
     address addressDao;
     bool isActive;
   }
 
+  /**
+  * @notice store dao donation instance info
+  * @return id the id of the instance linked to the nonce
+  * @return funds how many funds the instance have
+  * @return receiverFunds address of the receiver of the funds
+  * @return donationsCount how many user have donate funds
+  * @return startTime timestamp of the start of the donation instance
+  * @return endTime timestamp of the end of the donation instance
+  * @return isActivate bool true or false if its active or not
+  */
   struct daoDonationsInfo {
     uint256 id;
     uint256 funds;
@@ -37,20 +87,31 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
   event CreateNewDonations(address contractDao, address receiver, uint256 startTime, uint256 endTime);
   event NewDonation(address contractDao, uint256 nonce, uint256 amount);
 
+  /**
+  * @notice constructor change the owner to be the DaosFactory
+  * @dev param 0 address of the DaosFactory
+  */
   constructor(address _contractFactory) {
     _transferOwnership(_contractFactory);
   }
 
+  /// @notice check if msg.sender is authorized
   modifier onlyAuthorizeAddress(address _contractDao) {
     require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized");
     _;
   }
 
+  /// @notice check if msg.sender is authorized
   modifier onlyAuthorizeAddressOrOwner(address _contractDao) {
     require(authorizedAddress[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
     _;
   }
 
+  /**
+  * @notice link a dao to SimpleDonationsModule
+  * @param _contractDao address of the dao
+  * @param _memberDao address of the user of the dao in this case the owner of the dao
+  */
   function addDao(address _contractDao, address _memberDao) external onlyAuthorizeAddressOrOwner(_contractDao) {
     require(!daos[_contractDao].isActive, "Dao already added");
     daos[_contractDao].isActive = true;
@@ -61,14 +122,29 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
       .getModuleDataByIndex(bytes8(keccak256(abi.encode("MemberModule"))), 0).moduleAddress;
   }
 
+  /**
+  * @notice authorize a new address
+  * @param _contractDao address of the dao
+  * @param _contractAddress address that will be authorized
+  */
   function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
     authorizedAddress[_contractDao][_contractAddress] = true;
   }
 
+  /**
+  * @notice deny a authorized address
+  * @param _contractDao address of the dao
+  * @param _contractAddress address that will be deny
+  */
   function denyAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
     authorizedAddress[_contractDao][_contractAddress] = false;
   }
 
+  /**
+  * @notice deny a authorized address
+  * @param _contractDao address of the dao
+  * @param _receiver address that will be deny
+  */
   function createNewDonation(
     address _contractDao,
     address _receiver,
@@ -91,6 +167,12 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     emit CreateNewDonations(_contractDao, _receiver, _startTime, _endTime);
   }
 
+  /**
+  * @notice donate fund
+  * @dev only ETH can be send
+  * @param _contractDao address of the dao
+  * @param _nonce id of the donation instance
+  */
   function donate(address _contractDao, uint256 _nonce) external payable {
     daoDonationsInfo memory info = daoDonations[_contractDao][_nonce];
     require(info.endTime > block.timestamp, "Outdated");
@@ -100,6 +182,12 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     emit NewDonation(_contractDao, _nonce, msg.value);
   }
 
+  /**
+  * @notice send fund to receiver
+  * @dev the donation instance need to be finish
+  * @param _contractDao address of the dao
+  * @param _nonce id of the donation instance
+  */
   function sendFunds(address _contractDao, uint256 _nonce) external nonReentrant() {
     daoDonationsInfo memory info = daoDonations[_contractDao][_nonce];
     require(info.endTime < block.timestamp, "Failed not finish");
