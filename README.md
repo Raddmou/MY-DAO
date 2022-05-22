@@ -100,7 +100,7 @@ Dev documentation:
 -   [Deployed Addresses](./docs/deployed_addresses.md)
 -   [Design Pattern Decisions](./docs/design_pattern_decisions.md)
 -   [Natspec](./docs/natspec/)
--   [Test Explication](./docs/developers/test_explication.md)
+-   [Test Explication](./docs/test_explication.md)
 -   [Smart Contracts README.MD](./docs/contracts/)
 
 ## Copyright
