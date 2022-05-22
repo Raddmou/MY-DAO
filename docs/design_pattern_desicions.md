@@ -99,6 +99,11 @@ Smart contract side:
 # Guard Check
 We make extensive use of "modifier" and "require" to check that all conditions are met to safely execute a function. In our functions, checks are performed first. In a second step, if all the checks have succeeded, the effects on the state variables of the current contract are carried out
 
+# Checks Effects Interactions
+As soon as a function offers the possibility of token transfer, we must ensure that there is no re-entrancy exploit risk.
+We have used ReentrancyGuard de OpenZipelin:
+https://docs.openzeppelin.com/contracts/2.x/api/utils
+
 # Solidity version
 We have decided to use to 0.8.9 since OpenZeppelin supports it.
 
