@@ -4,116 +4,181 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Data.sol";
 
+/*
+* @title DaoBase
+* @author chixx.eth & mourad
+* @notice DaoBase is deployed every time DaosFactory create a new dao. DaoBase store all the
+* modules for the dao
+*/
 contract DaoBase is Ownable {
+  /*
+  * @title name
+  * @notice name of the dao
+  */
   string public name;
+
+  /*
+  * @title description
+  * @notice description of the dao
+  */
   string public description;
+
+  /*
+  * @title rules
+  * @notice rules of the dao
+  */
   string public rules;
+
+  /*
+  * @title visibility
+  * @notice visibility of the dao if anyone can see it on MY-DAO protocol
+  */
   Data.visibilityEnum public visibility;
-  uint256 public modulesCount;
 
+  /*
+  * @title modulesCount
+  * @notice counter of modules of the dao
+  */
+  uint256 public modulesTypeCount;
+
+  /*
+  * @title authorizedContracts
+  * @notice store address that can interact with only owner functions
+  * @param 0: address of a user or a contract
+  * return true or false if the address is authorized
+  */
   mapping(address => bool) private authorizedContracts;
-  mapping(address => bool) owners;
+
+  /*
+  * @title moduleType
+  * @notice 
+  * @param 0: id of the module
+  * return module type hash
+  */
   mapping(uint256 => bytes8) public moduleType;
-  mapping(bytes8 => Data.Module) public modules;
-  // type => module {code, type, descr}
-  // member => module { "nft member", "", ""}
 
-  //membership => module
-  //nft member => module
+  /*
+  * @title modules
+  * @notice store module info
+  * @param 0: type hash
+  * return array of module, module type & code hash see >/Data.sol
+  */
+  mapping(bytes8 => Data.Module[]) public modules;
 
-  //type => module
+  event DaoCreated(address daoAddress, address creatorAddress);
+  event ModuleAdded(string moduleCode, address moduleAddress, address adderAddress);
 
-  modifier onlyOwners() {
-    require(owners[msg.sender], "Invalid User: DaoBase");
-    _;
-  }
-  // modifier onlyActiveMembersOrAuthorizeContracts() {
-  //       require(members[msg.sender].status == Data.memberStatus.active || authorizedContracts[msg.sender] == true, "Not authorized");
-  //       _;
-  //   }
-
-  //   modifier onlyNotActiveMembers() {
-  //       require(members[msg.sender].status != Data.memberStatus.active, "Not authorized");
-  //       _;
-  //   }
-
+  /*
+  * @title onlyAuthorizeContracts
+  * @notice check if msg.sender is autorized
+  */
   modifier onlyAuthorizeContracts() {
     require(authorizedContracts[msg.sender] == true, "Not authorized");
     _;
   }
 
+  /*
+  * @title onlyAuthorizeContractsOrOwner
+  * @notice check if msg.sender is autorized
+  */
   modifier onlyAuthorizeContractsOrOwner() {
     require(((authorizedContracts[msg.sender] == true) || msg.sender == owner()), "Not authorized");
     _;
   }
 
-  event DaoCreated(address daoAddress, address creatorAddress);
-  event ModuleAdded(string moduleCode, address moduleAddress, address adderAddress);
-
-  constructor(string memory _name, string memory _description, Data.visibilityEnum _visibility
-            , string memory _rules) {
+   /*
+  * @title constructor
+  * @notice contract creation actions/settings
+  * @param _name: name of the Dao
+  * @param _description: description of the Dao
+  * @param _visibility: visibility of the dao see ./Data.sol
+  * @param _rules: rules of the Dao
+  */
+  constructor(
+    string memory _name,
+    string memory _description,
+    Data.visibilityEnum _visibility,
+    string memory _rules
+  ) {
     name = _name;
     description = _description;
-    rules = rules;
+    rules = _rules;
     visibility = _visibility;
-    owners[msg.sender] = true;
   }
 
-  // function activateModule(ModuleType _moduleType, bytes8 memory code) external onlyOwners() {
-  //     modules[code].isActive = true;
-  //     modules[code].moduleAddress = _moduleAddress;
-  //     emit ModuleAdded(code, _moduleAddress, msg.sender);
-  // }
-  function hash(string memory _name) public pure returns(bytes8) {
-    return (bytes8(keccak256(abi.encode(_name))));
+  /*
+  * @title addModule
+  * @notice add new module to the Dao
+  * @param _type: type hash of the module
+  * @param _code: code hash of the module
+  * @param _moduleAddr: address of the module
+  * @param _isExclusive: if the type module can have multiple module
+  */
+  function addModule(bytes8 _type, bytes8 _code, address _moduleAddr, bool _isExclusive)
+    public
+    onlyAuthorizeContractsOrOwner()
+  {
+    Data.Module memory newModule;
+    newModule.isActive = true;
+    newModule.isExclusive = _isExclusive;
+    newModule.id = modulesTypeCount;
+    newModule.moduleAddress = _moduleAddr;
+    newModule.moduleCode = _code;
+    newModule.moduleType = _type;
+    if(modules[_type].length == 0) {
+      moduleType[modulesTypeCount] = _type;
+      ++modulesTypeCount;
+    } else {
+      require(modules[_type][0].isExclusive == false, "Already have this type of module");
+    }
+    modules[_type].push(newModule);
   }
-  
-//   function activateModule(address _moduleAddress, string memory code) external {
-//       modules[code].isActive = true;
-//       modules[code].moduleAddress = _moduleAddress;
-//       emit ModuleAdded(code, _moduleAddress, msg.sender);
-//   }
 
-
-  function addModule(bytes8 _type, bytes8 _code, address _moduleAddr) public onlyAuthorizeContractsOrOwner() {
-    modules[_type].isActive = true;
-    modules[_type].id = modulesCount;
-    modules[_type].moduleAddress = _moduleAddr;
-    modules[_type].moduleCode = _code;
-    modules[_type].moduleType = _type;
-    moduleType[modulesCount] = _type;
-    ++modulesCount;
-  }
-
+  /*
+  * @title authorizeContract only authorized
+  * @notice authorized a new address
+  * @param _contractAddress: address to authorized
+  * return array of module, module type & code hash see >/Data.sol
+  */
   function authorizeContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
     authorizedContracts[_contractAddress] = true;
   }
 
+  /*
+  * @title denyContract only authorized
+  * @notice deny address authorized
+  * @param _contractAddress: address to deny authorization
+  */
   function denyContract(address _contractAddress) external onlyAuthorizeContractsOrOwner() {
     authorizedContracts[_contractAddress] = false;
   }
 
-  // get info
-  // function getAllModuleHash() public view returns(bytes8[] memory allModuleHash) {
-  //   allModuleHash = new bytes8[](modulesCount);
-  //   for (uint256 i = 0; i < modulesCount; ++i) {
-  //     allModuleHash[i] = moduleType[i];
-  //   }
-  // }
-  // function getAllModulesData() public view returns(Data.Module[] memory allModuleData) {
-  //   allModuleData = new Data.Module[](modulesCount);
-  //   for (uint256 i = 0; i < modulesCount; ++i) {
-  //     allModuleData[i] = modules[moduleType[i]];
-  //   }
-  // }
-  // function getModuleData(uint256 _moduleId) public view returns(Data.Module memory) {
-  //   return(modules[moduleType[_moduleId]]);
-  // }
-
-  function getModuleData(bytes8 _type) public view returns(Data.Module memory) {
+  /*
+  * @title getModuleData
+  * @notice get array of all module from a certain type
+  * @param _type: type hash of the module
+  * return array of module, module type & code hash see >/Data.sol
+  */
+  function getModuleData(bytes8 _type) public view returns(Data.Module[] memory) {
     return(modules[_type]);
   }
 
+  /*
+  * @title getModuleDataByIndex
+  * @notice get module info from a certain type from a specific index
+  * @param _type: type hash of the module
+  * @param _index: index of the module
+  * return module type & code hash see >/Data.sol
+  */
+  function getModuleDataByIndex(bytes8 _type, uint256 _index) external view returns(Data.Module memory) {
+    return(modules[_type][_index]);
+  }
+
+  /*
+  * @title getDaoSettings
+  * @notice get Dao info
+  * return info of the dao see ./Data.sol
+  */
   function getDaoSettings() public view returns(Data.DaoSettings memory) {
     Data.DaoSettings memory daoSettings;
     daoSettings.name = name;
@@ -121,21 +186,4 @@ contract DaoBase is Ownable {
     daoSettings.visibility = visibility;
     return daoSettings;
   }
-
-  // function memberInfo(address _member) external view returns(Data.member memory) {
-  //   return(IDao(modules[0]).getMemberInfo(_member));
-  // }
-  // function addrId(uint256 _id) external view returns(address) {
-  //   return(IDao(modules[0]).getAddrById(_id));
-  // }
-  // function totalId() external view returns(uint256) {
-  //   return(IDao(modules[0]).getTotalId());
-  // }
-  // function daoInfo() external view returns(Data.daoData memory) {
-  //   return(IDao(modules[0]).getInfoDao());
-  // }
-  // add new modules
-  // function addModule(address _newModule) external {
-  //   modules.push(_newModule);
-  // }
 }

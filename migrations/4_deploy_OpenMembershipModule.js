@@ -10,5 +10,6 @@ module.exports = async function(deployer) {
 
   daosFactory.addModule(openMembership.address
     , typeHashed
-    , codeHashed);
+    , codeHashed
+    , true);
 };

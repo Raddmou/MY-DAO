@@ -1,6 +1,3 @@
-// const { default: Web3 } = require('web3');
-// const { ethers } = require('ethers');
-
 const { web3 } = require('@openzeppelin/test-helpers/src/setup');
 
 const DaosFactory = artifacts.require("./DaosFactory.sol");
@@ -8,6 +5,7 @@ const InviteMembershipModule = artifacts.require("./InviteMembershipModule.sol")
 const OpenMembershipModule = artifacts.require("./OpenMembershipModule.sol");
 const RequestMembershipModule = artifacts.require("./RequestMembershipModule.sol");
 const VotingYesNoModule = artifacts.require("./VotingYesNoModule.sol");
+const SimpleDonationsModule = artifacts.require("./SimpleDonationsModule.sol");
 
 require('chai')
   .use(require('chai-as-promised'))
@@ -15,14 +13,16 @@ require('chai')
 
 ADDR0 = "0x0000000000000000000000000000000000000000";
 
-contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
+contract("DaosFactory", ([deployer, user1, user2, user3, user4, receiver]) => {
   var DaosFactoryInstance;
   const typeHashMember = "0x3ecd26b50115fb28";
   const typeHashVote = "0xac1652a4636fa1ef";
+  const typeHashFunds = "0xf87bc98a1eb0a3cf";
   const CodeHashOpen = "0x6bf7a9053457d398";
   const CodeHashInvite = "0x2bd4373f9dfab999";
   const CodeHashRequest = "0xea7de0043801a72e";
   const CodeHashVoteYesNo = "0xfde50a81ae34bf89";
+  const CodeHashSimpleDonation = "0xff4a66b772b8de4a";
   it("Recover Instance", async () => {
     DaosFactoryInstance = await DaosFactory.deployed();
     // console.log(DaosFactoryInstance);
@@ -36,21 +36,27 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
     it("Check Hash Type & Code", async () => {
       const typeHashMember2 = await DaosFactoryInstance.hash("MemberModule");
       const typeHashVote2 = await DaosFactoryInstance.hash("VotingModule");
+      const typeHashFunds2 = await DaosFactoryInstance.hash("FundsModule");
       const CodeHashOpen2 = await DaosFactoryInstance.hash("OpenMembershipModule");
       const CodeHashInvite2 = await DaosFactoryInstance.hash("InviteMembershipModule");
       const CodeHashRequest2 = await DaosFactoryInstance.hash("RequestMembershipModule");
       const CodeHashVoteYesNo2 = await DaosFactoryInstance.hash("VotingYesNoModule");
+      const CodeHashSimpleDonation2 = await DaosFactoryInstance.hash("SimpleDonationsModule");
       typeHashMember2.should.equal(typeHashMember);
       typeHashVote2.should.equal(typeHashVote);
+      typeHashFunds2.should.equal(typeHashFunds);
       CodeHashOpen2.should.equal(CodeHashOpen);
       CodeHashInvite2.should.equal(CodeHashInvite);
       CodeHashRequest2.should.equal(CodeHashRequest);
       CodeHashVoteYesNo2.should.equal(CodeHashVoteYesNo);
+      CodeHashSimpleDonation2.should.equal(CodeHashSimpleDonation);
     })
     describe("Check Module", () => {
       it("Check Module Open", async () => {
         const moduleOpen = await DaosFactoryInstance.modulesDaos(typeHashMember, CodeHashOpen);
+        console.log(moduleOpen.id.toString());
         moduleOpen.isActive.should.equal(true);
+        moduleOpen.isExclusive.should.equal(true);
         moduleOpen.moduleType.should.equal(typeHashMember);
         moduleOpen.moduleCode.should.equal(CodeHashOpen);
         moduleOpen.moduleInfo.should.equal("");
@@ -58,23 +64,38 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       it("Check Module Invite", async () => {
         const moduleInvite = await DaosFactoryInstance.modulesDaos(typeHashMember, CodeHashInvite);
         moduleInvite.isActive.should.equal(true);
+        moduleInvite.isExclusive.should.equal(true);
         moduleInvite.moduleType.should.equal(typeHashMember);
         moduleInvite.moduleCode.should.equal(CodeHashInvite);
         moduleInvite.moduleInfo.should.equal("");
+        console.log(moduleInvite.id.toString());
       })
       it("Check Module Request", async () => {
         const moduleRequest = await DaosFactoryInstance.modulesDaos(typeHashMember, CodeHashRequest);
         moduleRequest.isActive.should.equal(true);
+        moduleRequest.isExclusive.should.equal(true);
         moduleRequest.moduleType.should.equal(typeHashMember);
         moduleRequest.moduleCode.should.equal(CodeHashRequest);
         moduleRequest.moduleInfo.should.equal("");
+        console.log(moduleRequest.id.toString());
       })
       it("Check Module VoteYesNo", async () => {
         const moduleVoteYesNo = await DaosFactoryInstance.modulesDaos(typeHashVote, CodeHashVoteYesNo);
         moduleVoteYesNo.isActive.should.equal(true);
+        moduleVoteYesNo.isExclusive.should.equal(false);
         moduleVoteYesNo.moduleType.should.equal(typeHashVote);
         moduleVoteYesNo.moduleCode.should.equal(CodeHashVoteYesNo);
         moduleVoteYesNo.moduleInfo.should.equal("");
+        console.log(moduleVoteYesNo.id.toString());
+      })
+      it("Check Module SimpleDonation", async () => {
+        const moduleSimpleDonation = await DaosFactoryInstance.modulesDaos(typeHashFunds, CodeHashSimpleDonation);
+        moduleSimpleDonation.isActive.should.equal(true);
+        moduleSimpleDonation.isExclusive.should.equal(false);
+        moduleSimpleDonation.moduleType.should.equal(typeHashFunds);
+        moduleSimpleDonation.moduleCode.should.equal(CodeHashSimpleDonation);
+        moduleSimpleDonation.moduleInfo.should.equal("");
+        console.log(moduleSimpleDonation.id.toString());
       })
     })
     describe("New Module", () => {
@@ -83,7 +104,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       describe("Success", () => {
         var newModule;
         it("Add New Module", async () => {
-          newModule = await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, {from :deployer});
+          newModule = await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, true, {from :deployer});
         })
         it("Check Module Added", async () => {
           newModule = await DaosFactoryInstance.modulesDaos(typeHashTest, codeHashTest);
@@ -96,7 +117,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       })
       describe("Fail", () => {
         it("Fail Add Module Caller Not Owner", async () => {
-          await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, {from: user1})
+          await DaosFactoryInstance.addModule(deployer, typeHashTest, codeHashTest, true, {from: user1})
             .should.be.rejectedWith("VM Exception while processing transaction: revert Ownable: caller is not the owne");
         })
       })
@@ -640,11 +661,11 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
               const res = log.args;
               res.memberRequestor.should.equal(user3);
             })
-            it("Check if info is correct", async () => {
+            it("Check if Info is Correct", async () => {
               const info = await requestMembershipModuleInstance.getMemberInfo(addrDao, user3);
               info.status.toString().should.equal("2");
             })
-            it("Fail to request again", async () => {
+            it("Fail to Request Again", async () => {
               await requestMembershipModuleInstance.requestJoin(addrDao, {from: user3})
                 .should.be.rejectedWith("VM Exception while processing transaction: revert Invalid Member: must be not a member");
             })
@@ -660,7 +681,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
               res.newMember.should.equal(user3);
               res.acceptorAddress.should.equal(user2);
             })
-            it("Check status isActive", async () => {
+            it("Check Status isActive", async () => {
               const isActive = await requestMembershipModuleInstance.isActiveMember(addrDao, user3);
               isActive.should.equal(true);
             })
@@ -675,7 +696,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
           })
           describe("Check addMember function", () => {
             var addMember;
-            it("Add user4 with addMember", async () => {
+            it("Add user4 With addMember", async () => {
               addMember = await requestMembershipModuleInstance.addMember(addrDao, user4, {from: user2});
               addMember.receipt.status.should.equal(true);
             })
@@ -703,7 +724,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       var daoOpenVoteYesNo;
       var addrDao;
       describe("Init", () => {
-        it("create DAO Open + Vote Yes No", async () => {
+        it("Create DAO Open + Vote Yes No", async () => {
           daoOpenVoteYesNo = await DaosFactoryInstance.createDAO(
             name,
             description,
@@ -735,21 +756,21 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
         })
       })
       describe("Event", () => {
-        it("check event OwnershipTransferred 1", async () => {
+        it("Check Event OwnershipTransferred 1", async () => {
           const log = daoOpenVoteYesNo.logs[0];
           log.event.should.equal('OwnershipTransferred');
           const res = log.args;
           res.previousOwner.should.equal(ADDR0);
           res.newOwner.should.equal(DaosFactoryInstance.address);
         })
-        it("check event OwnershipTransferred 2", async () => {
+        it("Check Event OwnershipTransferred 2", async () => {
           const log = daoOpenVoteYesNo.logs[1];
           log.event.should.equal('OwnershipTransferred');
           const res = log.args;
           res.previousOwner.should.equal(DaosFactoryInstance.address);
           res.newOwner.should.equal(user1);
         })
-        it("check event DaoCreated", async () => {
+        it("Check Event DaoCreated", async () => {
           const log = daoOpenVoteYesNo.logs[2];
           log.event.should.equal('DaoCreated');
           const res = log.args;
@@ -760,7 +781,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
       describe("VotingYesNoModule", () => {
         var votingYesNoModuleInstance;
         var addrVotingYesNoModule;
-        it("Recover Invite Membership Module", async () => {
+        it("Recover Voting Yes No Module", async () => {
           votingYesNoModuleInstance = await VotingYesNoModule.deployed();
           addrVotingYesNoModule = votingYesNoModuleInstance.address
         })
@@ -779,7 +800,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
             .denyAddress(addrDao, user3, {from: user1});
           denyAddress.receipt.status.should.equal(true);
         })
-        it("Fail to Authorized Address when not Authorized", async () => {
+        it("Fail To Authorized Address When Not Authorized", async () => {
           await votingYesNoModuleInstance
             .authorizeAddress(addrDao, addrVotingYesNoModule, {from: user2})
             .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
@@ -823,7 +844,7 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
               voteSessionInfo.isTerminated.should.equal(false);
               voteSessionInfo.votersCount.toString().should.equal('0');
             })
-            it("Failed To Create Bote When Not Member Of The DAO", async () => {
+            it("Failed To Create Vote When Not Member Of The DAO", async () => {
               await votingYesNoModuleInstance
                 .createVote(addrDao, name, description, 1, {from: user4})
                 .should.be.rejectedWith("VM Exception while processing transaction: revert Not DAO member");
@@ -853,10 +874,186 @@ contract("DaosFactory", ([deployer, user1, user2, user3, user4]) => {
               const voterCount = await votingYesNoModuleInstance.getVotersCount(addrDao, 0);
               voterCount.toString().should.equal("1");
             })
-            it("Fail to Vote Again", async () => {
+            it("Fail To Vote Again", async () => {
               await votingYesNoModuleInstance.vote(addrDao, 0, 1, {from: user1})
                 .should.be.rejectedWith("VM Exception while processing transaction: revert Already voted");
             })
+            it("Check Vote Result Info", async () => {
+              const voteResult = await votingYesNoModuleInstance.getVotesResult(addrDao, 0);
+              voteResult.length.should.equal(1);
+              voteResult[0].response.should.equal('1');
+              voteResult[0].voter.should.equal(user1);
+              voteResult[0].voted.should.equal(true);
+            })
+            it("Fail To Vote When Not Member Of The Dao", async () => {
+              await votingYesNoModuleInstance.vote(addrDao, 0, 1, {from: user2})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Not DAO member");
+            })
+          })
+        })
+      })
+    })
+
+    describe("DAO MEMBERSHIP(OPEN) + SIMPLE DONATIONS", () => {
+      var daoOpenSimpleDonation;
+      var addrDao;
+      describe("Init", () => {
+        it("Create DAO Open + Simple Donations", async () => {
+          daoOpenSimpleDonation = await DaosFactoryInstance.createDAO(
+            name,
+            description,
+            0,
+            rules,
+            [
+              {moduleType:typeHashMember, moduleCode:CodeHashOpen},
+              {moduleType:typeHashFunds, moduleCode:CodeHashSimpleDonation}
+            ],
+            {from: user1}
+          );
+          daoOpenSimpleDonation.receipt.status.should.equal(true);
+        })
+        it("Check Dao Owner", async () => {
+          addrDao = daoOpenSimpleDonation.logs[2].args.daoAddress;
+          var owner = await DaosFactoryInstance.daoOwners(addrDao, user1);
+          owner.should.equal(true);
+        })
+      })
+      describe("Deployed DAOs", () => {
+        var deployedDao;
+        it("Get Deployed DAOs", async () => {
+          deployedDao = await DaosFactoryInstance.getdeployedDaos();
+        })
+        it("Check Deployed DAOs", async () => {
+          deployedDao.length.should.equal(5);
+          deployedDao[deployedDao.length - 1].owner.should.equal(user1);
+          deployedDao[deployedDao.length - 1].daoAddress.should.equal(addrDao);
+        })
+      })
+      describe("Event", () => {
+        it("Check Event OwnershipTransferred 1", async () => {
+          const log = daoOpenSimpleDonation.logs[0];
+          log.event.should.equal('OwnershipTransferred');
+          const res = log.args;
+          res.previousOwner.should.equal(ADDR0);
+          res.newOwner.should.equal(DaosFactoryInstance.address);
+        })
+        it("Check Event OwnershipTransferred 2", async () => {
+          const log = daoOpenSimpleDonation.logs[1];
+          log.event.should.equal('OwnershipTransferred');
+          const res = log.args;
+          res.previousOwner.should.equal(DaosFactoryInstance.address);
+          res.newOwner.should.equal(user1);
+        })
+        it("Check Event DaoCreated", async () => {
+          const log = daoOpenSimpleDonation.logs[2];
+          log.event.should.equal('DaoCreated');
+          const res = log.args;
+          res.user.should.equal(user1, "correct user");
+          res.name.should.equal(name, "correct name");
+        })
+      })
+      describe("SimpleDonationsModule", () => {
+        var votingSimpleDonationsModule;
+        var addrSimpleDonationsModule;
+        it("Recover Voting Yes No Module", async () => {
+          votingSimpleDonationsModule = await SimpleDonationsModule.deployed();
+          addrSimpleDonationsModule = votingSimpleDonationsModule.address
+        })
+        it("Add Authorized Address", async () => {
+          const AuthorizedAddress = await votingSimpleDonationsModule
+            .authorizeAddress(addrDao, user3, {from: user1})
+          AuthorizedAddress.receipt.status.should.equal(true);
+        })
+        it("Check Authorized Address", async () => {
+          const AuthorizedAddress = await votingSimpleDonationsModule
+            .authorizedAddress(addrDao, user1);
+          AuthorizedAddress.should.equal(true);
+        })
+        it("Deny Authorized Address", async () => {
+          const denyAddress = await votingSimpleDonationsModule
+            .denyAddress(addrDao, user3, {from: user1});
+          denyAddress.receipt.status.should.equal(true);
+        })
+        it("Fail To Authorized Address When Not Authorized", async () => {
+          await votingSimpleDonationsModule
+            .authorizeAddress(addrDao, addrSimpleDonationsModule, {from: user2})
+            .should.be.rejectedWith("VM Exception while processing transaction: revert Not authorized");
+        })
+        describe("SimpleDonation", () => {
+          var donationInstance;
+          var currentBlock;
+          var time;
+          var endTime;
+          describe("Create SimpleDonation", () => {
+            it("Create a New Donation", async () => {
+              currentBlock = await web3.eth.getBlock("latest");
+              time = currentBlock.timestamp;
+              const oneDay = 1*24*60*60;
+              endTime = time + oneDay;
+              donationInstance = await votingSimpleDonationsModule
+                .createNewDonation(addrDao, receiver, time, endTime, {from: user1});
+              donationInstance.receipt.status.should.equal(true);
+            })
+            it("Check Event", async () => {
+              const log = donationInstance.logs[0];
+              log.event.should.equal('CreateNewDonations');
+              const res = log.args;
+              res.contractDao.should.equal(addrDao);
+              res.receiver.should.equal(receiver);
+              res.startTime.toString().should.equal(time.toString());
+              res.endTime.toString().should.equal(endTime.toString());
+              // res.previousOwner.should.equal(ADDR0);
+              // res.newOwner.should.equal(DaosFactoryInstance.address);
+            })
+            it("Check Nonce", async () => {
+              const nonce =  await votingSimpleDonationsModule.nonce(addrDao);
+              nonce.toString().should.equal('1');
+            })
+            it("Check Dao Donations Info", async () => {
+              const daoDonationsInfo = await votingSimpleDonationsModule.daoDonations(addrDao, 0);
+              daoDonationsInfo.id.toString().should.equal('0');
+              daoDonationsInfo.funds.toString().should.equal('0');
+              daoDonationsInfo.receiverFunds.should.equal(receiver);
+              daoDonationsInfo.donationsCount.toString().should.equal('0');
+              daoDonationsInfo.startTime.toString().should.equal(time.toString());
+              daoDonationsInfo.endTime.toString().should.equal(endTime.toString());
+              daoDonationsInfo.isActive.should.equal(true);
+            })
+          })
+          describe("Donate", () => {
+            const oneEther = 1*10**18;
+            var donateFund;
+            it("User2 Donate Fund", async () => {
+              donateFund = await votingSimpleDonationsModule
+                .donate(addrDao, 0, {from: user2, value: oneEther});
+              donateFund.receipt.status.should.equal(true);
+            })
+            it("Check Event", async () => {
+              const log = donateFund.logs[0];
+              log.event.should.equal('NewDonation');
+              const res = log.args;
+              res.contractDao.should.equal(addrDao);
+              res.nonce.toString().should.equal('0');
+              res.amount.toString().should.equal(oneEther.toString());
+              // res.contractDao.should.equal(addrDao);
+            })
+            it("Check Info Uptaded", async () => {
+              const daoDonationsInfo = await votingSimpleDonationsModule.daoDonations(addrDao, 0);
+              daoDonationsInfo.id.toString().should.equal('0');
+              daoDonationsInfo.funds.toString().should.equal(oneEther.toString());
+              daoDonationsInfo.receiverFunds.should.equal(receiver);
+              daoDonationsInfo.donationsCount.toString().should.equal('1');
+              daoDonationsInfo.startTime.toString().should.equal(time.toString());
+              daoDonationsInfo.endTime.toString().should.equal(endTime.toString());
+              daoDonationsInfo.isActive.should.equal(true);
+            })
+            it("Fail To Send Funds To Receiver When Not Finish", async () => {
+              await votingSimpleDonationsModule.sendFunds(addrDao, 0, {from: user1})
+                .should.be.rejectedWith("VM Exception while processing transaction: revert Failed not finish");
+            })
+            // it("Send Funds To Receiver", async () => {
+
+            // })
           })
         })
       })
