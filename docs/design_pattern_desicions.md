@@ -8,9 +8,14 @@ Each DAO has his own smart contract deployed. For that use, we used a factory "D
 # Dependency inversion principle
 
 We put a layer of abstraction between our smarts contracts to make our system extensible and well decoupled, in order to easily add new modules for example.
+
 A Dao Factory as well as a DAO do not know the implementations of modules for example, but handle only the IModule interface, which all modules implement.
+
 Modules can have dependencies between them. Modules also only handle interfaces of type Module.
-Example: voting module needs a membership module to access and verify that voters are members. It manipulates the IMemberDao interface that all Membership type modules implement. In this way, regardless of the module chosen to manage membership, the Vote module manages to communicate with it, without knowing it. Tomorrow we could easily add a new membership module (NFT), and the voting system could communicate with it, and this without modifying the voting module.
+
+Example: voting module needs a membership module to access and verify that voters are members. It manipulates the IMemberDao interface that all Membership type modules implement. In this way, regardless of the module chosen to manage membership, the Vote module manages to communicate with it, without knowing it. 
+
+Tomorrow we could easily add a new membership module (NFT), and the voting system could communicate with it, and this without modifying the voting module.
 
 
 <p align="center">
