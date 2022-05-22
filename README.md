@@ -91,7 +91,7 @@ Recommend to install MetaMask extention and create ethereum wallet before starti
 * Clone the repository
 `$ git clone git@github.com:Raddmou/MY-DAO.git`
 * Enter MY-DAO
-`$ cd MY-DAO/`
+`$ cd MY-DAO`
 * rename .env.example in .env and configure it by adding your parameters. Example:
     - `MNEMONIC=Your mnemonic`
     - `INFURA_API_KEY=your infura API key`
@@ -108,8 +108,12 @@ Recommend to install MetaMask extention and create ethereum wallet before starti
     - Rinkeby:
         * Migrate smart-contract on rinkeby
         `$ truffle deploy -- reset --network rinkeby`
+* Enter client
+`$ cd client`
+* Install depedency using npm or yarn:
+`$ npm install`
 * Start app
-`$ npm start`
+`$ npm run start`
 
 ## Test
 To lunch test of all smart-contract
