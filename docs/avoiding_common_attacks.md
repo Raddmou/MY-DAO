@@ -24,7 +24,7 @@ We used SaFeMath from @openzeppelin to revert and throw and error on overflow an
 My-DAO does not store any sensitive and private data. Only essential data to contracts are stored, such as addresses of members.
 
 ## Delegatecall
-We dot use delegatecall.
+We do not use delegatecall.
 
 
 ## Source of Randomness

@@ -10,10 +10,10 @@ contract RequestMembershipModule is Ownable {
     using SafeMath for uint256;
 
     /// @notice store the module code hash
-    bytes8 public moduleCode = bytes8(keccak256(abi.encode("RequestMembershipModule")));
+    bytes8 public constant moduleCode = bytes8(keccak256(abi.encode("RequestMembershipModule")));
 
     /// @notice store the module type hash
-    bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
+    bytes8 public constant moduleType = bytes8(keccak256(abi.encode("MemberModule")));
 
     /// @notice visibility of the members in MY-DAO
     Data.visibilityEnum public visibility;
@@ -161,6 +161,7 @@ contract RequestMembershipModule is Ownable {
     * @notice return if a address is member of a dao
     * @param _contractDao address of the dao
     * @param _addressMember address of the user to check
+    * @return bool true or false if is active
     */
     function isActiveMember(address _contractDao, address _addressMember) public view returns (bool){
         return daos[_contractDao].members[_addressMember].status == Data.memberStatus.active;

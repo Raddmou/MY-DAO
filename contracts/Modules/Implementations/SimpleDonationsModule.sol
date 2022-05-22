@@ -18,10 +18,10 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
 
   /// @notice store the module code hash
-  bytes8 public moduleCode = bytes8(keccak256(abi.encode("SimpleDonationsModule")));
+  bytes8 public constant moduleCode = bytes8(keccak256(abi.encode("SimpleDonationsModule")));
 
   /// @notice store the module code hash
-  bytes8 public moduleType = bytes8(keccak256(abi.encode("FundsModule")));
+  bytes8 public constant moduleType = bytes8(keccak256(abi.encode("FundsModule")));
 
   /**
   * @notice store daos info

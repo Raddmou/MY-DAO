@@ -16,10 +16,10 @@ contract InviteMembershipModule is Ownable {
     using SafeMath for uint256;
 
     /// @notice store the module code hash
-    bytes8 public moduleCode = bytes8(keccak256(abi.encode("InviteMembershipModule")));
+    bytes8 public constant moduleCode = bytes8(keccak256(abi.encode("InviteMembershipModule")));
 
     /// @notice store the module type hash
-    bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
+    bytes8 public constant moduleType = bytes8(keccak256(abi.encode("MemberModule")));
 
     /// @notice visibility of the members in MY-DAO
     Data.visibilityEnum public visibility;
@@ -35,6 +35,7 @@ contract InviteMembershipModule is Ownable {
     * @dev param address is address of the daoBase. return daoMember struct
     */
     mapping(address => mapping(address => bool)) public authorizedAddress;
+
     event MemberAdded(address newMember, address adderAddress);
     event MemberAccepted(address newMember, address acceptorAddress);
     event MemberInvited(address memberInvited, address memberInvitor);
@@ -176,6 +177,7 @@ contract InviteMembershipModule is Ownable {
     * @notice return if a address is member of a dao
     * @param _contractDao address of the dao
     * @param _addressMember address of the user to check
+    * @return bool true or false if is active
     */
     function isActiveMember(address _contractDao, address _addressMember) public view returns (bool){
         return daos[_contractDao].members[_addressMember].status == Data.memberStatus.active;
