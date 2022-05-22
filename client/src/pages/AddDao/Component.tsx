@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik, FormikProps } from 'formik';
 
 import Button from '@mui/material/Button';
@@ -24,22 +24,53 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 const AddDao: React.FC = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    const [isPending, setIsPending] = useState(false);
     const { account } = useAppSelector((state: any) => state.application);
     const dispatch = useAppDispatch();
-    const handleSubmit = (formValues: AddDaoFormValues, { resetForm }: any): void => {
+    const handleSubmit = async (formValues: AddDaoFormValues, { resetForm }: any): void => {
         var modules = { member, vote };
-        console.log("modules member = " + modules.member);
+        setIsPending(true);
         // console.log("member formik = " + formValues.member)
         // console.log("add dao membership " + formValues.membershipMode);
-        dispatch(
+        await dispatch(
             addNewDao(formValues, modules)
         );
         setIsFormSubmitted(true);
         resetForm();
+        setIsPending(false);
+        setIsFormSubmitted(false);
+        setOpen(true);
     };
+
+    useEffect((): void => {
+      // dispatch(
+      //     fetchVoteSessions(address)
+      // );
+  }, [isFormSubmitted])
+
+    const formik: FormikProps<AddDaoFormValues> = useFormik({
+      initialValues: {
+          //age: '',
+          //city: '',
+          name: '',
+          visibility: true,
+          //membershipMode: '0',
+          description: '',
+          note: '',
+          member: '',
+          vote: '',
+      },
+      validationSchema,
+      onSubmit: handleSubmit,
+  });    
+  const { errors, touched } = formik;
 
     const AntSwitch = styled(Switch)(({ theme }) => ({
         width: 28,
@@ -104,22 +135,14 @@ const AddDao: React.FC = () => {
         setVote(newAlignment);
       };
 
-    const formik: FormikProps<AddDaoFormValues> = useFormik({
-        initialValues: {
-            //age: '',
-            //city: '',
-            name: '',
-            visibility: true,
-            //membershipMode: '0',
-            description: '',
-            note: '',
-            member: '',
-            vote: '',
-        },
-        validationSchema,
-        onSubmit: handleSubmit,
-    });    
-    const { errors, touched } = formik;
+      const [open, setOpen] = React.useState(false);
+
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
+    };
 
     if (!account) return (
         <div className='container'>
@@ -127,6 +150,14 @@ const AddDao: React.FC = () => {
                 Please connect to MetaMask.
             </Alert>
         </div>
+    );
+
+    if (isPending) return (
+      <div className='listContainer'>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <CircularProgress />
+          </Box>
+      </div>
     );
 
     return (
@@ -225,8 +256,8 @@ const AddDao: React.FC = () => {
                             <ToggleButton value="open">Open</ToggleButton>
                             <ToggleButton value="invite">Invitation</ToggleButton>
                             <ToggleButton value="request">Request</ToggleButton>
-                            <ToggleButton value="request" disabled>NFT</ToggleButton>
-                            <ToggleButton value="request" disabled>Token</ToggleButton>
+                            <ToggleButton value="nft" disabled>NFT</ToggleButton>
+                            <ToggleButton value="token" disabled>Token</ToggleButton>
                         </ToggleButtonGroup>
                     </div>
                     <FormLabel id="demo-row-radio-buttons-group-label">Vote Modules</FormLabel>
@@ -249,6 +280,15 @@ const AddDao: React.FC = () => {
                     </Button>
                 </Box>
             </form>
+
+            <Stack spacing={2} sx={{ width: '100%' }}>
+              <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                  Dao created succesfully
+                </Alert>
+              </Snackbar>
+           </Stack>
+
         </div>
     );
 };

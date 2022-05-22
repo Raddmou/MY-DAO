@@ -20,14 +20,21 @@ export type VoteModule = {
 export type VoteSession = { 
     address: Address, 
     creationTime: number,
+    creatorAddress: Address,
     name: string,
     description: string,
     isTerminated: boolean,
     votersCount: number,
     voters: [],
-    voteResult: [],
-    duration: number,
+    voteResult: VoteResult[],
+    duration: string,
     id: string,
+};
+
+export type VoteResult = { 
+    response: number, 
+    voter: Address,
+    voted: boolean
 };
 
 export type Member = { 
@@ -45,7 +52,7 @@ export type Module = {
 export type AddVoteFormValues = {
     name: string,
     description: string,
-    duration: number
+    duration: string
 };
 
 export type AddDaoFormValues  = {

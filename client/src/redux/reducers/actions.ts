@@ -141,8 +141,10 @@ export const addNewDao = (formValues: AddDaoFormValues, module: any) => async (d
 export const addNewVote = (formValues: AddVoteFormValues, address: Address) => async (dispatch: any) => {
     try {
         console.log("addNewVote action start " + address);
-        const vote = await daosAPI.addNewVote(address, formValues);
-        dispatch(addNewVoteAction(vote));
+        const id = await daosAPI.addNewVote(address, formValues);
+        //fetch vote session
+        dispatch(fetchVoteSessions(address));
+        // dispatch(addNewVoteAction(vote));
         console.log("addNewVote action end");
     } catch ({ message }) {
         console.error(message);
@@ -269,7 +271,7 @@ export const voteYesNo = (address: Address, voteSession: number, response: numbe
         const success = await daosAPI.voteYesNo(address, voteSession, response);
         if(success)
         {         
-            await fetchVoteSessions(address);
+            dispatch(fetchVoteSessions(address));
         }
             
     } catch (error) {

@@ -30,23 +30,32 @@ import FormControl from '@mui/material/FormControl';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import { useSearchParams, Link } from "react-router-dom";
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 const VotesList: React.FC = () => {
     //const { voteSessions } = useAppSelector(VotesSelector);
     const [searchParams] = useSearchParams({});
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    const [isPending, setIsPending] = useState(false);
     const [openAddVoteDialog, setOpenAddVoteDialog] = useState(false);
     const dispatch = useAppDispatch();
     const { voteSessions, voteModule, daoNote } = useAppSelector((state: any) => state.daos);// useAppSelector(VotesSelector);
     const address = searchParams.get('dao');
-    const handleSubmit = (formValues: AddVoteFormValues, { resetForm }: any): void => {
+    const handleSubmit = async (formValues: AddVoteFormValues, { resetForm }: any): void => {
         console.log("handleSubmit form add vote start " + address );
-        dispatch(
+        setIsPending(true);
+        await dispatch(
             addNewVote(formValues, address)
         );
         setIsFormSubmitted(true);
         resetForm();
         console.log("handleSubmit form add vote end");
+        setOpenAddVoteDialog(false);
+        setIsPending(false);
+        setIsFormSubmitted(false);
+        setOpen(true);
     };
 
     useEffect((): void => {
@@ -59,7 +68,7 @@ const VotesList: React.FC = () => {
         initialValues: {
             name: '',
             description: '',
-            duration: 0,
+            duration: '3600',
         },
         validationSchema,
         onSubmit: handleSubmit,
@@ -73,6 +82,16 @@ const VotesList: React.FC = () => {
     const HandleOpenDialog = () => {
         setOpenAddVoteDialog(true);      
     };
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
+    };
+
     // if (pending) return (
     //     <div className='listContainer'>
     //         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -81,6 +100,14 @@ const VotesList: React.FC = () => {
     //     </div>
     // );
     // if (error) return <Alert severity="error">Some error happen. Please reload the page.</Alert>
+
+    if (isPending) return (
+        <div className='listContainer'>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <CircularProgress />
+            </Box>
+        </div>
+    );
 
     return (
         <div className='listContainer'>
@@ -186,13 +213,14 @@ const VotesList: React.FC = () => {
                                                 <RadioGroup
                                                     row
                                                     aria-labelledby="demo-row-radio-buttons-group-label"
-                                                    name="membershipMode"
+                                                    name="duration"
                                                     value={formik.values.duration}
                                                     onChange={formik.handleChange}
                                                 >
-                                                    <FormControlLabel value="0" control={<Radio />} label="One hour" />                          
-                                                    <FormControlLabel value="2" control={<Radio />} label="One day" /> 
-                                                    <FormControlLabel value="1" disabled control={<Radio />} label="One week"/>
+                                                    <FormControlLabel value="30" control={<Radio />} label="30 sec" />
+                                                    <FormControlLabel value="3600" control={<Radio />} label="One hour" />                          
+                                                    <FormControlLabel value="86400" control={<Radio />} label="One day" /> 
+                                                    <FormControlLabel value="604800" control={<Radio />} label="One week"/>
                                                 </RadioGroup>
                                             </FormControl>
                                         </div>
@@ -211,6 +239,14 @@ const VotesList: React.FC = () => {
                
                 )
             }
+
+            <Stack spacing={2} sx={{ width: '100%' }}>
+              <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                  Vote created succesfully
+                </Alert>
+              </Snackbar>
+           </Stack>
         </div>
     )
 };

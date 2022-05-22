@@ -363,6 +363,7 @@ export const daosAPI = {
                         }
                     }
                     votes.push({creationTime: voteSessionInfo.creationTime
+                        , creatorAddress: voteSessionInfo.creatorAddress
                         , name: voteSessionInfo.name
                         , description: voteSessionInfo.description
                         , isTerminated: voteSessionInfo.isTerminated
@@ -501,7 +502,7 @@ export const daosAPI = {
         return { id, name, visibility, description, address, modules, note };
     },
 
-    addNewVote: async (address: any, vote: any): Promise<VoteSession> => {
+    addNewVote: async (address: any, vote: any): Promise<Number> => {
         const contractDao = await contractDaoProvider.getContract(address);
         const { name, duration, description } = vote;
 
@@ -513,9 +514,9 @@ export const daosAPI = {
             .send({ 
                 from: (window as any).ethereum.selectedAddress 
             });
-        const id = address.toString();
+        const id: number = events?.VoteSessionCreated?.returnValues?.id;
 
-        return { id, name, description, duration };
+        return Promise.resolve(id);
     },
 
     joinDao: async (address: Address): Promise<boolean> => {
