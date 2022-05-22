@@ -122,6 +122,7 @@ contract DaosFactory is Ownable {
     public
   {
     require(_modules.length < 10, "Modules must be less than 10.");
+    require(bytes(_name).length != 0, "Name can not be empty");    
     deployedDao memory _dao;
     DaoBase dao = new DaoBase(_name, _description, _visibility, _rules);
     dao.authorizeContract(address(this));
