@@ -104,6 +104,12 @@ As soon as a function offers the possibility of token transfer, we must ensure t
 We have used ReentrancyGuard de OpenZipelin:
 https://docs.openzeppelin.com/contracts/2.x/api/utils
 
+# Tight Variable Packing
+Solidity smart contracts have contiguous 32-byte (256-bit) slots used for storage. When we arrange variables so that several of them fit in a single location, it is called “variable packing”. Please note, we are talking about a specific type, for example a uint128 is not of the same type as a uint256
+
+# State Machine
+We applied this pattern to our smarts contracts to control the state of their elements and enable or disable actions under certain circumstances (example: disable vote voter if vote state is terminated).
+
 # Solidity version
 We have decided to use to 0.8.9 since OpenZeppelin supports it.
 
