@@ -4,6 +4,7 @@
 * [Intro](#intro)
 * [General info](#general-info)
 * [Objective](#objective)
+* [Concept](#concept)
 * [Team](#team)
 * [Setup](#setup)
 * [Test](#test)
@@ -27,6 +28,45 @@ MY-DAO is a plateform for creating, customizing, deploying and intereacting with
 * Offer associations and horizontal organizations a framework for collegial decision-making, Crowdfunding, etc.
 * Driving Governance 3.0
 * Help humanitarian associations to collect and redistribute around the world
+
+## Concept
+
+My-DAO allows you to create, with an intuitive interface, without prior technical knowledge, a CAD.
+The user can create a DAO, providing:
+- name
+- description
+- Rules (contract governing the DAO)
+- visibility
+By also choosing modules.
+The modules have the following characteristics:
+- A category or type
+- A sub-category or an implementation: each type of category can contain several implementations, thus giving the user the choice to personalize his DAO by choosing an appropriate implementation for his use. For example the Membership type contains several implementaions such as OpenMembership or InviteMembership
+- Mandatory: The membership module is mandatory for example to be able to manage the members of the DAO
+- exclusive: determines if we can choose several implementations for the same type
+
+OpenMembership module:
+- a new member can join a DAO freely, without validation of existing members. Provided that the DAO is public
+
+InviteMembership module:
+- A new member can only join a DAO following the invitation of a member of the DAO.
+- The new member sees his "guest" status at the DAO level. He can then accept the invitation to join the DAO.
+
+RequestMembership module:
+- A new member can only join a DAO following a membership request.
+- Any DAO member can view the new membership application and accept it
+- Following acceptance of the membership application, the member becomes a member of the DAO
+
+Module VoteYesNo:
+- allows you to create voting sessions.
+- Voters can vote by Yes or No to a statement.
+- any member can create a voting session.
+- A voting session has the following characteristics:
+    - name
+    - description
+    - duration
+- each member has the right to vote only once.
+- All member votes have the same weight
+- At the end of the time allowed for the vote, the result is displayed
 
 ## Team
 CP:
