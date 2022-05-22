@@ -7,23 +7,47 @@ import "../../Data.sol";
 import "../../DaoBase.sol";
 
 contract RequestMembershipModule is Ownable {
-  using SafeMath for uint256;
-  bytes8 public moduleCode = bytes8(keccak256(abi.encode("RequestMembershipModule")));
-  bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
-  mapping(address => Data.DaoMember) public daos;
-  Data.visibilityEnum public visibility;
-  mapping(address => mapping(address => bool)) public authorizedAddress;
+    using SafeMath for uint256;
 
-  event MemberAdded(address newMember, address adderAddress);
-  event MemberAccepted(address newMember, address acceptorAddress);
-  event MemberInvited(address memberInvited, address memberInvitor);
-  event MemberJoined(address memberJoined);
-  event MemberAskedJoin(address memberRequestor);
+    /// @notice store the module code hash
+    bytes8 public moduleCode = bytes8(keccak256(abi.encode("RequestMembershipModule")));
 
-  constructor(address _contractFactory) {
-    _transferOwnership(_contractFactory);
-  }
+    /// @notice store the module type hash
+    bytes8 public moduleType = bytes8(keccak256(abi.encode("MemberModule")));
 
+    /// @notice visibility of the members in MY-DAO
+    Data.visibilityEnum public visibility;
+
+    /**
+    * @notice store daos info
+    * @dev param address is address of the daoBase. return daoMember struct
+    */
+    mapping(address => Data.DaoMember) public daos;
+
+    /**
+    * @notice store daos info
+    * @dev param address is address of the daoBase. return daoMember struct
+    */
+    mapping(address => mapping(address => bool)) public authorizedAddress;
+
+    event MemberAdded(address newMember, address adderAddress);
+    event MemberAccepted(address newMember, address acceptorAddress);
+    event MemberInvited(address memberInvited, address memberInvitor);
+    event MemberJoined(address memberJoined);
+    event MemberAskedJoin(address memberRequestor);
+
+    /**
+    * @notice constructor change the owner to be the DaosFactory
+    * @dev param 0 address of the DaosFactory
+    */
+    constructor(address _contractFactory) {
+        _transferOwnership(_contractFactory);
+    }
+
+    /**
+    * @notice check msg.sender is member or authorized
+    * @dev param 0 address of the DaosFactory
+    */
     modifier onlyActiveMembersOrAuthorizeAddress(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.active 
         || authorizedAddress[_contractDao][msg.sender] == true
@@ -31,48 +55,98 @@ contract RequestMembershipModule is Ownable {
         _;
     }
 
+
+    /**
+    * @notice check msg.sender is not a member
+    * @dev param 0 address of the DaosFactory
+    */
     modifier onlyNotActiveMembers(address _contractDao) {
         require(daos[_contractDao].members[msg.sender].status != Data.memberStatus.active, "Not authorized");
         _;
     }
 
+
+    /**
+    * @notice check msg.sender is authorized
+    * @dev param 0 address of the DaosFactory
+    */
     modifier onlyAuthorizeAddress(address _contractDao) {
         require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized");
         _;
     }
 
+    /**
+    * @notice check msg.sender is authorized or the owner
+    * @dev param 0 address of the DaosFactory
+    */
     modifier onlyAuthorizeAddressOrOwner(address _contractDao) {
         require(authorizedAddress[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
         _;
     }
 
+    /**
+    * @notice get info of a member in a dao
+    * @param _contractDao address of the dao
+    * @param _member address of the member
+    * @return member struct taht store info of the member see ../../Data.sol
+    */
     function getMemberInfo(address _contractDao, address _member) external view returns(Data.member memory) {
         return(daos[_contractDao].members[_member]);
     }
-    function getAddrById(address _contractDao, uint256 id) external view returns(address) {
-        return daos[_contractDao].memberAddresses[id];
+
+    /**
+    * @notice get address of a member in a dao by his id
+    * @param _contractDao address of the dao
+    * @param _id id of the member
+    * @return member address of the member
+    */
+    function getAddrById(address _contractDao, uint256 _id) external view returns(address) {
+        return daos[_contractDao].memberAddresses[_id];
     }
+
+    /**
+    * @notice get the total member of the dao
+    * @param _contractDao address of the dao
+    * @return count uint256 of the total member in the dao
+    */
     function getMembersCount(address _contractDao) external view returns(uint256) {
         return daos[_contractDao].membersCount;
     }
 
-    function addMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
-        require(daos[_contractDao].members[addressMember].status == Data.memberStatus.notMember
+    /**
+    * @notice add member to the dao
+    * @dev only active member or authorized address can execute this function
+    * @param _contractDao address of the dao
+    * @param _addressMember address of the user that will be added
+    */
+    function addMember(address _contractDao, address _addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
+        require(daos[_contractDao].members[_addressMember].status == Data.memberStatus.notMember
             , "Invalid Member: must be not a member");
-        daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
-        daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = addressMember;
-        daos[_contractDao].members[addressMember].joinTime = block.timestamp;
+        daos[_contractDao].members[_addressMember].status = Data.memberStatus.active;
+        daos[_contractDao].memberAddresses[daos[_contractDao].membersCount] = _addressMember;
+        daos[_contractDao].members[_addressMember].joinTime = block.timestamp;
         ++daos[_contractDao].membersCount;
-        emit MemberAdded(addressMember, msg.sender);
+        emit MemberAdded(_addressMember, msg.sender);
     }
 
-    function acceptMember(address _contractDao, address addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
-        require(daos[_contractDao].members[addressMember].status == Data.memberStatus.asking
+    /**
+    * @notice accept member to the dao
+    * @dev only active member or authorized address can execute this function
+    * @param _contractDao address of the dao
+    * @param _addressMember address of the user that will be accepted
+    */
+    function acceptMember(address _contractDao, address _addressMember) public onlyActiveMembersOrAuthorizeAddress(_contractDao) {
+        require(daos[_contractDao].members[_addressMember].status == Data.memberStatus.asking
             , "Invalid Member: must be asking");
-        daos[_contractDao].members[addressMember].status = Data.memberStatus.active;
-        emit MemberAccepted(addressMember, msg.sender);
+        daos[_contractDao].members[_addressMember].status = Data.memberStatus.active;
+        emit MemberAccepted(_addressMember, msg.sender);
     }
 
+    /**
+    * @notice request to be a member of the dao
+    * @dev only not active member can execute this function
+    * @param _contractDao address of the dao
+    */
     function requestJoin(address _contractDao) public onlyNotActiveMembers(_contractDao) {
         require(daos[_contractDao].members[msg.sender].status == Data.memberStatus.notMember
             , "Invalid Member: must be not a member");
@@ -83,10 +157,20 @@ contract RequestMembershipModule is Ownable {
         emit MemberAskedJoin(msg.sender);
     }
 
-    function isActiveMember(address _contractDao, address addressMember) public view returns (bool){
-        return daos[_contractDao].members[addressMember].status == Data.memberStatus.active;
+    /**
+    * @notice return if a address is member of a dao
+    * @param _contractDao address of the dao
+    * @param _addressMember address of the user to check
+    */
+    function isActiveMember(address _contractDao, address _addressMember) public view returns (bool){
+        return daos[_contractDao].members[_addressMember].status == Data.memberStatus.active;
     }
 
+    /**
+    * @notice link a dao to SimpleDonationsModule
+    * @param _contractDao address of the dao
+    * @param _memberDao address of the user of the dao in this case the owner of the dao
+    */
     function addDao(address _contractDao, address _memberDao) external onlyAuthorizeAddressOrOwner(_contractDao) {
         require(!daos[_contractDao].isActive, "Dao already added");
         daos[_contractDao].isActive = true;
@@ -95,10 +179,20 @@ contract RequestMembershipModule is Ownable {
          authorizedAddress[_contractDao][_memberDao] = true;
     }
 
+    /**
+    * @notice authorize a new address
+    * @param _contractDao address of the dao
+    * @param _contractAddress address that will be authorized
+    */
     function authorizeAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
         authorizedAddress[_contractDao][_contractAddress] = true;
     }
 
+    /**
+    * @notice deny a authorized address
+    * @param _contractDao address of the dao
+    * @param _contractAddress address that will be deny
+    */
     function denyAddress(address _contractDao, address _contractAddress) external onlyAuthorizeAddressOrOwner(_contractDao) {
         authorizedAddress[_contractDao][_contractAddress] = false;
     }
