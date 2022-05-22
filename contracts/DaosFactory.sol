@@ -8,7 +8,7 @@ import './Modules/interfaces/IModule.sol';
 import './DaoBase.sol';
 import './Data.sol';
 
-/*
+/**
 * @title DaosFactory
 * @author chixx.eth & mourad
 * @notice Smart contract for MY-DAO create/save daos, add/activate modules
@@ -16,40 +16,22 @@ import './Data.sol';
 contract DaosFactory is Ownable {
   using SafeMath for uint256;
 
-  /*
-  * @title daoId
-  * @notice counter of how many dao are created by DaosFactory
-  */
+  /// @notice counter of how many dao are created by DaosFactory
   uint256 private daoId;
 
-  /*
-  * @title daos
-  * @notice store daos create by DaosFactory
-  */
+  /// @notice store daos create by DaosFactory
   deployedDao[] public daos;
 
-  /*
-  * @title daoOwners
+  /**
   * @notice store daos owners
-  * @param 0: address of the dao
-  * @param 1: address of a user
-  * @return true or false if user is owner
+  * @return bool true or false if user is owner
   */
   mapping(address => mapping(address => bool)) public daoOwners;
 
-  /*
-  * @title modulesDaos
-  * @notice store all modules
-  * @param 0: type hash of the module
-  * @param 1: code hash of the module
-  * @return module info see ./Data.sol
-  */
+  /// @notice store all modules
   mapping(bytes8 => mapping(bytes8 => Data.Module)) public modulesDaos;
 
-  /*
-  * @title onlyDaoOwners
-  * @notice check if msg.sender is the owner of the dao
-  */
+  /// @notice check if msg.sender is the owner of the dao
   struct deployedDao {
     address owner;
     address daoAddress;
@@ -58,26 +40,21 @@ contract DaosFactory is Ownable {
   event DaoCreated(address user, string name, address daoAddress);
   event ModuleActivated(address user, string name, address daoAddress);
 
-  /*
-  * @title onlyDaoOwners
-  * @notice check if msg.sender is the owner of the dao
-  */
+  /// @notice check if msg.sender is the owner of the dao
   modifier onlyDaoOwners(address _daoAddress) {
     require(daoOwners[_daoAddress][msg.sender], "Invalid User: DaosFactory");
     _;
   }
 
-  /*
-  * @title activateModuleForDao
+  /**
   * @notice get all daos deployed by MY-DAO
-  * @return array of all deployedDao see struct deployedDao
+  * @return deployedDao array of all deployedDao see struct deployedDao
   */
   function getdeployedDaos() external view returns (deployedDao[] memory) {
     return daos;
   }
 
-  /*
-  * @title activateModuleForDao external
+  /**
   * @notice activeate a new module for the Dao Owner
   * @param _daoAddress: the dao address who activate the module
   * @param _type: the type hash of the module see ./Data.sol
@@ -89,8 +66,7 @@ contract DaosFactory is Ownable {
     return (_activateModuleForDao(_daoAddress, _type, _code));
   }
 
-  /*
-  * @title _activateModuleForDao internal
+  /**
   * @notice activeate a new module logic
   * @param _daoAddress: the dao address who activate the module
   * @param _type: the type hash of the module see ./Data.sol
@@ -108,8 +84,7 @@ contract DaosFactory is Ownable {
     return modulesDaos[_type][_code].moduleAddress;  
   }
 
-  /*
-  * @title addModule
+  /**
   * @notice add a new module, MY-DAO owner only
   * @param _moduleAddress: the dao address to add
   * @param _type: the type hash of the module see ./Data.sol
@@ -129,14 +104,13 @@ contract DaosFactory is Ownable {
     modulesDaos[_type][_code] = module;
   }
 
-  /*
-  * @title createDao
+  /**
   * @notice create a new dao and store in DaosFactory
   * @param _name: the dao name
   * @param _description: the dao description
   * @param _visibility: the visibility see ./Data.sol
   * @param _rules: the dao rules
-  * @param _module: array of modules type and code hash to add 
+  * @param _modules: array of modules type and code hash to add 
   */
   function createDAO(
     string calldata _name,
@@ -168,8 +142,7 @@ contract DaosFactory is Ownable {
     emit DaoCreated(msg.sender, _name, _dao.daoAddress);
   }
 
-  /*
-  * @title hash
+  /**
   * @notice create a bytes8 hash
   * @param _name: string to hash
   * @return bytes8 hash
