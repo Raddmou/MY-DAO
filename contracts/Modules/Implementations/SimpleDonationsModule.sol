@@ -95,13 +95,13 @@ contract SimpleDonationsModule is Ownable, ReentrancyGuard {
     _transferOwnership(_contractFactory);
   }
 
-  /// @notice check if the address is authorized
+  /// @notice check if msg.sender is authorized
   modifier onlyAuthorizeAddress(address _contractDao) {
     require(authorizedAddress[_contractDao][msg.sender] == true, "Not authorized");
     _;
   }
 
-  /// @notice check if the address is authorized
+  /// @notice check if msg.sender is authorized
   modifier onlyAuthorizeAddressOrOwner(address _contractDao) {
     require(authorizedAddress[_contractDao][msg.sender] == true || msg.sender == owner(), "Not authorized");
     _;

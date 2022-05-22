@@ -31,7 +31,7 @@ contract DaosFactory is Ownable {
   /// @notice store all modules
   mapping(bytes8 => mapping(bytes8 => Data.Module)) public modulesDaos;
 
-  /// @notice check if msg.sender is the owner of the dao
+  /// @notice struct that store info about deployed Daos
   struct deployedDao {
     address owner;
     address daoAddress;
