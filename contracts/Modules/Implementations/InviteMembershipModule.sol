@@ -6,7 +6,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "../../Data.sol";
 import "../../DaoBase.sol";
 
-//is DaosFactory
+
+/*
+* @title InviteMembershipModule
+* @author chixx.eth & mourad
+* @notice module membership 
+*/
 contract InviteMembershipModule is Ownable {
   using SafeMath for uint256;
   bytes8 public moduleCode = bytes8(keccak256(abi.encode("InviteMembershipModule")));

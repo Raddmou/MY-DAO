@@ -67,6 +67,13 @@ contract VotingYesNoModule is Ownable {
         return voteSessionsCount[_contractDao];
     }
 
+    function getVotesResult(address _contractDao, uint256 _voteSessionId)
+        public
+        view
+        returns(voteResult[] memory)
+    {
+        return(voteSessions[_contractDao][_voteSessionId].voteResults);
+    }
     // function getVote(address _contractDao, uint256 voteSessionId) external view returns (voteSession memory)
     // {
     //     return (voteSessions[_contractDao][voteSessionId]);
