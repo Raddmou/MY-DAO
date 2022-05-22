@@ -128,7 +128,6 @@ contract OpenMembershipModule is Ownable {
 
     /**
     * @notice return if a address is member of a dao
-    * @dev only not active member can execute this function
     * @param _contractDao address of the dao
     * @param _addressMember address of the user to check
     */
