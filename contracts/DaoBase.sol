@@ -6,7 +6,7 @@ import "./Data.sol";
 
 /*
 * @title DaoBase
-* @author chixx.eth & mourad
+* @author chixx.eth & Mourad M.
 * @notice DaoBase is deployed every time DaosFactory create a new dao. DaoBase store all the
 * modules for the dao
 */
