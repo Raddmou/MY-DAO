@@ -20,9 +20,9 @@ Example: voting module needs a membership module to access and verify that voter
 
 # Hash
 
-We used a hashing string pattern, using a mix of different variables to avoid rely only on `block.timestamp` and `blockhash`
+We used a hashing string pattern.
 
-Here is the code used in the DeliveryManager :
+Here is the code used in the DaoFactory :
 
 ```js
 /**
