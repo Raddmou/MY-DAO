@@ -16,7 +16,6 @@ We have implement a total of 159 tests. This tests are structured the same way a
 First we test DaosFactory, and we test after the module membership, module voting and module funds
 
 ### DAOS FACTORY
-
 * Recover Daos Factory instance
 * Check Daos Factory Datas
 * Check Hash
@@ -26,7 +25,6 @@ First we test DaosFactory, and we test after the module membership, module votin
 ### DAOS
 
 #### DAO MODULE OPEN
-
 #### * Init
 * Create the Dao
 * Check Owner
@@ -40,13 +38,12 @@ First we test DaosFactory, and we test after the module membership, module votin
 * Check Join
 
 ### DAO MODULE INVITE
-
 #### * Init
 - Create the Dao
 - Check Owner
-* Check Data
-* Check Add Module
-* Check Event
+- Check Data
+- Check Add Module
+- Check Event
 #### * Check Module Membership
 - Recover Module
 - Check Module Function for Owner
@@ -54,42 +51,39 @@ First we test DaosFactory, and we test after the module membership, module votin
 - Check Invite
 
 ### DAO MODULE REQUEST
-
-#### * Init
+#### Init
 - Create the Dao
 - Check Owner
-* Check Data
-* Check Add Module
-* Check Event
-#### * Check Module Membership
+- Check Data
+- Check Add Module
+- Check Event
+#### Check Module Membership
 - Recover Module
 - Check Module Function for Owner
 - Check Membership Data
 - Check Invite
 
 ### DAO MODULE OPEN + VOTE YES NO
-
-#### * Init
+#### Init
 - Create the Dao
 - Check Owner
-* Check Data
-* Check Add Module
-* Check Event
-#### * Check Module Voting
+- Check Data
+- Check Add Module
+- Check Event
+#### Check Module Voting
 - Recover Module
 - Check Module Function for Owner
 - Check Voting Data
 - Check Voting
 
 ### DAO MODULE OPEN + SIMPLE DONATIONS
-
-#### * Init
+#### Init
 - Create the Dao
 - Check Owner
-* Check Data
-* Check Add Module
-* Check Event
-#### * Check Module Funds
+- Check Data
+- Check Add Module
+- Check Event
+#### Check Module Funds
 - Recover Module
 - Check Module Function for Owner
 - Check Donations Data
