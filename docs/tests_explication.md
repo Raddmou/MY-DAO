@@ -16,35 +16,35 @@ We have implement a total of 159 tests. This tests are structured the same way a
 First we test DaosFactory, and we test after the module membership, module voting and module funds
 
 ### DAOS FACTORY
-* Recover Daos Factory instance
-* Check Daos Factory Datas
-* Check Hash
-* Check Modules
-* Check add Module
+- Recover Daos Factory instance
+- Check Daos Factory Datas
+- Check Hash
+- Check Modules
+- Check add Module
 
 ### DAOS
 
 #### DAO MODULE OPEN
-#### * Init
-* Create the Dao
-* Check Owner
-* Check Data
-* Check Add Module
-* Check Event
-* Check Module Membership
-* Recover Module
-* Check Module Function for Owner
-* Check Membership Data
-* Check Join
-
-### DAO MODULE INVITE
-#### * Init
+#### Init
 - Create the Dao
 - Check Owner
 - Check Data
 - Check Add Module
 - Check Event
-#### * Check Module Membership
+#### Check Module Membership
+- Recover Module
+- Check Module Function for Owner
+- Check Membership Data
+- Check Join
+
+### DAO MODULE INVITE
+#### Init
+- Create the Dao
+- Check Owner
+- Check Data
+- Check Add Module
+- Check Event
+#### Check Module Membership
 - Recover Module
 - Check Module Function for Owner
 - Check Membership Data
