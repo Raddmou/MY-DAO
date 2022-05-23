@@ -17,37 +17,37 @@ First we test DaosFactory, and we test after the module membership, module votin
 
 ### DAOS FACTORY
 
-** Recover Daos Factory instance
-** Check Daos Factory Datas
-- Check Hash
-- Check Modules
-** Check add Module
+* Recover Daos Factory instance
+* Check Daos Factory Datas
+* Check Hash
+* Check Modules
+* Check add Module
 
 ### DAOS
 
 #### DAO MODULE OPEN
 
-* Init
-- Create the Dao
-- Check Owner
+#### * Init
+* Create the Dao
+* Check Owner
 * Check Data
 * Check Add Module
 * Check Event
 * Check Module Membership
-- Recover Module
-- Check Module Function for Owner
-- Check Membership Data
-- Check Join
+* Recover Module
+* Check Module Function for Owner
+* Check Membership Data
+* Check Join
 
 ### DAO MODULE INVITE
 
-* Init
+#### * Init
 - Create the Dao
 - Check Owner
 * Check Data
 * Check Add Module
 * Check Event
-* Check Module Membership
+#### * Check Module Membership
 - Recover Module
 - Check Module Function for Owner
 - Check Membership Data
@@ -55,13 +55,13 @@ First we test DaosFactory, and we test after the module membership, module votin
 
 ### DAO MODULE REQUEST
 
-* Init
+#### * Init
 - Create the Dao
 - Check Owner
 * Check Data
 * Check Add Module
 * Check Event
-* Check Module Membership
+#### * Check Module Membership
 - Recover Module
 - Check Module Function for Owner
 - Check Membership Data
@@ -69,13 +69,13 @@ First we test DaosFactory, and we test after the module membership, module votin
 
 ### DAO MODULE OPEN + VOTE YES NO
 
-* Init
+#### * Init
 - Create the Dao
 - Check Owner
 * Check Data
 * Check Add Module
 * Check Event
-* Check Module Voting
+#### * Check Module Voting
 - Recover Module
 - Check Module Function for Owner
 - Check Voting Data
@@ -83,13 +83,13 @@ First we test DaosFactory, and we test after the module membership, module votin
 
 ### DAO MODULE OPEN + SIMPLE DONATIONS
 
-* Init
+#### * Init
 - Create the Dao
 - Check Owner
 * Check Data
 * Check Add Module
 * Check Event
-* Check Module Funds
+#### * Check Module Funds
 - Recover Module
 - Check Module Function for Owner
 - Check Donations Data
