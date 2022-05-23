@@ -149,8 +149,8 @@ Dev documentation:
 -   [Avoiding Common Attacks](./docs/avoiding_common_attacks.md)
 -   [Deployed Addresses](./docs/deployed_addresses.md)
 -   [Design Pattern Decisions](./docs/design_pattern_decisions.md)
--   [Natspec](./docs/natspec/)
--   [Test Explication](./docs/test_explication.md)
+-   [Diagrams](./docs/diagrams/)
+-   [Test Explication](./docs/tests_explication.md)
 -   [Smart Contracts README.MD](./docs/contracts/)
 
 ## Copyright
