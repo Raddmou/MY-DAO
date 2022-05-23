@@ -6,7 +6,7 @@ Measures taken to counter attacks and avoid security breaches of created smart c
 
 
 ## Re-Entrancy
-We extensively use reentrancyGuard of OppenZippelin and modifiers to prevent re-entrancy calls of payable functions and some non-payable functions in our contracts.
+We extensively use reentrancyGuard of OppenZippelin and modifiers to prevent re-entrancy calls of payable functions.
 
 ## Signature Replay
 
