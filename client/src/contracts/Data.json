@@ -1,47 +1,27 @@
 {
   "contractName": "Data",
-  "abi": [
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_messageToHash",
-          "type": "string"
-        }
-      ],
-      "name": "hash",
-      "outputs": [
-        {
-          "internalType": "bytes8",
-          "name": "",
-          "type": "bytes8"
-        }
-      ],
-      "stateMutability": "pure",
-      "type": "function"
-    }
-  ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_messageToHash\",\"type\":\"string\"}],\"name\":\"hash\",\"outputs\":[{\"internalType\":\"bytes8\",\"name\":\"\",\"type\":\"bytes8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0xb4793bd69551bfe0d11e33f1c609f8aaf2e0de5c3bf389815919b5186f747852\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dc61aa0966bac54c24f933d68bc854b38b53eeee2c4a3902f4ba5415c250c886\",\"dweb:/ipfs/QmXVo8JEcFKdAycsYuicGrztLndR8aVLASnCPrQQc72vA8\"]}},\"version\":1}",
-  "bytecode": "0x610390610053600b82828239805160001a607314610046577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea26469706673582212208958bfebbb2314e1a48f655a62d3969049748225b402e60e79054b855e3241ce64736f6c63430008090033",
-  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610610052576000357c010000000000000000000000000000000000000000000000000000000090048063b411ee9414610057575b600080fd5b610071600480360381019061006c9190610211565b610087565b60405161007e9190610295565b60405180910390f35b60008160405160200161009a9190610338565b604051602081830303815290604052805190602001209050919050565b6000604051905090565b600080fd5b600080fd5b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b61011e826100d5565b810181811067ffffffffffffffff8211171561013d5761013c6100e6565b5b80604052505050565b60006101506100b7565b905061015c8282610115565b919050565b600067ffffffffffffffff82111561017c5761017b6100e6565b5b610185826100d5565b9050602081019050919050565b82818337600083830152505050565b60006101b46101af84610161565b610146565b9050828152602081018484840111156101d0576101cf6100d0565b5b6101db848285610192565b509392505050565b600082601f8301126101f8576101f76100cb565b5b81356102088482602086016101a1565b91505092915050565b600060208284031215610227576102266100c1565b5b600082013567ffffffffffffffff811115610245576102446100c6565b5b610251848285016101e3565b91505092915050565b60007fffffffffffffffff00000000000000000000000000000000000000000000000082169050919050565b61028f8161025a565b82525050565b60006020820190506102aa6000830184610286565b92915050565b600081519050919050565b600082825260208201905092915050565b60005b838110156102ea5780820151818401526020810190506102cf565b838111156102f9576000848401525b50505050565b600061030a826102b0565b61031481856102bb565b93506103248185602086016102cc565b61032d816100d5565b840191505092915050565b6000602082019050818103600083015261035281846102ff565b90509291505056fea26469706673582212208958bfebbb2314e1a48f655a62d3969049748225b402e60e79054b855e3241ce64736f6c63430008090033",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"author\":\"chixx.eth & mourad\",\"kind\":\"dev\",\"methods\":{},\"title\":\"Data\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Library of struct and enum for MY-DAO\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":\"Data\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol\":{\"keccak256\":\"0x2f09a3899b9918ab50bc4d3188f1b608335fdbd51d47bd83fc7f0b78f6a544a1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://51cf8668146744c257d310a58a4e5790cfa969aaaa18d838eb85923c0e7c7cbe\",\"dweb:/ipfs/QmWgLngmpgHouneWV7E8kLrrnz47FgMDP952Vmb1ZR8te3\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212207c047d7fb76894abd22c964e946eb3081458673bf40be37e87945a3c994304d364736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212207c047d7fb76894abd22c964e946eb3081458673bf40be37e87945a3c994304d364736f6c63430008090033",
   "immutableReferences": {},
-  "sourceMap": "154:1189:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "154:1189:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;1205:136;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;1270:6;1319:14;1308:26;;;;;;;;:::i;:::-;;;;;;;;;;;;;1298:37;;;;;;1284:52;;1205:136;;;:::o;7:75:26:-;40:6;73:2;67:9;57:19;;7:75;:::o;88:117::-;197:1;194;187:12;211:117;320:1;317;310:12;334:117;443:1;440;433:12;457:117;566:1;563;556:12;580:102;621:6;672:2;668:7;663:2;656:5;652:14;648:28;638:38;;580:102;;;:::o;688:180::-;736:77;733:1;726:88;833:4;830:1;823:15;857:4;854:1;847:15;874:281;957:27;979:4;957:27;:::i;:::-;949:6;945:40;1087:6;1075:10;1072:22;1051:18;1039:10;1036:34;1033:62;1030:88;;;1098:18;;:::i;:::-;1030:88;1138:10;1134:2;1127:22;917:238;874:281;;:::o;1161:129::-;1195:6;1222:20;;:::i;:::-;1212:30;;1251:33;1279:4;1271:6;1251:33;:::i;:::-;1161:129;;;:::o;1296:308::-;1358:4;1448:18;1440:6;1437:30;1434:56;;;1470:18;;:::i;:::-;1434:56;1508:29;1530:6;1508:29;:::i;:::-;1500:37;;1592:4;1586;1582:15;1574:23;;1296:308;;;:::o;1610:154::-;1694:6;1689:3;1684;1671:30;1756:1;1747:6;1742:3;1738:16;1731:27;1610:154;;;:::o;1770:412::-;1848:5;1873:66;1889:49;1931:6;1889:49;:::i;:::-;1873:66;:::i;:::-;1864:75;;1962:6;1955:5;1948:21;2000:4;1993:5;1989:16;2038:3;2029:6;2024:3;2020:16;2017:25;2014:112;;;2045:79;;:::i;:::-;2014:112;2135:41;2169:6;2164:3;2159;2135:41;:::i;:::-;1854:328;1770:412;;;;;:::o;2202:340::-;2258:5;2307:3;2300:4;2292:6;2288:17;2284:27;2274:122;;2315:79;;:::i;:::-;2274:122;2432:6;2419:20;2457:79;2532:3;2524:6;2517:4;2509:6;2505:17;2457:79;:::i;:::-;2448:88;;2264:278;2202:340;;;;:::o;2548:509::-;2617:6;2666:2;2654:9;2645:7;2641:23;2637:32;2634:119;;;2672:79;;:::i;:::-;2634:119;2820:1;2809:9;2805:17;2792:31;2850:18;2842:6;2839:30;2836:117;;;2872:79;;:::i;:::-;2836:117;2977:63;3032:7;3023:6;3012:9;3008:22;2977:63;:::i;:::-;2967:73;;2763:287;2548:509;;;;:::o;3063:149::-;3099:7;3139:66;3132:5;3128:78;3117:89;;3063:149;;;:::o;3218:123::-;3311:23;3328:5;3311:23;:::i;:::-;3306:3;3299:36;3218:123;;:::o;3347:234::-;3446:4;3484:2;3473:9;3469:18;3461:26;;3497:77;3571:1;3560:9;3556:17;3547:6;3497:77;:::i;:::-;3347:234;;;;:::o;3587:99::-;3639:6;3673:5;3667:12;3657:22;;3587:99;;;:::o;3692:169::-;3776:11;3810:6;3805:3;3798:19;3850:4;3845:3;3841:14;3826:29;;3692:169;;;;:::o;3867:307::-;3935:1;3945:113;3959:6;3956:1;3953:13;3945:113;;;4044:1;4039:3;4035:11;4029:18;4025:1;4020:3;4016:11;4009:39;3981:2;3978:1;3974:10;3969:15;;3945:113;;;4076:6;4073:1;4070:13;4067:101;;;4156:1;4147:6;4142:3;4138:16;4131:27;4067:101;3916:258;3867:307;;;:::o;4180:364::-;4268:3;4296:39;4329:5;4296:39;:::i;:::-;4351:71;4415:6;4410:3;4351:71;:::i;:::-;4344:78;;4431:52;4476:6;4471:3;4464:4;4457:5;4453:16;4431:52;:::i;:::-;4508:29;4530:6;4508:29;:::i;:::-;4503:3;4499:39;4492:46;;4272:272;4180:364;;;;:::o;4550:313::-;4663:4;4701:2;4690:9;4686:18;4678:26;;4750:9;4744:4;4740:20;4736:1;4725:9;4721:17;4714:47;4778:78;4851:4;4842:6;4778:78;:::i;:::-;4770:86;;4550:313;;;;:::o",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\n/*\n* @title Data\n* @author chixx.eth & mourad\n* @notice Library of struct and enum for MY-DAO\n*/\nlibrary Data {\n  struct member {\n    memberStatus status;\n    uint256 joinTime;\n    //address memberAddress;\n  }\n\n  struct DaoMember {\n    address addressDao;\n    uint256 membersCount;\n    mapping(uint256 => address) memberAddresses;\n    mapping(address => Data.member) members;\n    bool isActive;\n  } \n\n  struct DaoSettings {\n    address addressDao;\n    visibilityEnum visibility;\n    string name;\n    string description;\n    string rules;\n  } \n\n  struct daoData {\n    string daoType;\n    visibilityEnum visibility;\n  }\n\n  enum visibilityEnum {\n    privateDao,\n    publicDao\n  }\n\n  enum memberStatus {\n    notMember,\n    invited,\n    asking,\n    active\n  }\n\n  enum membershipModeEnum {\n    invite,\n    request,\n    open\n  }\n\n  enum ModuleType {\n    DaoMemberSystem,\n    DaoVotingSystem\n  }\n\n  struct Module {\n    uint256 id;\n    address moduleAddress;\n    bool isActive;\n    bool isExclusive;\n    bytes8 moduleType; \n    bytes8 moduleCode; \n    string moduleInfo;\n  }\n\n  struct ModuleToActivate {\n    bytes8 moduleType;\n    bytes8 moduleCode;\n  }\n\n  function hash(string memory _messageToHash) public pure returns (bytes8) {\n    return bytes8(keccak256(abi.encode(_messageToHash)));\n  }\n}",
+  "sourceMap": "155:3067:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "155:3067:2:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\n/**\n* @title Data\n* @author chixx.eth & mourad\n* @notice Library of struct and enum for MY-DAO\n*/\nlibrary Data {\n  /**\n  * @notice store member\n  * @return status the status of the member\n  * @return joinTime timestamp of the time the member join the dao\n  */\n  struct member {\n    memberStatus status;\n    uint256 joinTime;\n    //address memberAddress;\n  }\n\n  /**\n  * @notice store dao info & members\n  * @return addressDao the address of the dao\n  * @return membersCount the total count of dao members\n  * @return memberAddresses the member address linked to his id\n  * @return members the member struct linked to his address\n  * @return isActive true or false is the member is active\n  */\n  struct DaoMember {\n    address addressDao;\n    uint256 membersCount;\n    mapping(uint256 => address) memberAddresses;\n    mapping(address => Data.member) members;\n    bool isActive;\n  } \n\n  /**\n  * @notice store dao settings\n  * @return addressDao the address of the dao\n  * @return visibility the visibility of the dao\n  * @return name the name of the dao\n  * @return description the description of the dao\n  * @return rules true rules of the dao\n  */\n  struct DaoSettings {\n    address addressDao;\n    visibilityEnum visibility;\n    string name;\n    string description;\n    string rules;\n  } \n\n  // /**\n  // * @notice store dao data\n  // * @return daoType the type \n  // * @return visibility the visibility of the dao\n  // */\n  // struct daoData {\n  //   string daoType;\n  //   visibilityEnum visibility;\n  // }\n\n  /**\n  * @notice store module data\n  * @return id the id of the module\n  * @return moduleAddress the address of the module\n  * @return isActive true or false if active\n  * @return isExclusive true or false if exclusive\n  * @return moduleType hash of the module type\n  * @return moduleCode hash of the module code\n  * @return moduleInfo info of the module\n  */\n  struct Module {\n    uint256 id;\n    address moduleAddress;\n    bool isActive;\n    bool isExclusive;\n    bytes8 moduleType; \n    bytes8 moduleCode; \n    string moduleInfo;\n  }\n\n  /**\n  * @notice store module hash\n  * @return moduleType the type hash of the module\n  * @return moduleCode the code hash of the module\n  */\n  struct ModuleToActivate {\n    bytes8 moduleType;\n    bytes8 moduleCode;\n  }\n\n  /**\n  * @notice enum for the visibility of the dao\n  * @return privateDao dao is private\n  * @return publicDao dao is public\n  */\n  enum visibilityEnum {\n    privateDao,\n    publicDao\n  }\n\n  /**\n  * @notice enum for the status of a member\n  * @return notMember user not a member\n  * @return invited user invited\n  * @return asking user asking\n  * @return active user active\n  */\n  enum memberStatus {\n    notMember,\n    invited,\n    asking,\n    active\n  }\n\n  /**\n  * @notice enum for membership mode\n  * @return invite invite module\n  * @return request request module\n  * @return open open module\n  */\n  enum membershipModeEnum {\n    invite,\n    request,\n    open\n  }\n\n  // /**\n  // * @notice enum for module type\n  // * @return DaoMemberSystem user not a member\n  // * @return DaoVotingSystem user invited\n  // */\n  // enum ModuleType {\n  //   DaoMemberSystem,\n  //   DaoVotingSystem\n  // }\n}",
   "sourcePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
   "ast": {
     "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        793
+        807
       ]
     },
-    "id": 794,
+    "id": 808,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 699,
+        "id": 739,
         "literals": [
           "solidity",
           "^",
@@ -57,48 +37,54 @@
         "canonicalName": "Data",
         "contractDependencies": [],
         "contractKind": "library",
+        "documentation": {
+          "id": 740,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:97:2",
+          "text": " @title Data\n @author chixx.eth & mourad\n @notice Library of struct and enum for MY-DAO"
+        },
         "fullyImplemented": true,
-        "id": 793,
+        "id": 807,
         "linearizedBaseContracts": [
-          793
+          807
         ],
         "name": "Data",
-        "nameLocation": "162:4:2",
+        "nameLocation": "163:4:2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 705,
+            "id": 746,
             "members": [
               {
                 "constant": false,
-                "id": 702,
+                "id": 743,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "204:6:2",
+                "nameLocation": "352:6:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "191:19:2",
+                "scope": 746,
+                "src": "339:19:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$747",
+                  "typeIdentifier": "t_enum$_memberStatus_$802",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 701,
+                  "id": 742,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 700,
+                    "id": 741,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 747,
-                    "src": "191:12:2"
+                    "referencedDeclaration": 802,
+                    "src": "339:12:2"
                   },
-                  "referencedDeclaration": 747,
-                  "src": "191:12:2",
+                  "referencedDeclaration": 802,
+                  "src": "339:12:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$747",
+                    "typeIdentifier": "t_enum$_memberStatus_$802",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -106,13 +92,13 @@
               },
               {
                 "constant": false,
-                "id": 704,
+                "id": 745,
                 "mutability": "mutable",
                 "name": "joinTime",
-                "nameLocation": "224:8:2",
+                "nameLocation": "372:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "216:16:2",
+                "scope": 746,
+                "src": "364:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -120,10 +106,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 703,
+                  "id": 744,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "216:7:2",
+                  "src": "364:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -133,25 +119,25 @@
               }
             ],
             "name": "member",
-            "nameLocation": "178:6:2",
+            "nameLocation": "326:6:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "171:95:2",
+            "scope": 807,
+            "src": "319:95:2",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoMember",
-            "id": 721,
+            "id": 762,
             "members": [
               {
                 "constant": false,
-                "id": 707,
+                "id": 748,
                 "mutability": "mutable",
                 "name": "addressDao",
-                "nameLocation": "301:10:2",
+                "nameLocation": "782:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "293:18:2",
+                "scope": 762,
+                "src": "774:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -159,10 +145,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 706,
+                  "id": 747,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "293:7:2",
+                  "src": "774:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -173,13 +159,13 @@
               },
               {
                 "constant": false,
-                "id": 709,
+                "id": 750,
                 "mutability": "mutable",
                 "name": "membersCount",
-                "nameLocation": "325:12:2",
+                "nameLocation": "806:12:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "317:20:2",
+                "scope": 762,
+                "src": "798:20:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -187,10 +173,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 708,
+                  "id": 749,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "317:7:2",
+                  "src": "798:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -200,13 +186,13 @@
               },
               {
                 "constant": false,
-                "id": 713,
+                "id": 754,
                 "mutability": "mutable",
                 "name": "memberAddresses",
-                "nameLocation": "371:15:2",
+                "nameLocation": "852:15:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "343:43:2",
+                "scope": 762,
+                "src": "824:43:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -214,28 +200,28 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 712,
+                  "id": 753,
                   "keyType": {
-                    "id": 710,
+                    "id": 751,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "351:7:2",
+                    "src": "832:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "343:27:2",
+                  "src": "824:27:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 711,
+                    "id": 752,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "362:7:2",
+                    "src": "843:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -247,51 +233,51 @@
               },
               {
                 "constant": false,
-                "id": 718,
+                "id": 759,
                 "mutability": "mutable",
                 "name": "members",
-                "nameLocation": "424:7:2",
+                "nameLocation": "905:7:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "392:39:2",
+                "scope": 762,
+                "src": "873:39:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$705_storage_$",
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$746_storage_$",
                   "typeString": "mapping(address => struct Data.member)"
                 },
                 "typeName": {
-                  "id": 717,
+                  "id": 758,
                   "keyType": {
-                    "id": 714,
+                    "id": 755,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "400:7:2",
+                    "src": "881:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "392:31:2",
+                  "src": "873:31:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$705_storage_$",
+                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$746_storage_$",
                     "typeString": "mapping(address => struct Data.member)"
                   },
                   "valueType": {
-                    "id": 716,
+                    "id": 757,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 715,
+                      "id": 756,
                       "name": "Data.member",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 705,
-                      "src": "411:11:2"
+                      "referencedDeclaration": 746,
+                      "src": "892:11:2"
                     },
-                    "referencedDeclaration": 705,
-                    "src": "411:11:2",
+                    "referencedDeclaration": 746,
+                    "src": "892:11:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_member_$705_storage_ptr",
+                      "typeIdentifier": "t_struct$_member_$746_storage_ptr",
                       "typeString": "struct Data.member"
                     }
                   }
@@ -300,13 +286,13 @@
               },
               {
                 "constant": false,
-                "id": 720,
+                "id": 761,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "442:8:2",
+                "nameLocation": "923:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "437:13:2",
+                "scope": 762,
+                "src": "918:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -314,10 +300,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 719,
+                  "id": 760,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "437:4:2",
+                  "src": "918:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -327,25 +313,25 @@
               }
             ],
             "name": "DaoMember",
-            "nameLocation": "277:9:2",
+            "nameLocation": "758:9:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "270:185:2",
+            "scope": 807,
+            "src": "751:185:2",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoSettings",
-            "id": 733,
+            "id": 774,
             "members": [
               {
                 "constant": false,
-                "id": 723,
+                "id": 764,
                 "mutability": "mutable",
                 "name": "addressDao",
-                "nameLocation": "493:10:2",
+                "nameLocation": "1239:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "485:18:2",
+                "scope": 774,
+                "src": "1231:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -353,10 +339,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 722,
+                  "id": 763,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "485:7:2",
+                  "src": "1231:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -367,33 +353,33 @@
               },
               {
                 "constant": false,
-                "id": 726,
+                "id": 767,
                 "mutability": "mutable",
                 "name": "visibility",
-                "nameLocation": "524:10:2",
+                "nameLocation": "1270:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "509:25:2",
+                "scope": 774,
+                "src": "1255:25:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$742",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$797",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 725,
+                  "id": 766,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 724,
+                    "id": 765,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 742,
-                    "src": "509:14:2"
+                    "referencedDeclaration": 797,
+                    "src": "1255:14:2"
                   },
-                  "referencedDeclaration": 742,
-                  "src": "509:14:2",
+                  "referencedDeclaration": 797,
+                  "src": "1255:14:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$742",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$797",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -401,13 +387,13 @@
               },
               {
                 "constant": false,
-                "id": 728,
+                "id": 769,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "547:4:2",
+                "nameLocation": "1293:4:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "540:11:2",
+                "scope": 774,
+                "src": "1286:11:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -415,10 +401,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 727,
+                  "id": 768,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "540:6:2",
+                  "src": "1286:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -428,13 +414,13 @@
               },
               {
                 "constant": false,
-                "id": 730,
+                "id": 771,
                 "mutability": "mutable",
                 "name": "description",
-                "nameLocation": "564:11:2",
+                "nameLocation": "1310:11:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "557:18:2",
+                "scope": 774,
+                "src": "1303:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -442,10 +428,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 729,
+                  "id": 770,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "557:6:2",
+                  "src": "1303:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -455,13 +441,13 @@
               },
               {
                 "constant": false,
-                "id": 732,
+                "id": 773,
                 "mutability": "mutable",
                 "name": "rules",
-                "nameLocation": "588:5:2",
+                "nameLocation": "1334:5:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "581:12:2",
+                "scope": 774,
+                "src": "1327:12:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -469,10 +455,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 731,
+                  "id": 772,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "581:6:2",
+                  "src": "1327:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -482,215 +468,25 @@
               }
             ],
             "name": "DaoSettings",
-            "nameLocation": "467:11:2",
+            "nameLocation": "1213:11:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "460:138:2",
+            "scope": 807,
+            "src": "1206:138:2",
             "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.daoData",
-            "id": 739,
-            "members": [
-              {
-                "constant": false,
-                "id": 735,
-                "mutability": "mutable",
-                "name": "daoType",
-                "nameLocation": "631:7:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 739,
-                "src": "624:14:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
-                },
-                "typeName": {
-                  "id": 734,
-                  "name": "string",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "624:6:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_storage_ptr",
-                    "typeString": "string"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 738,
-                "mutability": "mutable",
-                "name": "visibility",
-                "nameLocation": "659:10:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 739,
-                "src": "644:25:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$742",
-                  "typeString": "enum Data.visibilityEnum"
-                },
-                "typeName": {
-                  "id": 737,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 736,
-                    "name": "visibilityEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 742,
-                    "src": "644:14:2"
-                  },
-                  "referencedDeclaration": 742,
-                  "src": "644:14:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$742",
-                    "typeString": "enum Data.visibilityEnum"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "daoData",
-            "nameLocation": "610:7:2",
-            "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "603:71:2",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.visibilityEnum",
-            "id": 742,
-            "members": [
-              {
-                "id": 740,
-                "name": "privateDao",
-                "nameLocation": "704:10:2",
-                "nodeType": "EnumValue",
-                "src": "704:10:2"
-              },
-              {
-                "id": 741,
-                "name": "publicDao",
-                "nameLocation": "720:9:2",
-                "nodeType": "EnumValue",
-                "src": "720:9:2"
-              }
-            ],
-            "name": "visibilityEnum",
-            "nameLocation": "683:14:2",
-            "nodeType": "EnumDefinition",
-            "src": "678:55:2"
-          },
-          {
-            "canonicalName": "Data.memberStatus",
-            "id": 747,
-            "members": [
-              {
-                "id": 743,
-                "name": "notMember",
-                "nameLocation": "761:9:2",
-                "nodeType": "EnumValue",
-                "src": "761:9:2"
-              },
-              {
-                "id": 744,
-                "name": "invited",
-                "nameLocation": "776:7:2",
-                "nodeType": "EnumValue",
-                "src": "776:7:2"
-              },
-              {
-                "id": 745,
-                "name": "asking",
-                "nameLocation": "789:6:2",
-                "nodeType": "EnumValue",
-                "src": "789:6:2"
-              },
-              {
-                "id": 746,
-                "name": "active",
-                "nameLocation": "801:6:2",
-                "nodeType": "EnumValue",
-                "src": "801:6:2"
-              }
-            ],
-            "name": "memberStatus",
-            "nameLocation": "742:12:2",
-            "nodeType": "EnumDefinition",
-            "src": "737:74:2"
-          },
-          {
-            "canonicalName": "Data.membershipModeEnum",
-            "id": 751,
-            "members": [
-              {
-                "id": 748,
-                "name": "invite",
-                "nameLocation": "845:6:2",
-                "nodeType": "EnumValue",
-                "src": "845:6:2"
-              },
-              {
-                "id": 749,
-                "name": "request",
-                "nameLocation": "857:7:2",
-                "nodeType": "EnumValue",
-                "src": "857:7:2"
-              },
-              {
-                "id": 750,
-                "name": "open",
-                "nameLocation": "870:4:2",
-                "nodeType": "EnumValue",
-                "src": "870:4:2"
-              }
-            ],
-            "name": "membershipModeEnum",
-            "nameLocation": "820:18:2",
-            "nodeType": "EnumDefinition",
-            "src": "815:63:2"
-          },
-          {
-            "canonicalName": "Data.ModuleType",
-            "id": 754,
-            "members": [
-              {
-                "id": 752,
-                "name": "DaoMemberSystem",
-                "nameLocation": "904:15:2",
-                "nodeType": "EnumValue",
-                "src": "904:15:2"
-              },
-              {
-                "id": 753,
-                "name": "DaoVotingSystem",
-                "nameLocation": "925:15:2",
-                "nodeType": "EnumValue",
-                "src": "925:15:2"
-              }
-            ],
-            "name": "ModuleType",
-            "nameLocation": "887:10:2",
-            "nodeType": "EnumDefinition",
-            "src": "882:62:2"
           },
           {
             "canonicalName": "Data.Module",
-            "id": 769,
+            "id": 789,
             "members": [
               {
                 "constant": false,
-                "id": 756,
+                "id": 776,
                 "mutability": "mutable",
                 "name": "id",
-                "nameLocation": "976:2:2",
+                "nameLocation": "1957:2:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "968:10:2",
+                "scope": 789,
+                "src": "1949:10:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -698,10 +494,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 755,
+                  "id": 775,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "968:7:2",
+                  "src": "1949:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -711,13 +507,13 @@
               },
               {
                 "constant": false,
-                "id": 758,
+                "id": 778,
                 "mutability": "mutable",
                 "name": "moduleAddress",
-                "nameLocation": "992:13:2",
+                "nameLocation": "1973:13:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "984:21:2",
+                "scope": 789,
+                "src": "1965:21:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -725,10 +521,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 757,
+                  "id": 777,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "984:7:2",
+                  "src": "1965:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -739,13 +535,13 @@
               },
               {
                 "constant": false,
-                "id": 760,
+                "id": 780,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "1016:8:2",
+                "nameLocation": "1997:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1011:13:2",
+                "scope": 789,
+                "src": "1992:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -753,10 +549,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 759,
+                  "id": 779,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1011:4:2",
+                  "src": "1992:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -766,13 +562,13 @@
               },
               {
                 "constant": false,
-                "id": 762,
+                "id": 782,
                 "mutability": "mutable",
                 "name": "isExclusive",
-                "nameLocation": "1035:11:2",
+                "nameLocation": "2016:11:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1030:16:2",
+                "scope": 789,
+                "src": "2011:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -780,10 +576,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 761,
+                  "id": 781,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1030:4:2",
+                  "src": "2011:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -793,13 +589,13 @@
               },
               {
                 "constant": false,
-                "id": 764,
+                "id": 784,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1059:10:2",
+                "nameLocation": "2040:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1052:17:2",
+                "scope": 789,
+                "src": "2033:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -807,10 +603,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 763,
+                  "id": 783,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1052:6:2",
+                  "src": "2033:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -820,13 +616,13 @@
               },
               {
                 "constant": false,
-                "id": 766,
+                "id": 786,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1083:10:2",
+                "nameLocation": "2064:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1076:17:2",
+                "scope": 789,
+                "src": "2057:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -834,10 +630,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 765,
+                  "id": 785,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1076:6:2",
+                  "src": "2057:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -847,13 +643,13 @@
               },
               {
                 "constant": false,
-                "id": 768,
+                "id": 788,
                 "mutability": "mutable",
                 "name": "moduleInfo",
-                "nameLocation": "1107:10:2",
+                "nameLocation": "2088:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1100:17:2",
+                "scope": 789,
+                "src": "2081:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -861,10 +657,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 767,
+                  "id": 787,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1100:6:2",
+                  "src": "2081:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -874,25 +670,25 @@
               }
             ],
             "name": "Module",
-            "nameLocation": "955:6:2",
+            "nameLocation": "1936:6:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "948:174:2",
+            "scope": 807,
+            "src": "1929:174:2",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.ModuleToActivate",
-            "id": 774,
+            "id": 794,
             "members": [
               {
                 "constant": false,
-                "id": 771,
+                "id": 791,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1163:10:2",
+                "nameLocation": "2287:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 774,
-                "src": "1156:17:2",
+                "scope": 794,
+                "src": "2280:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -900,10 +696,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 770,
+                  "id": 790,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1156:6:2",
+                  "src": "2280:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -913,13 +709,13 @@
               },
               {
                 "constant": false,
-                "id": 773,
+                "id": 793,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1186:10:2",
+                "nameLocation": "2310:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 774,
-                "src": "1179:17:2",
+                "scope": 794,
+                "src": "2303:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -927,10 +723,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 772,
+                  "id": 792,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1179:6:2",
+                  "src": "2303:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -940,271 +736,126 @@
               }
             ],
             "name": "ModuleToActivate",
-            "nameLocation": "1133:16:2",
+            "nameLocation": "2257:16:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "1126:75:2",
+            "scope": 807,
+            "src": "2250:75:2",
             "visibility": "public"
           },
           {
-            "body": {
-              "id": 791,
-              "nodeType": "Block",
-              "src": "1278:63:2",
-              "statements": [
-                {
-                  "expression": {
-                    "arguments": [
-                      {
-                        "arguments": [
-                          {
-                            "arguments": [
-                              {
-                                "id": 786,
-                                "name": "_messageToHash",
-                                "nodeType": "Identifier",
-                                "overloadedDeclarations": [],
-                                "referencedDeclaration": 776,
-                                "src": "1319:14:2",
-                                "typeDescriptions": {
-                                  "typeIdentifier": "t_string_memory_ptr",
-                                  "typeString": "string memory"
-                                }
-                              }
-                            ],
-                            "expression": {
-                              "argumentTypes": [
-                                {
-                                  "typeIdentifier": "t_string_memory_ptr",
-                                  "typeString": "string memory"
-                                }
-                              ],
-                              "expression": {
-                                "id": 784,
-                                "name": "abi",
-                                "nodeType": "Identifier",
-                                "overloadedDeclarations": [],
-                                "referencedDeclaration": 4294967295,
-                                "src": "1308:3:2",
-                                "typeDescriptions": {
-                                  "typeIdentifier": "t_magic_abi",
-                                  "typeString": "abi"
-                                }
-                              },
-                              "id": 785,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": true,
-                              "lValueRequested": false,
-                              "memberName": "encode",
-                              "nodeType": "MemberAccess",
-                              "src": "1308:10:2",
-                              "typeDescriptions": {
-                                "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
-                                "typeString": "function () pure returns (bytes memory)"
-                              }
-                            },
-                            "id": 787,
-                            "isConstant": false,
-                            "isLValue": false,
-                            "isPure": false,
-                            "kind": "functionCall",
-                            "lValueRequested": false,
-                            "names": [],
-                            "nodeType": "FunctionCall",
-                            "src": "1308:26:2",
-                            "tryCall": false,
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_bytes_memory_ptr",
-                              "typeString": "bytes memory"
-                            }
-                          }
-                        ],
-                        "expression": {
-                          "argumentTypes": [
-                            {
-                              "typeIdentifier": "t_bytes_memory_ptr",
-                              "typeString": "bytes memory"
-                            }
-                          ],
-                          "id": 783,
-                          "name": "keccak256",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 4294967288,
-                          "src": "1298:9:2",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
-                            "typeString": "function (bytes memory) pure returns (bytes32)"
-                          }
-                        },
-                        "id": 788,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "kind": "functionCall",
-                        "lValueRequested": false,
-                        "names": [],
-                        "nodeType": "FunctionCall",
-                        "src": "1298:37:2",
-                        "tryCall": false,
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
-                        }
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
-                        }
-                      ],
-                      "id": 782,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "lValueRequested": false,
-                      "nodeType": "ElementaryTypeNameExpression",
-                      "src": "1291:6:2",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_bytes8_$",
-                        "typeString": "type(bytes8)"
-                      },
-                      "typeName": {
-                        "id": 781,
-                        "name": "bytes8",
-                        "nodeType": "ElementaryTypeName",
-                        "src": "1291:6:2",
-                        "typeDescriptions": {}
-                      }
-                    },
-                    "id": 789,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "typeConversion",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "1291:45:2",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes8",
-                      "typeString": "bytes8"
-                    }
-                  },
-                  "functionReturnParameters": 780,
-                  "id": 790,
-                  "nodeType": "Return",
-                  "src": "1284:52:2"
-                }
-              ]
-            },
-            "functionSelector": "b411ee94",
-            "id": 792,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "hash",
-            "nameLocation": "1214:4:2",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 777,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 776,
-                  "mutability": "mutable",
-                  "name": "_messageToHash",
-                  "nameLocation": "1233:14:2",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 792,
-                  "src": "1219:28:2",
-                  "stateVariable": false,
-                  "storageLocation": "memory",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
-                  },
-                  "typeName": {
-                    "id": 775,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1219:6:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1218:30:2"
-            },
-            "returnParameters": {
-              "id": 780,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 779,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nameLocation": "-1:-1:-1",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 792,
-                  "src": "1270:6:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes8",
-                    "typeString": "bytes8"
-                  },
-                  "typeName": {
-                    "id": 778,
-                    "name": "bytes8",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1270:6:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes8",
-                      "typeString": "bytes8"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1269:8:2"
-            },
-            "scope": 793,
-            "src": "1205:136:2",
-            "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "public"
+            "canonicalName": "Data.visibilityEnum",
+            "id": 797,
+            "members": [
+              {
+                "id": 795,
+                "name": "privateDao",
+                "nameLocation": "2487:10:2",
+                "nodeType": "EnumValue",
+                "src": "2487:10:2"
+              },
+              {
+                "id": 796,
+                "name": "publicDao",
+                "nameLocation": "2503:9:2",
+                "nodeType": "EnumValue",
+                "src": "2503:9:2"
+              }
+            ],
+            "name": "visibilityEnum",
+            "nameLocation": "2466:14:2",
+            "nodeType": "EnumDefinition",
+            "src": "2461:55:2"
+          },
+          {
+            "canonicalName": "Data.memberStatus",
+            "id": 802,
+            "members": [
+              {
+                "id": 798,
+                "name": "notMember",
+                "nameLocation": "2734:9:2",
+                "nodeType": "EnumValue",
+                "src": "2734:9:2"
+              },
+              {
+                "id": 799,
+                "name": "invited",
+                "nameLocation": "2749:7:2",
+                "nodeType": "EnumValue",
+                "src": "2749:7:2"
+              },
+              {
+                "id": 800,
+                "name": "asking",
+                "nameLocation": "2762:6:2",
+                "nodeType": "EnumValue",
+                "src": "2762:6:2"
+              },
+              {
+                "id": 801,
+                "name": "active",
+                "nameLocation": "2774:6:2",
+                "nodeType": "EnumValue",
+                "src": "2774:6:2"
+              }
+            ],
+            "name": "memberStatus",
+            "nameLocation": "2715:12:2",
+            "nodeType": "EnumDefinition",
+            "src": "2710:74:2"
+          },
+          {
+            "canonicalName": "Data.membershipModeEnum",
+            "id": 806,
+            "members": [
+              {
+                "id": 803,
+                "name": "invite",
+                "nameLocation": "2963:6:2",
+                "nodeType": "EnumValue",
+                "src": "2963:6:2"
+              },
+              {
+                "id": 804,
+                "name": "request",
+                "nameLocation": "2975:7:2",
+                "nodeType": "EnumValue",
+                "src": "2975:7:2"
+              },
+              {
+                "id": 805,
+                "name": "open",
+                "nameLocation": "2988:4:2",
+                "nodeType": "EnumValue",
+                "src": "2988:4:2"
+              }
+            ],
+            "name": "membershipModeEnum",
+            "nameLocation": "2938:18:2",
+            "nodeType": "EnumDefinition",
+            "src": "2933:63:2"
           }
         ],
-        "scope": 794,
-        "src": "154:1189:2",
+        "scope": 808,
+        "src": "155:3067:2",
         "usedErrors": []
       }
     ],
-    "src": "32:1311:2"
+    "src": "32:3190:2"
   },
   "legacyAST": {
     "absolutePath": "/Users/chinoiserie/delivery/BLOCKCHAIN/Alyra/MY-DAO/contracts/Data.sol",
     "exportedSymbols": {
       "Data": [
-        793
+        807
       ]
     },
-    "id": 794,
+    "id": 808,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 699,
+        "id": 739,
         "literals": [
           "solidity",
           "^",
@@ -1220,48 +871,54 @@
         "canonicalName": "Data",
         "contractDependencies": [],
         "contractKind": "library",
+        "documentation": {
+          "id": 740,
+          "nodeType": "StructuredDocumentation",
+          "src": "57:97:2",
+          "text": " @title Data\n @author chixx.eth & mourad\n @notice Library of struct and enum for MY-DAO"
+        },
         "fullyImplemented": true,
-        "id": 793,
+        "id": 807,
         "linearizedBaseContracts": [
-          793
+          807
         ],
         "name": "Data",
-        "nameLocation": "162:4:2",
+        "nameLocation": "163:4:2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Data.member",
-            "id": 705,
+            "id": 746,
             "members": [
               {
                 "constant": false,
-                "id": 702,
+                "id": 743,
                 "mutability": "mutable",
                 "name": "status",
-                "nameLocation": "204:6:2",
+                "nameLocation": "352:6:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "191:19:2",
+                "scope": 746,
+                "src": "339:19:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_memberStatus_$747",
+                  "typeIdentifier": "t_enum$_memberStatus_$802",
                   "typeString": "enum Data.memberStatus"
                 },
                 "typeName": {
-                  "id": 701,
+                  "id": 742,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 700,
+                    "id": 741,
                     "name": "memberStatus",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 747,
-                    "src": "191:12:2"
+                    "referencedDeclaration": 802,
+                    "src": "339:12:2"
                   },
-                  "referencedDeclaration": 747,
-                  "src": "191:12:2",
+                  "referencedDeclaration": 802,
+                  "src": "339:12:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_memberStatus_$747",
+                    "typeIdentifier": "t_enum$_memberStatus_$802",
                     "typeString": "enum Data.memberStatus"
                   }
                 },
@@ -1269,13 +926,13 @@
               },
               {
                 "constant": false,
-                "id": 704,
+                "id": 745,
                 "mutability": "mutable",
                 "name": "joinTime",
-                "nameLocation": "224:8:2",
+                "nameLocation": "372:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "216:16:2",
+                "scope": 746,
+                "src": "364:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1283,10 +940,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 703,
+                  "id": 744,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "216:7:2",
+                  "src": "364:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1296,25 +953,25 @@
               }
             ],
             "name": "member",
-            "nameLocation": "178:6:2",
+            "nameLocation": "326:6:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "171:95:2",
+            "scope": 807,
+            "src": "319:95:2",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoMember",
-            "id": 721,
+            "id": 762,
             "members": [
               {
                 "constant": false,
-                "id": 707,
+                "id": 748,
                 "mutability": "mutable",
                 "name": "addressDao",
-                "nameLocation": "301:10:2",
+                "nameLocation": "782:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "293:18:2",
+                "scope": 762,
+                "src": "774:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1322,10 +979,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 706,
+                  "id": 747,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "293:7:2",
+                  "src": "774:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1336,13 +993,13 @@
               },
               {
                 "constant": false,
-                "id": 709,
+                "id": 750,
                 "mutability": "mutable",
                 "name": "membersCount",
-                "nameLocation": "325:12:2",
+                "nameLocation": "806:12:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "317:20:2",
+                "scope": 762,
+                "src": "798:20:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1350,10 +1007,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 708,
+                  "id": 749,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "317:7:2",
+                  "src": "798:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1363,13 +1020,13 @@
               },
               {
                 "constant": false,
-                "id": 713,
+                "id": 754,
                 "mutability": "mutable",
                 "name": "memberAddresses",
-                "nameLocation": "371:15:2",
+                "nameLocation": "852:15:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "343:43:2",
+                "scope": 762,
+                "src": "824:43:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1377,28 +1034,28 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 712,
+                  "id": 753,
                   "keyType": {
-                    "id": 710,
+                    "id": 751,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "351:7:2",
+                    "src": "832:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "343:27:2",
+                  "src": "824:27:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 711,
+                    "id": 752,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "362:7:2",
+                    "src": "843:7:2",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1410,51 +1067,51 @@
               },
               {
                 "constant": false,
-                "id": 718,
+                "id": 759,
                 "mutability": "mutable",
                 "name": "members",
-                "nameLocation": "424:7:2",
+                "nameLocation": "905:7:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "392:39:2",
+                "scope": 762,
+                "src": "873:39:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$705_storage_$",
+                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$746_storage_$",
                   "typeString": "mapping(address => struct Data.member)"
                 },
                 "typeName": {
-                  "id": 717,
+                  "id": 758,
                   "keyType": {
-                    "id": 714,
+                    "id": 755,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "400:7:2",
+                    "src": "881:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "392:31:2",
+                  "src": "873:31:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$705_storage_$",
+                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_member_$746_storage_$",
                     "typeString": "mapping(address => struct Data.member)"
                   },
                   "valueType": {
-                    "id": 716,
+                    "id": 757,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 715,
+                      "id": 756,
                       "name": "Data.member",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 705,
-                      "src": "411:11:2"
+                      "referencedDeclaration": 746,
+                      "src": "892:11:2"
                     },
-                    "referencedDeclaration": 705,
-                    "src": "411:11:2",
+                    "referencedDeclaration": 746,
+                    "src": "892:11:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_member_$705_storage_ptr",
+                      "typeIdentifier": "t_struct$_member_$746_storage_ptr",
                       "typeString": "struct Data.member"
                     }
                   }
@@ -1463,13 +1120,13 @@
               },
               {
                 "constant": false,
-                "id": 720,
+                "id": 761,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "442:8:2",
+                "nameLocation": "923:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 721,
-                "src": "437:13:2",
+                "scope": 762,
+                "src": "918:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1477,10 +1134,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 719,
+                  "id": 760,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "437:4:2",
+                  "src": "918:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -1490,25 +1147,25 @@
               }
             ],
             "name": "DaoMember",
-            "nameLocation": "277:9:2",
+            "nameLocation": "758:9:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "270:185:2",
+            "scope": 807,
+            "src": "751:185:2",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.DaoSettings",
-            "id": 733,
+            "id": 774,
             "members": [
               {
                 "constant": false,
-                "id": 723,
+                "id": 764,
                 "mutability": "mutable",
                 "name": "addressDao",
-                "nameLocation": "493:10:2",
+                "nameLocation": "1239:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "485:18:2",
+                "scope": 774,
+                "src": "1231:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1516,10 +1173,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 722,
+                  "id": 763,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "485:7:2",
+                  "src": "1231:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1530,33 +1187,33 @@
               },
               {
                 "constant": false,
-                "id": 726,
+                "id": 767,
                 "mutability": "mutable",
                 "name": "visibility",
-                "nameLocation": "524:10:2",
+                "nameLocation": "1270:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "509:25:2",
+                "scope": 774,
+                "src": "1255:25:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$742",
+                  "typeIdentifier": "t_enum$_visibilityEnum_$797",
                   "typeString": "enum Data.visibilityEnum"
                 },
                 "typeName": {
-                  "id": 725,
+                  "id": 766,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 724,
+                    "id": 765,
                     "name": "visibilityEnum",
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 742,
-                    "src": "509:14:2"
+                    "referencedDeclaration": 797,
+                    "src": "1255:14:2"
                   },
-                  "referencedDeclaration": 742,
-                  "src": "509:14:2",
+                  "referencedDeclaration": 797,
+                  "src": "1255:14:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$742",
+                    "typeIdentifier": "t_enum$_visibilityEnum_$797",
                     "typeString": "enum Data.visibilityEnum"
                   }
                 },
@@ -1564,13 +1221,13 @@
               },
               {
                 "constant": false,
-                "id": 728,
+                "id": 769,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "547:4:2",
+                "nameLocation": "1293:4:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "540:11:2",
+                "scope": 774,
+                "src": "1286:11:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1578,10 +1235,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 727,
+                  "id": 768,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "540:6:2",
+                  "src": "1286:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -1591,13 +1248,13 @@
               },
               {
                 "constant": false,
-                "id": 730,
+                "id": 771,
                 "mutability": "mutable",
                 "name": "description",
-                "nameLocation": "564:11:2",
+                "nameLocation": "1310:11:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "557:18:2",
+                "scope": 774,
+                "src": "1303:18:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1605,10 +1262,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 729,
+                  "id": 770,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "557:6:2",
+                  "src": "1303:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -1618,13 +1275,13 @@
               },
               {
                 "constant": false,
-                "id": 732,
+                "id": 773,
                 "mutability": "mutable",
                 "name": "rules",
-                "nameLocation": "588:5:2",
+                "nameLocation": "1334:5:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 733,
-                "src": "581:12:2",
+                "scope": 774,
+                "src": "1327:12:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1632,10 +1289,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 731,
+                  "id": 772,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "581:6:2",
+                  "src": "1327:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -1645,215 +1302,25 @@
               }
             ],
             "name": "DaoSettings",
-            "nameLocation": "467:11:2",
+            "nameLocation": "1213:11:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "460:138:2",
+            "scope": 807,
+            "src": "1206:138:2",
             "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.daoData",
-            "id": 739,
-            "members": [
-              {
-                "constant": false,
-                "id": 735,
-                "mutability": "mutable",
-                "name": "daoType",
-                "nameLocation": "631:7:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 739,
-                "src": "624:14:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
-                },
-                "typeName": {
-                  "id": 734,
-                  "name": "string",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "624:6:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_storage_ptr",
-                    "typeString": "string"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 738,
-                "mutability": "mutable",
-                "name": "visibility",
-                "nameLocation": "659:10:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 739,
-                "src": "644:25:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_visibilityEnum_$742",
-                  "typeString": "enum Data.visibilityEnum"
-                },
-                "typeName": {
-                  "id": 737,
-                  "nodeType": "UserDefinedTypeName",
-                  "pathNode": {
-                    "id": 736,
-                    "name": "visibilityEnum",
-                    "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 742,
-                    "src": "644:14:2"
-                  },
-                  "referencedDeclaration": 742,
-                  "src": "644:14:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_visibilityEnum_$742",
-                    "typeString": "enum Data.visibilityEnum"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "daoData",
-            "nameLocation": "610:7:2",
-            "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "603:71:2",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "Data.visibilityEnum",
-            "id": 742,
-            "members": [
-              {
-                "id": 740,
-                "name": "privateDao",
-                "nameLocation": "704:10:2",
-                "nodeType": "EnumValue",
-                "src": "704:10:2"
-              },
-              {
-                "id": 741,
-                "name": "publicDao",
-                "nameLocation": "720:9:2",
-                "nodeType": "EnumValue",
-                "src": "720:9:2"
-              }
-            ],
-            "name": "visibilityEnum",
-            "nameLocation": "683:14:2",
-            "nodeType": "EnumDefinition",
-            "src": "678:55:2"
-          },
-          {
-            "canonicalName": "Data.memberStatus",
-            "id": 747,
-            "members": [
-              {
-                "id": 743,
-                "name": "notMember",
-                "nameLocation": "761:9:2",
-                "nodeType": "EnumValue",
-                "src": "761:9:2"
-              },
-              {
-                "id": 744,
-                "name": "invited",
-                "nameLocation": "776:7:2",
-                "nodeType": "EnumValue",
-                "src": "776:7:2"
-              },
-              {
-                "id": 745,
-                "name": "asking",
-                "nameLocation": "789:6:2",
-                "nodeType": "EnumValue",
-                "src": "789:6:2"
-              },
-              {
-                "id": 746,
-                "name": "active",
-                "nameLocation": "801:6:2",
-                "nodeType": "EnumValue",
-                "src": "801:6:2"
-              }
-            ],
-            "name": "memberStatus",
-            "nameLocation": "742:12:2",
-            "nodeType": "EnumDefinition",
-            "src": "737:74:2"
-          },
-          {
-            "canonicalName": "Data.membershipModeEnum",
-            "id": 751,
-            "members": [
-              {
-                "id": 748,
-                "name": "invite",
-                "nameLocation": "845:6:2",
-                "nodeType": "EnumValue",
-                "src": "845:6:2"
-              },
-              {
-                "id": 749,
-                "name": "request",
-                "nameLocation": "857:7:2",
-                "nodeType": "EnumValue",
-                "src": "857:7:2"
-              },
-              {
-                "id": 750,
-                "name": "open",
-                "nameLocation": "870:4:2",
-                "nodeType": "EnumValue",
-                "src": "870:4:2"
-              }
-            ],
-            "name": "membershipModeEnum",
-            "nameLocation": "820:18:2",
-            "nodeType": "EnumDefinition",
-            "src": "815:63:2"
-          },
-          {
-            "canonicalName": "Data.ModuleType",
-            "id": 754,
-            "members": [
-              {
-                "id": 752,
-                "name": "DaoMemberSystem",
-                "nameLocation": "904:15:2",
-                "nodeType": "EnumValue",
-                "src": "904:15:2"
-              },
-              {
-                "id": 753,
-                "name": "DaoVotingSystem",
-                "nameLocation": "925:15:2",
-                "nodeType": "EnumValue",
-                "src": "925:15:2"
-              }
-            ],
-            "name": "ModuleType",
-            "nameLocation": "887:10:2",
-            "nodeType": "EnumDefinition",
-            "src": "882:62:2"
           },
           {
             "canonicalName": "Data.Module",
-            "id": 769,
+            "id": 789,
             "members": [
               {
                 "constant": false,
-                "id": 756,
+                "id": 776,
                 "mutability": "mutable",
                 "name": "id",
-                "nameLocation": "976:2:2",
+                "nameLocation": "1957:2:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "968:10:2",
+                "scope": 789,
+                "src": "1949:10:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1861,10 +1328,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 755,
+                  "id": 775,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "968:7:2",
+                  "src": "1949:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1874,13 +1341,13 @@
               },
               {
                 "constant": false,
-                "id": 758,
+                "id": 778,
                 "mutability": "mutable",
                 "name": "moduleAddress",
-                "nameLocation": "992:13:2",
+                "nameLocation": "1973:13:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "984:21:2",
+                "scope": 789,
+                "src": "1965:21:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1888,10 +1355,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 757,
+                  "id": 777,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "984:7:2",
+                  "src": "1965:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -1902,13 +1369,13 @@
               },
               {
                 "constant": false,
-                "id": 760,
+                "id": 780,
                 "mutability": "mutable",
                 "name": "isActive",
-                "nameLocation": "1016:8:2",
+                "nameLocation": "1997:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1011:13:2",
+                "scope": 789,
+                "src": "1992:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1916,10 +1383,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 759,
+                  "id": 779,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1011:4:2",
+                  "src": "1992:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -1929,13 +1396,13 @@
               },
               {
                 "constant": false,
-                "id": 762,
+                "id": 782,
                 "mutability": "mutable",
                 "name": "isExclusive",
-                "nameLocation": "1035:11:2",
+                "nameLocation": "2016:11:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1030:16:2",
+                "scope": 789,
+                "src": "2011:16:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1943,10 +1410,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 761,
+                  "id": 781,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1030:4:2",
+                  "src": "2011:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -1956,13 +1423,13 @@
               },
               {
                 "constant": false,
-                "id": 764,
+                "id": 784,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1059:10:2",
+                "nameLocation": "2040:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1052:17:2",
+                "scope": 789,
+                "src": "2033:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1970,10 +1437,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 763,
+                  "id": 783,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1052:6:2",
+                  "src": "2033:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -1983,13 +1450,13 @@
               },
               {
                 "constant": false,
-                "id": 766,
+                "id": 786,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1083:10:2",
+                "nameLocation": "2064:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1076:17:2",
+                "scope": 789,
+                "src": "2057:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1997,10 +1464,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 765,
+                  "id": 785,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1076:6:2",
+                  "src": "2057:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -2010,13 +1477,13 @@
               },
               {
                 "constant": false,
-                "id": 768,
+                "id": 788,
                 "mutability": "mutable",
                 "name": "moduleInfo",
-                "nameLocation": "1107:10:2",
+                "nameLocation": "2088:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 769,
-                "src": "1100:17:2",
+                "scope": 789,
+                "src": "2081:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -2024,10 +1491,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 767,
+                  "id": 787,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1100:6:2",
+                  "src": "2081:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -2037,25 +1504,25 @@
               }
             ],
             "name": "Module",
-            "nameLocation": "955:6:2",
+            "nameLocation": "1936:6:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "948:174:2",
+            "scope": 807,
+            "src": "1929:174:2",
             "visibility": "public"
           },
           {
             "canonicalName": "Data.ModuleToActivate",
-            "id": 774,
+            "id": 794,
             "members": [
               {
                 "constant": false,
-                "id": 771,
+                "id": 791,
                 "mutability": "mutable",
                 "name": "moduleType",
-                "nameLocation": "1163:10:2",
+                "nameLocation": "2287:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 774,
-                "src": "1156:17:2",
+                "scope": 794,
+                "src": "2280:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -2063,10 +1530,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 770,
+                  "id": 790,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1156:6:2",
+                  "src": "2280:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -2076,13 +1543,13 @@
               },
               {
                 "constant": false,
-                "id": 773,
+                "id": 793,
                 "mutability": "mutable",
                 "name": "moduleCode",
-                "nameLocation": "1186:10:2",
+                "nameLocation": "2310:10:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 774,
-                "src": "1179:17:2",
+                "scope": 794,
+                "src": "2303:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -2090,10 +1557,10 @@
                   "typeString": "bytes8"
                 },
                 "typeName": {
-                  "id": 772,
+                  "id": 792,
                   "name": "bytes8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1179:6:2",
+                  "src": "2303:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes8",
                     "typeString": "bytes8"
@@ -2103,257 +1570,112 @@
               }
             ],
             "name": "ModuleToActivate",
-            "nameLocation": "1133:16:2",
+            "nameLocation": "2257:16:2",
             "nodeType": "StructDefinition",
-            "scope": 793,
-            "src": "1126:75:2",
+            "scope": 807,
+            "src": "2250:75:2",
             "visibility": "public"
           },
           {
-            "body": {
-              "id": 791,
-              "nodeType": "Block",
-              "src": "1278:63:2",
-              "statements": [
-                {
-                  "expression": {
-                    "arguments": [
-                      {
-                        "arguments": [
-                          {
-                            "arguments": [
-                              {
-                                "id": 786,
-                                "name": "_messageToHash",
-                                "nodeType": "Identifier",
-                                "overloadedDeclarations": [],
-                                "referencedDeclaration": 776,
-                                "src": "1319:14:2",
-                                "typeDescriptions": {
-                                  "typeIdentifier": "t_string_memory_ptr",
-                                  "typeString": "string memory"
-                                }
-                              }
-                            ],
-                            "expression": {
-                              "argumentTypes": [
-                                {
-                                  "typeIdentifier": "t_string_memory_ptr",
-                                  "typeString": "string memory"
-                                }
-                              ],
-                              "expression": {
-                                "id": 784,
-                                "name": "abi",
-                                "nodeType": "Identifier",
-                                "overloadedDeclarations": [],
-                                "referencedDeclaration": 4294967295,
-                                "src": "1308:3:2",
-                                "typeDescriptions": {
-                                  "typeIdentifier": "t_magic_abi",
-                                  "typeString": "abi"
-                                }
-                              },
-                              "id": 785,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": true,
-                              "lValueRequested": false,
-                              "memberName": "encode",
-                              "nodeType": "MemberAccess",
-                              "src": "1308:10:2",
-                              "typeDescriptions": {
-                                "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
-                                "typeString": "function () pure returns (bytes memory)"
-                              }
-                            },
-                            "id": 787,
-                            "isConstant": false,
-                            "isLValue": false,
-                            "isPure": false,
-                            "kind": "functionCall",
-                            "lValueRequested": false,
-                            "names": [],
-                            "nodeType": "FunctionCall",
-                            "src": "1308:26:2",
-                            "tryCall": false,
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_bytes_memory_ptr",
-                              "typeString": "bytes memory"
-                            }
-                          }
-                        ],
-                        "expression": {
-                          "argumentTypes": [
-                            {
-                              "typeIdentifier": "t_bytes_memory_ptr",
-                              "typeString": "bytes memory"
-                            }
-                          ],
-                          "id": 783,
-                          "name": "keccak256",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 4294967288,
-                          "src": "1298:9:2",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
-                            "typeString": "function (bytes memory) pure returns (bytes32)"
-                          }
-                        },
-                        "id": 788,
-                        "isConstant": false,
-                        "isLValue": false,
-                        "isPure": false,
-                        "kind": "functionCall",
-                        "lValueRequested": false,
-                        "names": [],
-                        "nodeType": "FunctionCall",
-                        "src": "1298:37:2",
-                        "tryCall": false,
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
-                        }
-                      }
-                    ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
-                        }
-                      ],
-                      "id": 782,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "lValueRequested": false,
-                      "nodeType": "ElementaryTypeNameExpression",
-                      "src": "1291:6:2",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_bytes8_$",
-                        "typeString": "type(bytes8)"
-                      },
-                      "typeName": {
-                        "id": 781,
-                        "name": "bytes8",
-                        "nodeType": "ElementaryTypeName",
-                        "src": "1291:6:2",
-                        "typeDescriptions": {}
-                      }
-                    },
-                    "id": 789,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "typeConversion",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "1291:45:2",
-                    "tryCall": false,
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes8",
-                      "typeString": "bytes8"
-                    }
-                  },
-                  "functionReturnParameters": 780,
-                  "id": 790,
-                  "nodeType": "Return",
-                  "src": "1284:52:2"
-                }
-              ]
-            },
-            "functionSelector": "b411ee94",
-            "id": 792,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "hash",
-            "nameLocation": "1214:4:2",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 777,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 776,
-                  "mutability": "mutable",
-                  "name": "_messageToHash",
-                  "nameLocation": "1233:14:2",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 792,
-                  "src": "1219:28:2",
-                  "stateVariable": false,
-                  "storageLocation": "memory",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
-                  },
-                  "typeName": {
-                    "id": 775,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1219:6:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1218:30:2"
-            },
-            "returnParameters": {
-              "id": 780,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 779,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nameLocation": "-1:-1:-1",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 792,
-                  "src": "1270:6:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes8",
-                    "typeString": "bytes8"
-                  },
-                  "typeName": {
-                    "id": 778,
-                    "name": "bytes8",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1270:6:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes8",
-                      "typeString": "bytes8"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1269:8:2"
-            },
-            "scope": 793,
-            "src": "1205:136:2",
-            "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "public"
+            "canonicalName": "Data.visibilityEnum",
+            "id": 797,
+            "members": [
+              {
+                "id": 795,
+                "name": "privateDao",
+                "nameLocation": "2487:10:2",
+                "nodeType": "EnumValue",
+                "src": "2487:10:2"
+              },
+              {
+                "id": 796,
+                "name": "publicDao",
+                "nameLocation": "2503:9:2",
+                "nodeType": "EnumValue",
+                "src": "2503:9:2"
+              }
+            ],
+            "name": "visibilityEnum",
+            "nameLocation": "2466:14:2",
+            "nodeType": "EnumDefinition",
+            "src": "2461:55:2"
+          },
+          {
+            "canonicalName": "Data.memberStatus",
+            "id": 802,
+            "members": [
+              {
+                "id": 798,
+                "name": "notMember",
+                "nameLocation": "2734:9:2",
+                "nodeType": "EnumValue",
+                "src": "2734:9:2"
+              },
+              {
+                "id": 799,
+                "name": "invited",
+                "nameLocation": "2749:7:2",
+                "nodeType": "EnumValue",
+                "src": "2749:7:2"
+              },
+              {
+                "id": 800,
+                "name": "asking",
+                "nameLocation": "2762:6:2",
+                "nodeType": "EnumValue",
+                "src": "2762:6:2"
+              },
+              {
+                "id": 801,
+                "name": "active",
+                "nameLocation": "2774:6:2",
+                "nodeType": "EnumValue",
+                "src": "2774:6:2"
+              }
+            ],
+            "name": "memberStatus",
+            "nameLocation": "2715:12:2",
+            "nodeType": "EnumDefinition",
+            "src": "2710:74:2"
+          },
+          {
+            "canonicalName": "Data.membershipModeEnum",
+            "id": 806,
+            "members": [
+              {
+                "id": 803,
+                "name": "invite",
+                "nameLocation": "2963:6:2",
+                "nodeType": "EnumValue",
+                "src": "2963:6:2"
+              },
+              {
+                "id": 804,
+                "name": "request",
+                "nameLocation": "2975:7:2",
+                "nodeType": "EnumValue",
+                "src": "2975:7:2"
+              },
+              {
+                "id": 805,
+                "name": "open",
+                "nameLocation": "2988:4:2",
+                "nodeType": "EnumValue",
+                "src": "2988:4:2"
+              }
+            ],
+            "name": "membershipModeEnum",
+            "nameLocation": "2938:18:2",
+            "nodeType": "EnumDefinition",
+            "src": "2933:63:2"
           }
         ],
-        "scope": 794,
-        "src": "154:1189:2",
+        "scope": 808,
+        "src": "155:3067:2",
         "usedErrors": []
       }
     ],
-    "src": "32:1311:2"
+    "src": "32:3190:2"
   },
   "compiler": {
     "name": "solc",
@@ -2361,15 +1683,18 @@
   },
   "networks": {},
   "schemaVersion": "3.2.0",
-  "updatedAt": "2022-05-22T11:07:32.352Z",
+  "updatedAt": "2022-05-22T22:43:36.334Z",
   "devdoc": {
+    "author": "chixx.eth & mourad",
     "kind": "dev",
     "methods": {},
+    "title": "Data",
     "version": 1
   },
   "userdoc": {
     "kind": "user",
     "methods": {},
+    "notice": "Library of struct and enum for MY-DAO",
     "version": 1
   }
 }

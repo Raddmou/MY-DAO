@@ -257,21 +257,20 @@ export const daosAPI = {
 
     },
 
-    // getDao: async (address: Address): Promise<Dao> => {
-
-    // }
-
-    
-
     fetchDao: async (address: Address): Promise<Dao> => {
         console.log("fetchDao start " +  address);
         const contractDao = await contractDaoProvider.getContract(address);
-        const typeHashMemberModule = "0x3ecd26b50115fb28";
-        const typeHashVoteModule = "0xac1652a4636fa1ef";
         const moduleMembership = await contractDao.methods.modules(MODULE_MEMBER_TYPE, 0).call();
-        const moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
         console.log("fetchDao MemberModule " +  moduleMembership.moduleType + " moduleCode " + moduleMembership?.moduleCode);
-        console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
+        const moduleVoteArray = await contractDao.methods.getModuleData(MODULE_VOTE_TYPE).call();
+        console.log(moduleVoteArray);
+        var moduleVote = moduleMembership;
+        moduleVote.isActive = false;
+        moduleVote.moduleCode = "0x0000000000000000";
+        if(moduleVoteArray.length > 0) {
+            moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
+            console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
+        }
         var memberConnectedInfo;
         var isMember;
         var membershipMode;
@@ -281,7 +280,7 @@ export const daosAPI = {
 
         const typehashedrequest = MODULE_MEMBER_CODE_REQUEST;
         console.log("hashed RequestMembershipModule " + typehashedrequest);
-        
+
         if(moduleMembership.isActive && moduleMembership.moduleCode != "0x0000000000000000")
         {
             console.log("fetchDao moduleMembership.moduleAddress " +  moduleMembership.moduleAddress + " moduleMembership.moduleCode " + moduleMembership.moduleCode);
@@ -299,7 +298,7 @@ export const daosAPI = {
             } 
             modules.push({type: moduleMembership.moduleType, code: moduleMembership.moduleCode});
         }
-        if(moduleVote.isActive && moduleVote.moduleCode != "0x0000000000000000")
+        if(moduleVoteArray.length > 0 && moduleVote.isActive && moduleVote.moduleCode != "0x0000000000000000")
         {
             modules.push({type: moduleVote.moduleType, code: moduleVote.moduleCode});
         }
@@ -322,10 +321,22 @@ export const daosAPI = {
     fetchVoteSessions: async (address: Address): Promise<VoteSession[]> => {
         console.log("fetchVote start " +  address);
         const contractDao = await contractDaoProvider.getContract(address);
-        const moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
-        console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
+        // const moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
+        // console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
         var votes = [];
         
+        const moduleMembership = await contractDao.methods.modules(MODULE_MEMBER_TYPE, 0).call();
+        console.log("fetchDao MemberModule " +  moduleMembership.moduleType + " moduleCode " + moduleMembership?.moduleCode);
+        const moduleVoteArray = await contractDao.methods.getModuleData(MODULE_VOTE_TYPE).call();
+        // console.log(moduleVoteArray);
+        var moduleVote = moduleMembership;
+        moduleVote.isActive = false;
+        moduleVote.moduleCode = "0x0000000000000000";
+        if(moduleVoteArray.length > 0) {
+            moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
+            console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
+        }
+
         if(moduleVote.isActive && moduleVote.moduleCode != "0x0000000000000000")
         {
             const contractVoteYesNoModule = await contractVotingYesNoModuleProvider.getContract(moduleVote.moduleAddress);
@@ -549,8 +560,7 @@ export const daosAPI = {
 
     acceptMember: async (address: Address, addressMember: Address): Promise<boolean> => {
         const contractDao = await contractDaoProvider.getContract(address);
-        const typeHash = "0x3ecd26b50115fb28";
-        const moduleMembership = await contractDao.methods.modules(typeHash, 0).call();
+        const moduleMembership = await contractDao.methods.modules(MODULE_MEMBER_TYPE, 0).call();
         const contractMembershipModule = await contractRequestMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
 
 
@@ -571,8 +581,7 @@ export const daosAPI = {
 
     requestJoinDao: async (address: Address): Promise<boolean> => {
         const contractDao = await contractDaoProvider.getContract(address);
-        const typeHash = "0x3ecd26b50115fb28";
-        const moduleMembership = await contractDao.methods.modules(typeHash, 0).call();
+        const moduleMembership = await contractDao.methods.modules(MODULE_MEMBER_TYPE, 0).call();
         const contractMembershipModule = await contractRequestMembershipModuleProvider.getContract(moduleMembership.moduleAddress);
 
 
