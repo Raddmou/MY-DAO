@@ -263,10 +263,8 @@ export const daosAPI = {
         const moduleMembership = await contractDao.methods.modules(MODULE_MEMBER_TYPE, 0).call();
         console.log("fetchDao MemberModule " +  moduleMembership.moduleType + " moduleCode " + moduleMembership?.moduleCode);
         const moduleVoteArray = await contractDao.methods.getModuleData(MODULE_VOTE_TYPE).call();
+        var moduleVote;
         console.log(moduleVoteArray);
-        var moduleVote = moduleMembership;
-        moduleVote.isActive = false;
-        moduleVote.moduleCode = "0x0000000000000000";
         if(moduleVoteArray.length > 0) {
             moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
             console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
@@ -329,15 +327,13 @@ export const daosAPI = {
         console.log("fetchDao MemberModule " +  moduleMembership.moduleType + " moduleCode " + moduleMembership?.moduleCode);
         const moduleVoteArray = await contractDao.methods.getModuleData(MODULE_VOTE_TYPE).call();
         // console.log(moduleVoteArray);
-        var moduleVote = moduleMembership;
-        moduleVote.isActive = false;
-        moduleVote.moduleCode = "0x0000000000000000";
+        var moduleVote;
         if(moduleVoteArray.length > 0) {
             moduleVote = await contractDao.methods.modules(MODULE_VOTE_TYPE, 0).call();
             console.log("fetchDao VoteModule " +  moduleVote.moduleType + " moduleCode " + moduleVote?.moduleCode);
         }
 
-        if(moduleVote.isActive && moduleVote.moduleCode != "0x0000000000000000")
+        if(moduleVoteArray.length > 0 && moduleVote.isActive && moduleVote.moduleCode != "0x0000000000000000")
         {
             const contractVoteYesNoModule = await contractVotingYesNoModuleProvider.getContract(moduleVote.moduleAddress);
             var votesCount = await contractVoteYesNoModule.methods.getVotesCount(address).call();
