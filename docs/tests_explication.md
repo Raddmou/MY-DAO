@@ -15,15 +15,15 @@ We are using:
 We have implement a total of 159 tests. This tests are structured the same way as the protocol.
 First we test DaosFactory, and we test after the module membership, module voting and module funds
 
-### 1 DAOS FACTORY
+### DAOS FACTORY
 
-* Recover Daos Factory instance
-* Check Daos Factory Datas
+** Recover Daos Factory instance
+** Check Daos Factory Datas
 - Check Hash
 - Check Modules
-* Check add Module
+** Check add Module
 
-### 2 DAOS
+### DAOS
 
 #### DAO MODULE OPEN
 
