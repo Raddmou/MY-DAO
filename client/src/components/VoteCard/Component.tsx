@@ -356,7 +356,7 @@ const VoteCard = ({ voteSession, address, id }: VoteCardProps) => {
                                         <div>
                                             <Stack direction="row" spacing={1}>
 
-                                                    <Chip label="Creation time" variant="outlined" color="primary"/> 
+                                                    <Chip label="Creation date" variant="outlined" color="primary"/> 
                                                     <Chip label={creationTimeFormatted} variant="outlined" color="primary"/>
                                                     <Chip label="Creator" variant="outlined" color="primary"/>
                                                     <Chip label={voteSession.creatorAddress} variant="outlined" color="primary"/>

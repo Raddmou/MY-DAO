@@ -307,7 +307,7 @@ export const daosAPI = {
         const description = await contractDao.methods.description().call(); 
         const note = await contractDao.methods.rules().call();     
         const owner = await contractDao.methods.owner().call();
-        const isOwner = owner.toLowerCase() == (window as any).ethereum.selectedAddress.toLowerCase();
+        const isOwner = owner?.toLowerCase() == (window as any).ethereum.selectedAddress.toLowerCase();
         const id = address.toString();
         var member = memberConnectedInfo?.status;
         return { id, address, name, isVisible, membershipMode, description, member, members, isMember, isOwner, modules, note };
