@@ -149,7 +149,7 @@ Dev documentation:
 -   [Avoiding Common Attacks](./docs/avoiding_common_attacks.md)
 -   [Deployed Addresses](./docs/deployed_addresses.md)
 -   [Design Pattern Decisions](./docs/design_pattern_decisions.md)
--   [Diagrams](./docs/diagrams/)
+-   [Diagrams](./docs/diagrams/README.md)
 -   [Test Explication](./docs/tests_explication.md)
 -   [Smart Contracts README.MD](./docs/contracts/)
 
