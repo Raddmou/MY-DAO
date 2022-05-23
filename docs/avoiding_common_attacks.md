@@ -4,6 +4,7 @@ Measures taken to counter attacks and avoid security breaches of created smart c
 
 ## Ownable
 We extensively use Ownable of OppenZippelin and a custom modifier to set access to certain functions
+
 ## Re-Entrancy
 We extensively use reentrancyGuard of OppenZippelin and modifiers to prevent re-entrancy calls of payable functions.
 
@@ -40,5 +41,5 @@ We don't use block.timestamp as a random number. We use it to store the informat
 ## Calls to untrusted sources
 All calls to other contract are trust contracts
 
-# Call to the unknown
+## Call to the unknown
 We don't use call et delegatecall functions.
