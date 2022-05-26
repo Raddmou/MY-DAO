@@ -153,6 +153,16 @@ Dev documentation:
 -   [Test Explication](./docs/tests_explication.md)
 -   [Smart Contracts README.MD](./docs/contracts/)
 
+Diagrams:
+
+-   [Macro diagram](./Diagrams/Macro/MacroDiagram.png)
+-   [Create DAO sequence](./Diagrams/Sequences/createDao_sequenceDiagram.png)
+-   [Fetch DAO sequence](./Diagrams/Sequences/fetchDao_sequenceDiagram.png)
+-   [join Open DAO](./Diagrams/Sequences/joinOpenDao_sequenceDiagram.png)
+-   [join Request DAO](./Diagrams/Sequences/joinRequestDao_SequenceDiagram.png)
+-   [join Invite DAO](./Diagrams/Sequences/joinInviteDao_sequenceDiagram.png)
+-   [Vote Yes No](./Diagrams/Sequences/voteYesNo_sequenceDiagram.png)
+
 ## Copyright
 
 License MIT
