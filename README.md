@@ -75,7 +75,7 @@ CP:
 
 Dev:
 - Mourad
-    - [LinkedIn](https://www.linkedin.com/in/%F0%9F%92%BB-mourad-mouttaki-85b48a84/)
+    - [LinkedIn](linkedin.com/in/mourad-mouttaki)
     - [GitHub](https://github.com/Raddmou)
 - Jérémie
     - Linkedin
